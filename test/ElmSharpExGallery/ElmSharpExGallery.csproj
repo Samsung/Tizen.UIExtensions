@@ -1,0 +1,13 @@
+﻿<Project Sdk="Tizen.NET.Sdk/1.1.5">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>tizen40</TargetFramework>
+      <AssemblyName>ElmSharpExGallery</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Tizen.UIExtensions.ElmSharp\Tizen.UIExtensions.ElmSharp.csproj" />
+  </ItemGroup>
+
+</Project>

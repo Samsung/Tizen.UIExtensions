@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Tizen.UIExtensions.ElmSharp</AssemblyName>
+    <RootNamespace>Tizen.UIExtensions.ElmSharp</RootNamespace>
+    <PackageId>Tizen.UIExtensions.ElmSharp</PackageId>
+    <authors>Samsung Electronics</authors>
+    <owners>Samsung Electronics</owners>
+    <Description>The Tizen.UIExtensions provides a set of advanced views and containers based on Tizen.NET UI Framework (ElmSharp).</Description>
+    <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0</PackageLicense>
+    <PackageProjectUrl>https://github.com/TizenAPI/Tizen.UIExtensions.ElmSharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/TizenAPI/Tizen.NET.MaterialComponents/master/assets/images/logo.png</PackageIconUrl>
+    <PackageTags>tizen;tizen.net;maui;xamarin;xamarin.forms;ElmSharp</PackageTags>
+    <Copyright>© Samsung Electronics Co., Ltd All Rights Reserved</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tizen.NET" Version="4.0.0" />
+  </ItemGroup>
+
+  <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
+
+</Project>
