@@ -20,6 +20,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Log.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontAttributes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextAlignment.cs" />
   </ItemGroup>
 </Project>

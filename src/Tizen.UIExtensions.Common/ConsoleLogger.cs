@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using IOPath = System.IO.Path;
 
 namespace Tizen.UIExtensions.Common

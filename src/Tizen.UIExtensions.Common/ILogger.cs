@@ -1,4 +1,4 @@
-﻿namespace Tizen.UIExtensions.Common
+namespace Tizen.UIExtensions.Common
 {
 	public interface ILogger
 	{

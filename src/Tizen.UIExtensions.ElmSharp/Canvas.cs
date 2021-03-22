@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using ElmSharp;
 using Tizen.UIExtensions.Common;
+using Size = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.ElmSharp
 {

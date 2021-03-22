@@ -1,4 +1,4 @@
-﻿using T = Tizen;
+using T = Tizen;
 
 namespace Tizen.UIExtensions.Common
 {

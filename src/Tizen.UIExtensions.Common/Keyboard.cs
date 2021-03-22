@@ -1,4 +1,4 @@
-﻿namespace Tizen.UIExtensions.Common
+namespace Tizen.UIExtensions.Common
 {
 	/// <summary>
 	/// Keyboard layout type on entry control.
