@@ -1,365 +1,345 @@
 using System;
 using ElmSharp;
 using Tizen.UIExtensions.Common;
-using EColor = ElmSharp.Color;
+using Color = Tizen.UIExtensions.Common.Color;
 using EEntry = ElmSharp.Entry;
 using ESize = ElmSharp.Size;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
-	public class Entry : EEntry, IMeasurable, IBatchable, IEntry
-	{
-		public Entry(EvasObject parent) : base(parent)
-		{
-			Initialize();
-		}
+    public class Entry : EEntry, IMeasurable, IBatchable, IEntry
+    {
+        public Entry(EvasObject parent) : base(parent)
+        {
+            Initialize();
+        }
 
-		const int VariationNormal = 0;
-		const int VariationSignedAndDecimal = 3;
-		readonly Span _span = new Span();
-		readonly Span _placeholderSpan = new Span();
-		int _changedByUserCallbackDepth;
-		Keyboard _keyboard;
+        const int VariationNormal = 0;
+        const int VariationSignedAndDecimal = 3;
+        readonly Span _span = new Span();
+        readonly Span _placeholderSpan = new Span();
+        int _changedByUserCallbackDepth;
+        Keyboard _keyboard;
 
-		public event EventHandler TextBlockFocused;
-		public event EventHandler TextBlockUnfocused;
-		public event EventHandler EntryLayoutFocused;
-		public event EventHandler EntryLayoutUnfocused;
+        public event EventHandler TextBlockFocused;
+        public event EventHandler TextBlockUnfocused;
+        public event EventHandler EntryLayoutFocused;
+        public event EventHandler EntryLayoutUnfocused;
 
-		public override string Text
-		{
-			get
-			{
-				return _span.Text;
-			}
+        public override string Text
+        {
+            get
+            {
+                return _span.Text;
+            }
 
-			set
-			{
+            set
+            {
 
-				if (value != _span.Text)
-				{
-					var old = _span.Text;
-					_span.Text = value;
-					ApplyTextAndStyle();
-				}
-			}
-		}
+                if (value != _span.Text)
+                {
+                    var old = _span.Text;
+                    _span.Text = value;
+                    ApplyTextAndStyle();
+                }
+            }
+        }
 
-		public EColor TextColor
-		{
-			get
-			{
-				return _span.ForegroundColor;
-			}
+        public Color TextColor
+        {
+            get
+            {
+                return _span.ForegroundColor;
+            }
 
-			set
-			{
-				if (!_span.ForegroundColor.Equals(value))
-				{
-					_span.ForegroundColor = value;
-					ApplyTextAndStyle();
-				}
-			}
-		}
+            set
+            {
+                if (!_span.ForegroundColor.Equals(value))
+                {
+                    _span.ForegroundColor = value;
+                    ApplyTextAndStyle();
+                }
+            }
+        }
 
-		public string FontFamily
-		{
-			get
-			{
-				return _span.FontFamily;
-			}
+        public string FontFamily
+        {
+            get
+            {
+                return _span.FontFamily;
+            }
 
-			set
-			{
-				if (value != _span.FontFamily)
-				{
-					_span.FontFamily = value;
-					ApplyTextAndStyle();
+            set
+            {
+                if (value != _span.FontFamily)
+                {
+                    _span.FontFamily = value;
+                    ApplyTextAndStyle();
 
-					_placeholderSpan.FontFamily = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+                    _placeholderSpan.FontFamily = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-		public FontAttributes FontAttributes
-		{
-			get
-			{
-				return _span.FontAttributes;
-			}
+        public FontAttributes FontAttributes
+        {
+            get
+            {
+                return _span.FontAttributes;
+            }
 
-			set
-			{
-				if (value != _span.FontAttributes)
-				{
-					_span.FontAttributes = value;
-					ApplyTextAndStyle();
+            set
+            {
+                if (value != _span.FontAttributes)
+                {
+                    _span.FontAttributes = value;
+                    ApplyTextAndStyle();
 
-					_placeholderSpan.FontAttributes = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+                    _placeholderSpan.FontAttributes = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-		public double FontSize
-		{
-			get
-			{
-				return _span.FontSize;
-			}
+        public double FontSize
+        {
+            get
+            {
+                return _span.FontSize;
+            }
 
-			set
-			{
-				if (value != _span.FontSize)
-				{
-					_span.FontSize = value;
-					ApplyTextAndStyle();
+            set
+            {
+                if (value != _span.FontSize)
+                {
+                    _span.FontSize = value;
+                    ApplyTextAndStyle();
 
-					_placeholderSpan.FontSize = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+                    _placeholderSpan.FontSize = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-		public string FontWeight
-		{
-			get
-			{
-				return _span.FontWeight;
-			}
+        public TextAlignment HorizontalTextAlignment
+        {
+            get
+            {
+                return _span.HorizontalTextAlignment;
+            }
 
-			set
-			{
-				if (value != _span.FontWeight)
-				{
-					_span.FontWeight = value;
-					ApplyTextAndStyle();
+            set
+            {
+                if (value != _span.HorizontalTextAlignment)
+                {
+                    _span.HorizontalTextAlignment = value;
+                    ApplyTextAndStyle();
 
-					_placeholderSpan.FontWeight = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+                    _placeholderSpan.HorizontalTextAlignment = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-		public TextAlignment HorizontalTextAlignment
-		{
-			get
-			{
-				return _span.HorizontalTextAlignment;
-			}
+        public Keyboard Keyboard
+        {
+            get
+            {
+                return _keyboard;
+            }
 
-			set
-			{
-				if (value != _span.HorizontalTextAlignment)
-				{
-					_span.HorizontalTextAlignment = value;
-					ApplyTextAndStyle();
+            set
+            {
+                if (value != _keyboard)
+                {
+                    ApplyKeyboard(value);
+                }
+            }
+        }
 
-					_placeholderSpan.HorizontalTextAlignment = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+        public string Placeholder
+        {
+            get
+            {
+                return _placeholderSpan.Text;
+            }
 
-		public Keyboard Keyboard
-		{
-			get
-			{
-				return _keyboard;
-			}
+            set
+            {
+                if (value != _placeholderSpan.Text)
+                {
+                    _placeholderSpan.Text = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-			set
-			{
-				if (value != _keyboard)
-				{
-					ApplyKeyboard(value);
-				}
-			}
-		}
+        public Color PlaceholderColor
+        {
+            get
+            {
+                return _placeholderSpan.ForegroundColor;
+            }
 
-		public string Placeholder
-		{
-			get
-			{
-				return _placeholderSpan.Text;
-			}
+            set
+            {
+                if (!_placeholderSpan.ForegroundColor.Equals(value))
+                {
+                    _placeholderSpan.ForegroundColor = value;
+                    ApplyPlaceholderAndStyle();
+                }
+            }
+        }
 
-			set
-			{
-				if (value != _placeholderSpan.Text)
-				{
-					_placeholderSpan.Text = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+        public virtual ESize Measure(int availableWidth, int availableHeight)
+        {
+            var originalSize = Geometry;
+            // resize the control using the whole available width
+            Resize(availableWidth, originalSize.Height);
 
-		public EColor PlaceholderColor
-		{
-			get
-			{
-				return _placeholderSpan.ForegroundColor;
-			}
+            ESize rawSize;
+            ESize formattedSize;
 
-			set
-			{
-				if (!_placeholderSpan.ForegroundColor.Equals(value))
-				{
-					_placeholderSpan.ForegroundColor = value;
-					ApplyPlaceholderAndStyle();
-				}
-			}
-		}
+            // if there's no text, but there's a placeholder, use it for measurements
+            if (string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(Placeholder))
+            {
+                rawSize = this.GetPlaceHolderTextBlockNativeSize();
+                formattedSize = this.GetPlaceHolderTextBlockFormattedSize();
+            }
+            else
+            {
+                // there's text in the entry, use it instead
+                rawSize = this.GetTextBlockNativeSize();
+                formattedSize = this.GetTextBlockFormattedSize();
+            }
 
-		public virtual ESize Measure(int availableWidth, int availableHeight)
-		{
-			var originalSize = Geometry;
-			// resize the control using the whole available width
-			Resize(availableWidth, originalSize.Height);
+            // restore the original size
+            Resize(originalSize.Width, originalSize.Height);
 
-			ESize rawSize;
-			ESize formattedSize;
+            // Set bottom padding for lower case letters that have segments below the bottom line of text (g, j, p, q, y).
+            var verticalPadding = (int)Math.Ceiling(0.05 * FontSize);
+            var horizontalPadding = (int)Math.Ceiling(0.2 * FontSize);
+            rawSize.Height += verticalPadding;
+            formattedSize.Height += verticalPadding;
+            formattedSize.Width += horizontalPadding;
 
-			// if there's no text, but there's a placeholder, use it for measurements
-			if (string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(Placeholder))
-			{
-				rawSize = this.GetPlaceHolderTextBlockNativeSize();
-				formattedSize = this.GetPlaceHolderTextBlockFormattedSize();
-			}
-			else
-			{
-				// there's text in the entry, use it instead
-				rawSize = this.GetTextBlockNativeSize();
-				formattedSize = this.GetTextBlockFormattedSize();
-			}
+            ESize size;
 
-			// restore the original size
-			Resize(originalSize.Width, originalSize.Height);
+            // if the raw text width is larger than available width, we use the available width,
+            // while height is set to the smallest height value
+            if (rawSize.Width > availableWidth)
+            {
+                size.Width = availableWidth;
+                size.Height = Math.Min(formattedSize.Height, Math.Max(rawSize.Height, availableHeight));
+            }
+            else
+            {
+                // width is fine, return the formatted text size
+                size = formattedSize;
+            }
 
-			// Set bottom padding for lower case letters that have segments below the bottom line of text (g, j, p, q, y).
-			var verticalPadding = (int)Math.Ceiling(0.05 * FontSize);
-			var horizontalPadding = (int)Math.Ceiling(0.2 * FontSize);
-			rawSize.Height += verticalPadding;
-			formattedSize.Height += verticalPadding;
-			formattedSize.Width += horizontalPadding;
+            return size;
 
-			ESize size;
+        }
 
-			// if the raw text width is larger than available width, we use the available width,
-			// while height is set to the smallest height value
-			if (rawSize.Width > availableWidth)
-			{
-				size.Width = availableWidth;
-				size.Height = Math.Min(formattedSize.Height, Math.Max(rawSize.Height, availableHeight));
-			}
-			else
-			{
-				// width is fine, return the formatted text size
-				size = formattedSize;
-			}
+        protected virtual void OnTextBlockFocused()
+        {
+            TextBlockFocused?.Invoke(this, EventArgs.Empty);
+        }
 
-			return size;
+        protected virtual void OnTextBlcokUnfocused()
+        {
+            TextBlockUnfocused?.Invoke(this, EventArgs.Empty);
+        }
 
-		}
+        protected virtual void OnEntryLayoutFocused()
+        {
+            EntryLayoutFocused?.Invoke(this, EventArgs.Empty);
+        }
 
-		protected virtual void OnTextBlockFocused()
-		{
-			TextBlockFocused?.Invoke(this, EventArgs.Empty);
-		}
+        protected virtual void OnEntryLayoutUnfocused()
+        {
+            EntryLayoutUnfocused?.Invoke(this, EventArgs.Empty);
+        }
 
-		protected virtual void OnTextBlcokUnfocused()
-		{
-			TextBlockUnfocused?.Invoke(this, EventArgs.Empty);
-		}
+        void Initialize()
+        {
+            Scrollable = true;
+            ChangedByUser += (s, e) =>
+            {
+                _changedByUserCallbackDepth++;
 
-		protected virtual void OnEntryLayoutFocused()
-		{
-			EntryLayoutFocused?.Invoke(this, EventArgs.Empty);
-		}
+                Text = GetInternalText();
 
-		protected virtual void OnEntryLayoutUnfocused()
-		{
-			EntryLayoutUnfocused?.Invoke(this, EventArgs.Empty);
-		}
+                _changedByUserCallbackDepth--;
+            };
 
-		void Initialize()
-		{
-			Scrollable = true;
-			ChangedByUser += (s, e) =>
-			{
-				_changedByUserCallbackDepth++;
+            ApplyKeyboard(Keyboard.Normal);
+        }
 
-				Text = GetInternalText();
+        void IBatchable.OnBatchCommitted()
+        {
+            ApplyTextAndStyle();
+        }
 
-				_changedByUserCallbackDepth--;
-			};
+        void ApplyTextAndStyle()
+        {
+            if (!this.IsBatched())
+            {
+                SetInternalTextAndStyle(_span.GetDecoratedText(), _span.GetStyle());
+            }
+        }
 
-			ApplyKeyboard(Keyboard.Normal);
-		}
+        void SetInternalTextAndStyle(string formattedText, string textStyle)
+        {
+            if (_changedByUserCallbackDepth == 0)
+            {
+                base.Text = formattedText;
+                base.TextStyle = textStyle;
+            }
+        }
 
-		void IBatchable.OnBatchCommitted()
-		{
-			ApplyTextAndStyle();
-		}
+        string GetInternalText()
+        {
+            return EEntry.ConvertMarkupToUtf8(base.Text);
+        }
 
-		void ApplyTextAndStyle()
-		{
-			if (!this.IsBatched())
-			{
-				SetInternalTextAndStyle(_span.GetDecoratedText(), _span.GetStyle());
-			}
-		}
+        void ApplyKeyboard(Keyboard keyboard)
+        {
+            _keyboard = keyboard;
+            SetInternalKeyboard(keyboard);
+        }
 
-		void SetInternalTextAndStyle(string formattedText, string textStyle)
-		{
-			if (_changedByUserCallbackDepth == 0)
-			{
-				base.Text = formattedText;
-				base.TextStyle = textStyle;
-			}
-		}
+        void SetInternalKeyboard(Keyboard keyboard)
+        {
+            if (keyboard == Keyboard.None)
+            {
+                SetInputPanelEnabled(false);
+            }
+            else if (Keyboard == Keyboard.Numeric)
+            {
+                SetInputPanelEnabled(true);
+                SetInputPanelLayout(InputPanelLayout.NumberOnly);
+                // InputPanelVariation is used to allow using deciaml point.
+                InputPanelVariation = VariationSignedAndDecimal;
+            }
+            else
+            {
+                SetInputPanelEnabled(true);
+                SetInputPanelLayout((InputPanelLayout)keyboard);
+                InputPanelVariation = VariationNormal;
+            }
+        }
 
-		string GetInternalText()
-		{
-			return EEntry.ConvertMarkupToUtf8(base.Text);
-		}
+        void ApplyPlaceholderAndStyle()
+        {
+            SetInternalPlaceholderAndStyle(_placeholderSpan.GetMarkupText());
+        }
 
-		void ApplyKeyboard(Keyboard keyboard)
-		{
-			_keyboard = keyboard;
-			SetInternalKeyboard(keyboard);
-		}
-
-		void SetInternalKeyboard(Keyboard keyboard)
-		{
-			if (keyboard == Keyboard.None)
-			{
-				SetInputPanelEnabled(false);
-			}
-			else if (Keyboard == Keyboard.Numeric)
-			{
-				SetInputPanelEnabled(true);
-				SetInputPanelLayout(InputPanelLayout.NumberOnly);
-				// InputPanelVariation is used to allow using deciaml point.
-				InputPanelVariation = VariationSignedAndDecimal;
-			}
-			else
-			{
-				SetInputPanelEnabled(true);
-				SetInputPanelLayout((InputPanelLayout)keyboard);
-				InputPanelVariation = VariationNormal;
-			}
-		}
-
-		void ApplyPlaceholderAndStyle()
-		{
-			SetInternalPlaceholderAndStyle(_placeholderSpan.GetMarkupText());
-		}
-
-		protected virtual void SetInternalPlaceholderAndStyle(string markupText)
-		{
-			this.SetPlaceHolderTextPart(markupText ?? "");
-		}
-	}
+        protected virtual void SetInternalPlaceholderAndStyle(string markupText)
+        {
+            this.SetPlaceHolderTextPart(markupText ?? "");
+        }
+    }
 }

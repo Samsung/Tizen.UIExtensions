@@ -10,19 +10,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BatchableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DlogLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormattedString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBatchable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IContainable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LineBreakMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Log.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NumericExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontAttributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextAlignment.cs" />
   </ItemGroup>
 </Project>
