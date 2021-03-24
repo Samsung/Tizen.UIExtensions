@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tizen.UIExtensions.Common;
-using Tizen.NUI;
+﻿using Tizen.UIExtensions.Common;
+using HorizontalAlignment = Tizen.NUI.HorizontalAlignment;
+using VerticalAlignment = Tizen.NUI.VerticalAlignment;
 using NColor = Tizen.NUI.Color;
-using CColor = Tizen.UIExtensions.Common.Color;
+using NSize = Tizen.NUI.Size;
+using NPoint = Tizen.NUI.Position;
+using NSize2D = Tizen.NUI.Size2D;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -46,15 +46,31 @@ namespace Tizen.UIExtensions.NUI
                 _ => VerticalAlignment.Top
             };
 
-        public static CColor ToCommon(this NColor c)
+        public static Color ToCommon(this NColor c)
         {
-            return new Common.Color(c.R, c.G, c.B, c.A);
+            return new Color(c.R, c.G, c.B, c.A);
         }
 
-        public static NColor ToNative(this CColor c)
+        public static NColor ToNative(this Color c)
         {
             return new NColor((float)c.R, (float)c.B, (float)c.B, (float)c.A);
         }
+
+        public static NSize ToNative(this Size size)
+        {
+            return new NSize((float)size.Width, (float)size.Height);
+        }
+
+        public static NPoint ToNative(this Point point)
+        {
+            return new NPoint((float)point.X, (float)point.Y);
+        }
+
+        public static Size ToCommon(this NSize2D size)
+        {
+            return new Size(size.Width, size.Height);
+        }
+
 
     }
 }

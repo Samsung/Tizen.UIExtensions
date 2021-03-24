@@ -89,8 +89,13 @@ namespace Tizen.UIExtensions.NUI
         {
             if (disposing)
             {
-                // do not dispose the child, just remove from children, it is a NUI rule
-                _children.Clear();
+                // Remove All children, becuase NUI didn't delete child
+                var tobeDisposed = _children.ToList();
+                _children.Clear(); // will removed from ViewGroup by OnCollectionChanged
+                foreach (var child in tobeDisposed)
+                {
+                    child.Dispose();
+                }
             }
             base.Dispose(disposing);
         }
