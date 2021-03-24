@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 
 namespace Tizen.UIExtensions.Common
 {
-    internal static class BatchableExtensions
+    public static class BatchableExtensions
     {
         static readonly ConditionalWeakTable<IBatchable, BatchCount> s_counters = new ConditionalWeakTable<IBatchable, BatchCount>();
 

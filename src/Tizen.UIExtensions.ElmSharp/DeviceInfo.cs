@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using ElmSharp;
 using TSystemInfo = Tizen.System.Information;
 
@@ -213,7 +214,11 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public static bool IsIoT => GetDeviceType() == DeviceType.IoT;
 
-        public static DisplayResolutionUnit DisplayResolutionUnit { get; internal set; }
+        public static DisplayResolutionUnit DisplayResolutionUnit {
+            get;
+            [EditorBrowsable(EditorBrowsableState.Never)]
+            set; // Use internal only
+        }
 
         public static double ViewPortWidth { get; internal set; }
 

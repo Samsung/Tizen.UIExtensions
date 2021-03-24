@@ -1,6 +1,6 @@
 namespace Tizen.UIExtensions.Common
 {
-    internal interface IBatchable
+    public interface IBatchable
     {
         void OnBatchCommitted();
     }

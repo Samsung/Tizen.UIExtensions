@@ -1,20 +1,19 @@
 using System;
-using ElmSharp;
 using Tizen.UIExtensions.Common;
+using EvasObject = ElmSharp.EvasObject;
+using EImage = ElmSharp.Image;
 using EButton = ElmSharp.Button;
-using ESize = ElmSharp.Size;
-using Color = Tizen.UIExtensions.Common.Color;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
     /// <summary>
-    /// Extends the EButton control, providing basic formatting features,
+    /// Extends the ElmSharp.Button control, providing basic formatting features,
     /// i.e. font color, size, additional image.
     /// </summary>
     public class Button : EButton, IMeasurable, IBatchable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Xamarin.Forms.Platform.Tizen.Native.Button"/> class.
+        /// Initializes a new instance of the <see cref="Button"/> class.
         /// </summary>
         /// <param name="parent">Parent evas object.</param>
         public Button(EvasObject parent) : base(parent)
@@ -29,7 +28,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Optional image, if set will be drawn on the button.
         /// </summary>
-        Image _image;
+        EImage _image;
 
         /// <summary>
         /// Gets or sets the button's text.
@@ -161,7 +160,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the image to be displayed next to the button's text.
         /// </summary>
         /// <value>The image displayed on the button.</value>
-        public Image Image
+        public EImage Image
         {
             get => _image;
             set
@@ -241,7 +240,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void ApplyImage(Image image)
+        void ApplyImage(EImage image)
         {
             _image = image;
 

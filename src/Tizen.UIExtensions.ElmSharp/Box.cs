@@ -1,5 +1,6 @@
 using System;
 using ElmSharp;
+using Tizen.UIExtensions.Common;
 using EBox = ElmSharp.Box;
 
 namespace Tizen.UIExtensions.ElmSharp
@@ -31,7 +32,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </remarks>
         void NotifyOnLayout()
         {
-            LayoutUpdated?.Invoke(this, new LayoutEventArgs() { Geometry = Geometry });
+            LayoutUpdated?.Invoke(this, new LayoutEventArgs() { Geometry = Geometry.ToCommon() });
         }
     }
 }

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IMeasurable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITextable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Keyboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LayoutEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LineBreakMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Log.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NumericExtensions.cs" />

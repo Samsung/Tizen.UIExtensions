@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using ElmSharp;
 using Tizen.UIExtensions.Common;
-using Size = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
@@ -116,16 +114,5 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             UnPackAll();
         }
-
-        /// <summary>
-        /// Removes a child from a container.
-        /// </summary>
-        /// <param name="view">Child element to be removed from canvas</param>
-        internal Func<double, double, Size> CrossPlatformMeasure { get; set; }
-        
-        /// <summary>
-        /// Removes all children from a canvas.
-        /// </summary>
-        internal Action<Rectangle> CrossPlatformArrange { get; set; }
     }
 }
