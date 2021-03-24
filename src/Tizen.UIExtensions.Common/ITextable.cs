@@ -1,6 +1,4 @@
-﻿using Tizen.UIExtensions.Common;
-
-namespace Tizen.UIExtensions.ElmSharp
+﻿namespace Tizen.UIExtensions.Common
 {
     /// <summary>
     /// Interface defining properties of formattable text.
@@ -56,13 +54,9 @@ namespace Tizen.UIExtensions.ElmSharp
         TextAlignment VerticalTextAlignment { get; set; }
 
         /// <summary>
-        /// Gets or sets the value that indicates whether the text has underline.
+        /// Gets or sets the TextDecorations applied to Text.
+        /// See <see cref="TextDecorations"/> for information about TextAlignment.
         /// </summary>
-        bool Underline { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value that indicates whether the text has strike line though it.
-        /// </summary>
-        bool Strikethrough { get; set; }
+        TextDecorations TextDecorations { get; set; }
     }
 }

@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IContainable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMeasurable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITextable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LineBreakMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Log.cs" />
@@ -29,5 +30,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextDecorations.cs" />
   </ItemGroup>
 </Project>

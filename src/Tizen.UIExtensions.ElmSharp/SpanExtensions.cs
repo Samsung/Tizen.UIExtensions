@@ -67,13 +67,13 @@ namespace Tizen.UIExtensions.ElmSharp
                 strBuffer.Append("font_style=italic ");
             }
 
-            if (span.Underline)
+            if (span.TextDecorations.HasFlag(TextDecorations.Underline))
             {
                 strBuffer.AppendFormat("underline=on underline_color={0} ",
                     span.ForegroundColor.IsDefault ? ThemeConstants.Span.ColorClass.DefaultUnderLineColor.ToHex() : span.ForegroundColor.ToNative().ToHex());
             }
 
-            if (span.Strikethrough)
+            if (span.TextDecorations.HasFlag(TextDecorations.Strikethrough))
             {
                 strBuffer.AppendFormat("strikethrough=on strikethrough_color={0} ",
                     span.ForegroundColor.IsDefault ? ThemeConstants.Span.ColorClass.DefaultUnderLineColor.ToHex() : span.ForegroundColor.ToNative().ToHex());

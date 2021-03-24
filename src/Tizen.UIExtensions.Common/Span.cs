@@ -59,14 +59,9 @@
         public TextAlignment HorizontalTextAlignment { get; set; }
 
         /// <summary>
-        /// Gets or sets the value that indicates whether the text has underline.
+        /// Gets or sets the TextDecorations applied to Text.
         /// </summary>
-        public bool Underline { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value that indicates whether the text has strike line though it.
-        /// </summary>
-        public bool Strikethrough { get; set; }
+        public TextDecorations TextDecorations { get; set; }
 
         /// <summary>
         /// Create a new Span instance with default attributes.
@@ -81,8 +76,7 @@
             BackgroundColor = Color.Default;
             HorizontalTextAlignment = TextAlignment.None;
             LineBreakMode = LineBreakMode.None;
-            Underline = false;
-            Strikethrough = false;
+            TextDecorations = TextDecorations.None;
             LineHeight = -1.0d;
         }
 

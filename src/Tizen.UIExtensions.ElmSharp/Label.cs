@@ -311,42 +311,19 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
-        /// Gets or sets the value that indicates whether the text is underlined.
+        /// Gets or sets the TextDecorations applied to Text.
         /// </summary>
-        /// <value><c>true</c> if the text is underlined.</value>
-        public bool Underline
+        public TextDecorations TextDecorations
         {
             get
             {
-                return _span.Underline;
+                return _span.TextDecorations;
             }
-
             set
             {
-                if (value != _span.Underline)
+                if (value != _span.TextDecorations)
                 {
-                    _span.Underline = value;
-                    ApplyTextAndStyle();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the value that indicates whether the text is striked out.
-        /// </summary>
-        /// <value><c>true</c> if the text is striked out.</value>
-        public bool Strikethrough
-        {
-            get
-            {
-                return _span.Strikethrough;
-            }
-
-            set
-            {
-                if (value != _span.Strikethrough)
-                {
-                    _span.Strikethrough = value;
+                    _span.TextDecorations = value;
                     ApplyTextAndStyle();
                 }
             }
