@@ -176,7 +176,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Implementation of the IMeasurable.Measure() method.
         /// </summary>
-        public virtual ESize Measure(int availableWidth, int availableHeight)
+        public virtual Common.Size Measure(double availableWidth, double availableHeight)
         {
             if (DeviceInfo.IsWatch)
             {
@@ -187,18 +187,18 @@ namespace Tizen.UIExtensions.ElmSharp
                     if (Image != null)
                         MinimumWidth += Image.Geometry.Width;
                     var rawSize = this.GetTextBlockNativeSize();
-                    return new ESize(rawSize.Width + MinimumWidth, Math.Max(MinimumHeight, rawSize.Height));
+                    return new Common.Size(rawSize.Width + MinimumWidth, Math.Max(MinimumHeight, rawSize.Height));
                 }
                 else
                 {
-                    return new ESize(MinimumWidth, MinimumHeight);
+                    return new Common.Size(MinimumWidth, MinimumHeight);
                 }
             }
             else
             {
                 if (Style == ThemeConstants.Button.Styles.Circle)
                 {
-                    return new ESize(MinimumWidth, MinimumHeight);
+                    return new Common.Size(MinimumWidth, MinimumHeight);
                 }
                 else
                 {
@@ -206,7 +206,7 @@ namespace Tizen.UIExtensions.ElmSharp
                         MinimumWidth += Image.Geometry.Width;
 
                     var rawSize = this.GetTextBlockNativeSize();
-                    return new ESize(rawSize.Width + MinimumWidth, Math.Max(MinimumHeight, rawSize.Height));
+                    return new Common.Size(rawSize.Width + MinimumWidth, Math.Max(MinimumHeight, rawSize.Height));
                 }
             }
         }

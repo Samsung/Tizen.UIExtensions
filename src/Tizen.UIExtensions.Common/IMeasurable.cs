@@ -1,6 +1,4 @@
-﻿using ESize = ElmSharp.Size;
-
-namespace Tizen.UIExtensions.ElmSharp
+﻿namespace Tizen.UIExtensions.Common
 {
     /// <summary>
     /// Interface of the controls which can measure their size taking into
@@ -15,6 +13,6 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <param name="availableWidth">Available width.</param>
         /// <param name="availableHeight">Available height.</param>
         /// <returns>Size of the control that fits the available area.</returns>
-        ESize Measure(int availableWidth, int availableHeight);
+        Size Measure(double availableWidth, double availableHeight);
     }
 }

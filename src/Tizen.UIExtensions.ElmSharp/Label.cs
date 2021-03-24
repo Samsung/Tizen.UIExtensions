@@ -358,11 +358,11 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <param name="availableWidth">Available width.</param>
         /// <param name="availableHeight">Available height.</param>
         /// <returns>Size of the control that fits the available area.</returns>
-        public ESize Measure(int availableWidth, int availableHeight)
+        public Common.Size Measure(double availableWidth, double availableHeight)
         {
             var size = Geometry;
 
-            Resize(availableWidth, size.Height);
+            Resize((int)availableWidth, size.Height);
 
             var formattedSize = this.GetTextBlockFormattedSize();
             Resize(size.Width, size.Height);
@@ -375,7 +375,7 @@ namespace Tizen.UIExtensions.ElmSharp
             // For wrap to work properly, the label must be 1 pixel larger than the size of the formatted text.
             formattedSize.Width += 1;
 
-            return formattedSize;
+            return formattedSize.ToCommon();
         }
 
         void IBatchable.OnBatchCommitted()

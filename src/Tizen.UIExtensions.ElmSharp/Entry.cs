@@ -192,11 +192,11 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        public virtual ESize Measure(int availableWidth, int availableHeight)
+        public virtual Common.Size Measure(double availableWidth, double availableHeight)
         {
             var originalSize = Geometry;
             // resize the control using the whole available width
-            Resize(availableWidth, originalSize.Height);
+            Resize((int)availableWidth, originalSize.Height);
 
             ESize rawSize;
             ESize formattedSize;
@@ -228,10 +228,10 @@ namespace Tizen.UIExtensions.ElmSharp
 
             // if the raw text width is larger than available width, we use the available width,
             // while height is set to the smallest height value
-            if (rawSize.Width > availableWidth)
+            if (rawSize.Width > (int)availableWidth)
             {
-                size.Width = availableWidth;
-                size.Height = Math.Min(formattedSize.Height, Math.Max(rawSize.Height, availableHeight));
+                size.Width = (int)availableWidth;
+                size.Height = Math.Min(formattedSize.Height, Math.Max(rawSize.Height, (int)availableHeight));
             }
             else
             {
@@ -239,7 +239,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 size = formattedSize;
             }
 
-            return size;
+            return size.ToCommon();
 
         }
 
