@@ -1,3 +1,4 @@
+using System;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
@@ -149,7 +150,14 @@ namespace Tizen.UIExtensions.NUI
         public Size Measure(double availableWidth, double availableHeight)
         {
 #pragma warning disable CS0618
-            return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+            if (availableWidth < NaturalSize.Width)
+            {
+                return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+            }
+            else
+            {
+                return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+            }
 #pragma warning restore CS0618
         }
 

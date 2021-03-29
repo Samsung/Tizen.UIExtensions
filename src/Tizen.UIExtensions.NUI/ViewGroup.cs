@@ -26,9 +26,9 @@ namespace Tizen.UIExtensions.NUI
         /// <remarks>ViewGroup doesn't support replacing its children, this will be ignored.</remarks>
         public ViewGroup()
         {
-            Layout = new LayoutItem();
-            WidthResizePolicy = ResizePolicyType.FillToParent;
-            HeightResizePolicy = ResizePolicyType.FillToParent;
+            Layout = new AbsoluteLayout();
+            WidthSpecification = LayoutParamPolicies.MatchParent;
+            HeightSpecification = LayoutParamPolicies.MatchParent;
             Relayout += OnRelayout;
             _children.CollectionChanged += OnCollectionChanged;
         }

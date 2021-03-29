@@ -11,9 +11,11 @@ namespace Tizen.UIExtensions.NUI
 
 		public SimpleViewStack()
 		{
-			HeightResizePolicy = ResizePolicyType.FillToParent;
-			WidthResizePolicy = ResizePolicyType.FillToParent;
-			InternalStack = new List<View>();
+            Layout = new AbsoluteLayout();
+            WidthSpecification = LayoutParamPolicies.MatchParent;
+            HeightSpecification = LayoutParamPolicies.MatchParent;
+
+            InternalStack = new List<View>();
 		}
 
 		List<View> InternalStack { get; set; }
