@@ -5,6 +5,7 @@ using NColor = Tizen.NUI.Color;
 using NSize = Tizen.NUI.Size;
 using NPoint = Tizen.NUI.Position;
 using NSize2D = Tizen.NUI.Size2D;
+using System;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -53,7 +54,7 @@ namespace Tizen.UIExtensions.NUI
 
         public static NColor ToNative(this Color c)
         {
-            return new NColor((float)c.R, (float)c.B, (float)c.B, (float)c.A);
+            return new NColor((float)c.R, (float)c.G, (float)c.B, (float)c.A);
         }
 
         public static NSize ToNative(this Size size)
@@ -69,6 +70,16 @@ namespace Tizen.UIExtensions.NUI
         public static Size ToCommon(this NSize2D size)
         {
             return new Size(size.Width, size.Height);
+        }
+
+        public static Size ToCommon(this NSize size)
+        {
+            return new Size(size.Width, size.Height);
+        }
+
+        public static Point ToCommon(this NPoint point)
+        {
+            return new Point(point.X, point.Y);
         }
 
 

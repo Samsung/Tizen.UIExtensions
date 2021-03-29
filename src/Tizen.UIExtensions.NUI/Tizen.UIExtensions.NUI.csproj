@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>tizen90</TargetFramework>
+    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
     <LangVersion>8.0</LangVersion>
     <AssemblyName>Tizen.UIExtensions.NUI</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.NUI</RootNamespace>
