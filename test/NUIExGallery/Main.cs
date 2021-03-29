@@ -79,15 +79,48 @@ namespace NUIExGallery
                 ItemsSource = tests,
                 ItemTemplate = new DataTemplate(() =>
                 {
-                    var itemView = new DefaultLinearItem
+                    var itemView = new RecyclerViewItem
                     {
+                        Layout = new LinearLayout
+                        {
+                            LinearOrientation = LinearLayout.Orientation.Vertical,
+                            LinearAlignment = LinearLayout.Alignment.Center
+                        },
                         WidthResizePolicy = ResizePolicyType.FillToParent,
+                        SizeHeight = 100,
                     };
+                    var border = new BorderVisual
+                    {
+                        Opacity = 0.8f,
+                        CornerRadius = 0,
+                        BorderSize = 1,
+                        Color = Color.Black,
+                        AntiAliasing = true,
+                    };
+                    itemView.AddVisual("border", border);
 
                     itemView.Clicked += clicked;
-                    itemView.Label.PixelSize = 30;
-                    itemView.Label.SetBinding(TextLabel.TextProperty, new Binding("TestName"));
+
+                    var label = new TextLabel
+                    {
+                        VerticalAlignment = VerticalAlignment.Center,
+                        WidthSpecification = LayoutParamPolicies.MatchParent,
+                        HeightSpecification = LayoutParamPolicies.MatchParent,
+                    };
+
+                    label.PixelSize = 30;
+                    label.SetBinding(TextLabel.TextProperty, new Binding("TestName"));
+                    itemView.Add(label);
                     return itemView;
+                    //var itemView = new DefaultLinearItem
+                    //{
+                    //    WidthResizePolicy = ResizePolicyType.FillToParent,
+                    //};
+
+                    //itemView.Clicked += clicked;
+                    //itemView.Label.PixelSize = 30;
+                    //itemView.Label.SetBinding(TextLabel.TextProperty, new Binding("TestName"));
+                    //return itemView;
                 })
             };
 

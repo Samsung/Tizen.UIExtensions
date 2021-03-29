@@ -11,8 +11,9 @@ namespace NUIExGallery
 
 		public SimpleViewStack()
 		{
-			HeightResizePolicy = ResizePolicyType.FillToParent;
-			WidthResizePolicy = ResizePolicyType.FillToParent;
+            Layout = new AbsoluteLayout();
+            WidthSpecification = LayoutParamPolicies.MatchParent;
+            HeightSpecification = LayoutParamPolicies.MatchParent;
 			InternalStack = new List<View>();
 		}
 
@@ -22,8 +23,8 @@ namespace NUIExGallery
 
 		public void Push(View view)
 		{
-			view.WidthResizePolicy = ResizePolicyType.FillToParent;
-			view.HeightResizePolicy = ResizePolicyType.FillToParent;
+            view.WidthSpecification = LayoutParamPolicies.MatchParent;
+            view.HeightSpecification = LayoutParamPolicies.MatchParent;
 
 			InternalStack.Add(view);
 			Add(view);
