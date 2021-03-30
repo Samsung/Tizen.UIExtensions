@@ -28,6 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)FontAttributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScrollBarVisibility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScrollOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextAlignment.cs" />

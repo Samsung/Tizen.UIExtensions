@@ -5,7 +5,7 @@ using NColor = Tizen.NUI.Color;
 using NSize = Tizen.NUI.Size;
 using NPoint = Tizen.NUI.Position;
 using NSize2D = Tizen.NUI.Size2D;
-using System;
+using ScrollableDirection = Tizen.NUI.Components.ScrollableBase.Direction;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -82,6 +82,23 @@ namespace Tizen.UIExtensions.NUI
             return new Point(point.X, point.Y);
         }
 
+        public static ScrollOrientation ToCommon(this ScrollableDirection direction)
+        {
+            if (direction == ScrollableDirection.Horizontal)
+                return ScrollOrientation.Horizontal;
+            else if (direction == ScrollableDirection.Vertical)
+                return ScrollOrientation.Vertical;
+            else
+                return ScrollOrientation.Both;
+        }
+
+        public static ScrollableDirection ToNative(this ScrollOrientation orientation)
+        {
+            if (orientation == ScrollOrientation.Horizontal)
+                return ScrollableDirection.Horizontal;
+            else
+                return ScrollableDirection.Vertical;
+        }
 
     }
 }
