@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>tizen40</TargetFramework>
     <AssemblyName>Tizen.UIExtensions.ElmSharp</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.ElmSharp</RootNamespace>
     <PackageId>Tizen.UIExtensions.ElmSharp</PackageId>
@@ -13,9 +13,11 @@
     <PackageIconUrl>https://raw.githubusercontent.com/TizenAPI/Tizen.NET.MaterialComponents/master/assets/images/logo.png</PackageIconUrl>
     <PackageTags>tizen;tizen.net;maui;xamarin;xamarin.forms;ElmSharp</PackageTags>
     <Copyright>© Samsung Electronics Co., Ltd All Rights Reserved</Copyright>
+    <UserSecretsId>8839360a-88a7-448e-9b20-4fb785592264</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+      <PackageReference Include="SkiaSharp.Views" Version="2.80.2" />
     <PackageReference Include="Tizen.NET" Version="4.0.0" />
   </ItemGroup>
 

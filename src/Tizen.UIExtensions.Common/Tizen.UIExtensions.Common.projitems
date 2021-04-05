@@ -26,12 +26,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)NumericExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontAttributes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PenLineCap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PenLineJoin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollBarVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Stretch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextDecorations.cs" />
   </ItemGroup>
