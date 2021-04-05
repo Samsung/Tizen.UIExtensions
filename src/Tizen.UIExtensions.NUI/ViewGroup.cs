@@ -19,6 +19,7 @@ namespace Tizen.UIExtensions.NUI
     public class ViewGroup : View, IContainable<View>
     {
         readonly ObservableCollection<View> _children = new ObservableCollection<View>();
+        bool _layoutRequested;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewGroup"/> class.
@@ -45,7 +46,32 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public event EventHandler<LayoutEventArgs> LayoutUpdated;
 
+        public override void Add(View child)
+        {
+            base.Add(child);
+            LayoutRequest();
+        }
+        public override void Remove(View child)
+        {
+            base.Remove(child);
+            LayoutRequest();
+        }
+
         void OnRelayout(object sender, EventArgs e)
+        {
+            SendLayoutUpdated();
+        }
+
+        void LayoutRequest()
+        {
+            if (!_layoutRequested)
+            {
+                _layoutRequested = true;
+                ElmSharp.EcoreMainloop.Post(SendLayoutUpdated);
+            }
+        }
+
+        void SendLayoutUpdated()
         {
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
@@ -82,7 +108,6 @@ namespace Tizen.UIExtensions.NUI
                     Remove(child);
                 }
             }
-
         }
 
         protected override void Dispose(bool disposing)
