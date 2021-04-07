@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Tizen.NET" Version="9.0.0.16004" />
+    <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Tizen.UIExtensions.NUI\Tizen.UIExtensions.NUI.csproj" />
