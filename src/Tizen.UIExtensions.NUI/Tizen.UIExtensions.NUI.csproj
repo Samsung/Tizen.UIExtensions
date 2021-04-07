@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>tizen90</TargetFramework>
-    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
+    <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
+    <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
     <LangVersion>8.0</LangVersion>
     <AssemblyName>Tizen.UIExtensions.NUI</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.NUI</RootNamespace>
@@ -18,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Tizen.NET" Version="9.0.0.16004" />
+    <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
   </ItemGroup>
 
   <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />

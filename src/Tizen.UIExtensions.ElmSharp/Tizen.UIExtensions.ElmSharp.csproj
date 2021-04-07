@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>tizen40</TargetFramework>
+    <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
+    <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
     <AssemblyName>Tizen.UIExtensions.ElmSharp</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.ElmSharp</RootNamespace>
     <PackageId>Tizen.UIExtensions.ElmSharp</PackageId>
@@ -16,11 +18,11 @@
     <UserSecretsId>8839360a-88a7-448e-9b20-4fb785592264</UserSecretsId>
   </PropertyGroup>
 
+  <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
+
   <ItemGroup>
-      <PackageReference Include="SkiaSharp.Views" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp.Views" Version="2.80.2" />
     <PackageReference Include="Tizen.NET" Version="4.0.0" />
   </ItemGroup>
-
-  <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
 
 </Project>
