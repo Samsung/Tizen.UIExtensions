@@ -100,5 +100,6 @@ namespace Tizen.UIExtensions.NUI
                 return ScrollableDirection.Vertical;
         }
 
+
     }
 }

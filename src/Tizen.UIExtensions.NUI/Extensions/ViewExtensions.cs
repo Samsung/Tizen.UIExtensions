@@ -8,7 +8,7 @@ namespace Tizen.UIExtensions.NUI
     {
         public static void UpdateBackgroundColor(this View view, Color color)
         {
-            view.BackgroundColor = color.ToNative();
+            view.BackgroundColor = color.IsDefault ? Color.Transparent.ToNative() : color.ToNative();
         }
 
         public static Rect GetBounds(this View view)
