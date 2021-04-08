@@ -1,5 +1,6 @@
 using ElmSharp;
 using ElmSharp.Wearable;
+using System;
 using EColor = ElmSharp.Color;
 using EEntry = ElmSharp.Entry;
 using ELabel = ElmSharp.Label;
@@ -752,5 +753,18 @@ namespace Tizen.UIExtensions.ElmSharp
             return spinner.SetPartText(ThemeConstants.Common.Parts.Text, title);
         }
         #endregion
+
+        #region DrawerLayoutBox
+        public static double GetDrawerRatio(this DrawerLayoutBox drawerlayoutBox, int width, int height)
+        {
+            return (width > height) ? 0.4 : 0.83;
+        }
+
+        public static double GetSplitRatio(this DrawerLayoutBox drawerlayoutBox)
+        {
+            return 0.4;
+        }
+        #endregion
+
     }
 }
