@@ -1,6 +1,5 @@
 using ElmSharp;
 using ElmSharp.Wearable;
-using System;
 using EColor = ElmSharp.Color;
 using EEntry = ElmSharp.Entry;
 using ELabel = ElmSharp.Label;
