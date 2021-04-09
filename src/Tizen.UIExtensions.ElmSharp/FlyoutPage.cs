@@ -148,6 +148,31 @@ namespace Tizen.UIExtensions.ElmSharp
             IsSplit = (behavior == FlyoutLayoutBehavior.Split);
             UpdateIsPresentChangeable?.Invoke(this, new UpdateIsPresentChangeableEventArgs(!IsSplit));
         }
+    }
 
+    public class IsPresentedChangedEventArgs : EventArgs
+    {
+        public IsPresentedChangedEventArgs(bool isPresent)
+        {
+            IsPresent = isPresent;
+        }
+
+        /// <summary>
+        /// Value of IsPresent
+        /// </summary>
+        public bool IsPresent { get; private set; }
+    }
+
+    public class UpdateIsPresentChangeableEventArgs : EventArgs
+    {
+        public UpdateIsPresentChangeableEventArgs(bool canChange)
+        {
+            CanChange = canChange;
+        }
+
+        /// <summary>
+        /// Value of changeable
+        /// </summary>
+        public bool CanChange { get; private set; }
     }
 }

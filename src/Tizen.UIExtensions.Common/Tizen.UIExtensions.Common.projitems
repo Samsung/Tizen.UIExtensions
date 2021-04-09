@@ -13,7 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)BatchableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DlogLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlyoutLayoutBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormattedString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBatchable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IContainable.cs" />

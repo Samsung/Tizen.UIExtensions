@@ -754,12 +754,12 @@ namespace Tizen.UIExtensions.ElmSharp
         #endregion
 
         #region DrawerLayoutBox
-        public static double GetDrawerRatio(this DrawerLayoutBox drawerlayoutBox, int width, int height)
+        public static double GetDrawerRatio(this DrawerBox drawerlayoutBox, int width, int height)
         {
             return (width > height) ? 0.4 : 0.83;
         }
 
-        public static double GetSplitRatio(this DrawerLayoutBox drawerlayoutBox)
+        public static double GetSplitRatio(this DrawerBox drawerlayoutBox)
         {
             return 0.4;
         }
