@@ -9,6 +9,7 @@
     <Import_RootNamespace>Tizen.UIExtensions.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Aspect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BatchableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLogger.cs" />
