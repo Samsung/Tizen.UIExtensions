@@ -65,6 +65,7 @@ namespace Tizen.UIExtensions.NUI
         public static CSize Measure(this ImageView view, double availableWidth, double availableHeight)
         {
             var imageSize = new CSize { Width = view.NaturalSize.Width, Height = view.NaturalSize.Height };
+
             var size = new CSize()
             {
                 Width = imageSize.Width,
@@ -83,7 +84,7 @@ namespace Tizen.UIExtensions.NUI
                 size.Height = availableRatio > imageRatio ? availableHeight : imageSize.Height * availableWidth / imageSize.Width;
             }
 
-            return new CSize();
+            return size;
         }
 
     }
