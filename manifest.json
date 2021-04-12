@@ -780,6 +780,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.PolygonView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.PolygonView.html",
+          "hash": "qIjU7gyrv+02MGE4kY0sCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.PolylineView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.PolylineView.html",
+          "hash": "TK2JbF9/pXhnyu02YcsMJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.RadialGradientBrush.yml",
       "output": {
         ".html": {
@@ -832,7 +856,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ShapeView.html",
-          "hash": "bHtF4NepNbFarWTrvOYVqA=="
+          "hash": "FM4TLFkxY46vDilzuLPXjQ=="
         }
       },
       "is_incremental": false,
@@ -2200,7 +2224,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.html",
-          "hash": "Wribmsm1mQaLOGwI1YmtPw=="
+          "hash": "l3vxqDUjNK/eIG/z4nSPgA=="
         }
       },
       "is_incremental": false,
@@ -2332,7 +2356,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "5FPgPPVGXCn5CYDIslot3g=="
+          "hash": "V9/Ky1Rwjhy2o1W/GT98Fg=="
         }
       },
       "is_incremental": false,
@@ -2371,7 +2395,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 185,
+          "total_file_count": 187,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
