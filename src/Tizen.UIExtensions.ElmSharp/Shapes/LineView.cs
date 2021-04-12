@@ -63,7 +63,6 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-
         void UpdateShape()
         {
             var path = new SKPath();
