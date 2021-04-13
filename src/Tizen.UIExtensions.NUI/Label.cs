@@ -37,12 +37,7 @@ namespace Tizen.UIExtensions.NUI
             set
             {
                 _fontAttributes = value;
-                bool isBold = value.HasFlag(FontAttributes.Bold);
-                bool isItalic = value.HasFlag(FontAttributes.Italic);
-                var style = new PropertyMap();
-                style.Add("weight", new PropertyValue(isBold ? "bold" : "normal"));
-                style.Add("slant", new PropertyValue(isItalic ? "italic" : "normal"));
-                FontStyle = style;
+                this.SetFontAttributes(value);
             }
         }
 
