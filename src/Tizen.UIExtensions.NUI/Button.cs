@@ -1,6 +1,7 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
 using NButton = Tizen.NUI.Components.Button;
+using NColor = Tizen.NUI.Color;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -9,10 +10,14 @@ namespace Tizen.UIExtensions.NUI
     /// </summary>
     public class Button : NButton, IMeasurable
     {
+        float _defaultFontSize = 0;
+        NColor _defaultTextColor = null;
         FontAttributes _fontAttributes;
 
         public Button()
         {
+            _defaultFontSize = TextLabel.PointSize;
+            _defaultTextColor = TextLabel.TextColor;
             TextLabel.MultiLine = true;
         }
 
@@ -23,7 +28,7 @@ namespace Tizen.UIExtensions.NUI
         public new Color TextColor
         {
             get => base.TextColor.ToCommon();
-            set => base.TextColor = value.ToNative();
+            set => base.TextColor = value.IsDefault ? _defaultTextColor : value.ToNative();
         }
 
         /// <summary>
@@ -46,7 +51,7 @@ namespace Tizen.UIExtensions.NUI
         public double FontSize
         {
             get => PointSize;
-            set => PointSize = (float)value;
+            set => PointSize = value == -1 ? _defaultFontSize : (float)value;
         }
 
         public Size Measure(double availableWidth, double availableHeight)
@@ -63,11 +68,19 @@ namespace Tizen.UIExtensions.NUI
 
             if (availableWidth < requiredWidth)
             {
-                return new Size(availableWidth, Math.Max(GetHeightForWidth((float)availableWidth), TextLabel.GetHeightForWidth((float)availableWidth)));
+                // If label on button could be a multiline
+                //return new Size(availableWidth, Math.Max(GetHeightForWidth((float)availableWidth), TextLabel.GetHeightForWidth((float)availableWidth)));
+
+                // Do not allow multiline button
+                return new Size(availableWidth, buttonNaturalSize.Height);
             }
             else
             {
-                return new Size(requiredWidth, Math.Max(GetHeightForWidth(requiredWidth), TextLabel.GetHeightForWidth(requiredWidth)));
+                // If label on button could be a multiline
+                //return new Size(requiredWidth, Math.Max(GetHeightForWidth(requiredWidth), TextLabel.GetHeightForWidth(requiredWidth)));
+
+                // Do not allow multiline button
+                return new Size(requiredWidth, buttonNaturalSize.Height);
             }
 #pragma warning restore CS0618
         }
