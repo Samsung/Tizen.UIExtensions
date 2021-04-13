@@ -5407,24 +5407,24 @@ references:
   commentId: M:Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor
   fullName: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush()
   nameWithType: LinearGradientBrush.LinearGradientBrush()
-- uid: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.List{Tizen.UIExtensions.ElmSharp.GradientStop})
-  name: LinearGradientBrush(List<GradientStop>)
-  href: api/Tizen.UIExtensions.ElmSharp.LinearGradientBrush.html#Tizen_UIExtensions_ElmSharp_LinearGradientBrush__ctor_System_Collections_Generic_List_Tizen_UIExtensions_ElmSharp_GradientStop__
-  commentId: M:Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.List{Tizen.UIExtensions.ElmSharp.GradientStop})
-  name.vb: LinearGradientBrush(List(Of GradientStop))
-  fullName: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.List<Tizen.UIExtensions.ElmSharp.GradientStop>)
-  fullName.vb: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.List(Of Tizen.UIExtensions.ElmSharp.GradientStop))
-  nameWithType: LinearGradientBrush.LinearGradientBrush(List<GradientStop>)
-  nameWithType.vb: LinearGradientBrush.LinearGradientBrush(List(Of GradientStop))
-- uid: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.List{Tizen.UIExtensions.ElmSharp.GradientStop},Tizen.UIExtensions.Common.Point,Tizen.UIExtensions.Common.Point)
-  name: LinearGradientBrush(List<GradientStop>, Point, Point)
-  href: api/Tizen.UIExtensions.ElmSharp.LinearGradientBrush.html#Tizen_UIExtensions_ElmSharp_LinearGradientBrush__ctor_System_Collections_Generic_List_Tizen_UIExtensions_ElmSharp_GradientStop__Tizen_UIExtensions_Common_Point_Tizen_UIExtensions_Common_Point_
-  commentId: M:Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.List{Tizen.UIExtensions.ElmSharp.GradientStop},Tizen.UIExtensions.Common.Point,Tizen.UIExtensions.Common.Point)
-  name.vb: LinearGradientBrush(List(Of GradientStop), Point, Point)
-  fullName: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.List<Tizen.UIExtensions.ElmSharp.GradientStop>, Tizen.UIExtensions.Common.Point, Tizen.UIExtensions.Common.Point)
-  fullName.vb: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.List(Of Tizen.UIExtensions.ElmSharp.GradientStop), Tizen.UIExtensions.Common.Point, Tizen.UIExtensions.Common.Point)
-  nameWithType: LinearGradientBrush.LinearGradientBrush(List<GradientStop>, Point, Point)
-  nameWithType.vb: LinearGradientBrush.LinearGradientBrush(List(Of GradientStop), Point, Point)
+- uid: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.IList{Tizen.UIExtensions.ElmSharp.GradientStop})
+  name: LinearGradientBrush(IList<GradientStop>)
+  href: api/Tizen.UIExtensions.ElmSharp.LinearGradientBrush.html#Tizen_UIExtensions_ElmSharp_LinearGradientBrush__ctor_System_Collections_Generic_IList_Tizen_UIExtensions_ElmSharp_GradientStop__
+  commentId: M:Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.IList{Tizen.UIExtensions.ElmSharp.GradientStop})
+  name.vb: LinearGradientBrush(IList(Of GradientStop))
+  fullName: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.IList<Tizen.UIExtensions.ElmSharp.GradientStop>)
+  fullName.vb: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.IList(Of Tizen.UIExtensions.ElmSharp.GradientStop))
+  nameWithType: LinearGradientBrush.LinearGradientBrush(IList<GradientStop>)
+  nameWithType.vb: LinearGradientBrush.LinearGradientBrush(IList(Of GradientStop))
+- uid: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.IList{Tizen.UIExtensions.ElmSharp.GradientStop},Tizen.UIExtensions.Common.Point,Tizen.UIExtensions.Common.Point)
+  name: LinearGradientBrush(IList<GradientStop>, Point, Point)
+  href: api/Tizen.UIExtensions.ElmSharp.LinearGradientBrush.html#Tizen_UIExtensions_ElmSharp_LinearGradientBrush__ctor_System_Collections_Generic_IList_Tizen_UIExtensions_ElmSharp_GradientStop__Tizen_UIExtensions_Common_Point_Tizen_UIExtensions_Common_Point_
+  commentId: M:Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor(System.Collections.Generic.IList{Tizen.UIExtensions.ElmSharp.GradientStop},Tizen.UIExtensions.Common.Point,Tizen.UIExtensions.Common.Point)
+  name.vb: LinearGradientBrush(IList(Of GradientStop), Point, Point)
+  fullName: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.IList<Tizen.UIExtensions.ElmSharp.GradientStop>, Tizen.UIExtensions.Common.Point, Tizen.UIExtensions.Common.Point)
+  fullName.vb: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.LinearGradientBrush(System.Collections.Generic.IList(Of Tizen.UIExtensions.ElmSharp.GradientStop), Tizen.UIExtensions.Common.Point, Tizen.UIExtensions.Common.Point)
+  nameWithType: LinearGradientBrush.LinearGradientBrush(IList<GradientStop>, Point, Point)
+  nameWithType.vb: LinearGradientBrush.LinearGradientBrush(IList(Of GradientStop), Point, Point)
 - uid: Tizen.UIExtensions.ElmSharp.LinearGradientBrush.#ctor*
   name: LinearGradientBrush
   href: api/Tizen.UIExtensions.ElmSharp.LinearGradientBrush.html#Tizen_UIExtensions_ElmSharp_LinearGradientBrush__ctor_
@@ -5637,6 +5637,51 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.ElmSharp.Page.OnUnrealize
   nameWithType: Page.OnUnrealize
+- uid: Tizen.UIExtensions.ElmSharp.PathView
+  name: PathView
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html
+  commentId: T:Tizen.UIExtensions.ElmSharp.PathView
+  fullName: Tizen.UIExtensions.ElmSharp.PathView
+  nameWithType: PathView
+- uid: Tizen.UIExtensions.ElmSharp.PathView.#ctor(EvasObject)
+  name: PathView(EvasObject)
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView__ctor_EvasObject_
+  commentId: M:Tizen.UIExtensions.ElmSharp.PathView.#ctor(EvasObject)
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.PathView(EvasObject)
+  nameWithType: PathView.PathView(EvasObject)
+- uid: Tizen.UIExtensions.ElmSharp.PathView.#ctor*
+  name: PathView
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView__ctor_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.PathView.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.PathView
+  nameWithType: PathView.PathView
+- uid: Tizen.UIExtensions.ElmSharp.PathView.UpdateData(SKPath)
+  name: UpdateData(SKPath)
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView_UpdateData_SKPath_
+  commentId: M:Tizen.UIExtensions.ElmSharp.PathView.UpdateData(SKPath)
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.UpdateData(SKPath)
+  nameWithType: PathView.UpdateData(SKPath)
+- uid: Tizen.UIExtensions.ElmSharp.PathView.UpdateData*
+  name: UpdateData
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView_UpdateData_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.PathView.UpdateData
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.UpdateData
+  nameWithType: PathView.UpdateData
+- uid: Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform(SKMatrix)
+  name: UpdateTransform(SKMatrix)
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView_UpdateTransform_SKMatrix_
+  commentId: M:Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform(SKMatrix)
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform(SKMatrix)
+  nameWithType: PathView.UpdateTransform(SKMatrix)
+- uid: Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform*
+  name: UpdateTransform
+  href: api/Tizen.UIExtensions.ElmSharp.PathView.html#Tizen_UIExtensions_ElmSharp_PathView_UpdateTransform_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.PathView.UpdateTransform
+  nameWithType: PathView.UpdateTransform
 - uid: Tizen.UIExtensions.ElmSharp.PolygonView
   name: PolygonView
   href: api/Tizen.UIExtensions.ElmSharp.PolygonView.html
