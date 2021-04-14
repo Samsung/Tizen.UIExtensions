@@ -1,5 +1,5 @@
-﻿using ElmSharp;
-using System;
+﻿using System;
+using ElmSharp;
 using static ElmSharp.GestureLayer;
 using EBox = ElmSharp.Box;
 
@@ -93,6 +93,8 @@ namespace Tizen.UIExtensions.ElmSharp
             _contentBox.Show();
 
             _dimArea = new EBox(this);
+            _dimArea.BackgroundColor = ThemeConstants.Shell.ColorClass.DefaultDrawerDimBackgroundColor;
+            _dimArea.Opacity = ThemeConstants.Shell.Resources.DefaultDrawerDimOpacity;
 
             _gestureOnDimArea = new GestureLayer(_dimArea);
             _gestureOnDimArea.SetTapCallback(GestureType.Tap, GestureLayer.GestureState.Start, OnTapped);
@@ -115,7 +117,6 @@ namespace Tizen.UIExtensions.ElmSharp
             _panel.Direction = PanelDirection.Left;
             _panel.Toggled += (object sender, EventArgs e) =>
             {
-                Console.WriteLine($"### Toggled");
                 if (_panel.IsOpen)
                     _dimArea.Show();
 
@@ -330,8 +331,9 @@ namespace Tizen.UIExtensions.ElmSharp
                 _splitPane.SetRightPart(_contentBox, true);
                 _splitPane.Proportion = (SplitRatio > 0) ? SplitRatio : this.GetSplitRatio();
                 _splitPane.Show();
-                _mainWidget = _splitPane; // to manage geometry
                 PackEnd(_splitPane);
+
+                _mainWidget = _splitPane;
 
                 if (!IsOpen)
                 {
@@ -343,10 +345,15 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 _panel.SetContent(_drawerBox, true);
                 _panel.Show();
-                _mainWidget = _contentBox;
+
+                if (_panel.IsOpen)
+                    _dimArea.Show();
+
                 PackEnd(_contentBox);
                 PackEnd(_dimArea);
                 PackEnd(_panel);
+
+                _mainWidget = _contentBox;
             }
         }
 

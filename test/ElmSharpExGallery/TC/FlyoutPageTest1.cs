@@ -27,8 +27,8 @@ namespace ElmSharpExGallery.TC
                 Detail = detailBox,
             };
 
-            flyoutPage.DimArea.BackgroundColor = EColor.Black;
-            flyoutPage.DimArea.Opacity = 30;
+            flyoutPage.DimArea.BackgroundColor = EColor.Blue;
+            flyoutPage.DimArea.Opacity = 100;
 
             var list = new GenList(parent)
             {

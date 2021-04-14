@@ -568,6 +568,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 public const string MenuIcon = "Resource.menu.png";
                 public const string BackIcon = "Resource.arrow_left.png";
                 public const string DotsIcon = "Resource.dots_horizontal.png";
+                public const int DefaultDrawerDimOpacity = 30;
 
                 public class Watch
                 {
