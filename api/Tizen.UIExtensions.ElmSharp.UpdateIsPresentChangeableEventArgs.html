@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ThemeConstants.Shell.Resources
+    <title>Class UpdateIsPresentChangeableEventArgs
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ThemeConstants.Shell.Resources
+    <meta name="title" content="Class UpdateIsPresentChangeableEventArgs
    ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -78,20 +78,24 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs">
   
   
-  <h1 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources" class="text-break">Class ThemeConstants.Shell.Resources
+  <h1 id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs" class="text-break">Class UpdateIsPresentChangeableEventArgs
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ThemeConstants.Shell.Resources</span></div>
+    <div class="level1"><span class="xref">System.EventArgs</span></div>
+    <div class="level2"><span class="xref">UpdateIsPresentChangeableEventArgs</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.EventArgs.Empty</span>
+    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -116,42 +120,49 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.ElmSharp.html">Tizen.UIExtensions.ElmSharp</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.ElmSharp.dll</h6>
-  <h5 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources_syntax">Syntax</h5>
+  <h5 id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Resources</code></pre>
+    <pre><code class="lang-csharp hljs">public class UpdateIsPresentChangeableEventArgs : EventArgs</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="constructors">Constructors
   </h3>
-  <h4 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources_BackIcon" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources.BackIcon">BackIcon</h4>
+  <a id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs__ctor_" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs__ctor_System_Boolean_" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.#ctor(System.Boolean)">UpdateIsPresentChangeableEventArgs(Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string BackIcon = &quot;Resource.arrow_left.png&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public UpdateIsPresentChangeableEventArgs(bool canChange)</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canChange</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h4 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources_DefaultDrawerDimOpacity" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources.DefaultDrawerDimOpacity">DefaultDrawerDimOpacity</h4>
-  <div class="markdown level1 summary"></div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs_CanChange_" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.CanChange*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_UpdateIsPresentChangeableEventArgs_CanChange" data-uid="Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.CanChange">CanChange</h4>
+  <div class="markdown level1 summary"><p>Value of changeable</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int DefaultDrawerDimOpacity = 30</code></pre>
+    <pre><code class="lang-csharp hljs">public bool CanChange { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -161,51 +172,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources_DotsIcon" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources.DotsIcon">DotsIcon</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string DotsIcon = &quot;Resource.dots_horizontal.png&quot;</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="Tizen_UIExtensions_ElmSharp_ThemeConstants_Shell_Resources_MenuIcon" data-uid="Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources.MenuIcon">MenuIcon</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string MenuIcon = &quot;Resource.menu.png&quot;</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>

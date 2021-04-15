@@ -108,6 +108,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Aspect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Aspect.html",
+          "hash": "glCHX7LAh4TPL5LbA6sLDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.BatchableExtensions.yml",
       "output": {
         ".html": {
@@ -125,6 +137,42 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.Color.html",
           "hash": "wVcLdfnBFVhL1h0u5arzXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DeviceOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DeviceOrientation.html",
+          "hash": "I28da9XvrnWdBDp4Y7v0Pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DrawerHeaderBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DrawerHeaderBehavior.html",
+          "hash": "sh+9w5DI0WqwUjX6csXJrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.FlyoutLayoutBehavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.FlyoutLayoutBehavior.html",
+          "hash": "ibCFPjOHErMtaDCFNXYe0Q=="
         }
       },
       "is_incremental": false,
@@ -348,6 +396,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html",
+          "hash": "IMejL8RKMhJVJDf87xmLGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Size.yml",
       "output": {
         ".html": {
@@ -412,7 +472,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.html",
-          "hash": "o4fxM0jHDd+9bZe9n4B4ZA=="
+          "hash": "YV8TrSkKA2fEhc5lv8Uxdg=="
         }
       },
       "is_incremental": false,
@@ -552,6 +612,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DrawerBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DrawerBox.html",
+          "hash": "4wRhZ4xiQAZUN+yKjlY07w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.EditFieldEntryLayout.Parts.yml",
       "output": {
         ".html": {
@@ -660,6 +732,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.FlyoutPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.FlyoutPage.html",
+          "hash": "i2BvqCL7lMENJwbltwiPmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.FormattedStringExtensions.yml",
       "output": {
         ".html": {
@@ -720,6 +804,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.Image.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.Image.html",
+          "hash": "t5UjpHOFe9VOcD0cq7DZsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.ImageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.ImageExtensions.html",
+          "hash": "KKMkbzcov7usQALrOH1QQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.IsPresentedChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.IsPresentedChangedEventArgs.html",
+          "hash": "1MV51TeTtPgLIOj7XMnRDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.Label.yml",
       "output": {
         ".html": {
@@ -761,6 +881,30 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.NativeLayout.html",
           "hash": "T4tCwMeyohs98kZ3bLIh7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html",
+          "hash": "nMg3BYFLpeVPPTqx+SZR+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.NavigationView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationView.html",
+          "hash": "FaXWjeJMP5i1lEztzVPc9Q=="
         }
       },
       "is_incremental": false,
@@ -2020,7 +2164,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ThemeConstants.Shell.Resources.html",
-          "hash": "pPIGScXrmInzDBSqE69ncw=="
+          "hash": "56CdKShQD2dK1/747gFeTA=="
         }
       },
       "is_incremental": false,
@@ -2176,7 +2320,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ThemeManager.html",
-          "hash": "K1d1BmhD9BQlwVoec3+74Q=="
+          "hash": "usEfKyQruGCFscLawRF6JQ=="
         }
       },
       "is_incremental": false,
@@ -2189,6 +2333,18 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.UnitExtensions.html",
           "hash": "lJbu4AWtmeprUQ2Wmb/ucQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.UpdateIsPresentChangeableEventArgs.html",
+          "hash": "Kr8anNWCyW9wYVDBCpxS5A=="
         }
       },
       "is_incremental": false,
@@ -2236,7 +2392,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.html",
-          "hash": "4XWIOkphRFwlwlXcqoY4xg=="
+          "hash": "n+DvwJ/Hm9ZCHGIacxJWzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.Button.html",
+          "hash": "BdLXDAmABR6iFuh2VR2DvA=="
         }
       },
       "is_incremental": false,
@@ -2268,11 +2436,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Image.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.Image.html",
+          "hash": "Bz7JuXbeChvZow+si+uzxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ImageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ImageExtensions.html",
+          "hash": "Z4NVpRvlKN4Z16vM+psK1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Label.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.Label.html",
-          "hash": "7VDINjH+48XAjdlSn5pLvQ=="
+          "hash": "lgsRdV19DXMuD35QIpKT1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.LabelExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.LabelExtensions.html",
+          "hash": "gecdtvPkzkqqnhDCZHnz5A=="
         }
       },
       "is_incremental": false,
@@ -2356,7 +2560,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.html",
-          "hash": "PdYCErf9VMlU7oubaW+QEA=="
+          "hash": "PQ1XKNaUKzn6ZN9R/l1Gaw=="
         }
       },
       "is_incremental": false,
@@ -2368,7 +2572,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "QSUNGDrgkEITpUm9vPeL8g=="
+          "hash": "aJIcW8RKsaAch7wGDrH12A=="
         }
       },
       "is_incremental": false,
@@ -2407,7 +2611,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 188,
+          "total_file_count": 205,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
