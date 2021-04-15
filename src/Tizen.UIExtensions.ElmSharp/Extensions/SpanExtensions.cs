@@ -52,7 +52,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 strBuffer.AppendFormat("font={0} ", span.FontFamily);
             }
 
-            if (span.FontSize != -1)
+            if (span.FontSize >= 0)
             {
                 strBuffer.AppendFormat("font_size={0} ", span.FontSize.ToEflFontPoint());
             }

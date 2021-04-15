@@ -9,10 +9,14 @@
     <Import_RootNamespace>Tizen.UIExtensions.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Aspect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BatchableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DlogLogger.cs" />
+    <Compile Include="..\Tizen.UIExtensions.Common\DrawerHeaderBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlyoutLayoutBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormattedString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBatchable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IContainable.cs" />
@@ -32,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollBarVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectedItemChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stretch.cs" />

@@ -4,6 +4,7 @@ using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
 using Color = Tizen.UIExtensions.Common.Color;
 using Size = Tizen.UIExtensions.Common.Size;
+using NColor = Tizen.NUI.Color;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -13,6 +14,15 @@ namespace Tizen.UIExtensions.NUI
         LineBreakMode _lineBreakMode;
         TextDecorations _textDecorations;
         FormattedString _formattedText;
+
+        float _defaultFontSize;
+        NColor _defaultTextColor;
+
+        public Label()
+        {
+            _defaultFontSize = PointSize;
+            _defaultTextColor = base.TextColor;
+        }
 
         /// <summary>
         /// Gets or sets the formatted text for the Label.
@@ -37,12 +47,7 @@ namespace Tizen.UIExtensions.NUI
             set
             {
                 _fontAttributes = value;
-                bool isBold = value.HasFlag(FontAttributes.Bold);
-                bool isItalic = value.HasFlag(FontAttributes.Italic);
-                var style = new PropertyMap();
-                style.Add("weight", new PropertyValue(isBold ? "bold" : "normal"));
-                style.Add("slant", new PropertyValue(isItalic ? "italic" : "normal"));
-                FontStyle = style;
+                this.SetFontAttributes(value);
             }
         }
 
@@ -104,7 +109,7 @@ namespace Tizen.UIExtensions.NUI
             }
             set
             {
-                PointSize = (float)value;
+                PointSize = value == -1 ? _defaultFontSize : (float)value;
             }
         }
 
@@ -132,7 +137,7 @@ namespace Tizen.UIExtensions.NUI
         public new Color TextColor
         {
             get => base.TextColor.ToCommon();
-            set => base.TextColor = value.ToNative();
+            set => base.TextColor = value.IsDefault ? _defaultTextColor : value.ToNative();
         }
 
         Color ITextable.TextColor 

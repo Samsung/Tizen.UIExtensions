@@ -35,7 +35,7 @@ namespace Tizen.UIExtensions.ElmSharp
         static Lazy<int> s_screenHeight = new Lazy<int>(() =>
         {
             int height = 0;
-            TSystemInfo.TryGetValue("http://tizen.org/feature/screen.width", out height);
+            TSystemInfo.TryGetValue("http://tizen.org/feature/screen.height", out height);
             return height;
         });
 

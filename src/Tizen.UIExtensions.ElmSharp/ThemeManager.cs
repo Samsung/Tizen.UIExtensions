@@ -752,5 +752,18 @@ namespace Tizen.UIExtensions.ElmSharp
             return spinner.SetPartText(ThemeConstants.Common.Parts.Text, title);
         }
         #endregion
+
+        #region DrawerLayoutBox
+        public static double GetDrawerRatio(this DrawerBox drawerlayoutBox, int width, int height)
+        {
+            return (width > height) ? 0.4 : 0.83;
+        }
+
+        public static double GetSplitRatio(this DrawerBox drawerlayoutBox)
+        {
+            return 0.4;
+        }
+        #endregion
+
     }
 }
