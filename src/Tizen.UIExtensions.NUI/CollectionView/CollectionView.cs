@@ -98,7 +98,7 @@ namespace Tizen.UIExtensions.NUI
 
 
         /// <summary>
-        /// Create a ViewHolder, overrie it to customzie a decoration of view
+        /// Create a ViewHolder, override it to customzie a decoration of view
         /// </summary>
         /// <returns>A ViewHolder instance</returns>
         protected virtual ViewHolder CreateViewHolder()
