@@ -1,12 +1,11 @@
-﻿using System;
-using Tizen.NUI.BaseComponents;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Tizen.Applications;
 using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.NUI;
-using Tizen.UIExtensions.Common;
-using System.Collections;
 using Color = Tizen.UIExtensions.Common.Color;
 using Size = Tizen.UIExtensions.Common.Size;
-using System.Collections.Generic;
 
 namespace NUIExGallery.TC
 {
@@ -16,12 +15,10 @@ namespace NUIExGallery.TC
 
         public MyHeaderAdaptor(IEnumerable items) : base(items)
         {
-
         }
 
         public override View CreateNativeView()
         {
-            Console.WriteLine($"CreateNativeView...");
             var view = new View();
             view.UpdateBackgroundColor(Color.Gray);
 
@@ -29,18 +26,31 @@ namespace NUIExGallery.TC
             {
                 Text = "Default text"
             });
+            view.Add(new ImageView
+            {
+                ResourceUrl = Application.Current.DirectoryInfo.Resource + "image2.jpg",
+            });
             return view;
         }
 
         public override View CreateNativeView(int index)
         {
-            Console.WriteLine($"CreateNativeView... for {index}");
-            var view = new View();
+            var view = new View
+            {
+                Layout = new LinearLayout
+                {
+                    LinearOrientation = LinearLayout.Orientation.Horizontal,
+                }
+            };
             view.UpdateBackgroundColor(Color.Yellow);
 
             view.Add(new TextLabel
             {
                 Text = $"Text for{index}"
+            });
+            view.Add(new ImageView
+            {
+                ResourceUrl = Application.Current.DirectoryInfo.Resource + (index % 2 == 0 ? "image2.jpg" : "image.png"),
             });
             return view;
         }
@@ -95,12 +105,12 @@ namespace NUIExGallery.TC
 
         public override Size MeasureItem(double widthConstraint, double heightConstraint)
         {
-            return new Size(100, 100);
+            return new Size(100, 300);
         }
 
         public override Size MeasureItem(int index, double widthConstraint, double heightConstraint)
         {
-            return new Size(100, 100);
+            return new Size(100, 300);
         }
 
         public override void RemoveNativeView(View native)
