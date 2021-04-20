@@ -26,7 +26,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// A CollectionView associated with current Adaptor
         /// </summary>
-        public CollectionView CollectionView { get; set; }
+        public ICollectionViewController CollectionView { get; set; }
 
         /// <summary>
         /// Sets ItemsSource
