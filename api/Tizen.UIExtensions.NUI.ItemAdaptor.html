@@ -1,0 +1,829 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ItemAdaptor
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ItemAdaptor
+   ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor">
+  
+  
+  <h1 id="Tizen_UIExtensions_NUI_ItemAdaptor" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor" class="text-break">Class ItemAdaptor
+  </h1>
+  <div class="markdown level0 summary"><p>Base class for an Adapter
+Adapters provide a binding from an app-specific data set to views that are displayed within a CollectionView.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ItemAdaptor</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.NUI.html">Tizen.UIExtensions.NUI</a></h6>
+  <h6><strong>Assembly</strong>: Tizen.UIExtensions.NUI.dll</h6>
+  <h5 id="Tizen_UIExtensions_NUI_ItemAdaptor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ItemAdaptor : INotifyCollectionChanged</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor__ctor_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor__ctor_System_Collections_IEnumerable_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.#ctor(System.Collections.IEnumerable)">ItemAdaptor(IEnumerable)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Tizen.UIExtensions.NUI.ItemAdaptor.html">ItemAdaptor</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemAdaptor(IEnumerable items)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span></td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items soruce</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_CollectionView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CollectionView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_CollectionView" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CollectionView">CollectionView</h4>
+  <div class="markdown level1 summary"><p>A CollectionView associated with current Adaptor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollectionViewController CollectionView { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.NUI.ICollectionViewController.html">ICollectionViewController</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_Count_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Count*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_Count" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Count">Count</h4>
+  <div class="markdown level1 summary"><p>the number of items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_Item_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Item*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_Item_System_Int32_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_CreateNativeView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CreateNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_CreateNativeView" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CreateNativeView">CreateNativeView()</h4>
+  <div class="markdown level1 summary"><p>Create a new view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract NUI.BaseComponents.View CreateNativeView()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><p>Created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_CreateNativeView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CreateNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_CreateNativeView_System_Int32_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CreateNativeView(System.Int32)">CreateNativeView(Int32)</h4>
+  <div class="markdown level1 summary"><p>Create a new view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract NUI.BaseComponents.View CreateNativeView(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>To used item when create a view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><p>Created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_GetFooterView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetFooterView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_GetFooterView" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetFooterView">GetFooterView()</h4>
+  <div class="markdown level1 summary"><p>Create a footer view, if footer is not existed, null will be returned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract NUI.BaseComponents.View GetFooterView()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><p>A created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_GetHeaderView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetHeaderView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_GetHeaderView" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetHeaderView">GetHeaderView()</h4>
+  <div class="markdown level1 summary"><p>Create a header view, if header is not existed, null will be returned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract NUI.BaseComponents.View GetHeaderView()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><p>A created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_GetItemIndex_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetItemIndex*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_GetItemIndex_System_Object_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetItemIndex(System.Object)">GetItemIndex(Object)</h4>
+  <div class="markdown level1 summary"><p>Find item index by item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetItemIndex(object item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>item to find</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>index of item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_GetViewCategory_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetViewCategory*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_GetViewCategory_System_Int32_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.GetViewCategory(System.Int32)">GetViewCategory(Int32)</h4>
+  <div class="markdown level1 summary"><p>A view category that represent a item, it use to distinguish kinds of view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual object GetViewCategory(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>item index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>An identifier of category</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureFooter_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureFooter*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureFooter_System_Double_System_Double_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureFooter(System.Double,System.Double)">MeasureFooter(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Measure Footer size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Size MeasureFooter(double widthConstraint, double heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.Size.html">Size</a></td>
+        <td><p>Footer size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureHeader_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureHeader*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureHeader_System_Double_System_Double_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureHeader(System.Double,System.Double)">MeasureHeader(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Measure header size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Size MeasureHeader(double widthConstraint, double heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.Size.html">Size</a></td>
+        <td><p>Header size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureItem_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureItem*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureItem_System_Double_System_Double_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureItem(System.Double,System.Double)">MeasureItem(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Measure item size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Size MeasureItem(double widthConstraint, double heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.Size.html">Size</a></td>
+        <td><p>Item size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureItem_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureItem*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_MeasureItem_System_Int32_System_Double_System_Double_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.MeasureItem(System.Int32,System.Double,System.Double)">MeasureItem(Int32, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Measure item size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Size MeasureItem(int index, double widthConstraint, double heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A item index to measure</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.Size.html">Size</a></td>
+        <td><p>Item size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_RemoveNativeView_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.RemoveNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_RemoveNativeView_Tizen_NUI_BaseComponents_View_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.RemoveNativeView(Tizen.NUI.BaseComponents.View)">RemoveNativeView(NUI.BaseComponents.View)</h4>
+  <div class="markdown level1 summary"><p>Remove view, a created view by Adaptor, should be removed by Adaptor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void RemoveNativeView(NUI.BaseComponents.View native)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="parametername">native</span></td>
+        <td><p>A view to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_SetBinding_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SetBinding*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_SetBinding_Tizen_NUI_BaseComponents_View_System_Int32_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SetBinding(Tizen.NUI.BaseComponents.View,System.Int32)">SetBinding(NUI.BaseComponents.View, Int32)</h4>
+  <div class="markdown level1 summary"><p>Set data binding between view and item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void SetBinding(NUI.BaseComponents.View view, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A target view</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A target item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_SetItemsSource_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SetItemsSource*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_SetItemsSource_System_Collections_IEnumerable_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SetItemsSource(System.Collections.IEnumerable)">SetItemsSource(IEnumerable)</h4>
+  <div class="markdown level1 summary"><p>Sets ItemsSource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetItemsSource(IEnumerable items)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span></td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items source</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_UnBinding_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.UnBinding*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_UnBinding_Tizen_NUI_BaseComponents_View_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.UnBinding(Tizen.NUI.BaseComponents.View)">UnBinding(NUI.BaseComponents.View)</h4>
+  <div class="markdown level1 summary"><p>Unset data binding on view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void UnBinding(NUI.BaseComponents.View view)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A view to unbinding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_System_Collections_Specialized_INotifyCollectionChanged_CollectionChanged" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.System#Collections#Specialized#INotifyCollectionChanged#CollectionChanged">INotifyCollectionChanged.CollectionChanged</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Specialized.NotifyCollectionChangedEventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>Copyright &copy; 2021 Samsung <br> Generated by <strong>DocFX</strong></span>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

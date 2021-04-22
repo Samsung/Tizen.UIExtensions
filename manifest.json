@@ -144,6 +144,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DateChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DateChangedEventArgs.html",
+          "hash": "jKyNc5x2XMzu1S4pt/780g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DeviceOrientation.yml",
       "output": {
         ".html": {
@@ -456,6 +468,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.TextChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.TextChangedEventArgs.html",
+          "hash": "c+ZIlR3BTin696mBP8MBZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.TextDecorations.yml",
       "output": {
         ".html": {
@@ -472,7 +496,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.html",
-          "hash": "YV8TrSkKA2fEhc5lv8Uxdg=="
+          "hash": "WFIgL6/6Qdzu+X9x+B4M4Q=="
         }
       },
       "is_incremental": false,
@@ -520,7 +544,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.Box.html",
-          "hash": "7E55Bq2lv6+QTSLoYfG3+A=="
+          "hash": "KcFYUjflNsez2a8Nz3NLeg=="
         }
       },
       "is_incremental": false,
@@ -540,6 +564,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.ButtonPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.ButtonPosition.html",
+          "hash": "wD7+0neyRm14CdVzHLxVgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.Canvas.yml",
       "output": {
         ".html": {
@@ -552,11 +588,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.CarouselPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.CarouselPage.html",
+          "hash": "yi8SPgHtuhTiUtEo4zTxcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.ColorExtensions.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ColorExtensions.html",
-          "hash": "tUfPkPx4K6Ty4teC9Fl1VA=="
+          "hash": "54J+zKwxEWNHJWNd9jf4Ag=="
         }
       },
       "is_incremental": false,
@@ -569,6 +617,42 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.DPExtensions.html",
           "hash": "/jkPPNrsnczVQai4pPZYZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DateTimePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DateTimePicker.html",
+          "hash": "zWYyMQi1tfx0JP6hLorh5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DateTimePickerDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DateTimePickerDialog.html",
+          "hash": "3V5CVCR7IqP0mjYlgM1MQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DateTimePickerMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DateTimePickerMode.html",
+          "hash": "P6Gt9tE0IrX8+6C1idRJ5w=="
         }
       },
       "is_incremental": false,
@@ -593,6 +677,18 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.DeviceType.html",
           "hash": "h5h0yO0C/PHlgKHB9pkFlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.Dialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.Dialog.html",
+          "hash": "U+hau4cWpsWr7/RojzGs7w=="
         }
       },
       "is_incremental": false,
@@ -672,6 +768,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.EditfieldEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.EditfieldEntry.html",
+          "hash": "k22nF/TXCxueinx20kg13A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.EllipseView.yml",
       "output": {
         ".html": {
@@ -688,7 +796,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.Entry.html",
-          "hash": "HBTkvZq4GQrBkpev6rTwog=="
+          "hash": "Ro3RGCqh2hWAPikCtw7MLQ=="
         }
       },
       "is_incremental": false,
@@ -792,11 +900,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.IDateTimeDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.IDateTimeDialog.html",
+          "hash": "PSKV16n8MMLNXkJJti/1MQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.IEntry.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.IEntry.html",
-          "hash": "EgqduKiwI6CrZr6znHQXvQ=="
+          "hash": "Ddbq79iRhQv9sC7bb0r5aw=="
         }
       },
       "is_incremental": false,
@@ -924,6 +1044,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.PageScrolledEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.PageScrolledEventArgs.html",
+          "hash": "l3HOtnq1cALHty6txWZ1Mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.PathView.yml",
       "output": {
         ".html": {
@@ -989,6 +1121,18 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ScrollView.html",
           "hash": "qxAXp8TbmlOVTGCYa/iNDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.SearchBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.SearchBar.html",
+          "hash": "vxXHCvmj8g8FhWjiOHPFOQ=="
         }
       },
       "is_incremental": false,
@@ -2392,7 +2536,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.html",
-          "hash": "n+DvwJ/Hm9ZCHGIacxJWzw=="
+          "hash": "gIyjWucWG2BgkZ9Hct3nGw=="
         }
       },
       "is_incremental": false,
@@ -2405,6 +2549,30 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.Button.html",
           "hash": "BdLXDAmABR6iFuh2VR2DvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.CollectionView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.CollectionView.html",
+          "hash": "3fd1ib+Y7g16PIcGWExkIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.CollectionViewScrolledEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.CollectionViewScrolledEventArgs.html",
+          "hash": "7O9j1WSzLyTJShJCjMQTpw=="
         }
       },
       "is_incremental": false,
@@ -2436,6 +2604,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ICollectionViewController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ICollectionViewController.html",
+          "hash": "SoOONOwAZ+gG8nFnxrYCKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ICollectionViewLayoutManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ICollectionViewLayoutManager.html",
+          "hash": "2acx56asvktsgaVdelcppQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Image.yml",
       "output": {
         ".html": {
@@ -2453,6 +2645,30 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.ImageExtensions.html",
           "hash": "Z4NVpRvlKN4Z16vM+psK1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ItemAdaptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ItemAdaptor.html",
+          "hash": "YR+NIFb4Yj+JLvqgR3SdvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ItemSizingStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ItemSizingStrategy.html",
+          "hash": "wYVedEdTK/dI5Mti0QXitQ=="
         }
       },
       "is_incremental": false,
@@ -2484,11 +2700,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.LinearLayoutManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.LinearLayoutManager.html",
+          "hash": "/9+FLExWVbpbX3JlYKgpZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ScrollView.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.ScrollView.html",
           "hash": "4CyuI0LMP7szAFtXnnTdJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ScrollViewExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ScrollViewExtensions.html",
+          "hash": "bRIlpJ7v2qU3ClGJmqLSaA=="
         }
       },
       "is_incremental": false,
@@ -2556,11 +2796,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ViewHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ViewHolder.html",
+          "hash": "S3aGg0M9Sf+j/cyv5RjjwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ViewHolderState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ViewHolderState.html",
+          "hash": "CgzToL1C0UGhgRGSOX+xwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.html",
-          "hash": "PQ1XKNaUKzn6ZN9R/l1Gaw=="
+          "hash": "9EroPzfg07U8R1jk2R58Jg=="
         }
       },
       "is_incremental": false,
@@ -2572,7 +2836,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "aJIcW8RKsaAch7wGDrH12A=="
+          "hash": "mZynDzA8r3rvglXWvrBT3Q=="
         }
       },
       "is_incremental": false,
@@ -2611,7 +2875,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 205,
+          "total_file_count": 227,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

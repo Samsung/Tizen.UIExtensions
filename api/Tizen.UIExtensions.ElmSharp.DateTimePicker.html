@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Box
+    <title>Class DateTimePicker
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Box
+    <meta name="title" content="Class DateTimePicker
    ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -78,40 +78,41 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.ElmSharp.Box">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker">
   
   
-  <h1 id="Tizen_UIExtensions_ElmSharp_Box" data-uid="Tizen.UIExtensions.ElmSharp.Box" class="text-break">Class Box
+  <h1 id="Tizen_UIExtensions_ElmSharp_DateTimePicker" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker" class="text-break">Class DateTimePicker
   </h1>
-  <div class="markdown level0 summary"><p>Extends the ElmSharp.Box class with functionality useful to custom layout.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Box</span></div>
-      <div class="level2"><a class="xref" href="Tizen.UIExtensions.ElmSharp.Canvas.html">Canvas</a></div>
-      <div class="level2"><a class="xref" href="Tizen.UIExtensions.ElmSharp.CarouselPage.html">CarouselPage</a></div>
+    <div class="level1"><span class="xref">DateTimePicker</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.ElmSharp.html">Tizen.UIExtensions.ElmSharp</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.ElmSharp.dll</h6>
-  <h5 id="Tizen_UIExtensions_ElmSharp_Box_syntax">Syntax</h5>
+  <h5 id="Tizen_UIExtensions_ElmSharp_DateTimePicker_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Box : ElmSharp.Box</code></pre>
+    <pre><code class="lang-csharp hljs">public class DateTimePicker : DateTimeSelector</code></pre>
   </div>
-  <h5 id="Tizen_UIExtensions_ElmSharp_Box_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>This class overrides the layout mechanism. Instead of using the native layout,
-<code>LayoutUpdated</code> event is sent.</p>
-</div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="Tizen_UIExtensions_ElmSharp_Box__ctor_" data-uid="Tizen.UIExtensions.ElmSharp.Box.#ctor*"></a>
-  <h4 id="Tizen_UIExtensions_ElmSharp_Box__ctor_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.Box.#ctor(EvasObject)">Box(EvasObject)</h4>
+  <a id="Tizen_UIExtensions_ElmSharp_DateTimePicker__ctor_" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_DateTimePicker__ctor" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.#ctor">DateTimePicker()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Box(EvasObject parent)</code></pre>
+    <pre><code class="lang-csharp hljs">protected DateTimePicker()</code></pre>
+  </div>
+  <a id="Tizen_UIExtensions_ElmSharp_DateTimePicker__ctor_" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_DateTimePicker__ctor_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.#ctor(EvasObject)">DateTimePicker(EvasObject)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimePicker(EvasObject parent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -130,17 +131,17 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="events">Events
+  <h3 id="properties">Properties
   </h3>
-  <h4 id="Tizen_UIExtensions_ElmSharp_Box_LayoutUpdated" data-uid="Tizen.UIExtensions.ElmSharp.Box.LayoutUpdated">LayoutUpdated</h4>
-  <div class="markdown level1 summary"><p>Notifies that the layout has been updated.</p>
-</div>
+  <a id="Tizen_UIExtensions_ElmSharp_DateTimePicker_Mode_" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.Mode*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_DateTimePicker_Mode" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.Mode">Mode</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler&lt;LayoutEventArgs&gt; LayoutUpdated</code></pre>
+    <pre><code class="lang-csharp hljs">public DateTimePickerMode Mode { get; set; }</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -150,11 +151,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Tizen.UIExtensions.Common.LayoutEventArgs.html">LayoutEventArgs</a>&gt;</td>
+        <td><a class="xref" href="Tizen.UIExtensions.ElmSharp.DateTimePickerMode.html">DateTimePickerMode</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_DateTimePicker_UpdateMode_" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.UpdateMode*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_DateTimePicker_UpdateMode" data-uid="Tizen.UIExtensions.ElmSharp.DateTimePicker.UpdateMode">UpdateMode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void UpdateMode()</code></pre>
+  </div>
 </article>
           </div>
           
