@@ -101,6 +101,23 @@ namespace Tizen.UIExtensions.NUI
         }
 
         /// <summary>
+        /// Handle Selected item
+        /// </summary>
+        /// <param name="selected"></param>
+        public virtual void SendItemSelected(IEnumerable<int> selected)
+        {
+        }
+
+        /// <summary>
+        /// Update View state
+        /// </summary>
+        /// <param name="view">A view to update</param>
+        /// <param name="state">State of view</param>
+        public virtual void UpdateViewState(View view, ViewHolderState state)
+        {
+        }
+
+        /// <summary>
         /// Find item index by item
         /// </summary>
         /// <param name="item">item to find</param>

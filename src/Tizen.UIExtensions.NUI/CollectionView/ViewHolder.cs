@@ -75,6 +75,11 @@ namespace Tizen.UIExtensions.NUI
             State = ViewHolderState.Selected;
         }
 
+        public void UpdateSelected()
+        {
+            State = ViewHolderState.Selected;
+        }
+
         public void ResetState()
         {
             State = ViewHolderState.Normal;
