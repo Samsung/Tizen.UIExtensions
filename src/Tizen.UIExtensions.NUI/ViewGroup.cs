@@ -22,6 +22,7 @@ namespace Tizen.UIExtensions.NUI
     {
         readonly ObservableCollection<View> _children = new ObservableCollection<View>();
         bool _layoutRequested;
+        bool _disposed;
         SynchronizationContext _mainloopContext;
 
         /// <summary>
@@ -80,6 +81,9 @@ namespace Tizen.UIExtensions.NUI
 
         void SendLayoutUpdated()
         {
+            if (_disposed)
+                return;
+
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
@@ -119,6 +123,10 @@ namespace Tizen.UIExtensions.NUI
 
         protected override void Dispose(bool disposing)
         {
+            if (_disposed)
+                return;
+
+            _disposed = true;
             if (disposing)
             {
                 // Remove All children, becuase NUI didn't delete child

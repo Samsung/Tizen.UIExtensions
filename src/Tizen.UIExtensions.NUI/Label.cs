@@ -154,17 +154,21 @@ namespace Tizen.UIExtensions.NUI
         public Size Measure(double availableWidth, double availableHeight)
         {
 #pragma warning disable CS0618
-            if (!string.IsNullOrEmpty(Text) && (NaturalSize.Width == 0 || NaturalSize.Height == 0))
+            if (!string.IsNullOrEmpty(Text))
             {
-                return new Size(Text.Length * PixelSize + 10, PixelSize + 10);
-            }
-            else if (availableWidth < NaturalSize.Width)
-            {
-                return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
-            }
-            else if (NaturalSize.Width != 0)
-            {
-                return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+                if (availableWidth < NaturalSize.Width)
+                {
+                    return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+                }
+                else if (NaturalSize.Width > 0)
+                {
+                    return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+                }
+                else
+                {
+                    // even though text but natural size is zero. it is abnormal state
+                    return new Size(Text.Length * PixelSize + 10, PixelSize + 10);
+                }
             }
             else
             {
