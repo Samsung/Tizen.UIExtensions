@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DateChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DeviceOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DlogLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScrollToPosition.cs" />
     <Compile Include="..\Tizen.UIExtensions.Common\DrawerHeaderBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FlyoutLayoutBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormattedString.cs" />
