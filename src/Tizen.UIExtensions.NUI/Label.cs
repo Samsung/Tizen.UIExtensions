@@ -1,10 +1,9 @@
-using System;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
 using Color = Tizen.UIExtensions.Common.Color;
-using Size = Tizen.UIExtensions.Common.Size;
 using NColor = Tizen.NUI.Color;
+using Size = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -155,13 +154,25 @@ namespace Tizen.UIExtensions.NUI
         public Size Measure(double availableWidth, double availableHeight)
         {
 #pragma warning disable CS0618
-            if (availableWidth < NaturalSize.Width)
+            if (!string.IsNullOrEmpty(Text))
             {
-                return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+                if (availableWidth < NaturalSize.Width)
+                {
+                    return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+                }
+                else if (NaturalSize.Width > 0)
+                {
+                    return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+                }
+                else
+                {
+                    // even though text but natural size is zero. it is abnormal state
+                    return new Size(Text.Length * PixelSize + 10, PixelSize + 10);
+                }
             }
             else
             {
-                return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+                return new Size(PixelSize, PixelSize);
             }
 #pragma warning restore CS0618
         }
