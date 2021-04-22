@@ -29,5 +29,16 @@ namespace Tizen.UIExtensions.ElmSharp
             return c.IsDefault ? EColor.Default : 
                 new EColor((int)(255.0 * c.R), (int)(255.0 * c.G), (int)(255.0 * c.B), (int)(255.0 * c.A));
         }
+
+        /// <summary>
+        /// Creates an instance of  Tizen.UIExtensions.Common.Color class based on provided ElmSharp.Color instance
+        /// </summary>
+        /// <returns>Tizen.UIExtensions.Common.Color instance representing a color which corresponds to the provided ElmSharp.Color</returns>
+        /// <param name="c">The ElmSharp.Color instance which will be converted to a Tizen.UIExtensions.Common.Color</param>
+        public static Color ToCommon(this EColor c)
+        {
+            return c.IsDefault ? Color.Default :
+                new Color((int)(255.0 * c.R), (int)(255.0 * c.G), (int)(255.0 * c.B), (int)(255.0 * c.A));
+        }
     }
 }

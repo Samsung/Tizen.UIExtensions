@@ -85,10 +85,14 @@ namespace NUIExGallery.TC
                 }
                 outterLayout.Add(innerLayout);
             }
-
+            scrollView.ScrollingEventThreshold = 1;
+            scrollView.ScrollDragStarted += (s, e) => Console.WriteLine($"DragStarted");
+            scrollView.ScrollDragEnded += (s, e) => Console.WriteLine("DragEnd");
+            scrollView.ScrollAnimationStarted += (s, e) => Console.WriteLine($"ScrollAnimation started");
+            scrollView.ScrollAnimationEnded += (s, e) => Console.WriteLine("$ScrollAnimation ended");
             scrollView.Scrolling += (s, e) =>
             {
-                Console.WriteLine($"OnScrolling : Bound : {scrollView.ScrollBound}");
+                Console.WriteLine($"OnScrolling : Bound : {scrollView.ScrollBound} - {e.Position.X}x{e.Position.Y}");
             };
 
 

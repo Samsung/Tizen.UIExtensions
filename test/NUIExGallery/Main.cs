@@ -79,25 +79,27 @@ namespace NUIExGallery
                 ItemsSource = tests,
                 ItemTemplate = new DataTemplate(() =>
                 {
-                    var itemView = new RecyclerViewItem
-                    {
-                        Layout = new LinearLayout
-                        {
-                            LinearOrientation = LinearLayout.Orientation.Vertical,
-                            LinearAlignment = LinearLayout.Alignment.Center
-                        },
-                        WidthResizePolicy = ResizePolicyType.FillToParent,
-                        SizeHeight = 100,
-                    };
-                    var border = new BorderVisual
-                    {
-                        Opacity = 0.8f,
-                        CornerRadius = 0,
-                        BorderSize = 1,
-                        Color = Color.Black,
-                        AntiAliasing = true,
-                    };
-                    itemView.AddVisual("border", border);
+                    //var itemView = new RecyclerViewItem
+                    //{
+                    //    Layout = new LinearLayout
+                    //    {
+                    //        LinearOrientation = LinearLayout.Orientation.Vertical,
+                    //        LinearAlignment = LinearLayout.Alignment.Center
+                    //    },
+                    //    WidthResizePolicy = ResizePolicyType.FillToParent,
+                    //    SizeHeight = 100,
+                    //};
+                    //var border = new BorderVisual
+                    //{
+                    //    Opacity = 0.8f,
+                    //    CornerRadius = 0,
+                    //    BorderSize = 1,
+                    //    Color = Color.Black,
+                    //    AntiAliasing = true,
+                    //};
+                    //itemView.AddVisual("border", border);
+
+                    var itemView = new DefaultLinearItem();
 
                     itemView.Clicked += clicked;
 

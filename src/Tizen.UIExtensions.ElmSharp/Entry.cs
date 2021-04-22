@@ -7,8 +7,16 @@ using ESize = ElmSharp.Size;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
+    /// <summary>
+    /// Extends the Entry control, providing basic formatting features,
+    /// i.e. font color, size, placeholder.
+    /// </summary>
     public class Entry : EEntry, IMeasurable, IBatchable, IEntry
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entry"/> class.
+        /// </summary>
+        /// <param name="parent">Parent evas object.</param>
         public Entry(EvasObject parent) : base(parent)
         {
             Initialize();
@@ -21,11 +29,35 @@ namespace Tizen.UIExtensions.ElmSharp
         int _changedByUserCallbackDepth;
         Keyboard _keyboard;
 
+        /// <summary>
+        /// Occurs when the text block get focused.
+        /// </summary>
         public event EventHandler TextBlockFocused;
+
+        /// <summary>
+        /// Occurs when the text block loses focus
+        /// </summary>
         public event EventHandler TextBlockUnfocused;
+
+        /// <summary>
+        /// Occurs when the layout of entry get focused.
+        /// </summary>
         public event EventHandler EntryLayoutFocused;
+
+        /// <summary>
+        /// Occurs when the layout of entry loses focus
+        /// </summary>
         public event EventHandler EntryLayoutUnfocused;
 
+        /// <summary>
+        /// Occurs when the text has changed.
+        /// </summary>
+        public event EventHandler<TextChangedEventArgs> TextChanged;
+
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <value>The text.</value>
         public override string Text
         {
             get
@@ -41,10 +73,20 @@ namespace Tizen.UIExtensions.ElmSharp
                     var old = _span.Text;
                     _span.Text = value;
                     ApplyTextAndStyle();
+                    //TODO: Adds BeginInvokeOnMainThread later
+                    EcoreMainloop.AddTimer(TimeSpan.FromTicks(1).TotalSeconds, () =>
+                    {
+                        OnTextChanged(old, value);
+                        return false;
+                    });
                 }
             }
         }
 
+        /// <summary>
+        /// Gets or sets the color of the text.
+        /// </summary>
+        /// <value>The color of the text.</value>
         public Color TextColor
         {
             get
@@ -62,6 +104,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the color of the text.
+        /// </summary>
+        /// <value>The color of the text.</value>
         public string FontFamily
         {
             get
@@ -82,6 +128,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the font family of the text and the placeholder.
+        /// </summary>
+        /// <value>The font family of the text and the placeholder.</value>
         public FontAttributes FontAttributes
         {
             get
@@ -102,6 +152,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the size of the font of both text and placeholder.
+        /// </summary>
+        /// <value>The size of the font of both text and placeholder.</value>
         public double FontSize
         {
             get
@@ -122,6 +176,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the horizontal text alignment of both text and placeholder.
+        /// </summary>
+        /// <value>The horizontal text alignment of both text and placeholder.</value>
         public TextAlignment HorizontalTextAlignment
         {
             get
@@ -142,6 +200,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the keyboard type used by the entry.
+        /// </summary>
+        /// <value>The keyboard type.</value>
         public Keyboard Keyboard
         {
             get
@@ -158,6 +220,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the placeholder's text.
+        /// </summary>
+        /// <value>The placeholder's text.</value>
         public string Placeholder
         {
             get
@@ -175,6 +241,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the color of the placeholder's text.
+        /// </summary>
+        /// <value>The color of the placeholder's text.</value>
         public Color PlaceholderColor
         {
             get
@@ -192,6 +262,9 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Implementation of the IMeasurable.Measure() method.
+        /// </summary>
         public virtual Common.Size Measure(double availableWidth, double availableHeight)
         {
             var originalSize = Geometry;
@@ -261,6 +334,11 @@ namespace Tizen.UIExtensions.ElmSharp
         protected virtual void OnEntryLayoutUnfocused()
         {
             EntryLayoutUnfocused?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnTextChanged(string oldValue, string newValue)
+        {
+            TextChanged?.Invoke(this, new TextChangedEventArgs(oldValue, newValue));
         }
 
         void Initialize()
