@@ -65,6 +65,13 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         /// <param name="index"></param>
         public void ItemMeasureInvalidated(int index);
+
+        /// <summary>
+        /// Request item select
+        /// </summary>
+        /// <param name="index">Item index</param>
+        public void RequestItemSelect(int index);
+
     }
 
 }
