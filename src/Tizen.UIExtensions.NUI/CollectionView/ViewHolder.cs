@@ -74,10 +74,19 @@ namespace Tizen.UIExtensions.NUI
         protected void Initialize()
         {
             Layout = new AbsoluteLayout();
+            Relayout += OnLayout;
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;
             FocusLost += OnUnfocused;
+        }
+
+        void OnLayout(object sender, EventArgs e)
+        {
+            if (Content != null)
+            {
+                Content.Size = new Size(Size);
+            }
         }
 
         void OnUnfocused(object sender, EventArgs e)
