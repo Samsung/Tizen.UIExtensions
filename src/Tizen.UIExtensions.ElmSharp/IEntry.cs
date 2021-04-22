@@ -21,6 +21,8 @@ namespace Tizen.UIExtensions.ElmSharp
 
         Keyboard Keyboard { get; set; }
 
+        event EventHandler<TextChangedEventArgs> TextChanged;
+
         event EventHandler TextBlockFocused;
 
         event EventHandler TextBlockUnfocused;
