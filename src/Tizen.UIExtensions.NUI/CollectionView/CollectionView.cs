@@ -248,8 +248,6 @@ namespace Tizen.UIExtensions.NUI
             else
             {
                 Adaptor.RemoveNativeView(view.Content);
-                view.Content.Unparent();
-                view.Content.Dispose();
                 view.Unparent();
                 view.Dispose();
             }
@@ -264,8 +262,6 @@ namespace Tizen.UIExtensions.NUI
         {
             if (_layoutManager == null)
                 return;
-
-            Console.WriteLine($"LayoutManagerChanged - AllocatedSize : {AllocatedSize}");
 
             _itemSize = new Size(-1, -1);
             _layoutManager.CollectionView = this;

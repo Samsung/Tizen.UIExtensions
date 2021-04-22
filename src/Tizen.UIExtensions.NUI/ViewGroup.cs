@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
@@ -20,6 +22,8 @@ namespace Tizen.UIExtensions.NUI
     {
         readonly ObservableCollection<View> _children = new ObservableCollection<View>();
         bool _layoutRequested;
+        bool _disposed;
+        SynchronizationContext _mainloopContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewGroup"/> class.
@@ -27,6 +31,9 @@ namespace Tizen.UIExtensions.NUI
         /// <remarks>ViewGroup doesn't support replacing its children, this will be ignored.</remarks>
         public ViewGroup()
         {
+            Debug.Assert(SynchronizationContext.Current != null, "It must be used on main thread");
+            _mainloopContext = SynchronizationContext.Current;
+
             Layout = new AbsoluteLayout();
             WidthSpecification = LayoutParamPolicies.MatchParent;
             HeightSpecification = LayoutParamPolicies.MatchParent;
@@ -51,6 +58,7 @@ namespace Tizen.UIExtensions.NUI
             base.Add(child);
             LayoutRequest();
         }
+
         public override void Remove(View child)
         {
             base.Remove(child);
@@ -67,12 +75,15 @@ namespace Tizen.UIExtensions.NUI
             if (!_layoutRequested)
             {
                 _layoutRequested = true;
-                ElmSharp.EcoreMainloop.Post(SendLayoutUpdated);
+                _mainloopContext.Post((s) => SendLayoutUpdated(), null);
             }
         }
 
         void SendLayoutUpdated()
         {
+            if (_disposed)
+                return;
+
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
@@ -112,6 +123,10 @@ namespace Tizen.UIExtensions.NUI
 
         protected override void Dispose(bool disposing)
         {
+            if (_disposed)
+                return;
+
+            _disposed = true;
             if (disposing)
             {
                 // Remove All children, becuase NUI didn't delete child
