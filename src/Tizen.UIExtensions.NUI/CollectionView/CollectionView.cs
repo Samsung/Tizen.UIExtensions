@@ -213,6 +213,18 @@ namespace Tizen.UIExtensions.NUI
         }
 
         /// <summary>
+        /// Request item selection
+        /// </summary>
+        /// <param name="index">Index of item</param>
+        public void RequestItemSelect(int index) => RequestItemSelect(index, null);
+
+        /// <summary>
+        /// Request item unselection
+        /// </summary>
+        /// <param name="index">Index of item</param>
+        public void RequestItemUnselect(int index) => RequestItemUnselect(index, null);
+
+        /// <summary>
         /// Create a ViewHolder, override it to customzie a decoration of view
         /// </summary>
         /// <returns>A ViewHolder instance</returns>
