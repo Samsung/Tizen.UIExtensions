@@ -381,7 +381,9 @@ namespace Tizen.UIExtensions.NUI
             }
             else
             {
-                Adaptor.RemoveNativeView(view.Content);
+                var content = view.Content;
+                view.Content = null;
+                Adaptor.RemoveNativeView(content);
                 view.Unparent();
                 view.Dispose();
             }
