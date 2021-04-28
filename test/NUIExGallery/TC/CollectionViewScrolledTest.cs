@@ -1,11 +1,6 @@
-﻿using System;
-using Tizen.NUI.BaseComponents;
+﻿using Tizen.NUI.BaseComponents;
 using Tizen.NUI;
 using Tizen.UIExtensions.NUI;
-using Tizen.UIExtensions.Common;
-using System.Collections;
-using Color = Tizen.UIExtensions.Common.Color;
-using Size = Tizen.UIExtensions.Common.Size;
 using System.Collections.Generic;
 
 namespace NUIExGallery.TC
