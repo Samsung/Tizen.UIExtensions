@@ -84,6 +84,9 @@ namespace Tizen.UIExtensions.NUI
             if (_disposed)
                 return;
 
+            if (this == null)
+                return;
+
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
