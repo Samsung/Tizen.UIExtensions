@@ -41,6 +41,8 @@ namespace Tizen.UIExtensions.NUI
                 {
                     _content.WidthSpecification = LayoutParamPolicies.MatchParent;
                     _content.HeightSpecification = LayoutParamPolicies.MatchParent;
+                    _content.WidthResizePolicy = ResizePolicyType.FillToParent;
+                    _content.HeightResizePolicy = ResizePolicyType.FillToParent;
                     Add(_content);
                 }
             }
@@ -79,19 +81,10 @@ namespace Tizen.UIExtensions.NUI
         protected void Initialize()
         {
             Layout = new AbsoluteLayout();
-            Relayout += OnLayout;
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;
             FocusLost += OnUnfocused;
-        }
-
-        void OnLayout(object sender, EventArgs e)
-        {
-            if (Content != null)
-            {
-                Content.Size = new Size(Size);
-            }
         }
 
         void OnUnfocused(object sender, EventArgs e)
