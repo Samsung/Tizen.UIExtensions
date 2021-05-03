@@ -417,7 +417,6 @@ namespace Tizen.UIExtensions.NUI
                 {
                     bound.Width = _allocatedSize.Width;
                 }
-                Console.WriteLine($"Header bound : {bound}");
                 _header.UpdateBounds(bound);
             }
         }
