@@ -8,7 +8,7 @@
         /// <summary>
         /// Get or sets the formatted text.
         /// </summary>
-        FormattedString FormattedText { get; set; }
+        FormattedString? FormattedText { get; set; }
 
         /// <summary>
         /// Gets or sets the text.

@@ -12,7 +12,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// CollectoinView interact with layout manager
         /// </summary>
-		ICollectionViewController CollectionView { get; set; }
+		ICollectionViewController? CollectionView { get; set; }
 
         /// <summary>
         /// Whether the item is a layout horizontally 
@@ -98,13 +98,13 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         /// <param name="header">Header view</param>
         /// <param name="size">Size of header</param>
-		void SetHeader(View header, Size size);
+		void SetHeader(View? header, Size size);
 
         /// <summary>
         /// Sets footer on layout
         /// </summary>
         /// <param name="footer">Fotter view</param>
         /// <param name="size">Size of footer</param>
-		void SetFooter(View footer, Size size);
+		void SetFooter(View? footer, Size size);
 	}
 }
