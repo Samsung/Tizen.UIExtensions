@@ -23,8 +23,8 @@ namespace Tizen.UIExtensions.NUI
         HashSet<int> _selectedItems = new HashSet<int>();
 
         SynchronizationContext _mainloopContext;
-        ICollectionViewLayoutManager _layoutManager;
-        ItemAdaptor _adaptor;
+        ICollectionViewLayoutManager? _layoutManager;
+        ItemAdaptor? _adaptor;
 
         bool _requestLayoutItems = false;
 
@@ -32,24 +32,28 @@ namespace Tizen.UIExtensions.NUI
         double _previousVerticalOffset;
         Size _itemSize = new Size(-1, -1);
 
-        View _headerView;
-        View _footerView;
+        View? _headerView;
+        View? _footerView;
 
         CollectionViewSelectionMode _selectionMode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CollectionView"/> class.
         /// </summary>
+#pragma warning disable CS8618
+        // dotnet compiler does not track a method that called on constructor to check non-nullable object
+        // https://github.com/dotnet/roslyn/issues/32358
         public CollectionView()
+#pragma warning restore CS8618
         {
-            _mainloopContext = SynchronizationContext.Current;
+            _mainloopContext = SynchronizationContext.Current ?? throw new InvalidOperationException("Must create on main thread");
             InitializationComponent();
         }
 
         /// <summary>
         /// Event that is raised after a scroll completes.
         /// </summary>
-        public event EventHandler<CollectionViewScrolledEventArgs> Scrolled;
+        public event EventHandler<CollectionViewScrolledEventArgs>? Scrolled;
 
         /// <summary>
         /// Gets a ScrollView instance that used in CollectionView
@@ -69,7 +73,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets LayoutManager to organize position of item
         /// </summary>
-        public ICollectionViewLayoutManager LayoutManager
+        public ICollectionViewLayoutManager? LayoutManager
         {
             get => _layoutManager;
             set
@@ -83,7 +87,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets ItemAdaptor to adapt items source
         /// </summary>
-        public ItemAdaptor Adaptor
+        public ItemAdaptor? Adaptor
         {
             get => _adaptor;
             set
@@ -127,6 +131,9 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the scroll should be animated.</param>
         public void ScrollTo(int index, ScrollToPosition position = ScrollToPosition.MakeVisible, bool animate = true)
         {
+            if (LayoutManager == null)
+                throw new InvalidOperationException("No Layout manager");
+
             var itemBound = LayoutManager.GetItemBound(index);
             double itemStart;
             double itemEnd;
@@ -209,6 +216,9 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the scroll should be animated.</param>
         public void ScrollTo(object item, ScrollToPosition position = ScrollToPosition.MakeVisible, bool animate = true)
         {
+            if (Adaptor == null)
+                throw new InvalidOperationException("No Adaptor");
+
             ScrollTo(Adaptor.GetItemIndex(item), position, animate);
         }
 
@@ -287,10 +297,10 @@ namespace Tizen.UIExtensions.NUI
                 _mainloopContext.Post((s) =>
                 {
                     _requestLayoutItems = false;
-                    if (_adaptor != null && _layoutManager != null)
+                    if (Adaptor != null && LayoutManager != null)
                     {
                         ContentSizeUpdated();
-                        _layoutManager?.LayoutItems(ViewPort, true);
+                        LayoutManager.LayoutItems(ViewPort, true);
                     }
                 }, null);
             }
@@ -299,13 +309,13 @@ namespace Tizen.UIExtensions.NUI
         void ICollectionViewController.ContentSizeUpdated() => ContentSizeUpdated();
         void ContentSizeUpdated()
         {
-            ScrollView.ContentContainer.UpdateSize(LayoutManager.GetScrollCanvasSize());
+            ScrollView.ContentContainer.UpdateSize(LayoutManager?.GetScrollCanvasSize() ?? AllocatedSize);
         }
 
         Size ICollectionViewController.GetItemSize()
         {
-            var widthConstraint = LayoutManager.IsHorizontal ? AllocatedSize.Width * 100 : AllocatedSize.Width;
-            var heightConstraint = LayoutManager.IsHorizontal ? AllocatedSize.Height : AllocatedSize.Height * 100;
+            var widthConstraint = LayoutManager!.IsHorizontal ? AllocatedSize.Width * 100 : AllocatedSize.Width;
+            var heightConstraint = LayoutManager!.IsHorizontal ? AllocatedSize.Height : AllocatedSize.Height * 100;
             return GetItemSize(widthConstraint,heightConstraint);
         }
 
@@ -341,7 +351,7 @@ namespace Tizen.UIExtensions.NUI
         ViewHolder ICollectionViewController.RealizeView(int index)
         {
             if (Adaptor == null)
-                return null;
+                throw new InvalidOperationException("No Adaptor");
 
             var holder = _pool.GetRecyclerView(Adaptor.GetViewCategory(index));
             if (holder != null)
@@ -359,7 +369,7 @@ namespace Tizen.UIExtensions.NUI
                 ScrollView.ContentContainer.Add(holder);
             }
 
-            Adaptor.SetBinding(holder.Content, index);
+            Adaptor.SetBinding(holder.Content!, index);
             _viewHolderIndexTable[holder] = index;
 
             if (_selectedItems.Contains(index))
@@ -372,8 +382,11 @@ namespace Tizen.UIExtensions.NUI
 
         void ICollectionViewController.UnrealizeView(ViewHolder view)
         {
+            if (Adaptor == null)
+                throw new InvalidOperationException("No Adaptor");
+
             _viewHolderIndexTable.Remove(view);
-            Adaptor.UnBinding(view.Content);
+            Adaptor.UnBinding(view.Content!);
             view.ResetState();
             view.Hide();
 
@@ -385,14 +398,15 @@ namespace Tizen.UIExtensions.NUI
             {
                 var content = view.Content;
                 view.Content = null;
-                Adaptor.RemoveNativeView(content);
+                if (content != null)
+                    Adaptor.RemoveNativeView(content);
                 view.Unparent();
                 view.Dispose();
             }
         }
 
         void ICollectionViewController.RequestItemSelect(int index) => RequestItemSelect(index);
-        void RequestItemSelect(int index, ViewHolder viewHolder = null)
+        void RequestItemSelect(int index, ViewHolder? viewHolder = null)
         {
             if (SelectionMode == CollectionViewSelectionMode.None)
                 return;
@@ -423,7 +437,7 @@ namespace Tizen.UIExtensions.NUI
             Adaptor?.SendItemSelected(_selectedItems);
         }
 
-        void RequestItemUnselect(int index, ViewHolder viewHolder = null)
+        void RequestItemUnselect(int index, ViewHolder? viewHolder = null)
         {
             if (SelectionMode == CollectionViewSelectionMode.None)
                 return;
@@ -470,7 +484,7 @@ namespace Tizen.UIExtensions.NUI
             _footerView?.Dispose();
             _footerView = null;
 
-            _layoutManager?.Reset();
+            LayoutManager?.Reset();
             if (Adaptor != null)
             {
                 _pool.Clear(Adaptor);
@@ -481,7 +495,7 @@ namespace Tizen.UIExtensions.NUI
 
         void OnAdaptorChanged()
         {
-            if (_adaptor == null)
+            if (Adaptor == null)
                 return;
 
             _itemSize = new Size(-1, -1);
@@ -513,7 +527,7 @@ namespace Tizen.UIExtensions.NUI
                 int idx = e.NewStartingIndex;
                 if (idx == -1)
                 {
-                    idx = Adaptor.Count - e.NewItems.Count;
+                    idx = Adaptor!.Count - e.NewItems.Count;
                 }
                 foreach (var item in e.NewItems)
                 {
@@ -524,7 +538,7 @@ namespace Tizen.UIExtensions.NUI
                             _viewHolderIndexTable[viewHolder]++;
                         }
                     }
-                    LayoutManager.ItemInserted(idx++);
+                    LayoutManager?.ItemInserted(idx++);
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove)
@@ -534,13 +548,13 @@ namespace Tizen.UIExtensions.NUI
                 // Can't tracking remove if there is no data of old index
                 if (idx == -1)
                 {
-                    LayoutManager.ItemSourceUpdated();
+                    LayoutManager?.ItemSourceUpdated();
                 }
                 else
                 {
                     foreach (var item in e.OldItems)
                     {
-                        LayoutManager.ItemRemoved(idx);
+                        LayoutManager?.ItemRemoved(idx);
                         foreach (var viewHolder in _viewHolderIndexTable.Keys.ToList())
                         {
                             if (_viewHolderIndexTable[viewHolder] > idx)
@@ -553,63 +567,63 @@ namespace Tizen.UIExtensions.NUI
             }
             else if (e.Action == NotifyCollectionChangedAction.Move)
             {
-                LayoutManager.ItemRemoved(e.OldStartingIndex);
-                LayoutManager.ItemInserted(e.NewStartingIndex);
+                LayoutManager?.ItemRemoved(e.OldStartingIndex);
+                LayoutManager?.ItemInserted(e.NewStartingIndex);
             }
             else if (e.Action == NotifyCollectionChangedAction.Replace)
             {
                 // Can't tracking if there is no information old data
                 if (e.OldItems.Count > 1 || e.NewStartingIndex == -1)
                 {
-                    LayoutManager.ItemSourceUpdated();
+                    LayoutManager?.ItemSourceUpdated();
                 }
                 else
                 {
-                    LayoutManager.ItemUpdated(e.NewStartingIndex);
+                    LayoutManager?.ItemUpdated(e.NewStartingIndex);
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                LayoutManager.Reset();
-                LayoutManager.ItemSourceUpdated();
+                LayoutManager?.Reset();
+                LayoutManager?.ItemSourceUpdated();
             }
             RequestLayoutItems();
         }
 
 
-        void OnScrollAnimationEnded(object sender, ScrollEventArgs e)
+        void OnScrollAnimationEnded(object? sender, ScrollEventArgs e)
         {
             SendScrolledEvent();
         }
 
-        void OnLayout(object sender, EventArgs e)
+        void OnLayout(object? sender, EventArgs e)
         {
             //called when resized
             AllocatedSize = ScrollView.Size.ToCommon();
             _itemSize = new Size(-1, -1);
 
-            if (_adaptor != null && _layoutManager != null)
+            if (Adaptor != null && LayoutManager != null)
             {
                 ScrollView.ScrollingDirection = LayoutManager.IsHorizontal ? ScrollableBase.Direction.Horizontal : ScrollableBase.Direction.Vertical;
-                _layoutManager?.SizeAllocated(AllocatedSize);
+                LayoutManager.SizeAllocated(AllocatedSize);
                 UpdateHeaderFooter();
                 ContentSizeUpdated();
-                _layoutManager?.LayoutItems(ViewPort);
+                LayoutManager.LayoutItems(ViewPort);
             }
         }
 
-        void OnScrolling(object sender, ScrollEventArgs e)
+        void OnScrolling(object? sender, ScrollEventArgs e)
         {
             var viewportFromEvent = new Rect(-e.Position.X, -e.Position.Y, ScrollView.Size.Width, ScrollView.Size.Height);
-            _layoutManager?.LayoutItems(viewportFromEvent);
+            LayoutManager?.LayoutItems(viewportFromEvent);
         }
 
         void SendScrolledEvent()
         {
             var args = new CollectionViewScrolledEventArgs();
-            args.FirstVisibleItemIndex = _layoutManager.GetVisibleItemIndex(ViewPort.X, ViewPort.Y);
-            args.CenterItemIndex = _layoutManager.GetVisibleItemIndex(ViewPort.X + (ViewPort.Width / 2), ViewPort.Y + (ViewPort.Height / 2));
-            args.LastVisibleItemIndex = _layoutManager.GetVisibleItemIndex(ViewPort.X + ViewPort.Width, ViewPort.Y + ViewPort.Height);
+            args.FirstVisibleItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X, ViewPort.Y);
+            args.CenterItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X + (ViewPort.Width / 2), ViewPort.Y + (ViewPort.Height / 2));
+            args.LastVisibleItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X + ViewPort.Width, ViewPort.Y + ViewPort.Height);
             args.HorizontalOffset = ViewPort.X;
             args.HorizontalDelta = ViewPort.X - _previousHorizontalOffset;
             args.VerticalOffset = ViewPort.Y;
@@ -623,10 +637,10 @@ namespace Tizen.UIExtensions.NUI
         void UpdateHeaderFooter()
         {
             LayoutManager?.SetHeader(_headerView,
-                _headerView != null ? Adaptor.MeasureHeader(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
+                _headerView != null ? Adaptor!.MeasureHeader(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
 
             LayoutManager?.SetFooter(_footerView,
-                _footerView != null ? Adaptor.MeasureFooter(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
+                _footerView != null ? Adaptor!.MeasureFooter(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
         }
 
         void UpdateSelectionMode()
@@ -664,8 +678,11 @@ namespace Tizen.UIExtensions.NUI
             Adaptor?.SendItemSelected(_selectedItems);
         }
 
-        void OnRequestItemSelected(object sender, EventArgs e)
+        void OnRequestItemSelected(object? sender, EventArgs e)
         {
+            if (sender == null)
+                return;
+
             var viewHolder = (ViewHolder)sender;
             if (_viewHolderIndexTable.ContainsKey(viewHolder))
             {
@@ -681,8 +698,11 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        void OnItemStateUpdated(object sender, EventArgs e)
+        void OnItemStateUpdated(object? sender, EventArgs e)
         {
+            if (sender == null)
+                return;
+
             ViewHolder holder = (ViewHolder)sender;
             if (holder.Content != null)
             {

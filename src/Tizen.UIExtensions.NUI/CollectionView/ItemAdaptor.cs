@@ -18,7 +18,11 @@ namespace Tizen.UIExtensions.NUI
         ///  Initializes a new instance of the <see cref="ItemAdaptor"/> class.
         /// </summary>
         /// <param name="items">Items soruce</param>
+#pragma warning disable CS8618
+        // dotnet compiler does not track a method that called on constructor to check non-nullable object
+        // https://github.com/dotnet/roslyn/issues/32358
         protected ItemAdaptor(IEnumerable items)
+#pragma warning restore CS8618
         {
             SetItemsSource(items);
         }
@@ -26,7 +30,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// A CollectionView associated with current Adaptor
         /// </summary>
-        public ICollectionViewController CollectionView { get; set; }
+        public ICollectionViewController? CollectionView { get; set; }
 
         /// <summary>
         /// Sets ItemsSource
@@ -53,7 +57,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public object this[int index]
+        public object? this[int index]
         {
             get
             {
@@ -66,8 +70,8 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public virtual int Count => _itemsSource.Count;
 
-        INotifyCollectionChanged _observableCollection;
-        event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged
+        INotifyCollectionChanged? _observableCollection;
+        event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
         {
             add
             {

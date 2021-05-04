@@ -8,9 +8,7 @@ namespace Tizen.UIExtensions.Common
 
         public static void BatchBegin(this IBatchable target)
         {
-            BatchCount value = null;
-
-            if (s_counters.TryGetValue(target, out value))
+            if (s_counters.TryGetValue(target, out BatchCount? value))
             {
                 value.Count++;
             }
@@ -22,8 +20,7 @@ namespace Tizen.UIExtensions.Common
 
         public static void BatchCommit(this IBatchable target)
         {
-            BatchCount value = null;
-            if (s_counters.TryGetValue(target, out value))
+            if (s_counters.TryGetValue(target, out BatchCount? value))
             {
                 value.Count--;
                 if (value.Count == 0)
@@ -44,9 +41,7 @@ namespace Tizen.UIExtensions.Common
 
         public static bool IsBatched(this IBatchable target)
         {
-            BatchCount value = null;
-
-            if (s_counters.TryGetValue(target, out value))
+            if (s_counters.TryGetValue(target, out BatchCount? value))
             {
                 return value.Count != 0;
             }
