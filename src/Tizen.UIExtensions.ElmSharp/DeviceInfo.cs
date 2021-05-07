@@ -41,7 +41,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         static Lazy<double> s_elmScale = new Lazy<double>(() =>
         {
-            return s_deviceScale.Value / Elementary.GetScale();
+            return s_deviceScale!.Value / Elementary.GetScale();
         });
 
         static Lazy<DeviceType> s_deviceType = new Lazy<DeviceType>(() =>

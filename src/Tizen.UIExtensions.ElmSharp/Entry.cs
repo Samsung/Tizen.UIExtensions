@@ -17,7 +17,9 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Initializes a new instance of the <see cref="Entry"/> class.
         /// </summary>
         /// <param name="parent">Parent evas object.</param>
+#pragma warning disable CS8618
         public Entry(EvasObject parent) : base(parent)
+#pragma warning restore CS8618
         {
             Initialize();
         }

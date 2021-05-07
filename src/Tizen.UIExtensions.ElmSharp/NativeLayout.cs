@@ -5,15 +5,15 @@ namespace Tizen.UIExtensions.ElmSharp
 {
     public class NativeLayout : ELayout
     {
-        public string ThemeClass { get; private set; }
-        public string ThemeGroup { get; private set; }
-        public string ThemeStyle { get; private set; }
+        public string? ThemeClass { get; private set; }
+        public string? ThemeGroup { get; private set; }
+        public string? ThemeStyle { get; private set; }
 
         public NativeLayout(EvasObject parent) : base(parent)
         {
         }
 
-        public new void SetTheme(string klass, string group, string style)
+        public new void SetTheme(string? klass, string? group, string? style)
         {
             base.SetTheme(klass, group, style);
             ThemeClass = klass;
@@ -108,7 +108,7 @@ namespace Tizen.UIExtensions.ElmSharp
             SetTheme("layout", "editfield", style);
         }
 
-        public bool SetButtonPart(EvasObject content, bool preserveOldContent = false)
+        public bool SetButtonPart(EvasObject? content, bool preserveOldContent = false)
         {
             return SetPartContent(Parts.Button, content, preserveOldContent);
         }

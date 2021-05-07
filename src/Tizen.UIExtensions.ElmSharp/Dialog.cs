@@ -22,12 +22,12 @@ namespace Tizen.UIExtensions.ElmSharp
     /// </summary>
     public class Dialog : Popup
     {
-        EButton _positiveButton;
-        EButton _neutralButton;
-        EButton _negativeButton;
-        EvasObject _content;
-        string _title;
-        string _message;
+        EButton? _positiveButton;
+        EButton? _neutralButton;
+        EButton? _negativeButton;
+        EvasObject? _content;
+        string? _title;
+        string? _message;
         Color _titleColor = Common.Color.Default;
 
         /// <summary>
@@ -49,12 +49,12 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs whenever the dialog is first displayed.
         /// </summary>
-        public event EventHandler Shown;
+        public event EventHandler? Shown;
 
         /// <summary>
         /// Gets or sets the title of the dialog
         /// </summary>
-        public string Title
+        public string? Title
         {
             get
             {
@@ -89,7 +89,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the message to display in the dialog
         /// </summary>
-        public string Message
+        public string? Message
         {
             get
             {
@@ -108,7 +108,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the content to display in that dialog.
         /// </summary>
-        public EvasObject Content
+        public EvasObject? Content
         {
             get
             {
@@ -127,7 +127,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the positive button used in the dialog
         /// </summary>
-        public EButton PositiveButton
+        public EButton? PositiveButton
         {
             get
             {
@@ -146,7 +146,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the neutral button used in the dialog
         /// </summary>
-        public EButton NeutralButton
+        public EButton? NeutralButton
         {
             get
             {
@@ -165,7 +165,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the negative button used in the dialog
         /// </summary>
-        public EButton NegativeButton
+        public EButton? NegativeButton
         {
             get
             {
@@ -227,7 +227,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Changes the dialog title.
         /// </summary>
         /// <param name="title">New dialog title.</param>
-        protected virtual void ApplyTitle(string title)
+        protected virtual void ApplyTitle(string? title)
         {
             this.SetTitleTextPart(title);
         }
@@ -242,7 +242,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         /// <param name="position">The slot to be occupied by the button expressed as a <see cref="ButtonPosition"/></param>
         /// <param name="button">The new button.</param>
-        protected virtual void ApplyButton(ButtonPosition position, EButton button)
+        protected virtual void ApplyButton(ButtonPosition position, EButton? button)
         {
             if (button is Button tButton)
             {
@@ -269,12 +269,12 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Updates the content of the dialog.
         /// </summary>
         /// <param name="content">New dialog content.</param>
-        protected virtual void ApplyContent(EvasObject content)
+        protected virtual void ApplyContent(EvasObject? content)
         {
             this.SetContentPart(content, true);
         }
 
-        protected virtual void ApplyMessage(string message)
+        protected virtual void ApplyMessage(string? message)
         {
             base.Text = message;
         }
