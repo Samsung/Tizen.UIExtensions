@@ -54,7 +54,7 @@ namespace Tizen.UIExtensions.Common
         /// </summary>
         /// <param name="o">Another Point.</param>
         /// <returns>true if the X and Y values are equal to those in o. Returns false if o is not a Point.</returns>
-        public override bool Equals(object o)
+        public override bool Equals(object? o)
         {
             if (!(o is Point))
                 return false;

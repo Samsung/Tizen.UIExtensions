@@ -150,7 +150,7 @@ namespace Tizen.UIExtensions.Common
         /// </summary>
         /// <param name="obj">The object to which this is being compared.</param>
         /// <returns>true if obj is a Size whose values are identical to thisSize's Height and Width.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj))
                 return false;

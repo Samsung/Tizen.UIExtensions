@@ -7,7 +7,7 @@ namespace Tizen.UIExtensions.NUI
 {
 	public class SimpleViewStack : View
 	{
-		View _lastTop;
+		View? _lastTop;
 
 		public SimpleViewStack()
 		{
@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.NUI
 
 		public IReadOnlyList<View> Stack => InternalStack;
 
-        public View Top => _lastTop;
+        public View? Top => _lastTop;
 
 		public void Push(View view)
 		{

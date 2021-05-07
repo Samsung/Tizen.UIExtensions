@@ -13,7 +13,7 @@ namespace Tizen.UIExtensions.NUI
         {
             foreach (var item in _pool)
             {
-                adaptor.RemoveNativeView(item.Content);
+                adaptor.RemoveNativeView(item.Content!);
                 item.Unparent();
                 item.Dispose();
             }
@@ -26,7 +26,7 @@ namespace Tizen.UIExtensions.NUI
             _pool.AddLast(view);
         }
 
-        public ViewHolder GetRecyclerView(object category)
+        public ViewHolder? GetRecyclerView(object category)
         {
             var holder = _pool.Where(d => d.ViewCategory == category).FirstOrDefault();
             if (holder != null)
@@ -37,7 +37,7 @@ namespace Tizen.UIExtensions.NUI
             return holder;
         }
 
-        public ViewHolder GetRecyclerView()
+        public ViewHolder? GetRecyclerView()
         {
             if (_pool.First != null)
             {
