@@ -5,16 +5,20 @@ namespace Tizen.UIExtensions.ElmSharp
 {
     public class EditfieldEntry : Entry
     {
-        Button _clearButton;
+        Button? _clearButton;
         Layout _editfieldLayout;
         bool _enableClearButton;
         int _heightPadding = 0;
 
+#pragma warning disable CS8618
         public EditfieldEntry(EvasObject parent) : base(parent)
+#pragma warning restore CS8618
         {
         }
 
+#pragma warning disable CS8618
         public EditfieldEntry(EvasObject parent, string style) : base(parent)
+#pragma warning restore CS8618
         {
             if (!string.IsNullOrEmpty(style) && _editfieldLayout is NativeLayout formsLayout)
                 formsLayout.SetTheme(formsLayout.ThemeClass, formsLayout.ThemeGroup, style);
@@ -46,8 +50,8 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public Color ClearButtonColor
         {
-            get => _clearButton.GetIconColor();
-            set => _clearButton.SetIconColor(value);
+            get => _clearButton?.GetIconColor() ?? Color.Default;
+            set => _clearButton?.SetIconColor(value);
         }
 
         public void SetFocusOnTextBlock(bool isFocused)

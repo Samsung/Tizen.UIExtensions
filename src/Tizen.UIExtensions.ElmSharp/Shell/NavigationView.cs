@@ -11,17 +11,17 @@ namespace Tizen.UIExtensions.ElmSharp
     /// </summary>
     public class NavigationView : Background
     {
-        static EColor s_defaultBackgroundColor = ThemeConstants.Shell.ColorClass.DefaultNavigationViewBackgroundColor;
+        static readonly EColor s_defaultBackgroundColor = ThemeConstants.Shell.ColorClass.DefaultNavigationViewBackgroundColor;
 
         Box _mainLayout;
-        Box _headerBox;
+        Box? _headerBox;
 
         GenList _menu;
         GenItemClass _templateClass;
         GenItemClass _headerClass;
 
-        EvasObject _header;
-        EvasObject _backgroundImage;
+        EvasObject? _header;
+        EvasObject? _backgroundImage;
         EColor _backgroundColor;
 
         DrawerHeaderBehavior _headerBehavior = DrawerHeaderBehavior.Fixed;
@@ -33,7 +33,9 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Initializes a new instance of the <see cref="Tizen.UIExtensions.ElmSharp.NavigationView"/> class.
         /// </summary>
         /// <param name="parent">Parent evas object.</param>
+#pragma warning disable CS8618
         public NavigationView(EvasObject parent) : base(parent)
+#pragma warning restore CS8618
         {
             InitializeComponent(parent);
         }
@@ -71,7 +73,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the background image of the NavigtiaonView.
         /// </summary>
-        public EvasObject BackgroundImage
+        public EvasObject? BackgroundImage
         {
             get => _backgroundImage;
             set
@@ -84,7 +86,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the header view of the NavigtiaonView.
         /// </summary>
-        public EvasObject Header
+        public EvasObject? Header
         {
             get => _header;
             set => UpdateHeader(value);
@@ -93,7 +95,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs when an item is selected in the NavigationView.
         /// </summary>
-        public event EventHandler<SelectedItemChangedEventArgs> ItemSelected;
+        public event EventHandler<SelectedItemChangedEventArgs>? ItemSelected;
 
         /// <summary>
         /// Create the list of items to be displayed on the NavigationView.
@@ -163,7 +165,7 @@ namespace Tizen.UIExtensions.ElmSharp
                     WeightY = 1,
                 };
                 _headerBox.SetLayoutCallback(OnHeaderBoxLayout);
-                _headerBox.MinimumHeight = _header.MinimumHeight;
+                _headerBox.MinimumHeight = _header!.MinimumHeight;
             }
 
             var header = (EvasObject)data;
@@ -174,7 +176,10 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void OnHeaderBoxLayout()
         {
-            _header.Geometry = _headerBox.Geometry;
+            if (_header != null)
+            {
+                _header.Geometry = _headerBox!.Geometry;
+            }
         }
 
         EvasObject GetTemplatedContent(object data, string part)
@@ -196,7 +201,7 @@ namespace Tizen.UIExtensions.ElmSharp
             var bound = Geometry;
             int headerHeight = 0;
 
-            if (!HeaderOnMenu)
+            if (!HeaderOnMenu && _header != null)
             {
                 var headerbound = bound;
                 headerHeight = _header.MinimumHeight;
@@ -209,7 +214,7 @@ namespace Tizen.UIExtensions.ElmSharp
             _menu.Geometry = bound;
         }
 
-        void UpdateHeader(EvasObject header)
+        void UpdateHeader(EvasObject? header)
         {
             if (_header != null)
             {
@@ -237,7 +242,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 }
             }
             _header = header;
-            _header.Show();
+            _header?.Show();
         }
 
         void UpdateHeaderBehavior()
@@ -247,10 +252,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
             if (HeaderOnMenu)
             {
-                if (_header != null)
-                {
-                    _mainLayout.UnPack(_header);
-                }
+                _mainLayout.UnPack(_header);
                 UpdateHeaderOnMenu(_header);
             }
             else
@@ -269,7 +271,7 @@ namespace Tizen.UIExtensions.ElmSharp
             if (_menu.FirstItem != null && _menu.FirstItem.Data == header)
                 return;
 
-            GenListItem item = null;
+            GenListItem item;
             if (_menu.Count > 0)
             {
                 item = _menu.InsertBefore(_headerClass, header, _menu.FirstItem);

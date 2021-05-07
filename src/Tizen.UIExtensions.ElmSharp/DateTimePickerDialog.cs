@@ -13,7 +13,9 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Creates a dialog window.
         /// </summary>
+#pragma warning disable CS8618
         public DateTimePickerDialog(EvasObject parent) : base(parent)
+#pragma warning restore CS8618
         {
             _parent = parent;
             Initialize();
@@ -58,17 +60,17 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs when the date of this dialog has changed.
         /// </summary>
-        public event EventHandler<DateChangedEventArgs> DateTimeChanged;
+        public event EventHandler<DateChangedEventArgs>? DateTimeChanged;
 
         /// <summary>
         /// Occurs when the picker dialog has opened.
         /// </summary>
-        public event EventHandler PickerOpened;
+        public event EventHandler? PickerOpened;
 
         /// <summary>
         /// Occurs when the picker dialog has closed.
         /// </summary>
-        public event EventHandler PickerClosed;
+        public event EventHandler? PickerClosed;
 
         void Initialize()
         {

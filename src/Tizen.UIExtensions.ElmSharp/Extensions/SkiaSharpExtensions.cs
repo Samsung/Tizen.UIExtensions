@@ -95,9 +95,9 @@ namespace Tizen.UIExtensions.ElmSharp
             return solidColorBrush.Color != Color.Default ? solidColorBrush.Color.ToSkia() : SKColor.Empty;
         }
 
-        public static SKShader CreateShader(this GradientBrush gradientBrush, SKRect bounds)
+        public static SKShader? CreateShader(this GradientBrush gradientBrush, SKRect bounds)
         {
-            SKShader shader = null;
+            SKShader? shader = null;
 
             if (gradientBrush is LinearGradientBrush linearGradientBrush)
             {
