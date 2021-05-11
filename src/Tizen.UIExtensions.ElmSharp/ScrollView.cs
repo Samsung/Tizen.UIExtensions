@@ -11,9 +11,9 @@ namespace Tizen.UIExtensions.ElmSharp
     /// </summary>
     public class ScrollView : EScroller
     {
-        TaskCompletionSource<bool> _animationTaskComplateSource;
+        TaskCompletionSource<bool>? _animationTaskComplateSource;
         bool _isAnimation = false;
-        EvasObject _scrollCanvas;
+        EvasObject? _scrollCanvas;
 
         /// <summary>
         /// Creates and initializes a new instance of the ScrollView class.
@@ -83,8 +83,11 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <param name="size">A Size that represents the size of the content.</param>
         public void SetContentSize(int width, int height)
         {
-            _scrollCanvas.MinimumWidth = width;
-            _scrollCanvas.MinimumHeight = height;
+            if (_scrollCanvas != null)
+            {
+                _scrollCanvas.MinimumWidth = width;
+                _scrollCanvas.MinimumHeight = height;
+            }
         }
 
         /// <summary>
@@ -98,7 +101,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             CheckTaskCompletionSource();
             ScrollTo(horizontalPageIndex, verticalPageIndex, animated);
-            return animated && _isAnimation ? _animationTaskComplateSource.Task : Task.CompletedTask;
+            return animated && _isAnimation && _animationTaskComplateSource != null ? _animationTaskComplateSource.Task : Task.CompletedTask;
         }
 
         /// <summary>
@@ -111,7 +114,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             CheckTaskCompletionSource();
             ScrollTo(rect.ToNative(), animated);
-            return animated && _isAnimation ? _animationTaskComplateSource.Task : Task.CompletedTask;
+            return animated && _isAnimation && _animationTaskComplateSource != null ? _animationTaskComplateSource.Task : Task.CompletedTask;
         }
 
         protected override void OnRealized()

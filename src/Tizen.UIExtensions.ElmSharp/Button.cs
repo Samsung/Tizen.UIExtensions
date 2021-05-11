@@ -28,7 +28,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Optional image, if set will be drawn on the button.
         /// </summary>
-        EImage _image;
+        EImage? _image;
 
         /// <summary>
         /// Gets or sets the button's text.
@@ -160,7 +160,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the image to be displayed next to the button's text.
         /// </summary>
         /// <value>The image displayed on the button.</value>
-        public EImage Image
+        public EImage? Image
         {
             get => _image;
             set
@@ -240,7 +240,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void ApplyImage(EImage image)
+        void ApplyImage(EImage? image)
         {
             _image = image;
 
@@ -249,9 +249,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void SetInternalImage()
         {
-#pragma warning disable CS8604 // Possible null reference argument.
             this.SetIconPart(_image);
-#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         public void UpdateStyle(string style)

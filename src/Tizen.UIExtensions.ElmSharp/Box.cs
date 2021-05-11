@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Notifies that the layout has been updated.
         /// </summary>
-        public event EventHandler<LayoutEventArgs> LayoutUpdated;
+        public event EventHandler<LayoutEventArgs>? LayoutUpdated;
 
         /// <summary>
         /// Triggers the <c>LayoutUpdated</c> event.
