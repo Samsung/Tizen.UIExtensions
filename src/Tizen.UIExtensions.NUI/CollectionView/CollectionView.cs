@@ -322,7 +322,7 @@ namespace Tizen.UIExtensions.NUI
         Size ICollectionViewController.GetItemSize(double widthConstraint, double heightConstraint) => GetItemSize(widthConstraint, heightConstraint);
         Size GetItemSize(double widthConstraint, double heightConstraint)
         {
-            if (Adaptor == null)
+            if (Adaptor == null || Adaptor.Count == 0)
             {
                 return new Size(0, 0);
             }
@@ -411,17 +411,22 @@ namespace Tizen.UIExtensions.NUI
             if (SelectionMode == CollectionViewSelectionMode.None)
                 return;
 
-            if (SelectionMode == CollectionViewSelectionMode.Single && _selectedItems.Any())
+            if (SelectionMode != CollectionViewSelectionMode.Multiple && _selectedItems.Any())
             {
                 var selected = _selectedItems.First();
                 if (selected == index)
                 {
                     // already selected
-                    return;
+                    if (SelectionMode == CollectionViewSelectionMode.Single)
+                        return;
                 }
-                var prevSelected = FindViewHolder(_selectedItems.First());
-                prevSelected?.ResetState();
-                _selectedItems.Clear();
+                else
+                {
+                    // clear previous selection item
+                    var prevSelected = FindViewHolder(_selectedItems.First());
+                    prevSelected?.ResetState();
+                    _selectedItems.Clear();
+                }
             }
 
             _selectedItems.Add(index);
@@ -522,6 +527,11 @@ namespace Tizen.UIExtensions.NUI
 
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (sender != Adaptor)
+            {
+                return;
+            }
+
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 int idx = e.NewStartingIndex;
@@ -683,11 +693,12 @@ namespace Tizen.UIExtensions.NUI
             if (sender == null)
                 return;
 
+            // Selection request from UI
             var viewHolder = (ViewHolder)sender;
             if (_viewHolderIndexTable.ContainsKey(viewHolder))
             {
                 var index = _viewHolderIndexTable[viewHolder];
-                if (_selectedItems.Contains(index))
+                if (_selectedItems.Contains(index) && SelectionMode != CollectionViewSelectionMode.SingleAlways)
                 {
                     RequestItemUnselect(index, viewHolder);
                 }
