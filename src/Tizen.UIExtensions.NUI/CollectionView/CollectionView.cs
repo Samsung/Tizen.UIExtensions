@@ -496,6 +496,7 @@ namespace Tizen.UIExtensions.NUI
                 (Adaptor as INotifyCollectionChanged).CollectionChanged -= OnCollectionChanged;
                 Adaptor.CollectionView = null;
             }
+            _selectedItems.Clear();
         }
 
         void OnAdaptorChanged()
@@ -548,6 +549,15 @@ namespace Tizen.UIExtensions.NUI
                             _viewHolderIndexTable[viewHolder]++;
                         }
                     }
+                    var updated = new HashSet<int>();
+                    foreach (var selected in _selectedItems)
+                    {
+                        if (selected >= idx)
+                        {
+                            updated.Add(selected + 1);
+                        }
+                    }
+                    _selectedItems = updated;
                     LayoutManager?.ItemInserted(idx++);
                 }
             }
@@ -572,6 +582,20 @@ namespace Tizen.UIExtensions.NUI
                                 _viewHolderIndexTable[viewHolder]--;
                             }
                         }
+
+                        if (_selectedItems.Contains(idx))
+                        {
+                            _selectedItems.Remove(idx);
+                        }
+                        var updated = new HashSet<int>();
+                        foreach (var selected in _selectedItems)
+                        {
+                            if (selected > idx)
+                            {
+                                updated.Add(selected - 1);
+                            }
+                        }
+                        _selectedItems = updated;
                     }
                 }
             }
