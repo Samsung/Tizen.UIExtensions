@@ -11,12 +11,12 @@ namespace Tizen.UIExtensions.ElmSharp
             EndPoint = new Point(1, 1);
         }
 
-        public LinearGradientBrush(List<GradientStop> gradientStops) : this()
+        public LinearGradientBrush(IList<GradientStop> gradientStops) : this()
         {
             GradientStops = gradientStops;
         }
 
-        public LinearGradientBrush(List<GradientStop> gradientStops, Point startPoint, Point endPoint)
+        public LinearGradientBrush(IList<GradientStop> gradientStops, Point startPoint, Point endPoint)
         {
             GradientStops = gradientStops;
             StartPoint = startPoint;
