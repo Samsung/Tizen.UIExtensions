@@ -304,6 +304,7 @@ namespace Tizen.UIExtensions.ElmSharp
             switch (_stretch)
             {
                 case Stretch.None:
+                    drawableBounds = _drawableBounds;
                     float adjustX = Math.Min(0, _pathStrokeBounds.Left);
                     float adjustY = Math.Min(0, _pathStrokeBounds.Top);
                     if (adjustX < 0 || adjustY < 0)
