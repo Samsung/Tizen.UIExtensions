@@ -140,6 +140,11 @@ namespace Tizen.UIExtensions.NUI
 
             if (_hasUnevenRows)
             {
+                // If item source was shared between adaptors, in some case CollectionView.Count could be wrong
+                if (_accumulatedItemSizes.Count == 0)
+                {
+                    return _allocatedSize;
+                }
                 totalItemSize = _accumulatedItemSizes[_accumulatedItemSizes.Count - 1] + FooterSizeWithSpacing;
             }
             else

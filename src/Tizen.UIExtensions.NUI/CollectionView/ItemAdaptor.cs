@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,8 +11,9 @@ namespace Tizen.UIExtensions.NUI
     /// Base class for an Adapter
     /// Adapters provide a binding from an app-specific data set to views that are displayed within a CollectionView.
     /// </summary>
-    public abstract class ItemAdaptor : INotifyCollectionChanged
+    public abstract class ItemAdaptor : INotifyCollectionChanged, IDisposable
     {
+        bool disposedValue;
         IList _itemsSource;
 
         /// <summary>
@@ -42,7 +44,11 @@ namespace Tizen.UIExtensions.NUI
             {
                 case IList list:
                     _itemsSource = list;
-                    _observableCollection = list as INotifyCollectionChanged;
+                    if (list is INotifyCollectionChanged observable)
+                    {
+                        _observableCollection = observable;
+                        _observableCollection.CollectionChanged += OnCollectionChanged;
+                    }
                     break;
                 case IEnumerable<object> generic:
                     _itemsSource = new List<object>(generic);
@@ -71,23 +77,11 @@ namespace Tizen.UIExtensions.NUI
         public virtual int Count => _itemsSource.Count;
 
         INotifyCollectionChanged? _observableCollection;
-        event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
-        {
-            add
-            {
-                if (_observableCollection != null)
-                {
-                    _observableCollection.CollectionChanged += value;
-                }
-            }
-            remove
-            {
-                if (_observableCollection != null)
-                {
-                    _observableCollection.CollectionChanged -= value;
-                }
-            }
-        }
+
+        /// <summary>
+        /// Occurs when the collection changes.
+        /// </summary>
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         /// <summary>
         /// Handle Selected item
@@ -202,5 +196,32 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="heightConstraint">A height  size that could be reached as maximum</param>
         /// <returns>Footer size</returns>
         public abstract Size MeasureFooter(double widthConstraint, double heightConstraint);
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (_observableCollection != null)
+                    {
+                        _observableCollection.CollectionChanged -= OnCollectionChanged;
+                    }
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CollectionChanged?.Invoke(this, e);
+        }
     }
 }

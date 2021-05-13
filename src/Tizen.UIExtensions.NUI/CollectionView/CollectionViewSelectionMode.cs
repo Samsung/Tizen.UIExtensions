@@ -18,6 +18,11 @@
         /// <summary>
         /// Indicates that multiple items can be selected.
         /// </summary>
-        Multiple
+        Multiple,
+
+        /// <summary>
+        /// Indicates that a single item can be always selected.
+        /// </summary>
+        SingleAlways,
     }
 }
