@@ -471,7 +471,12 @@ namespace Tizen.UIExtensions.NUI
 
             _itemSize = new Size(-1, -1);
             _layoutManager.CollectionView = this;
-            ScrollView.ScrollingDirection = _layoutManager.IsHorizontal ? ScrollableBase.Direction.Horizontal : ScrollableBase.Direction.Vertical;
+            var orientation = _layoutManager.IsHorizontal ? ScrollableBase.Direction.Horizontal : ScrollableBase.Direction.Vertical;
+            if (ScrollView.ScrollingDirection != orientation)
+            {
+                ScrollView.ScrollTo(0, false);
+                ScrollView.ScrollingDirection = orientation;
+            }
             _layoutManager.SizeAllocated(AllocatedSize);
             UpdateHeaderFooter();
             RequestLayoutItems();
