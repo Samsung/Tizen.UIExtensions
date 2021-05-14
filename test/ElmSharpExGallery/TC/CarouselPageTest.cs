@@ -15,10 +15,8 @@ namespace ElmSharpExGallery.TC
             {
                 WeightX = 1,
                 WeightY = 1,
-                AlignmentY = 0.5,
-                AlignmentX = 0.5,
-                MinimumWidth = 500,
-                MinimumHeight = 500,
+                AlignmentY = -1,
+                AlignmentX = -1,
             };
             carouselPage.Show();
 
