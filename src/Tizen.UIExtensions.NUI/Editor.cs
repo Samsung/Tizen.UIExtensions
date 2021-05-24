@@ -7,6 +7,9 @@ using TColor = Tizen.UIExtensions.Common.Color;
 
 namespace Tizen.UIExtensions.NUI
 {
+    /// <summary>
+    /// A control which provides a multi-line editable text editor.
+    /// </summary>
     public class Editor : TextEditor, IMeasurable
     {
         float _defaultFontSize;
@@ -16,7 +19,7 @@ namespace Tizen.UIExtensions.NUI
         FontAttributes _fontAttributes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entry"/> class.
+        /// Initializes a new instance of the <see cref="Editor"/> class.
         /// </summary>
         public Editor()
         {

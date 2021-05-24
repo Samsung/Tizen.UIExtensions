@@ -9,6 +9,9 @@ using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
 
 namespace Tizen.UIExtensions.NUI
 {
+    /// <summary>
+    /// A control which provides a single line editable text field.
+    /// </summary>
     public class Entry : TextField, IMeasurable
     {
         float _defaultFontSize;
