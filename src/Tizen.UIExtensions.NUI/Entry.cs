@@ -5,7 +5,7 @@ using NColor = Tizen.NUI.Color;
 using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using Size = Tizen.UIExtensions.Common.Size;
 using TColor = Tizen.UIExtensions.Common.Color;
-
+using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -18,6 +18,7 @@ namespace Tizen.UIExtensions.NUI
         FontAttributes _fontAttributes;
         Keyboard _keyboard = Keyboard.Normal;
         ReturnType _returnType = ReturnType.Default;
+        AutoCapitalType _autoCapital = AutoCapitalType.None;
         bool _isPassword;
 
         /// <summary>
@@ -185,6 +186,22 @@ namespace Tizen.UIExtensions.NUI
         }
 
         /// <summary>
+        /// Sets or Gets the autocapitalization type on the im module.
+        /// </summary>
+        public AutoCapitalType AutoCapital
+        {
+            get => _autoCapital;
+            set
+            {
+                if (_autoCapital != value)
+                {
+                    _autoCapital = value;
+                    ApplyInputMethodSetting();
+                }
+            }
+        }
+
+        /// <summary>
         /// Implements <see cref="IMeasurable"/> to provide a desired size of the label.
         /// </summary>
         /// <param name="availableWidth">Available width.</param>
@@ -225,15 +242,16 @@ namespace Tizen.UIExtensions.NUI
 
         void ApplyInputMethodSetting()
         {
-            InputMethodSettings = CreateInputMethodSettings(Keyboard, ReturnType);
+            InputMethodSettings = CreateInputMethodSettings(Keyboard, ReturnType, AutoCapital);
         }
 
-        PropertyMap CreateInputMethodSettings(Keyboard keyboard, ReturnType returnType)
+        PropertyMap CreateInputMethodSettings(Keyboard keyboard, ReturnType returnType, AutoCapitalType autoCapital)
         {
             var inputMethod = new InputMethod
             {
                 PanelLayout = keyboard.ToPanelLayoutType(),
-                ActionButton = returnType.ToActionButtonType()
+                ActionButton = returnType.ToActionButtonType(),
+                AutoCapital = autoCapital,
             };
             if (inputMethod.PanelLayout == NPanelLayoutType.NumberOnly)
             {
