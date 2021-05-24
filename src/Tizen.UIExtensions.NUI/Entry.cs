@@ -6,6 +6,7 @@ using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using Size = Tizen.UIExtensions.Common.Size;
 using TColor = Tizen.UIExtensions.Common.Color;
 using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
+using System;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -217,16 +218,16 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (availableWidth < NaturalSize.Width)
                 {
-                    return new Size(availableWidth, GetHeightForWidth((float)availableWidth));
+                    return new Size(availableWidth, NaturalSize.Height);
                 }
                 else if (NaturalSize.Width > 0)
                 {
-                    return new Size(NaturalSize.Width, GetHeightForWidth(NaturalSize.Width));
+                    return new Size(NaturalSize.Width, NaturalSize.Height);
                 }
                 else
                 {
                     // even though text but natural size is zero. it is abnormal state
-                    return new Size(Text.Length * PixelSize + 10, PixelSize + 10);
+                    return new Size(Math.Max(Text.Length * PixelSize + 10, availableWidth), PixelSize + 10);
                 }
             }
             else
