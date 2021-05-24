@@ -76,8 +76,9 @@ namespace NUIExGallery.TC
             {
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 FontAttributes = FontAttributes.Italic,
-                Placeholder = "Italic",
+                Placeholder = "Italic and AutoCaptial.Word",
                 PlaceholderColor = Color.Red,
+                AutoCapital = InputMethod.AutoCapitalType.Word
             });
 
             view.Add(new Entry
@@ -99,6 +100,34 @@ namespace NUIExGallery.TC
             };
             view.Add(searchkey);
             Debug.Assert(searchkey.ReturnType == ReturnType.Search, "ReturnType");
+            searchkey.KeyEvent += (s, e) =>
+            {
+                Console.WriteLine($"KeyEvent State : {e.Key.State} , KeyPressedName : {e.Key.KeyPressedName}");
+                return false;
+            };
+
+            
+
+            var moveEnd = new Button()
+            {
+                Text = "Cursor move end"
+            };
+            moveEnd.Clicked += (s, e) =>
+            {
+                searchkey.PrimaryCursorPosition = searchkey.Text.Length;
+            };
+            view.Add(moveEnd);
+
+            var selectionChange = new Button()
+            {
+                Text = "Selection Change"
+            };
+            selectionChange.Clicked += (s, e) =>
+            {
+                searchkey.SelectedTextEnd = (searchkey.SelectedTextStart + searchkey.SelectedTextEnd) / 2;
+            };
+            view.Add(selectionChange);
+
 
             return view;
         }
