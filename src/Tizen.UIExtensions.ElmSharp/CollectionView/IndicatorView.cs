@@ -21,7 +21,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs when the IndicatorView.Position selected.
         /// </summary>
-		public event EventHandler<SelectedPositionChangedEventArgs> SelectedPosition;
+		public event EventHandler<SelectedPositionChangedEventArgs>? SelectedPosition;
 
         /// <summary>
         /// Update the selection status of index.

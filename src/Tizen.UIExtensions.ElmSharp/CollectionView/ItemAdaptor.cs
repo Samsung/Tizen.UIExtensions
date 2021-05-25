@@ -20,14 +20,16 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// A CollectionView associated with current Adaptor
         /// </summary>
-		public CollectionView CollectionView { get; set; }
+		public CollectionView? CollectionView { get; set; }
 
         /// <summary>
         ///  Initializes a new instance of the <see cref="ItemAdaptor"/> class.
         /// </summary>
         /// <param name="items">Items soruce</param>
-		protected ItemAdaptor(IEnumerable items)
-		{
+#pragma warning disable CS8618
+        protected ItemAdaptor(IEnumerable items)
+#pragma warning restore CS8618
+        {
 			SetItemsSource(items);
 		}
 
@@ -97,7 +99,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
 		public int Count => _itemsSource.Count;
 
-		INotifyCollectionChanged _observableCollection;
+		INotifyCollectionChanged? _observableCollection;
 		event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged
 		{
 			add
