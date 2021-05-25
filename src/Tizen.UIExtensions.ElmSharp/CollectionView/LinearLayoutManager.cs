@@ -22,9 +22,9 @@ namespace Tizen.UIExtensions.ElmSharp
 		int _baseItemSize;
 
 		Size _headerSize;
-		EvasObject _header;
+		EvasObject? _header;
 		Size _footerSize;
-		EvasObject _footer;
+		EvasObject? _footer;
 
         /// <summary>
         /// Initializes a new instance of the LinearLayoutManager class.
@@ -45,8 +45,10 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <param name="isHorizontal">Layout orientation</param>
         /// <param name="sizingStrategy">Item size measuring strategy</param>
         /// <param name="itemSpacing">A space size between items</param>
+#pragma warning disable CS8618
         public LinearLayoutManager(bool isHorizontal, ItemSizingStrategy sizingStrategy, int itemSpacing)
-		{
+#pragma warning restore CS8618
+        {
 			IsHorizontal = isHorizontal;
 			_hasUnevenRows = sizingStrategy == ItemSizingStrategy.MeasureAllItems;
 			ItemSpacing = itemSpacing;
@@ -199,15 +201,11 @@ namespace Tizen.UIExtensions.ElmSharp
 			var parent = CollectionView.ParentPosition;
 			for (int i = startIndex; i <= endIndex; i++)
 			{
-				EvasObject itemView = null;
+				EvasObject itemView;
 				if (!_realizedItem.ContainsKey(i))
 				{
 					var view = CollectionView.RealizeView(i);
-					_realizedItem[i] = new RealizedItem
-					{
-						View = view,
-						Index = i,
-					};
+                    _realizedItem[i] = new RealizedItem(view, i);
 					itemView = view;
 				}
 				else
@@ -393,7 +391,7 @@ namespace Tizen.UIExtensions.ElmSharp
 			return BaseItemSize + ItemSpacing;
 		}
 
-		public void SetHeader(EvasObject header, Size size)
+		public void SetHeader(EvasObject? header, Size size)
 		{
 			bool contentSizeChanged = false;
 			if (IsHorizontal)
@@ -432,7 +430,7 @@ namespace Tizen.UIExtensions.ElmSharp
 			}
 		}
 
-		public void SetFooter(EvasObject footer, Size size)
+		public void SetFooter(EvasObject? footer, Size size)
 		{
 			bool contentSizeChanged = false;
 			if (IsHorizontal)
@@ -627,7 +625,13 @@ namespace Tizen.UIExtensions.ElmSharp
 
 		class RealizedItem
 		{
-			public ViewHolder View { get; set; }
+            public RealizedItem(ViewHolder view, int index)
+            {
+                View = view;
+                Index = index;
+            }
+
+            public ViewHolder View { get; set; }
 			public int Index { get; set; }
 		}
 	}

@@ -21,7 +21,7 @@ namespace Tizen.UIExtensions.ElmSharp
             _pool.AddLast(view);
         }
 
-		public ViewHolder GetRecyclerView(object category)
+		public ViewHolder? GetRecyclerView(object category)
 		{
             var holder = _pool.Where(d => d.ViewCategory == category).FirstOrDefault();
 			if (holder != null)
@@ -29,7 +29,7 @@ namespace Tizen.UIExtensions.ElmSharp
 			return holder;
 		}
 
-		public ViewHolder GetRecyclerView()
+		public ViewHolder? GetRecyclerView()
 		{
             if (_pool.First != null)
 			{

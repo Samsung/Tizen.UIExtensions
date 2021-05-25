@@ -7,20 +7,22 @@ namespace Tizen.UIExtensions.ElmSharp
 	public class ViewHolder : Box
 	{
 		Button _focusArea;
-		EvasObject _content;
+		EvasObject? _content;
 		ViewHolderState _state;
 		bool _isSelected;
 		bool _isFocused;
 		bool _focusable;
 
-		public ViewHolder(EvasObject parent) : base(parent)
-		{
+#pragma warning disable CS8618
+        public ViewHolder(EvasObject parent) : base(parent)
+#pragma warning restore CS8618
+        {
 			Initialize(parent);
 		}
 
 		public object ViewCategory { get; set; }
 
-		public EvasObject Content
+		public EvasObject? Content
 		{
 			get
 			{
