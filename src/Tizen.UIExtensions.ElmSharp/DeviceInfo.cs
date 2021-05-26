@@ -197,7 +197,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public static bool IsIoT => GetDeviceType() == DeviceType.IoT;
 
-        static DisplayResolutionUnit s_displayResolutionUnit;
+        static DisplayResolutionUnit s_displayResolutionUnit = DisplayResolutionUnit.DP;
         public static DisplayResolutionUnit DisplayResolutionUnit {
             get => s_displayResolutionUnit;
 

@@ -67,7 +67,7 @@ namespace Tizen.UIExtensions.NUI
 
         public static Size ScaledDPScreenSize => new Size(ScreenWidth / ScalingFactor, ScreenHeight / ScalingFactor);
 
-        static DisplayResolutionUnit s_displayResolutionUnit;
+        static DisplayResolutionUnit s_displayResolutionUnit = DisplayResolutionUnit.DP;
         public static DisplayResolutionUnit DisplayResolutionUnit
         {
             get => s_displayResolutionUnit;
