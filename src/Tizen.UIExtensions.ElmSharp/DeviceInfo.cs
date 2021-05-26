@@ -125,6 +125,10 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        public static DeviceType DeviceType => GetDeviceType();
+        public static string Profile => GetProfile();
+
+
         public static double GetPhysicalPortraitSizeInDP()
         {
             var screenSize = DPScreenSize;
