@@ -1,6 +1,5 @@
-using System;
-using System.ComponentModel;
 using ElmSharp;
+using System;
 using TSystemInfo = Tizen.System.Information;
 
 namespace Tizen.UIExtensions.ElmSharp
@@ -113,36 +112,16 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public static Size ScaledDPScreenSize => new Size((int)(s_screenWidth.Value / ScalingFactor), (int)(s_screenHeight.Value / ScalingFactor));
 
+        static double s_scalingFactor;
         public static double ScalingFactor
         {
             get
             {
-                var scalingFactor = 1.0;  // scaling is disabled, we're using pixels as Xamarin's geometry units
-                if (DisplayResolutionUnit == DisplayResolutionUnit.VP && ViewPortWidth > 0)
+                if (s_scalingFactor == 0)
                 {
-                    scalingFactor = s_screenWidth.Value / ViewPortWidth;
+                    UpdateScalingFactor();
                 }
-                else
-                {
-                    if (DisplayResolutionUnit == DisplayResolutionUnit.DP || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
-                    {
-                        scalingFactor = DPI / 160.0;
-                    }
-
-                    if (DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledPixel || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
-                    {
-                        var portraitSize = Math.Min(DPScreenSize.Width, DPScreenSize.Height);
-                        if (portraitSize > 2000)
-                        {
-                            scalingFactor *= 4;
-                        }
-                        else if (portraitSize > 1000)
-                        {
-                            scalingFactor *= 2.5;
-                        }
-                    }
-                }
-                return scalingFactor;
+                return s_scalingFactor;
             }
         }
 
@@ -214,21 +193,66 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public static bool IsIoT => GetDeviceType() == DeviceType.IoT;
 
+        static DisplayResolutionUnit s_displayResolutionUnit;
         public static DisplayResolutionUnit DisplayResolutionUnit {
-            get;
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            set; // Use internal only
+            get => s_displayResolutionUnit;
+
+            set
+            {
+                if (s_displayResolutionUnit != value)
+                {
+                    s_displayResolutionUnit = value;
+                    UpdateScalingFactor();
+                }
+            }
         }
 
-        public static double ViewPortWidth { get; internal set; }
+        static double s_viewPortWidth;
+        public static double ViewPortWidth
+        {
+            get => s_viewPortWidth;
+            set
+            {
+                if (s_viewPortWidth != value)
+                {
+                    s_viewPortWidth = value;
+                    if (DisplayResolutionUnit == DisplayResolutionUnit.VP)
+                    {
+                        UpdateScalingFactor();
+                    }
+                }
+            }
+        }
 
-        //public static bool UseDP { get; set; } = true;
+        static void UpdateScalingFactor()
+        {
+            var scalingFactor = 1.0;  // scaling is disabled, we're using pixels as Xamarin's geometry units
+            if (DisplayResolutionUnit == DisplayResolutionUnit.VP && ViewPortWidth > 0)
+            {
+                scalingFactor = s_screenWidth.Value / ViewPortWidth;
+            }
+            else
+            {
+                if (DisplayResolutionUnit == DisplayResolutionUnit.DP || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
+                {
+                    scalingFactor = DPI / 160.0;
+                }
 
-        //public static bool UseDeviceAutoScaling { get; set; } = false;
-
-        //public static bool UseVP { get; set; } = false;
-
-        //public static double ViewPortWidth { get; set; } = -1d;
+                if (DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledPixel || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
+                {
+                    var portraitSize = Math.Min(DPScreenSize.Width, DPScreenSize.Height);
+                    if (portraitSize > 2000)
+                    {
+                        scalingFactor *= 4;
+                    }
+                    else if (portraitSize > 1000)
+                    {
+                        scalingFactor *= 2.5;
+                    }
+                }
+            }
+            s_scalingFactor = scalingFactor;
+        }
     }
 
     public enum DeviceType
