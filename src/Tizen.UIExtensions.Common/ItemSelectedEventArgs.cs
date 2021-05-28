@@ -5,14 +5,14 @@ namespace Tizen.UIExtensions.Common
     /// <summary>
     /// Holds information about selected item.
     /// </summary>
-    public class SelectedItemChangedEventArgs : EventArgs
+    public class ItemSelectedEventArgs : EventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tizen.UIExtensions.Common.SelectedItemChangedEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="Tizen.UIExtensions.Common.ItemSelectedEventArgs"/> class.
         /// </summary>
         /// <param name="selectedItem">the selected item object</param>
         /// <param name="selectedItemIndex">An index value of the selected item</param>
-        public SelectedItemChangedEventArgs(object selectedItem, int selectedItemIndex)
+        public ItemSelectedEventArgs(object selectedItem, int selectedItemIndex)
         {
             SelectedItem = selectedItem;
             SelectedItemIndex = selectedItemIndex;
