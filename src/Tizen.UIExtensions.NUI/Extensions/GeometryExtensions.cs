@@ -11,14 +11,21 @@ namespace Tizen.UIExtensions.NUI
         {
             view.Size = size.ToNative();
         }
+
         public static void UpdatePosition(this View view, Point position)
         {
             view.Position = position.ToNative();
         }
+
         public static void UpdateBounds(this View view, Rect bounds)
         {
             view.Size = bounds.Size.ToNative();
             view.Position = bounds.Location.ToNative();
+        }
+
+        public static Rect GetBounds(this View view)
+        {
+            return new Rect(view.Position.ToCommon(), view.Size.ToCommon());
         }
     }
 }
