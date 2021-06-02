@@ -17,6 +17,7 @@ namespace NUIExGallery
         protected override void OnCreate()
         {
             base.OnCreate();
+
             Initialize();
             Stack.Push(CreateListPage(GetTestCases()));
         }
@@ -150,6 +151,12 @@ namespace NUIExGallery
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
+                if (Tizen.UIExtensions.NUI.Popup.HasOpenedPopup)
+                {
+                    Tizen.UIExtensions.NUI.Popup.CloseLast();
+                    return;
+                }
+
                 if (Stack.Stack.Count > 1)
                 {
                     Stack.Pop();
