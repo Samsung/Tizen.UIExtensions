@@ -2,6 +2,11 @@
 using Tizen.UIExtensions.Common;
 using ImageView = Tizen.NUI.BaseComponents.ImageView;
 using CSize = Tizen.UIExtensions.Common.Size;
+using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
+using Tizen.Applications;
+using System.Diagnostics;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -85,6 +90,81 @@ namespace Tizen.UIExtensions.NUI
             }
 
             return size;
+        }
+
+        public static async Task<bool> LoadAsync(this ImageView view, string file)
+        {
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            void completed(object? sender, EventArgs args)
+            {
+                tcs.SetResult(view.LoadingStatus == ImageView.LoadingStatusType.Ready);
+            }
+            view.ResourceReady += completed;
+            try
+            {
+                view.ResourceUrl = file;
+                return await tcs.Task;
+            }
+            finally
+            {
+                // need to exit on main thread
+                view.ResourceReady -= completed;
+            }
+        }
+
+        public static async Task<bool> LoadAsync(this ImageView view, Uri uri)
+        {
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            void completed(object? sender, EventArgs args)
+            {
+                tcs.SetResult(view.LoadingStatus == ImageView.LoadingStatusType.Ready);
+            }
+            view.ResourceReady += completed;
+            try
+            {
+                view.ResourceUrl = uri.AbsoluteUri;
+                return await tcs.Task;
+            }
+            finally
+            {
+                // need to exit on main thread
+                view.ResourceReady -= completed;
+            }
+        }
+
+        public static async Task<bool> LoadAsync(this Image view, Stream stream)
+        {
+            if (stream == null)
+                throw new ArgumentNullException(nameof(stream));
+
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            void completed(object? sender, EventArgs args)
+            {
+                tcs.SetResult(view.LoadingStatus == ImageView.LoadingStatusType.Ready);
+            }
+            view.ResourceReady += completed;
+            string tempfile = string.Empty;
+
+            try
+            {
+                view.RemoveTemporaryFile();
+                var cachePath = Application.Current.DirectoryInfo.Cache;
+                tempfile = Path.Combine(cachePath, Path.GetRandomFileName());
+                using (var fs = new FileStream(tempfile, FileMode.OpenOrCreate))
+                {
+                    stream.CopyTo(fs);
+                }
+
+                view.SetTemporaryFile(tempfile);
+
+                view.ResourceUrl = tempfile;
+                return await tcs.Task;
+            }
+            finally
+            {
+                // need to exit on main thread
+                view.ResourceReady -= completed;
+            }
         }
 
     }

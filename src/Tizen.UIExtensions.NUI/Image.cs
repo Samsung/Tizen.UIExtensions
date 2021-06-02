@@ -1,7 +1,8 @@
 ﻿using System;
-using ImageView = Tizen.NUI.BaseComponents.ImageView;
+using System.IO;
 using Tizen.UIExtensions.Common;
 using CSize = Tizen.UIExtensions.Common.Size;
+using ImageView = Tizen.NUI.BaseComponents.ImageView;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -10,6 +11,7 @@ namespace Tizen.UIExtensions.NUI
     /// </summary>
     public class Image : ImageView, IMeasurable
     {
+        string? _temporaryFile;
 
         /// <summary>
         /// Gets or sets the scaling mode for the image.
@@ -29,6 +31,38 @@ namespace Tizen.UIExtensions.NUI
         CSize IMeasurable.Measure(double availableWidth, double availableHeight)
         {
             return this.Measure(availableWidth, availableHeight);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                RemoveTemporaryFile();
+            }
+            base.Dispose(disposing);
+        }
+
+        internal void SetTemporaryFile(string path)
+        {
+            _temporaryFile = path;
+        }
+
+        internal void RemoveTemporaryFile()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(_temporaryFile))
+                {
+                    if (File.Exists(_temporaryFile))
+                    {
+                        File.Delete(_temporaryFile);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Common.Log.Error("Fail to remove temporary file");
+            }
         }
     }
 }
