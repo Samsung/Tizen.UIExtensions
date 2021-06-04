@@ -9,6 +9,7 @@ using NVector4 = Tizen.NUI.Vector4;
 using ScrollableDirection = Tizen.NUI.Components.ScrollableBase.Direction;
 using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using NActionButtonTitleType = Tizen.NUI.InputMethod.ActionButtonTitleType;
+using GColor = System.Graphics.Color;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -64,6 +65,15 @@ namespace Tizen.UIExtensions.NUI
         {
             return new NColor((float)c.R, (float)c.G, (float)c.B, (float)c.A);
         }
+
+        public static GColor ToGraphicsColor(this Color color, string fallback)
+        {
+            if (!color.IsDefault)
+                return new GColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
+            else
+                return new GColor(fallback);
+        }
+
 
         public static NSize ToNative(this Size size)
         {

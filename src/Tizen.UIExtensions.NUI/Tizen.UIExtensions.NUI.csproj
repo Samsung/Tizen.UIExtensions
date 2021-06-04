@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JonLipsky.System.Graphics.Skia" Version="0.1.36" />
     <PackageReference Include="SkiaSharp.Views" Version="2.80.2" />
     <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
   </ItemGroup>
