@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tizen.NUI.BaseComponents;
-using ScrollView = Tizen.UIExtensions.NUI.ScrollView;
-using Image = Tizen.UIExtensions.NUI.Image;
-using Tizen.NUI;
-using Tizen.Applications;
-using Tizen.UIExtensions.NUI;
 using System.Reflection;
 using System.Threading.Tasks;
+using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
+using Tizen.UIExtensions.NUI;
+using Image = Tizen.UIExtensions.NUI.Image;
 
 namespace NUIExGallery.TC
 {
@@ -18,12 +14,8 @@ namespace NUIExGallery.TC
 
         public override string TestDescription => "Image Load from stream";
 
-        Image _img;
-        bool _stop;
-
         public override View Run()
         {
-            _stop = false;
             var view = new View
             {
                 Layout = new LinearLayout
@@ -33,48 +25,45 @@ namespace NUIExGallery.TC
                 }
             };
 
-            {
-                var img = new Image
-                {
-                    SizeHeight = 300,
-                    WidthSpecification = LayoutParamPolicies.MatchParent,
-                    Aspect = Tizen.UIExtensions.Common.Aspect.AspectFill
-                };
-                img.ResourceReady += (s, e) =>
-                {
-                    Console.WriteLine($"Image Loaded - {img.LoadingStatus}");
-                };
-                _img = img;
-                LoadStream();
-                view.Add(img);
-            }
-            view.RemovedFromWindow += (s, e) =>
-            {
-                _img.Dispose();
-                _stop = true;
-            };
+            LoadImage(view, 1000);
+            LoadImage(view, 2000);
+            LoadImage(view, 5000);
 
             return view;
         }
 
-        int count = 0;
-
-        async void LoadStream()
+        async void LoadImage(View parent, int delay = 2000)
         {
-            var assembly = typeof(ImageFromStream).GetTypeInfo().Assembly;
-            var assemblyName = assembly.GetName().Name;
-            var resourcePath = assemblyName + ".Resource." + ((count++ % 2 == 0) ? "animated.gif" : "image2.jpg");
-            var stream = assembly.GetManifestResourceStream(resourcePath);
-            await _img.LoadAsync(stream);
-
-            _img.Layout.RequestLayout();
-            await Task.Delay(1000);
-
-            if (_stop)
+            var img = new Image
             {
-                return;
+                SizeHeight = 300,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                Aspect = Tizen.UIExtensions.Common.Aspect.AspectFill
+            };
+            img.ResourceReady += (s, e) =>
+            {
+                Console.WriteLine($"[{img.GetHashCode()}] Image Loaded - {img.LoadingStatus}");
+            };
+            parent.Add(img);
+            bool run = true;
+            img.RemovedFromWindow += (s, e) =>
+            {
+                run = false;
+                (s as View).Dispose();
+            };
+
+            int count = 0;
+            while (run)
+            {
+                var assembly = typeof(ImageFromStream).GetTypeInfo().Assembly;
+                var assemblyName = assembly.GetName().Name;
+                var resourcePath = assemblyName + ".Resource." + ((count++ % 2 == 0) ? "animated.gif" : "image2.jpg");
+                var stream = assembly.GetManifestResourceStream(resourcePath);
+                var result = await img.LoadAsync(stream);
+                Console.WriteLine($"[{img.GetHashCode()}] Load result : {result}");
+                await Task.Delay(delay);
             }
-            LoadStream();
+
         }
     }
 }
