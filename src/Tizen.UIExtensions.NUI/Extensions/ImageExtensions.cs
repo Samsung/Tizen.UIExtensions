@@ -132,7 +132,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public static async Task<bool> LoadAsync(this Image view, Stream stream)
+        public static async Task<bool> LoadAsync(this ImageView view, Stream stream)
         {
             if (stream == null)
                 throw new ArgumentNullException(nameof(stream));
@@ -143,21 +143,10 @@ namespace Tizen.UIExtensions.NUI
                 tcs.SetResult(view.LoadingStatus == ImageView.LoadingStatusType.Ready);
             }
             view.ResourceReady += completed;
-            string tempfile = string.Empty;
 
             try
             {
-                view.RemoveTemporaryFile();
-                var cachePath = Application.Current.DirectoryInfo.Cache;
-                tempfile = Path.Combine(cachePath, Path.GetRandomFileName());
-                using (var fs = new FileStream(tempfile, FileMode.OpenOrCreate))
-                {
-                    stream.CopyTo(fs);
-                }
-
-                view.SetTemporaryFile(tempfile);
-
-                view.ResourceUrl = tempfile;
+                view.ResourceUrl = await StreamImageSourceService.Instance.AddStream(view, stream);
                 return await tcs.Task;
             }
             finally
