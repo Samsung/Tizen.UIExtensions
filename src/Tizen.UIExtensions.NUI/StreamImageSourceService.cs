@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="view">A view that owns the stream </param>
         /// <param name="stream">A stream to convert file</param>
         /// <returns>a temporary file path</returns>
-        public async Task<string> AddStream(NImage view, Stream stream)
+        public async Task<string> AddStreamAsync(NImage view, Stream stream)
         {
             // Remove a cache that duplicated or released object
             foreach (var weakRef in _imageCache.Keys.ToList())

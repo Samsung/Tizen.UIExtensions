@@ -146,7 +146,7 @@ namespace Tizen.UIExtensions.NUI
 
             try
             {
-                view.ResourceUrl = await StreamImageSourceService.Instance.AddStream(view, stream);
+                view.ResourceUrl = await StreamImageSourceService.Instance.AddStreamAsync(view, stream);
                 return await tcs.Task;
             }
             finally
