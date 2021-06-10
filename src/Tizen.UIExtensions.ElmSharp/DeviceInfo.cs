@@ -206,7 +206,8 @@ namespace Tizen.UIExtensions.ElmSharp
                 if (s_displayResolutionUnit != value)
                 {
                     s_displayResolutionUnit = value;
-                    UpdateScalingFactor();
+                    if (s_scalingFactor != 0)
+                        UpdateScalingFactor();
                 }
             }
         }

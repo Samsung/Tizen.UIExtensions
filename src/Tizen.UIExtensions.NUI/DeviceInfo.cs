@@ -57,7 +57,7 @@ namespace Tizen.UIExtensions.NUI
 
 
         public static int ScreenWidth => Window.Instance.WindowSize.Width;
-        public static int ScreenHeight = Window.Instance.WindowSize.Height;
+        public static int ScreenHeight => Window.Instance.WindowSize.Height;
 
         public static double PhysicalScale => DPI / 160.0;
 
@@ -77,7 +77,8 @@ namespace Tizen.UIExtensions.NUI
                 if (s_displayResolutionUnit != value)
                 {
                     s_displayResolutionUnit = value;
-                    UpdateScalingFactor();
+                    if (s_scalingFactor != 0)
+                        UpdateScalingFactor();
                 }
             }
         }
