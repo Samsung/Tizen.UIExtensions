@@ -1,7 +1,9 @@
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
+using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
 using NColor = Tizen.NUI.Color;
+using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using Size = Tizen.UIExtensions.Common.Size;
 using TColor = Tizen.UIExtensions.Common.Color;
 
@@ -17,6 +19,10 @@ namespace Tizen.UIExtensions.NUI
         NColor _defaultPlaceholderColor;
 
         FontAttributes _fontAttributes;
+        Keyboard _keyboard = Keyboard.Normal;
+        ReturnType _returnType = ReturnType.Default;
+        AutoCapitalType _autoCapital = AutoCapitalType.None;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Editor"/> class.
@@ -109,6 +115,59 @@ namespace Tizen.UIExtensions.NUI
         }
 
         /// <summary>
+        /// Gets or sets the keyboard type used by the Editor.
+        /// </summary>
+        /// <value>The keyboard type.</value>
+        public Keyboard Keyboard
+        {
+            get
+            {
+                return _keyboard;
+            }
+
+            set
+            {
+                if (value != _keyboard)
+                {
+                    _keyboard = value;
+                    ApplyInputMethodSetting();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets an enumeration value that controls the appearance of the return button.
+        /// </summary>
+        public ReturnType ReturnType
+        {
+            get => _returnType;
+            set
+            {
+                if (_returnType != value)
+                {
+                    _returnType = value;
+                    ApplyInputMethodSetting();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets or Gets the autocapitalization type on the im module.
+        /// </summary>
+        public AutoCapitalType AutoCapital
+        {
+            get => _autoCapital;
+            set
+            {
+                if (_autoCapital != value)
+                {
+                    _autoCapital = value;
+                    ApplyInputMethodSetting();
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value that controls whether text prediction and automatic text correction is on or off.
         /// </summary>
         public bool IsTextPredictionEnabled
@@ -156,6 +215,11 @@ namespace Tizen.UIExtensions.NUI
                 return new Size(PixelSize, PixelSize);
             }
 #pragma warning restore CS0618
+        }
+
+        void ApplyInputMethodSetting()
+        {
+            InputMethodSettings = Entry.CreateInputMethodSettings(Keyboard, ReturnType, AutoCapital);
         }
     }
 }
