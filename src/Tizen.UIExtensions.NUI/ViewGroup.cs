@@ -51,7 +51,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Notifies that the layout has been updated.
         /// </summary>
-        public event EventHandler<LayoutEventArgs> LayoutUpdated;
+        public event EventHandler<LayoutEventArgs>? LayoutUpdated;
 
         public override void Add(View child)
         {
@@ -65,7 +65,7 @@ namespace Tizen.UIExtensions.NUI
             LayoutRequest();
         }
 
-        void OnRelayout(object sender, EventArgs e)
+        void OnRelayout(object? sender, EventArgs e)
         {
             SendLayoutUpdated();
         }
@@ -82,6 +82,9 @@ namespace Tizen.UIExtensions.NUI
         void SendLayoutUpdated()
         {
             if (_disposed)
+                return;
+
+            if (this == null)
                 return;
 
             LayoutUpdated?.Invoke(this, new LayoutEventArgs

@@ -18,16 +18,16 @@ namespace Tizen.UIExtensions.NUI
         bool _isSelected;
         bool _isFocused;
 
-        View _content;
+        View? _content;
 
         public ViewHolder()
         {
             Initialize();
         }
 
-        public object ViewCategory { get; set; }
+        public object? ViewCategory { get; set; }
 
-        public View Content
+        public View? Content
         {
             get
             {
@@ -41,6 +41,8 @@ namespace Tizen.UIExtensions.NUI
                 {
                     _content.WidthSpecification = LayoutParamPolicies.MatchParent;
                     _content.HeightSpecification = LayoutParamPolicies.MatchParent;
+                    _content.WidthResizePolicy = ResizePolicyType.FillToParent;
+                    _content.HeightResizePolicy = ResizePolicyType.FillToParent;
                     Add(_content);
                 }
             }
@@ -62,9 +64,14 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public event EventHandler RequestSelected;
+        public event EventHandler? RequestSelected;
 
-        public event EventHandler StateUpdated;
+        public event EventHandler? StateUpdated;
+
+        public void UpdateSelected()
+        {
+            State = ViewHolderState.Selected;
+        }
 
         public void ResetState()
         {
@@ -74,34 +81,25 @@ namespace Tizen.UIExtensions.NUI
         protected void Initialize()
         {
             Layout = new AbsoluteLayout();
-            Relayout += OnLayout;
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;
             FocusLost += OnUnfocused;
         }
 
-        void OnLayout(object sender, EventArgs e)
-        {
-            if (Content != null)
-            {
-                Content.Size = new Size(Size);
-            }
-        }
-
-        void OnUnfocused(object sender, EventArgs e)
+        void OnUnfocused(object? sender, EventArgs e)
         {
             _isFocused = false;
             State = _isSelected ? ViewHolderState.Selected : ViewHolderState.Normal;
         }
 
-        void OnFocused(object sender, EventArgs e)
+        void OnFocused(object? sender, EventArgs e)
         {
             _isFocused = true;
             State = ViewHolderState.Focused;
         }
 
-        bool OnKeyEvent(object source, KeyEventArgs e)
+        bool OnKeyEvent(object? source, KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Enter")
             {
@@ -112,7 +110,7 @@ namespace Tizen.UIExtensions.NUI
             return false;
         }
 
-        bool OnTouchEvent(object source, TouchEventArgs e)
+        bool OnTouchEvent(object? source, TouchEventArgs e)
         {
             if (e.Touch.GetState(0) == PointStateType.Finished)
             {

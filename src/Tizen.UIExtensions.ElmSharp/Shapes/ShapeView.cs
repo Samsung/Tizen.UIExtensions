@@ -9,7 +9,7 @@ namespace Tizen.UIExtensions.ElmSharp
     public class ShapeView : Canvas, IMeasurable
     {
         SKCanvasView _skCanvasView;
-        SKPath _skPath;
+        SKPath? _skPath;
         SKPaint _skPaint;
 
         SKRect _drawableBounds;
@@ -17,19 +17,21 @@ namespace Tizen.UIExtensions.ElmSharp
         SKRect _pathStrokeBounds;
         SKMatrix _transform;
 
-        ShapeBrush _stroke;
-        ShapeBrush _fill;
+        ShapeBrush? _stroke;
+        ShapeBrush? _fill;
         Stretch _stretch;
 
         float _strokeWidth;
-        float[] _strokeDash;
+        float[]? _strokeDash;
         float _strokeDashOffset;
         float _strokeMiterLimit;
 
         public ShapeView(EvasObject parent) : base(parent)
         {
-            _skPaint = new SKPaint();
-            _skPaint.IsAntialias = true;
+            _skPaint = new SKPaint
+            {
+                IsAntialias = true
+            };
             _skCanvasView = new SKCanvasView(parent);
             _skCanvasView.PaintSurface += OnPaintSurface;
             _skCanvasView.Show();
@@ -49,7 +51,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public SKCanvasView SKCanvasView => _skCanvasView;
 
-        public ShapeBrush Stroke
+        public ShapeBrush? Stroke
         {
             get
             {
@@ -62,7 +64,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        public ShapeBrush Fill
+        public ShapeBrush? Fill
         {
             get
             {
@@ -89,7 +91,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        public float[] StrokeDashArray
+        public float[]? StrokeDashArray
         {
             get
             {
@@ -236,11 +238,11 @@ namespace Tizen.UIExtensions.ElmSharp
         public void UpdateShapeTransform(SKMatrix matrix)
         {
             _transform = matrix;
-            _skPath.Transform(_transform);
+            _skPath?.Transform(_transform);
             _skCanvasView.Invalidate();
         }
 
-        public void UpdateStrokeDashArray(float[] dash)
+        public void UpdateStrokeDashArray(float[]? dash)
         {
             _strokeDash = dash;
             UpdateStrokeDash();

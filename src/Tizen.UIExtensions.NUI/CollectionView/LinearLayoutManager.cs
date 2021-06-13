@@ -17,17 +17,17 @@ namespace Tizen.UIExtensions.NUI
         bool _isLayouting;
         Rect _lastLayoutedBound;
         Dictionary<int, RealizedItem> _realizedItem = new Dictionary<int, RealizedItem>();
-        List<double> _itemSizes;
-        List<bool> _cached;
-        List<double> _accumulatedItemSizes;
+        List<double> _itemSizes = new List<double>();
+        List<bool> _cached = new List<bool>();
+        List<double> _accumulatedItemSizes = new List<double>();
 
         bool _hasUnevenRows;
         double _baseItemSize;
 
         Size _headerSize;
-        View _header;
+        View? _header;
         Size _footerSize;
-        View _footer;
+        View? _footer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LinearLayoutManager"/> class.
@@ -68,7 +68,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// CollectionView that interact with layout manager
         /// </summary>
-        public ICollectionViewController CollectionView { get; set; }
+        public ICollectionViewController? CollectionView { get; set; }
 
         double BaseItemSize
         {
@@ -79,7 +79,7 @@ namespace Tizen.UIExtensions.NUI
                     if (_allocatedSize.Width <= 0 || _allocatedSize.Height <= 0)
                         return 0;
 
-                    var itemBound = CollectionView.GetItemSize(ItemWidthConstraint, ItemHeightConstraint);
+                    var itemBound = CollectionView!.GetItemSize(ItemWidthConstraint, ItemHeightConstraint);
                     _baseItemSize = IsHorizontal ? itemBound.Width : itemBound.Height;
                 }
                 return _baseItemSize;
@@ -128,7 +128,7 @@ namespace Tizen.UIExtensions.NUI
 
         public Size GetScrollCanvasSize()
         {
-            if (CollectionView.Count == 0 || _allocatedSize.Width <= 0 || _allocatedSize.Height <= 0)
+            if (CollectionView!.Count == 0 || _allocatedSize.Width <= 0 || _allocatedSize.Height <= 0)
             {
                 return _allocatedSize;
             }
@@ -140,11 +140,16 @@ namespace Tizen.UIExtensions.NUI
 
             if (_hasUnevenRows)
             {
+                // If item source was shared between adaptors, in some case CollectionView.Count could be wrong
+                if (_accumulatedItemSizes.Count == 0)
+                {
+                    return _allocatedSize;
+                }
                 totalItemSize = _accumulatedItemSizes[_accumulatedItemSizes.Count - 1] + FooterSizeWithSpacing;
             }
             else
             {
-                totalItemSize = (BaseItemSize + ItemSpacing) * CollectionView.Count - ItemSpacing + ItemStartPoint + FooterSizeWithSpacing;
+                totalItemSize = (BaseItemSize + ItemSpacing) * CollectionView!.Count - ItemSpacing + ItemStartPoint + FooterSizeWithSpacing;
             }
 
             if (IsHorizontal)
@@ -174,28 +179,24 @@ namespace Tizen.UIExtensions.NUI
             _lastLayoutedBound = bound;
 
             int startIndex = Math.Max(GetStartIndex(bound) - 5, 0);
-            int endIndex = Math.Min(GetEndIndex(bound) + 5, CollectionView.Count - 1);
+            int endIndex = Math.Min(GetEndIndex(bound) + 5, CollectionView!.Count - 1);
 
             foreach (var index in _realizedItem.Keys.ToList())
             {
                 if (index < startIndex || index > endIndex)
                 {
-                    CollectionView.UnrealizeView(_realizedItem[index].View);
+                    CollectionView!.UnrealizeView(_realizedItem[index].View);
                     _realizedItem.Remove(index);
                 }
             }
 
             for (int i = startIndex; i <= endIndex; i++)
             {
-                View itemView = null;
+                View itemView;
                 if (!_realizedItem.ContainsKey(i))
                 {
-                    var view = CollectionView.RealizeView(i);
-                    _realizedItem[i] = new RealizedItem
-                    {
-                        View = view,
-                        Index = i,
-                    };
+                    var view = CollectionView!.RealizeView(i);
+                    _realizedItem[i] = new RealizedItem(view, i);
                     itemView = view;
                 }
                 else
@@ -234,14 +235,14 @@ namespace Tizen.UIExtensions.NUI
             UpdateInsertedSize(inserted);
 
             _scrollCanvasSize = new Size(0, 0);
-            CollectionView.ContentSizeUpdated();
+            CollectionView!.ContentSizeUpdated();
         }
 
         public void ItemRemoved(int removed)
         {
             if (_realizedItem.ContainsKey(removed))
             {
-                CollectionView.UnrealizeView(_realizedItem[removed].View);
+                CollectionView!.UnrealizeView(_realizedItem[removed].View);
                 _realizedItem.Remove(removed);
             }
 
@@ -263,7 +264,7 @@ namespace Tizen.UIExtensions.NUI
             UpdateRemovedSize(removed);
 
             _scrollCanvasSize = new Size(0, 0);
-            CollectionView.ContentSizeUpdated();
+            CollectionView!.ContentSizeUpdated();
         }
 
         public void ItemUpdated(int index)
@@ -271,8 +272,8 @@ namespace Tizen.UIExtensions.NUI
             if (_realizedItem.ContainsKey(index))
             {
                 var bound = _realizedItem[index].View.GetBounds();
-                CollectionView.UnrealizeView(_realizedItem[index].View);
-                var view = CollectionView.RealizeView(index);
+                CollectionView!.UnrealizeView(_realizedItem[index].View);
+                var view = CollectionView!.RealizeView(index);
                 _realizedItem[index].View = view;
                 view.UpdateBounds(bound);
             }
@@ -299,7 +300,7 @@ namespace Tizen.UIExtensions.NUI
             }
             else
             {
-                var measured = CollectionView.GetItemSize(index, ItemWidthConstraint, ItemHeightConstraint);
+                var measured = CollectionView!.GetItemSize(index, ItemWidthConstraint, ItemHeightConstraint);
                 itemSize = IsHorizontal ? measured.Width : measured.Height;
 
                 if (itemSize != _itemSizes[index])
@@ -307,7 +308,7 @@ namespace Tizen.UIExtensions.NUI
                     UpdateAccumulatedItemSize(index, itemSize - _itemSizes[index]);
                     _itemSizes[index] = itemSize;
 
-                    CollectionView.ContentSizeUpdated();
+                    CollectionView!.ContentSizeUpdated();
                 }
                 startPoint = _accumulatedItemSizes[index] - itemSize;
                 _cached[index] = true;
@@ -322,17 +323,17 @@ namespace Tizen.UIExtensions.NUI
         {
             foreach (var realizedItem in _realizedItem.Values.ToList())
             {
-                CollectionView.UnrealizeView(realizedItem.View);
+                CollectionView!.UnrealizeView(realizedItem.View);
             }
             _realizedItem.Clear();
             _scrollCanvasSize = new Size(0, 0);
-            CollectionView.ContentSizeUpdated();
+            CollectionView!.ContentSizeUpdated();
         }
 
         public void ItemSourceUpdated()
         {
             InitializeMeasureCache();
-            CollectionView.ContentSizeUpdated();
+            CollectionView!.ContentSizeUpdated();
         }
 
         public void ItemMeasureInvalidated(int index)
@@ -344,14 +345,14 @@ namespace Tizen.UIExtensions.NUI
 
                 if (_realizedItem.ContainsKey(index))
                 {
-                    CollectionView.RequestLayoutItems();
+                    CollectionView!.RequestLayoutItems();
                 }
             }
             else if (index == 0)
             {
                 // Reset item size to measure updated size
                 InitializeMeasureCache();
-                CollectionView.RequestLayoutItems();
+                CollectionView!.RequestLayoutItems();
             }
         }
 
@@ -363,17 +364,17 @@ namespace Tizen.UIExtensions.NUI
             if (coordinate < 0)
                 return 0;
             if (canvasSize < coordinate)
-                return CollectionView.Count - 1;
+                return CollectionView!.Count - 1;
 
             if (!_hasUnevenRows)
             {
-                return Math.Min(Math.Max(0, (int)((coordinate - ItemStartPoint) / (BaseItemSize + ItemSpacing))), CollectionView.Count - 1);
+                return Math.Min(Math.Max(0, (int)((coordinate - ItemStartPoint) / (BaseItemSize + ItemSpacing))), CollectionView!.Count - 1);
             }
             else
             {
                 var index = _accumulatedItemSizes.FindIndex(current => coordinate <= current);
                 if (index == -1)
-                    index = CollectionView.Count - 1;
+                    index = CollectionView!.Count - 1;
                 return index;
             }
         }
@@ -383,7 +384,7 @@ namespace Tizen.UIExtensions.NUI
             return BaseItemSize + ItemSpacing;
         }
 
-        public void SetHeader(View header, Size size)
+        public void SetHeader(View? header, Size size)
         {
             bool contentSizeChanged = false;
             if (IsHorizontal)
@@ -403,7 +404,7 @@ namespace Tizen.UIExtensions.NUI
             if (contentSizeChanged)
             {
                 InitializeMeasureCache();
-                CollectionView.ContentSizeUpdated();
+                CollectionView!.ContentSizeUpdated();
             }
 
             if (_header != null)
@@ -417,12 +418,11 @@ namespace Tizen.UIExtensions.NUI
                 {
                     bound.Width = _allocatedSize.Width;
                 }
-                Console.WriteLine($"Header bound : {bound}");
                 _header.UpdateBounds(bound);
             }
         }
 
-        public void SetFooter(View footer, Size size)
+        public void SetFooter(View? footer, Size size)
         {
             bool contentSizeChanged = false;
             if (IsHorizontal)
@@ -442,7 +442,7 @@ namespace Tizen.UIExtensions.NUI
             if (contentSizeChanged)
             {
                 InitializeMeasureCache();
-                CollectionView.ContentSizeUpdated();
+                CollectionView!.ContentSizeUpdated();
             }
 
             UpdateFooterPosition();
@@ -485,11 +485,11 @@ namespace Tizen.UIExtensions.NUI
 
             if (!_hasUnevenRows)
             {
-                CollectionView.ContentSizeUpdated();
+                CollectionView!.ContentSizeUpdated();
                 return;
             }
 
-            int n = CollectionView.Count;
+            int n = CollectionView!.Count;
             _itemSizes = new List<double>();
             _cached = new List<bool>();
             _accumulatedItemSizes = new List<double>();
@@ -500,7 +500,7 @@ namespace Tizen.UIExtensions.NUI
                 _itemSizes.Add(BaseItemSize);
                 _accumulatedItemSizes.Add((i > 0 ? (_accumulatedItemSizes[i - 1] + ItemSpacing) : ItemStartPoint) + _itemSizes[i]);
             }
-            CollectionView.ContentSizeUpdated();
+            CollectionView!.ContentSizeUpdated();
         }
 
         int GetStartIndex(Rect bound, double itemSize)
@@ -635,6 +635,12 @@ namespace Tizen.UIExtensions.NUI
 
         class RealizedItem
         {
+            public RealizedItem(ViewHolder view, int index)
+            {
+                View = view;
+                Index = index;
+            }
+
             public ViewHolder View { get; set; }
             public int Index { get; set; }
         }

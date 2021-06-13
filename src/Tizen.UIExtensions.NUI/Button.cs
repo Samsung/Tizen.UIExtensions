@@ -11,7 +11,7 @@ namespace Tizen.UIExtensions.NUI
     public class Button : NButton, IMeasurable
     {
         float _defaultFontSize = 0;
-        NColor _defaultTextColor = null;
+        NColor? _defaultTextColor = null;
         FontAttributes _fontAttributes;
 
         public Button()

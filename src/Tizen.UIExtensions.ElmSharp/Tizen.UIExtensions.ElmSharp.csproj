@@ -4,6 +4,9 @@
     <TargetFramework>tizen40</TargetFramework>
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Tizen.UIExtensions.ElmSharp</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.ElmSharp</RootNamespace>
     <PackageId>Tizen.UIExtensions.ElmSharp</PackageId>

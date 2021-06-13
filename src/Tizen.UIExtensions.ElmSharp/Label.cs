@@ -17,7 +17,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// The _span holds the content of the label.
         /// </summary>
         readonly Span _span = new Span();
-        FormattedString _formattedText;
+        FormattedString? _formattedText;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tizen.UIExtensions.ElmSharp.Label"/> class.
@@ -32,7 +32,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         /// <remarks>Setting <c>FormattedText</c> changes the value of the <c>Text</c> property.</remarks>
         /// <value>The formatted text.</value>
-        public FormattedString FormattedText
+        public FormattedString? FormattedText
         {
             get
             {

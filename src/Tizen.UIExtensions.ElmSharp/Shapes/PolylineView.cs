@@ -7,7 +7,7 @@ namespace Tizen.UIExtensions.ElmSharp
 {
     public class PolylineView : ShapeView
     {
-        ObservableCollection<CPoint> _points;
+        ObservableCollection<CPoint>? _points;
         bool _fillMode;
 
         public PolylineView(EvasObject parent) : base(parent)
@@ -15,7 +15,7 @@ namespace Tizen.UIExtensions.ElmSharp
             UpdateShape();
         }
 
-        public ObservableCollection<CPoint> Points
+        public ObservableCollection<CPoint>? Points
         {
             get
             {

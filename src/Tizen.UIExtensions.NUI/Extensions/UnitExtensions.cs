@@ -5,7 +5,10 @@ using NColor = Tizen.NUI.Color;
 using NSize = Tizen.NUI.Size;
 using NPoint = Tizen.NUI.Position;
 using NSize2D = Tizen.NUI.Size2D;
+using NVector4 = Tizen.NUI.Vector4;
 using ScrollableDirection = Tizen.NUI.Components.ScrollableBase.Direction;
+using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
+using NActionButtonTitleType = Tizen.NUI.InputMethod.ActionButtonTitleType;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -48,6 +51,11 @@ namespace Tizen.UIExtensions.NUI
             };
 
         public static Color ToCommon(this NColor c)
+        {
+            return new Color(c.R, c.G, c.B, c.A);
+        }
+
+        public static Color ToColor(this NVector4 c)
         {
             return new Color(c.R, c.G, c.B, c.A);
         }
@@ -100,6 +108,62 @@ namespace Tizen.UIExtensions.NUI
                 return ScrollableDirection.Vertical;
         }
 
+        public static NPanelLayoutType ToPanelLayoutType(this Keyboard keyboard)
+        {
+            switch (keyboard)
+            {
+                case Keyboard.Normal:
+                    return NPanelLayoutType.Normal;
+                case Keyboard.Number:
+                    return NPanelLayoutType.Number;
+                case Keyboard.Email:
+                    return NPanelLayoutType.Email;
+                case Keyboard.Url:
+                    return NPanelLayoutType.URL;
+                case Keyboard.PhoneNumber:
+                    return NPanelLayoutType.PhoneNumber;
+                case Keyboard.Ip:
+                    return NPanelLayoutType.IP;
+                case Keyboard.Month:
+                    return NPanelLayoutType.Month;
+                case Keyboard.NumberOnly:
+                case Keyboard.Numeric:
+                    return NPanelLayoutType.NumberOnly;
+                case Keyboard.Hex:
+                    return NPanelLayoutType.HEX;
+                case Keyboard.Terminal:
+                    return NPanelLayoutType.Terminal;
+                case Keyboard.Password:
+                    return NPanelLayoutType.Password;
+                case Keyboard.DateTime:
+                    return NPanelLayoutType.Datetime;
+                case Keyboard.Emoticon:
+                    return NPanelLayoutType.Emoticon;
+                default:
+                    return NPanelLayoutType.Normal;
+            }
+        }
+
+        public static NActionButtonTitleType ToActionButtonType(this ReturnType returnType)
+        {
+            switch (returnType)
+            {
+                case ReturnType.Go:
+                    return NActionButtonTitleType.Go;
+                case ReturnType.Next:
+                    return NActionButtonTitleType.Next;
+                case ReturnType.Send:
+                    return NActionButtonTitleType.Send;
+                case ReturnType.Search:
+                    return NActionButtonTitleType.Search;
+                case ReturnType.Done:
+                    return NActionButtonTitleType.Done;
+                case ReturnType.Default:
+                    return NActionButtonTitleType.Default;
+                default:
+                    return NActionButtonTitleType.Default;
+            }
+        }
 
     }
 }

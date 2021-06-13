@@ -17,12 +17,12 @@ namespace Tizen.UIExtensions.ElmSharp
         #region Layout
         public static EdjeTextPartObject GetContentPartEdjeObject(this ELayout layout)
         {
-            return layout?.EdjeObject[ThemeConstants.Layout.Parts.Content];
+            return layout.EdjeObject[ThemeConstants.Layout.Parts.Content];
         }
 
-        public static EdjeTextPartObject GetTextPartEdjeObject(this ELayout layout)
+        public static EdjeTextPartObject? GetTextPartEdjeObject(this ELayout layout)
         {
-            return layout?.EdjeObject[ThemeConstants.Layout.Parts.Text];
+            return layout.EdjeObject[ThemeConstants.Layout.Parts.Text];
         }
 
         public static bool SetTextPart(this ELayout layout, string text)
@@ -30,7 +30,7 @@ namespace Tizen.UIExtensions.ElmSharp
             return layout.SetPartText(ThemeConstants.Layout.Parts.Text, text);
         }
 
-        public static bool SetContentPart(this ELayout layout, EvasObject content, bool preserveOldContent = false)
+        public static bool SetContentPart(this ELayout layout, EvasObject? content, bool preserveOldContent = false)
         {
             var ret = layout.SetPartContent(ThemeConstants.Layout.Parts.Content, content, preserveOldContent);
             if (!ret)
@@ -42,7 +42,7 @@ namespace Tizen.UIExtensions.ElmSharp
             return ret;
         }
 
-        public static bool SetBackgroundPart(this ELayout layout, EvasObject content, bool preserveOldContent = false)
+        public static bool SetBackgroundPart(this ELayout layout, EvasObject? content, bool preserveOldContent = false)
         {
             return layout.SetPartContent(ThemeConstants.Layout.Parts.Background, content, preserveOldContent);
         }
@@ -149,7 +149,7 @@ namespace Tizen.UIExtensions.ElmSharp
             return textPart.TextBlockNativeSize;
         }
 
-        public static void SetTextBlockStyle(this Button button, string style)
+        public static void SetTextBlockStyle(this Button button, string? style)
         {
             var textBlock = button.EdjeObject[ThemeConstants.Common.Parts.Text];
             if (textBlock != null)
@@ -244,7 +244,7 @@ namespace Tizen.UIExtensions.ElmSharp
             return button;
         }
 
-        public static bool SetIconPart(this Button button, EvasObject content, bool preserveOldContent = false)
+        public static bool SetIconPart(this Button button, EvasObject? content, bool preserveOldContent = false)
         {
             return button.SetPartContent(ThemeConstants.Button.Parts.Icon, content, preserveOldContent);
         }
@@ -312,22 +312,22 @@ namespace Tizen.UIExtensions.ElmSharp
             popup.SetPartColor(ThemeConstants.Popup.ColorClass.ContentBackground, color);
         }
 
-        public static bool SetTitleTextPart(this Popup popup, string title)
+        public static bool SetTitleTextPart(this Popup popup, string? title)
         {
             return popup.SetPartText(ThemeConstants.Popup.Parts.Title, title);
         }
 
-        public static bool SetButton1Part(this Popup popup, EvasObject content, bool preserveOldContent = false)
+        public static bool SetButton1Part(this Popup popup, EvasObject? content, bool preserveOldContent = false)
         {
             return popup.SetPartContent(ThemeConstants.Popup.Parts.Button1, content, preserveOldContent);
         }
 
-        public static bool SetButton2Part(this Popup popup, EvasObject content, bool preserveOldContent = false)
+        public static bool SetButton2Part(this Popup popup, EvasObject? content, bool preserveOldContent = false)
         {
             return popup.SetPartContent(ThemeConstants.Popup.Parts.Button2, content, preserveOldContent);
         }
 
-        public static bool SetButton3Part(this Popup popup, EvasObject content, bool preserveOldContent = false)
+        public static bool SetButton3Part(this Popup popup, EvasObject? content, bool preserveOldContent = false)
         {
             return popup.SetPartContent(ThemeConstants.Popup.Parts.Button3, content, preserveOldContent);
         }
@@ -618,12 +618,12 @@ namespace Tizen.UIExtensions.ElmSharp
         #endregion
 
         #region Panes
-        public static bool SetLeftPart(this Panes panes, EvasObject content, bool preserveOldContent = false)
+        public static bool SetLeftPart(this Panes panes, EvasObject? content, bool preserveOldContent = false)
         {
             return panes.SetPartContent(ThemeConstants.Panes.Parts.Left, content, preserveOldContent);
         }
 
-        public static bool SetRightPart(this Panes panes, EvasObject content, bool preserveOldContent = false)
+        public static bool SetRightPart(this Panes panes, EvasObject? content, bool preserveOldContent = false)
         {
             return panes.SetPartContent(ThemeConstants.Panes.Parts.Right, content, preserveOldContent);
         }

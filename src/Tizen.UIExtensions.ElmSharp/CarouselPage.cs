@@ -80,7 +80,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Raised when the page has been scrolled.
         /// </summary>
-        public event EventHandler<PageScrolledEventArgs> PageScrolled;
+        public event EventHandler<PageScrolledEventArgs>? PageScrolled;
 
         /// <summary>
         /// The current index of the displayed page.

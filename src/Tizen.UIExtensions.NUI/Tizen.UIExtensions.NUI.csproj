@@ -5,6 +5,8 @@
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
     <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Tizen.UIExtensions.NUI</AssemblyName>
     <RootNamespace>Tizen.UIExtensions.NUI</RootNamespace>
     <PackageId>Tizen.UIExtensions.NUI</PackageId>

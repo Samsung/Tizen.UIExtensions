@@ -12,7 +12,7 @@ namespace Tizen.UIExtensions.NUI
         FontAttributes _fontAttributes;
         LineBreakMode _lineBreakMode;
         TextDecorations _textDecorations;
-        FormattedString _formattedText;
+        FormattedString? _formattedText;
 
         float _defaultFontSize;
         NColor _defaultTextColor;
@@ -26,7 +26,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets the formatted text for the Label.
         /// </summary>
-        public FormattedString FormattedText
+        public FormattedString? FormattedText
         {
             get => _formattedText;
             set

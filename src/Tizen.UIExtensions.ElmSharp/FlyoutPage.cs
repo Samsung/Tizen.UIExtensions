@@ -35,12 +35,12 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs when the Flyout is shown or hidden.
         /// </summary>
-        public event EventHandler<IsPresentedChangedEventArgs> IsPresentedChanged;
+        public event EventHandler<IsPresentedChangedEventArgs>? IsPresentedChanged;
 
         /// <summary>
         /// Occurs when the IsPresentChangeable was changed.
         /// </summary>
-        public event EventHandler<UpdateIsPresentChangeableEventArgs> UpdateIsPresentChangeable;
+        public event EventHandler<UpdateIsPresentChangeableEventArgs>? UpdateIsPresentChangeable;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Flyout is shown.
@@ -62,7 +62,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the content of the DetailPage.
         /// </summary>
         /// <value>The DetailPage.</value>
-        public EvasObject Detail
+        public EvasObject? Detail
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the content of the Flyout.
         /// </summary>
         /// <value>The Flyout.</value>
-        public EvasObject Flyout
+        public EvasObject? Flyout
         {
             get
             {

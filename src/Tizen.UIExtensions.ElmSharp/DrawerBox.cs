@@ -23,12 +23,12 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// The <see cref="Drawer"/> property value.
         /// </summary>
-        EvasObject _drawer;
+        EvasObject? _drawer;
 
         /// <summary>
         /// The <see cref="Content"/> property value.
         /// </summary>
-        EvasObject _content;
+        EvasObject? _content;
 
         /// <summary>
         /// The <see cref="DimArea"/> property value.
@@ -78,7 +78,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs when the Drawer is shown or hidden.
         /// </summary>
-        public event EventHandler Toggled;
+        public event EventHandler? Toggled;
 
         public DrawerBox(EvasObject parent) : base(parent)
         {
@@ -92,9 +92,11 @@ namespace Tizen.UIExtensions.ElmSharp
             _contentBox.SetWeight(1.0, 1.0);
             _contentBox.Show();
 
-            _dimArea = new EBox(this);
-            _dimArea.BackgroundColor = ThemeConstants.Shell.ColorClass.DefaultDrawerDimBackgroundColor;
-            _dimArea.Opacity = ThemeConstants.Shell.Resources.DefaultDrawerDimOpacity;
+            _dimArea = new EBox(this)
+            {
+                BackgroundColor = ThemeConstants.Shell.ColorClass.DefaultDrawerDimBackgroundColor,
+                Opacity = ThemeConstants.Shell.Resources.DefaultDrawerDimOpacity
+            };
 
             _gestureOnDimArea = new GestureLayer(_dimArea);
             _gestureOnDimArea.SetTapCallback(GestureType.Tap, GestureLayer.GestureState.Start, OnTapped);
@@ -123,6 +125,8 @@ namespace Tizen.UIExtensions.ElmSharp
                 Toggled?.Invoke(this, EventArgs.Empty);
             };
 
+            _mainWidget = _contentBox;
+
             ConfigureLayout();
             SetLayoutCallback(OnLayout);
         }
@@ -131,7 +135,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the content of the Drawer.
         /// </summary>
         /// <value>The Drawer.</value>
-        public EvasObject Drawer 
+        public EvasObject? Drawer
         { 
             get
             {
@@ -161,7 +165,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Gets or sets the content of the Content.
         /// </summary>
         /// <value>The Content.</value>
-        public EvasObject Content
+        public EvasObject? Content
         {
             get
             {
