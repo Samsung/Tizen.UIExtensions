@@ -258,6 +258,54 @@
       </tr>
     </tbody>
   </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_SelectedItems_" data-uid="Tizen.UIExtensions.NUI.CollectionView.SelectedItems*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_SelectedItems" data-uid="Tizen.UIExtensions.NUI.CollectionView.SelectedItems">SelectedItems</h4>
+  <div class="markdown level1 summary"><p>Selected items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;int&gt; SelectedItems { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_SelectionMode_" data-uid="Tizen.UIExtensions.NUI.CollectionView.SelectionMode*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_SelectionMode" data-uid="Tizen.UIExtensions.NUI.CollectionView.SelectionMode">SelectionMode</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value that controls whether and how many items can be selected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectionViewSelectionMode SelectionMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.NUI.CollectionViewSelectionMode.html">CollectionViewSelectionMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <a id="Tizen_UIExtensions_NUI_CollectionView_CreateScrollView_" data-uid="Tizen.UIExtensions.NUI.CollectionView.CreateScrollView*"></a>
@@ -319,6 +367,138 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual void InitializationComponent()</code></pre>
   </div>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_RequestItemSelect_" data-uid="Tizen.UIExtensions.NUI.CollectionView.RequestItemSelect*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_RequestItemSelect_System_Int32_" data-uid="Tizen.UIExtensions.NUI.CollectionView.RequestItemSelect(System.Int32)">RequestItemSelect(Int32)</h4>
+  <div class="markdown level1 summary"><p>Request item selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestItemSelect(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Index of item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_RequestItemUnselect_" data-uid="Tizen.UIExtensions.NUI.CollectionView.RequestItemUnselect*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_RequestItemUnselect_System_Int32_" data-uid="Tizen.UIExtensions.NUI.CollectionView.RequestItemUnselect(System.Int32)">RequestItemUnselect(Int32)</h4>
+  <div class="markdown level1 summary"><p>Request item unselection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestItemUnselect(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Index of item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_ScrollTo_" data-uid="Tizen.UIExtensions.NUI.CollectionView.ScrollTo*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_ScrollTo_System_Int32_Tizen_UIExtensions_Common_ScrollToPosition_System_Boolean_" data-uid="Tizen.UIExtensions.NUI.CollectionView.ScrollTo(System.Int32,Tizen.UIExtensions.Common.ScrollToPosition,System.Boolean)">ScrollTo(Int32, ScrollToPosition, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Scrolls the CollectionView to the index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ScrollTo(int index, ScrollToPosition position = ScrollToPosition.MakeVisible, bool animate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Index of item</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.ScrollToPosition.html">ScrollToPosition</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>How the item should be positioned on screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">animate</span></td>
+        <td><p>Whether or not the scroll should be animated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_ScrollTo_" data-uid="Tizen.UIExtensions.NUI.CollectionView.ScrollTo*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_ScrollTo_System_Object_Tizen_UIExtensions_Common_ScrollToPosition_System_Boolean_" data-uid="Tizen.UIExtensions.NUI.CollectionView.ScrollTo(System.Object,Tizen.UIExtensions.Common.ScrollToPosition,System.Boolean)">ScrollTo(Object, ScrollToPosition, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Scrolls the CollectionView to the item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ScrollTo(object item, ScrollToPosition position = ScrollToPosition.MakeVisible, bool animate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Item to scroll</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.Common.ScrollToPosition.html">ScrollToPosition</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>How the item should be positioned on screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">animate</span></td>
+        <td><p>Whether or not the scroll should be animated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="events">Events
   </h3>
   <h4 id="Tizen_UIExtensions_NUI_CollectionView_Scrolled" data-uid="Tizen.UIExtensions.NUI.CollectionView.Scrolled">Scrolled</h4>
@@ -533,6 +713,31 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Tizen.UIExtensions.NUI.ViewHolder.html">ViewHolder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_CollectionView_Tizen_UIExtensions_NUI_ICollectionViewController_RequestItemSelect_" data-uid="Tizen.UIExtensions.NUI.CollectionView.Tizen#UIExtensions#NUI#ICollectionViewController#RequestItemSelect*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_CollectionView_Tizen_UIExtensions_NUI_ICollectionViewController_RequestItemSelect_System_Int32_" data-uid="Tizen.UIExtensions.NUI.CollectionView.Tizen#UIExtensions#NUI#ICollectionViewController#RequestItemSelect(System.Int32)">ICollectionViewController.RequestItemSelect(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ICollectionViewController.RequestItemSelect(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
         <td></td>
       </tr>
     </tbody>

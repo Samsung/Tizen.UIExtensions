@@ -95,6 +95,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
   <div classs="implements">
     <h5>Implements</h5>
     <div><span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -124,7 +125,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.NUI.dll</h6>
   <h5 id="Tizen_UIExtensions_NUI_ItemAdaptor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ItemAdaptor : INotifyCollectionChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ItemAdaptor : INotifyCollectionChanged, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -266,7 +267,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><p>Created view</p>
 </td>
       </tr>
@@ -309,9 +310,42 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><p>Created view</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_Dispose_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Dispose*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_Dispose" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_Dispose_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Dispose*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_Dispose_System_Boolean_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -334,7 +368,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><p>A created view</p>
 </td>
       </tr>
@@ -359,7 +393,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><p>A created view</p>
 </td>
       </tr>
@@ -673,10 +707,36 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><span class="parametername">native</span></td>
         <td><p>A view to remove</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_SendItemSelected_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SendItemSelected*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_SendItemSelected_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.SendItemSelected(System.Collections.Generic.IEnumerable{System.Int32})">SendItemSelected(IEnumerable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Handle Selected item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SendItemSelected(IEnumerable&lt;int&gt; selected)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">selected</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -700,7 +760,7 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><span class="parametername">view</span></td>
         <td><p>A target view</p>
 </td>
@@ -760,23 +820,57 @@ Adapters provide a binding from an app-specific data set to views that are displ
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://developer.tizen.org/dev-guide/csapi/api/Tizen.NUI.BaseComponents.View.html">NUI.BaseComponents.View</a></td>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
         <td><span class="parametername">view</span></td>
         <td><p>A view to unbinding</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_System_Collections_Specialized_INotifyCollectionChanged_CollectionChanged" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.System#Collections#Specialized#INotifyCollectionChanged#CollectionChanged">INotifyCollectionChanged.CollectionChanged</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Tizen_UIExtensions_NUI_ItemAdaptor_UpdateViewState_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.UpdateViewState*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_UpdateViewState_Tizen_NUI_BaseComponents_View_Tizen_UIExtensions_NUI_ViewHolderState_" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.UpdateViewState(Tizen.NUI.BaseComponents.View,Tizen.UIExtensions.NUI.ViewHolderState)">UpdateViewState(NUI.BaseComponents.View, ViewHolderState)</h4>
+  <div class="markdown level1 summary"><p>Update View state</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void UpdateViewState(NUI.BaseComponents.View view, ViewHolderState state)</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Tizen.NUI.BaseComponents.View</span></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A view to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.NUI.ViewHolderState.html">ViewHolderState</a></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>State of view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <h4 id="Tizen_UIExtensions_NUI_ItemAdaptor_CollectionChanged" data-uid="Tizen.UIExtensions.NUI.ItemAdaptor.CollectionChanged">CollectionChanged</h4>
+  <div class="markdown level1 summary"><p>Occurs when the collection changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event NotifyCollectionChangedEventHandler CollectionChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -794,6 +888,9 @@ Adapters provide a binding from an app-specific data set to views that are displ
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>

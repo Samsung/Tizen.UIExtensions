@@ -1,0 +1,993 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ItemAdaptor
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ItemAdaptor
+   ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor">
+  
+  
+  <h1 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor" class="text-break">Class ItemAdaptor
+  </h1>
+  <div class="markdown level0 summary"><p>Base class for an Adapter
+Adapters provide a binding from an app-specific data set to views that are displayed within a CollectionView.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ItemAdaptor</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.ElmSharp.html">Tizen.UIExtensions.ElmSharp</a></h6>
+  <h6><strong>Assembly</strong>: Tizen.UIExtensions.ElmSharp.dll</h6>
+  <h5 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ItemAdaptor : INotifyCollectionChanged</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor__ctor_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor__ctor_System_Collections_IEnumerable_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.#ctor(System.Collections.IEnumerable)">ItemAdaptor(IEnumerable)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Tizen.UIExtensions.ElmSharp.ItemAdaptor.html">ItemAdaptor</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemAdaptor(IEnumerable items)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span></td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items soruce</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CollectionView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CollectionView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CollectionView" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CollectionView">CollectionView</h4>
+  <div class="markdown level1 summary"><p>A CollectionView associated with current Adaptor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectionView CollectionView { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.ElmSharp.CollectionView.html">CollectionView</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_Count_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.Count*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_Count" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.Count">Count</h4>
+  <div class="markdown level1 summary"><p>the number of items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_Item_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.Item*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_Item_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CreateNativeView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CreateNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CreateNativeView_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CreateNativeView(EvasObject)">CreateNativeView(EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Create a new view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract EvasObject CreateNativeView(EvasObject parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><p>Created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CreateNativeView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CreateNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_CreateNativeView_System_Int32_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.CreateNativeView(System.Int32,EvasObject)">CreateNativeView(Int32, EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Create a new view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract EvasObject CreateNativeView(int index, EvasObject parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>To used item when create a view</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><p>Created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetFooterView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetFooterView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetFooterView_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetFooterView(EvasObject)">GetFooterView(EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Create a footer view, if footer is not existed, null will be returned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract EvasObject GetFooterView(EvasObject parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><p>A created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetHeaderView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetHeaderView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetHeaderView_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetHeaderView(EvasObject)">GetHeaderView(EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Create a header view, if header is not existed, null will be returned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract EvasObject GetHeaderView(EvasObject parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><p>A created view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetItemIndex_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetItemIndex*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetItemIndex_System_Object_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetItemIndex(System.Object)">GetItemIndex(Object)</h4>
+  <div class="markdown level1 summary"><p>Find item index by item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetItemIndex(object item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>item to find</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>index of item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetViewCategory_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetViewCategory*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_GetViewCategory_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.GetViewCategory(System.Int32)">GetViewCategory(Int32)</h4>
+  <div class="markdown level1 summary"><p>A view category that represent a item, it use to distinguish kinds of view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual object GetViewCategory(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>item index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>An identifier of category</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureFooter_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureFooter*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureFooter_System_Int32_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureFooter(System.Int32,System.Int32)">MeasureFooter(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Measure Footer size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ElmSharp.Size MeasureFooter(int widthConstraint, int heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ElmSharp.Size</span></td>
+        <td><p>Footer size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureHeader_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureHeader*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureHeader_System_Int32_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureHeader(System.Int32,System.Int32)">MeasureHeader(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Measure header size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ElmSharp.Size MeasureHeader(int widthConstraint, int heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ElmSharp.Size</span></td>
+        <td><p>Header size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureItem_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureItem*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureItem_System_Int32_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureItem(System.Int32,System.Int32)">MeasureItem(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Measure item size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ElmSharp.Size MeasureItem(int widthConstraint, int heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ElmSharp.Size</span></td>
+        <td><p>Item size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureItem_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureItem*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_MeasureItem_System_Int32_System_Int32_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.MeasureItem(System.Int32,System.Int32,System.Int32)">MeasureItem(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Measure item size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ElmSharp.Size MeasureItem(int index, int widthConstraint, int heightConstraint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A item index to measure</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">widthConstraint</span></td>
+        <td><p>A width size that could be reached as maximum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">heightConstraint</span></td>
+        <td><p>A height  size that could be reached as maximum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ElmSharp.Size</span></td>
+        <td><p>Item size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_RemoveNativeView_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.RemoveNativeView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_RemoveNativeView_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.RemoveNativeView(EvasObject)">RemoveNativeView(EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Remove view, a created view by Adaptor, should be removed by Adaptor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void RemoveNativeView(EvasObject native)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">native</span></td>
+        <td><p>A view to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_RequestItemSelected_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.RequestItemSelected*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_RequestItemSelected_System_Object_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.RequestItemSelected(System.Object)">RequestItemSelected(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RequestItemSelected(object item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SendItemSelected_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SendItemSelected*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SendItemSelected_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SendItemSelected(System.Int32)">SendItemSelected(Int32)</h4>
+  <div class="markdown level1 summary"><p>Handle Selected item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SendItemSelected(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SetBinding_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SetBinding*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SetBinding_EvasObject_System_Int32_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SetBinding(EvasObject,System.Int32)">SetBinding(EvasObject, Int32)</h4>
+  <div class="markdown level1 summary"><p>Set data binding between view and item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void SetBinding(EvasObject view, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A target view</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>A target item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SetItemsSource_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SetItemsSource*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_SetItemsSource_System_Collections_IEnumerable_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.SetItemsSource(System.Collections.IEnumerable)">SetItemsSource(IEnumerable)</h4>
+  <div class="markdown level1 summary"><p>Sets ItemsSource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetItemsSource(IEnumerable items)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span></td>
+        <td><span class="parametername">items</span></td>
+        <td><p>Items source</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_UnBinding_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.UnBinding*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_UnBinding_EvasObject_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.UnBinding(EvasObject)">UnBinding(EvasObject)</h4>
+  <div class="markdown level1 summary"><p>Unset data binding on view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void UnBinding(EvasObject view)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A view to unbinding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_UpdateViewState_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.UpdateViewState*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_UpdateViewState_EvasObject_Tizen_UIExtensions_ElmSharp_ViewHolderState_" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.UpdateViewState(EvasObject,Tizen.UIExtensions.ElmSharp.ViewHolderState)">UpdateViewState(EvasObject, ViewHolderState)</h4>
+  <div class="markdown level1 summary"><p>Update View state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UpdateViewState(EvasObject view, ViewHolderState state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td><span class="parametername">view</span></td>
+        <td><p>A view to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Tizen.UIExtensions.ElmSharp.ViewHolderState.html">ViewHolderState</a></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>State of view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_ItemSelected" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.ItemSelected">ItemSelected</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;SelectedItemChangedEventArgs&gt; ItemSelected</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Tizen.UIExtensions.ElmSharp.SelectedItemChangedEventArgs.html">SelectedItemChangedEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <h4 id="Tizen_UIExtensions_ElmSharp_ItemAdaptor_System_Collections_Specialized_INotifyCollectionChanged_CollectionChanged" data-uid="Tizen.UIExtensions.ElmSharp.ItemAdaptor.System#Collections#Specialized#INotifyCollectionChanged#CollectionChanged">INotifyCollectionChanged.CollectionChanged</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Specialized.NotifyCollectionChangedEventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Specialized.INotifyCollectionChanged</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>Copyright &copy; 2021 Samsung <br> Generated by <strong>DocFX</strong></span>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
