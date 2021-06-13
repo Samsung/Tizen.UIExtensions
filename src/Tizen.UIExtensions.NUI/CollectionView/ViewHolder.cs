@@ -41,8 +41,10 @@ namespace Tizen.UIExtensions.NUI
                 {
                     _content.WidthSpecification = LayoutParamPolicies.MatchParent;
                     _content.HeightSpecification = LayoutParamPolicies.MatchParent;
+#pragma warning disable CS0618
                     _content.WidthResizePolicy = ResizePolicyType.FillToParent;
                     _content.HeightResizePolicy = ResizePolicyType.FillToParent;
+#pragma warning restore CS0618
                     Add(_content);
                 }
             }

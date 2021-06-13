@@ -13,5 +13,13 @@ namespace Tizen.UIExtensions.ElmSharp
                 widget.BackgroundColor = color.ToNative();
             }
         }
+
+        public static void SetEnable(this EvasObject view, bool enable)
+        {
+            if (view is Widget widget)
+            {
+                widget.IsEnabled = enable;
+            }
+        }
     }
 }

@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resource\animated.gif" />
+    <None Remove="Resource\image2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\animated.gif" />
+    <EmbeddedResource Include="Resource\image2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
   </ItemGroup>
   <ItemGroup>

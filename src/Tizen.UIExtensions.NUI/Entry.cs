@@ -249,7 +249,7 @@ namespace Tizen.UIExtensions.NUI
             InputMethodSettings = CreateInputMethodSettings(Keyboard, ReturnType, AutoCapital);
         }
 
-        PropertyMap CreateInputMethodSettings(Keyboard keyboard, ReturnType returnType, AutoCapitalType autoCapital)
+        internal static PropertyMap CreateInputMethodSettings(Keyboard keyboard, ReturnType returnType, AutoCapitalType autoCapital)
         {
             var inputMethod = new InputMethod
             {

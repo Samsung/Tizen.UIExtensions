@@ -264,8 +264,10 @@ namespace Tizen.UIExtensions.NUI
             ScrollView = CreateScrollView();
             ScrollView.WidthSpecification = LayoutParamPolicies.MatchParent;
             ScrollView.HeightSpecification = LayoutParamPolicies.MatchParent;
+#pragma warning disable CS0618
             ScrollView.WidthResizePolicy = ResizePolicyType.FillToParent;
             ScrollView.HeightResizePolicy = ResizePolicyType.FillToParent;
+#pragma warning restore CS0618
             ScrollView.ScrollingEventThreshold = 10;
             ScrollView.Scrolling += OnScrolling;
             ScrollView.ScrollAnimationEnded += OnScrollAnimationEnded;
