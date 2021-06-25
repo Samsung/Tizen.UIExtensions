@@ -1,8 +1,9 @@
-﻿using System.Graphics;
+using System.Graphics;
 using GColor = System.Graphics.Color;
+using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class StepperDrawable : GraphicsViewDrawable
     {
@@ -51,7 +52,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             return new TSize((MaterialStepperWidth + MaterialButtonMargin) * DeviceInfo.ScalingFactor, MaterialStepperHeight * DeviceInfo.ScalingFactor);
         }
 
-        public override void OnTouchDown(Point point)
+        public override void OnTouchDown(GPoint point)
         {
             var touchDownPoint = new PointF((float)point.X, (float)point.Y);
 
@@ -68,7 +69,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             _minusRippleEffect.OnTouchDown(point);
         }
 
-        public override void OnTouchUp(Point point)
+        public override void OnTouchUp(GPoint point)
         {
             _minusRippleEffect.OnTouchUp(point);
             _plusRippleEffect.OnTouchUp(point);

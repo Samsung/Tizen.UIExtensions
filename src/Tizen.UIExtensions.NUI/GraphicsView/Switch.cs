@@ -1,19 +1,9 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface ISwitch
-    {
-        bool IsToggled { get; set; }
-
-        Color OnColor { get; }
-
-        Color ThumbColor { get; }
-
-        Color BackgroundColor { get; }
-    }
-
     /// <summary>
     /// A View control that provides a toggled value.
     /// </summary>

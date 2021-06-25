@@ -1,5 +1,19 @@
-﻿namespace Tizen.UIExtensions.NUI.GraphicsView
+using GColor = System.Graphics.Color;
+using TColor = Tizen.UIExtensions.Common.Color;
+
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
+    public static class GraphicsColorExtensions
+    {
+        public static GColor ToGraphicsColor(this TColor color, string fallback)
+        {
+            if (!color.IsDefault)
+                return new GColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
+            else
+                return new GColor(fallback);
+        }
+    }
+
     internal static class Material
     {
         public static class Color

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using Tizen.NUI;
-using Size = Tizen.UIExtensions.Common.Size;
+using Tizen.UIExtensions.NUI;
 using TSystemInfo = Tizen.System.Information;
 
-namespace Tizen.UIExtensions.NUI
+namespace Tizen.UIExtensions.Common
 {
-    public static class DeviceInfo
+    public static partial class DeviceInfo
     {
         static Lazy<int> s_dpi = new Lazy<int>(() =>
         {

@@ -1,10 +1,9 @@
 using System;
 using System.Graphics;
-using Tizen.UIExtensions.Common;
 using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public abstract class GraphicsViewDrawable : IDrawable, IMeasurable
     {

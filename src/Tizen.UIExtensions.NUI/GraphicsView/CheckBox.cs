@@ -1,25 +1,9 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface ICheckBox
-    {
-        /// <summary>
-        /// Gets a value that indicates whether the CheckBox is checked.
-        /// </summary>
-        bool IsChecked { get; set; }
-
-        /// <summary>
-        /// Gets a Color value that defines the display color.
-        /// </summary>
-        Color Color { get; }
-
-        Color TextColor { get; }
-
-        string Text { get; }
-    }
-
     /// <summary>
     /// A visual control used to indicate that something is checked.
     /// </summary>

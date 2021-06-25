@@ -1,6 +1,7 @@
 ﻿using SkiaSharp.Views.Tizen;
 using System.Graphics;
 using System.Graphics.Skia;
+using Tizen.UIExtensions.Common;
 
 namespace Tizen.UIExtensions.NUI
 {

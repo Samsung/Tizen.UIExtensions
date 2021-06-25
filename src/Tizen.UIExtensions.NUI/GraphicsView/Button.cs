@@ -1,21 +1,9 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface IButton
-    {
-        bool IsPressed { get; }
-
-        string Text { get; }
-
-        Color TextColor { get; }
-
-        Color BackgroundColor { get; }
-
-        double CornerRadius { get; }
-    }
-
     /// <summary>
     /// A button View that reacts to touch events.
     /// </summary>

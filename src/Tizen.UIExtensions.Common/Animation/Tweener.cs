@@ -26,7 +26,7 @@
 
 using System;
 
-namespace Tizen.UIExtensions.NUI.Internal
+namespace Tizen.UIExtensions.Common.Internal
 {
     internal class Tweener
     {

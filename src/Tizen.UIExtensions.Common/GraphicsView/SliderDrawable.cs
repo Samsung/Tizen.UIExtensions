@@ -1,10 +1,9 @@
-﻿using System.Graphics;
-using Tizen.UIExtensions.NUI.GraphicsView;
-using Tizen.UIExtensions.NUI.Internal;
+using System.Graphics;
+using Tizen.UIExtensions.Common.Internal;
 using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class SliderDrawable : GraphicsViewDrawable, IAnimatable
     {

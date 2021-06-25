@@ -1,10 +1,11 @@
 using ElmSharp;
 using System;
+using Tizen.UIExtensions.ElmSharp;
 using TSystemInfo = Tizen.System.Information;
 
-namespace Tizen.UIExtensions.ElmSharp
+namespace Tizen.UIExtensions.Common
 {
-    public static class DeviceInfo
+    public static partial class DeviceInfo
     {
         static Lazy<string> s_profile = new Lazy<string>(() =>
         {

@@ -1,24 +1,10 @@
-﻿using System;
-using Tizen.NUI.BaseComponents;
+﻿using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 using TEditor = Tizen.UIExtensions.NUI.Editor;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface IEditor
-    {
-        string Text { get; set; }
-
-        Color TextColor { get; }
-        
-        string Placeholder { get; }
-
-        Color PlaceholderColor { get; }
-
-        Color BackgroundColor { get; }
-        bool IsFocused { get; }
-    }
-
     /// <summary>
     /// A control that can edit multiple lines of text.
     /// </summary>

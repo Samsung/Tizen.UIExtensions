@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 using GPoint = System.Graphics.Point;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView

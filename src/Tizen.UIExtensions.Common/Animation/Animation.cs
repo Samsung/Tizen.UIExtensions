@@ -28,7 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Tizen.UIExtensions.NUI.Internal
+namespace Tizen.UIExtensions.Common.Internal
 {
     public class Animation : IEnumerable
     {

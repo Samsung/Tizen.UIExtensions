@@ -1,8 +1,9 @@
-﻿using SkiaSharp;
+using SkiaSharp;
 using System.Graphics;
+using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class CheckBoxDrawable : GraphicsViewDrawable
     {
@@ -38,7 +39,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             return new TSize(DeviceInfo.ScalingFactor * 28 + textLength, DeviceInfo.ScalingFactor * 20);
         }
 
-        public override void OnTouchDown(Point point)
+        public override void OnTouchDown(GPoint point)
         {
             View.IsChecked = !View.IsChecked;
         }

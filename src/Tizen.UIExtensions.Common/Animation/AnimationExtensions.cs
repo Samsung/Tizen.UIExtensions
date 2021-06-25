@@ -28,7 +28,7 @@ using System;
 using System.Collections.Generic;
 using Tizen.Applications;
 
-namespace Tizen.UIExtensions.NUI.Internal
+namespace Tizen.UIExtensions.Common.Internal
 {
     public interface IAnimatable
     {

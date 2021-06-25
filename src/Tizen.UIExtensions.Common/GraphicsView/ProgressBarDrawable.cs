@@ -1,8 +1,8 @@
-﻿using System.Graphics;
+using System.Graphics;
 using GColor = System.Graphics.Color;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class ProgressBarDrawable : GraphicsViewDrawable
     {

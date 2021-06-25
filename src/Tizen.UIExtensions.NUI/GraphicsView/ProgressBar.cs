@@ -1,15 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Tizen.UIExtensions.Common;
-using Tizen.UIExtensions.NUI.Internal;
+using Tizen.UIExtensions.Common.Internal;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface IProgressBar
-    {
-        double Progress { get; set; }
 
-        Color ProgressColor { get; }
-    }
 
     /// <summary>
     /// A View control that displays progress.

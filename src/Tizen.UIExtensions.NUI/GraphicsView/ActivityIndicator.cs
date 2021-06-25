@@ -1,14 +1,8 @@
 ﻿using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface IActivityIndicator
-    {
-        bool IsRunning { get; }
-
-        Color Color { get; }
-    }
-
     /// <summary>
     /// A visual control used to indicate that something is ongoing.
     /// </summary>

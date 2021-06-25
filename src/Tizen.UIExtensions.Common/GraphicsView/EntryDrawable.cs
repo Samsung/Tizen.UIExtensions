@@ -1,9 +1,10 @@
-﻿using System.Graphics;
-using Tizen.UIExtensions.NUI.Internal;
+using System.Graphics;
+using Tizen.UIExtensions.Common.Internal;
 using GColor = System.Graphics.Color;
+using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class EntryDrawable : GraphicsViewDrawable, IAnimatable
     {
@@ -73,7 +74,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             AnimateMaterialPlaceholder(false);
         }
 
-        public override void OnTouchDown(Point point)
+        public override void OnTouchDown(GPoint point)
         {
             PointF touchPoint = new PointF((float)point.X, (float)point.Y);
 

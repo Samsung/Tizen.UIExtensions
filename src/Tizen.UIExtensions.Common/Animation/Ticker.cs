@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Tizen.NUI;
 
-namespace Tizen.UIExtensions.NUI.Internal
+namespace Tizen.UIExtensions.Common.Internal
 {
     public class Ticker
     {
@@ -59,7 +59,7 @@ namespace Tizen.UIExtensions.NUI.Internal
 
         public virtual void Remove(int handle)
         {
-            ElmSharp.EcoreMainloop.Post(() => RemoveTimeout(handle));
+            global::ElmSharp.EcoreMainloop.Post(() => RemoveTimeout(handle));
         }
 
         void RemoveTimeout(int handle)

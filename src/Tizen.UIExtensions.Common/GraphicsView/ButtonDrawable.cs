@@ -1,8 +1,9 @@
-﻿using System.Graphics;
+using System.Graphics;
 using GColor = System.Graphics.Color;
+using GPoint = System.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class ButtonDrawable : GraphicsViewDrawable
     {
@@ -45,13 +46,13 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             return new TSize(DeviceInfo.ScalingFactor * MaterialBackgroundHeight + textLength, DeviceInfo.ScalingFactor * MaterialBackgroundHeight);
         }
 
-        public override void OnTouchDown(Point point)
+        public override void OnTouchDown(GPoint point)
         {
             _rippleEffect.ClipRectangle = _backgroundRect;
             _rippleEffect.OnTouchDown(point);
         }
 
-        public override void OnTouchUp(Point point)
+        public override void OnTouchUp(GPoint point)
         {
             _rippleEffect.OnTouchUp(point);
         }

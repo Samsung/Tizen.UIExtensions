@@ -1,24 +1,10 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 using Color = Tizen.UIExtensions.Common.Color;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface ISlider
-    {
-        double Minimum { get; }
-
-        double Maximum { get; }
-
-        double Value { get; set; }
-
-        Color MinimumTrackColor { get; }
-
-        Color MaximumTrackColor { get; }
-
-        Color ThumbColor { get; }
-    }
-
     /// <summary>
     /// A View control that inputs a linear value.
     /// </summary>

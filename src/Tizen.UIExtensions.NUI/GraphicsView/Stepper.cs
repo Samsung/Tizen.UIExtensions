@@ -1,18 +1,9 @@
 ﻿using System;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public interface IStepper
-    {
-        public double Minimum { get; }
-        public double Maximum { get; }
-
-        public double Increment { get; }
-
-        public double Value { get; set; }
-    }
-
     /// <summary>
     /// A View control that inputs a discrete value, constrained to a range.
     /// </summary>

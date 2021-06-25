@@ -66,15 +66,6 @@ namespace Tizen.UIExtensions.NUI
             return new NColor((float)c.R, (float)c.G, (float)c.B, (float)c.A);
         }
 
-        public static GColor ToGraphicsColor(this Color color, string fallback)
-        {
-            if (!color.IsDefault)
-                return new GColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
-            else
-                return new GColor(fallback);
-        }
-
-
         public static NSize ToNative(this Size size)
         {
             return new NSize((float)size.Width, (float)size.Height);

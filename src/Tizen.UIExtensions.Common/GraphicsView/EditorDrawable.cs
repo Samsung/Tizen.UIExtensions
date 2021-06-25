@@ -1,9 +1,9 @@
-﻿using System.Graphics;
-using Tizen.UIExtensions.NUI.Internal;
+using System.Graphics;
+using Tizen.UIExtensions.Common.Internal;
 using GColor = System.Graphics.Color;
 using TSize = Tizen.UIExtensions.Common.Size;
 
-namespace Tizen.UIExtensions.NUI.GraphicsView
+namespace Tizen.UIExtensions.Common.GraphicsView
 {
     public class EditorDrawable : GraphicsViewDrawable, IAnimatable
     {
