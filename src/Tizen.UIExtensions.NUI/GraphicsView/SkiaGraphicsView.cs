@@ -3,7 +3,7 @@ using System.Graphics;
 using System.Graphics.Skia;
 using Tizen.UIExtensions.Common;
 
-namespace Tizen.UIExtensions.NUI
+namespace Tizen.UIExtensions.NUI.GraphicsView
 {
     public class SkiaGraphicsView : SKGLSurfaceView
     {
