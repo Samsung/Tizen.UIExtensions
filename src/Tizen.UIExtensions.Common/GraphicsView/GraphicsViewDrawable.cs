@@ -1,6 +1,6 @@
 using System;
-using System.Graphics;
-using GPoint = System.Graphics.Point;
+using Microsoft.Maui.Graphics;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView

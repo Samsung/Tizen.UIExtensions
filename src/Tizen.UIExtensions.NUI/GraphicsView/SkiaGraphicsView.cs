@@ -1,6 +1,6 @@
-﻿using SkiaSharp.Views.Tizen;
-using System.Graphics;
-using System.Graphics.Skia;
+﻿using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Graphics.Skia;
+using SkiaSharp.Views.Tizen;
 using Tizen.UIExtensions.Common;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView

@@ -35,6 +35,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\ISlider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\IStepper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\ISwitch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SKColorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SKGraphicsExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaBitmapExportContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaCanvasState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaDelegatingFontService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaFontFamily.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaFontService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaFontStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaGraphicsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SkiaTextLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\Microsoft.Maui.Graphics.Skia\SKPaintExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\ProgressBarDrawable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\RippleEffectDrawable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\SliderDrawable.cs" />
@@ -46,7 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DeviceOrientation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DlogLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollToPosition.cs" />
-    <Compile Include="..\Tizen.UIExtensions.Common\DrawerHeaderBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawerHeaderBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FlyoutLayoutBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FormattedString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBatchable.cs" />
@@ -67,7 +80,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Rect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollBarVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScrollOrientation.cs" />
-    <Compile Include="..\Tizen.UIExtensions.Common\ItemSelectedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ItemSelectedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Span.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Stretch.cs" />

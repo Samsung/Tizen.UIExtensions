@@ -1,6 +1,5 @@
-using SkiaSharp;
-using System.Graphics;
-using GPoint = System.Graphics.Point;
+using Microsoft.Maui.Graphics;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -117,17 +116,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var height = dirtyRect.Height;
             var width = dirtyRect.Width;
 
-            // it is workaround
-            float fontSpace = 0;
-            using (var paint = new SKPaint
-            {
-                TextSize = fontSize
-            })
-            {
-                fontSpace = paint.FontSpacing;
-            }
-            fontSpace = (float)(fontSpace / DeviceInfo.ScalingFactor);
-            canvas.DrawString(View.Text, size + margin, height / 2.0f - fontSpace / 2.0f, width - size + margin, height, HorizontalAlignment.Left, VerticalAlignment.Top);
+            canvas.DrawString(View.Text, size + margin, dirtyRect.Y, width - (size + margin), height, HorizontalAlignment.Left, VerticalAlignment.Center);
 
             canvas.RestoreState();
         }

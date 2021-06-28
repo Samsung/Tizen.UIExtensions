@@ -9,7 +9,6 @@ using NVector4 = Tizen.NUI.Vector4;
 using ScrollableDirection = Tizen.NUI.Components.ScrollableBase.Direction;
 using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using NActionButtonTitleType = Tizen.NUI.InputMethod.ActionButtonTitleType;
-using GColor = System.Graphics.Color;
 
 namespace Tizen.UIExtensions.NUI
 {

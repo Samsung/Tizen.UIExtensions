@@ -1,6 +1,6 @@
-using System.Graphics;
+using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
-using GColor = System.Graphics.Color;
+using GColor = Microsoft.Maui.Graphics.Color;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -79,7 +79,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
                 canvas.Rotate(0, x + strokeWidth + size / 2, y + strokeWidth + size / 2);
                 if (View.Color.IsDefault)
                 {
-                    canvas.StrokeColor = new GColor(Material.Color.LightBlue);
+                    canvas.StrokeColor = GColor.FromArgb(Material.Color.LightBlue);
                 }
                 else
                 {

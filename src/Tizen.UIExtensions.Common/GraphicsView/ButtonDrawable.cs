@@ -1,6 +1,6 @@
-using System.Graphics;
-using GColor = System.Graphics.Color;
-using GPoint = System.Graphics.Point;
+using Microsoft.Maui.Graphics;
+using GColor = Microsoft.Maui.Graphics.Color;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -68,7 +68,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var width = dirtyRect.Width - MaterialShadowOffset;
             var height = MaterialBackgroundHeight - MaterialShadowOffset;
-            canvas.SetShadow(new SizeF(0, 1), 3, new GColor(Material.Color.Gray2));
+            canvas.SetShadow(new SizeF(0, 1), 3, GColor.FromArgb(Material.Color.Gray2));
 
             canvas.FillRoundedRectangle(x, y, width, height, (float)(View.CornerRadius * DeviceInfo.ScalingFactor));
 

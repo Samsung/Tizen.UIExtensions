@@ -1,7 +1,7 @@
-using System.Graphics;
+using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
-using GColor = System.Graphics.Color;
-using GPoint = System.Graphics.Point;
+using GColor = Microsoft.Maui.Graphics.Color;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -105,12 +105,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             var strokeWidth = 1.0f;
-            canvas.FillColor = new GColor(Material.Color.Black);
+            canvas.FillColor = GColor.FromArgb(Material.Color.Black);
 
             if (View.IsFocused)
             {
                 strokeWidth = 2.0f;
-                canvas.FillColor = new GColor(Material.Color.Blue);
+                canvas.FillColor = GColor.FromArgb(Material.Color.Blue);
             }
 
             var x = dirtyRect.X;

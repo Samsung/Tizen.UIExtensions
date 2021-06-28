@@ -1,5 +1,5 @@
-using System.Graphics;
-using GColor = System.Graphics.Color;
+using Microsoft.Maui.Graphics;
+using GColor = Microsoft.Maui.Graphics.Color;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -30,7 +30,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FillColor = new GColor(Fluent.Color.Background.NeutralLight);
+            canvas.FillColor = GColor.FromArgb(Fluent.Color.Background.NeutralLight);
 
             var x = dirtyRect.X;
             var y = (float)((dirtyRect.Height - MaterialTrackHeight) / 2);

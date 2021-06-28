@@ -1,7 +1,7 @@
-using System.Graphics;
+using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
-using GColor = System.Graphics.Color;
-using GPoint = System.Graphics.Point;
+using GColor = Microsoft.Maui.Graphics.Color;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView

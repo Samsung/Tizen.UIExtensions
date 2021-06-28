@@ -1,6 +1,6 @@
-using System.Graphics;
-using GColor = System.Graphics.Color;
-using GPoint = System.Graphics.Point;
+using Microsoft.Maui.Graphics;
+using GColor = Microsoft.Maui.Graphics.Color;
+using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
@@ -24,11 +24,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             _minusRippleEffect = new RippleEffectDrawable
             {
-                RippleColor = new GColor(Material.Color.Gray6)
+                RippleColor = GColor.FromArgb(Material.Color.Gray6)
             };
             _plusRippleEffect = new RippleEffectDrawable
             {
-                RippleColor = new GColor(Material.Color.Gray6)
+                RippleColor = GColor.FromArgb(Material.Color.Gray6)
             };
 
             _minusRippleEffect.Invalidated += (s, e) => SendInvalidated();
@@ -80,7 +80,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             canvas.StrokeSize = 1;
-            canvas.StrokeColor = new GColor(Material.Color.Gray6);
+            canvas.StrokeColor = GColor.FromArgb(Material.Color.Gray6);
 
             var x = dirtyRect.X+1;
             var y = dirtyRect.Y;
@@ -95,7 +95,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var vBuilder = new PathBuilder();
             var path = vBuilder.BuildPath(MaterialStepperMinusIcon);
 
-            canvas.FillColor = new GColor(Material.Color.Black);
+            canvas.FillColor = GColor.FromArgb(Material.Color.Black);
             canvas.FillPath(path);
 
             canvas.RestoreState();
@@ -108,7 +108,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             canvas.StrokeSize = 1;
-            canvas.StrokeColor = new GColor(Material.Color.Gray6);
+            canvas.StrokeColor = GColor.FromArgb(Material.Color.Gray6);
 
             var x = MaterialStepperWidth / 2 + MaterialButtonMargin;
             var y = dirtyRect.Y;
@@ -123,7 +123,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var vBuilder = new PathBuilder();
             var path = vBuilder.BuildPath(MaterialStepperPlusIcon);
 
-            canvas.FillColor = new GColor(Material.Color.Black);
+            canvas.FillColor = GColor.FromArgb(Material.Color.Black);
             canvas.FillPath(path);
 
             canvas.RestoreState();
