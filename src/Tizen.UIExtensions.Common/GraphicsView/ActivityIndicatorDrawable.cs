@@ -99,5 +99,14 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             return new TSize(45 * DeviceInfo.ScalingFactor, 45 * DeviceInfo.ScalingFactor);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.AbortAnimation("MaterialActivityIndicator");
+            }
+            base.Dispose(disposing);
+        }
     }
 }

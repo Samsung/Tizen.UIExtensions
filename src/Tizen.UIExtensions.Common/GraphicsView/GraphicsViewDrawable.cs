@@ -5,7 +5,7 @@ using TSize = Tizen.UIExtensions.Common.Size;
 
 namespace Tizen.UIExtensions.Common.GraphicsView
 {
-    public abstract class GraphicsViewDrawable : IDrawable, IMeasurable
+    public abstract class GraphicsViewDrawable : IDrawable, IMeasurable, IDisposable
     {
         public event EventHandler? Invalidated;
         public abstract void Draw(ICanvas canvas, RectangleF dirtyRect);
@@ -26,5 +26,15 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         }
 
         public abstract TSize Measure(double availableWidth, double availableHeight);
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+        }
     }
 }

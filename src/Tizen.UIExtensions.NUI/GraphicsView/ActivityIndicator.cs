@@ -37,5 +37,15 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             get => GetProperty<Color>(nameof(Color));
             set => SetProperty(nameof(Color), value);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Drawable?.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

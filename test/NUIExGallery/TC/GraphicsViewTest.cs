@@ -78,7 +78,11 @@ namespace NUIExGallery.TC
                     ai.IsRunning = !ai.IsRunning;
                     return true;
                 });
-                ai.RemovedFromWindow += (s, e) => ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                ai.RemovedFromWindow += (s, e) =>
+                {
+                    ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                    (s as View).Dispose();
+                };
             }
 
             {
@@ -97,7 +101,11 @@ namespace NUIExGallery.TC
                     ai.IsRunning = !ai.IsRunning;
                     return true;
                 });
-                ai.RemovedFromWindow += (s, e) => ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                ai.RemovedFromWindow += (s, e) =>
+                {
+                    ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                    (s as View).Dispose();
+                };
             }
 
             {
@@ -116,7 +124,11 @@ namespace NUIExGallery.TC
                     ai.IsRunning = !ai.IsRunning;
                     return true;
                 });
-                ai.RemovedFromWindow += (s, e) => ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                ai.RemovedFromWindow += (s, e) =>
+                {
+                    ElmSharp.EcoreMainloop.RemoveTimer(timer);
+                    (s as View).Dispose();
+                };
             }
 
             view.Add(hlayout);
