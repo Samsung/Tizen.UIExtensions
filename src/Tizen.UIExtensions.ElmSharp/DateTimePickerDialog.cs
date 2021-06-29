@@ -2,6 +2,7 @@ using System;
 using ElmSharp;
 using DateChangedEventArgs = Tizen.UIExtensions.Common.DateChangedEventArgs;
 using EButton = ElmSharp.Button;
+using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
 namespace Tizen.UIExtensions.ElmSharp
 {

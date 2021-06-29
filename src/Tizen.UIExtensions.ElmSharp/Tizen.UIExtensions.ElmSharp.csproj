@@ -24,6 +24,7 @@
   <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="6.0.100-preview.5.246" />
     <PackageReference Include="SkiaSharp.Views" Version="2.80.2" />
     <PackageReference Include="Tizen.NET" Version="4.0.0" />
   </ItemGroup>
