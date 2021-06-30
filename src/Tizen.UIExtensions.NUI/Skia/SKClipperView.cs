@@ -68,7 +68,13 @@ namespace Tizen.UIExtensions.NUI
             _resized.Notified += OnResized;
 
             RemoveRenderer(0);
+
+            _buffer = new NativeImageSource(1, 1, NativeImageSource.ColorDepth.Default);
+            _texture = new Texture(_buffer);
+            _textureSet = new TextureSet();
+            _textureSet.SetTexture(0u, _texture);
             _renderer = new Renderer(_geometry, _shader);
+            _renderer.SetTextures(_textureSet);
             AddRenderer(_renderer);
 
             OnResized();
