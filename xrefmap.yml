@@ -1665,6 +1665,51 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.Common.IMeasurable.Measure
   nameWithType: IMeasurable.Measure
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs
+  name: ItemSelectedEventArgs
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html
+  commentId: T:Tizen.UIExtensions.Common.ItemSelectedEventArgs
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs
+  nameWithType: ItemSelectedEventArgs
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.#ctor(System.Object,System.Int32)
+  name: ItemSelectedEventArgs(Object, Int32)
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs__ctor_System_Object_System_Int32_
+  commentId: M:Tizen.UIExtensions.Common.ItemSelectedEventArgs.#ctor(System.Object,System.Int32)
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.ItemSelectedEventArgs(System.Object, System.Int32)
+  nameWithType: ItemSelectedEventArgs.ItemSelectedEventArgs(Object, Int32)
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.#ctor*
+  name: ItemSelectedEventArgs
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs__ctor_
+  commentId: Overload:Tizen.UIExtensions.Common.ItemSelectedEventArgs.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.ItemSelectedEventArgs
+  nameWithType: ItemSelectedEventArgs.ItemSelectedEventArgs
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem
+  name: SelectedItem
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs_SelectedItem
+  commentId: P:Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem
+  nameWithType: ItemSelectedEventArgs.SelectedItem
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem*
+  name: SelectedItem
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs_SelectedItem_
+  commentId: Overload:Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItem
+  nameWithType: ItemSelectedEventArgs.SelectedItem
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex
+  name: SelectedItemIndex
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs_SelectedItemIndex
+  commentId: P:Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex
+  nameWithType: ItemSelectedEventArgs.SelectedItemIndex
+- uid: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex*
+  name: SelectedItemIndex
+  href: api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html#Tizen_UIExtensions_Common_ItemSelectedEventArgs_SelectedItemIndex_
+  commentId: Overload:Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.Common.ItemSelectedEventArgs.SelectedItemIndex
+  nameWithType: ItemSelectedEventArgs.SelectedItemIndex
 - uid: Tizen.UIExtensions.Common.ITextable
   name: ITextable
   href: api/Tizen.UIExtensions.Common.ITextable.html
@@ -3455,51 +3500,6 @@ references:
   commentId: F:Tizen.UIExtensions.Common.ScrollToPosition.Start
   fullName: Tizen.UIExtensions.Common.ScrollToPosition.Start
   nameWithType: ScrollToPosition.Start
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs
-  name: SelectedItemChangedEventArgs
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html
-  commentId: T:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs
-  nameWithType: SelectedItemChangedEventArgs
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.#ctor(System.Object,System.Int32)
-  name: SelectedItemChangedEventArgs(Object, Int32)
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs__ctor_System_Object_System_Int32_
-  commentId: M:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.#ctor(System.Object,System.Int32)
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemChangedEventArgs(System.Object, System.Int32)
-  nameWithType: SelectedItemChangedEventArgs.SelectedItemChangedEventArgs(Object, Int32)
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.#ctor*
-  name: SelectedItemChangedEventArgs
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs__ctor_
-  commentId: Overload:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.#ctor
-  isSpec: "True"
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemChangedEventArgs
-  nameWithType: SelectedItemChangedEventArgs.SelectedItemChangedEventArgs
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem
-  name: SelectedItem
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs_SelectedItem
-  commentId: P:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem
-  nameWithType: SelectedItemChangedEventArgs.SelectedItem
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem*
-  name: SelectedItem
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs_SelectedItem_
-  commentId: Overload:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem
-  isSpec: "True"
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItem
-  nameWithType: SelectedItemChangedEventArgs.SelectedItem
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex
-  name: SelectedItemIndex
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs_SelectedItemIndex
-  commentId: P:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex
-  nameWithType: SelectedItemChangedEventArgs.SelectedItemIndex
-- uid: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex*
-  name: SelectedItemIndex
-  href: api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html#Tizen_UIExtensions_Common_SelectedItemChangedEventArgs_SelectedItemIndex_
-  commentId: Overload:Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex
-  isSpec: "True"
-  fullName: Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.SelectedItemIndex
-  nameWithType: SelectedItemChangedEventArgs.SelectedItemIndex
 - uid: Tizen.UIExtensions.Common.Size
   name: Size
   href: api/Tizen.UIExtensions.Common.Size.html
@@ -5023,6 +5023,19 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.CalculateDoubleScaledSizeInLargeScreen
   nameWithType: DeviceInfo.CalculateDoubleScaledSizeInLargeScreen
+- uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType
+  name: DeviceType
+  href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_DeviceType
+  commentId: P:Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType
+  fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType
+  nameWithType: DeviceInfo.DeviceType
+- uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType*
+  name: DeviceType
+  href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_DeviceType_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.DeviceType
+  nameWithType: DeviceInfo.DeviceType
 - uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.DisplayResolutionUnit
   name: DisplayResolutionUnit
   href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_DisplayResolutionUnit
@@ -5218,6 +5231,19 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.PixelScreenSize
   nameWithType: DeviceInfo.PixelScreenSize
+- uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile
+  name: Profile
+  href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_Profile
+  commentId: P:Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile
+  fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile
+  nameWithType: DeviceInfo.Profile
+- uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile*
+  name: Profile
+  href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_Profile_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.DeviceInfo.Profile
+  nameWithType: DeviceInfo.Profile
 - uid: Tizen.UIExtensions.ElmSharp.DeviceInfo.ScaledDPScreenSize
   name: ScaledDPScreenSize
   href: api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html#Tizen_UIExtensions_ElmSharp_DeviceInfo_ScaledDPScreenSize
@@ -6597,6 +6623,19 @@ references:
   commentId: T:Tizen.UIExtensions.ElmSharp.GeometryExtensions
   fullName: Tizen.UIExtensions.ElmSharp.GeometryExtensions
   nameWithType: GeometryExtensions
+- uid: Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds(EvasObject)
+  name: GetBounds(EvasObject)
+  href: api/Tizen.UIExtensions.ElmSharp.GeometryExtensions.html#Tizen_UIExtensions_ElmSharp_GeometryExtensions_GetBounds_EvasObject_
+  commentId: M:Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds(EvasObject)
+  fullName: Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds(EvasObject)
+  nameWithType: GeometryExtensions.GetBounds(EvasObject)
+- uid: Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds*
+  name: GetBounds
+  href: api/Tizen.UIExtensions.ElmSharp.GeometryExtensions.html#Tizen_UIExtensions_ElmSharp_GeometryExtensions_GetBounds_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.GeometryExtensions.GetBounds
+  nameWithType: GeometryExtensions.GetBounds
 - uid: Tizen.UIExtensions.ElmSharp.GeometryExtensions.UpdateBounds(EvasObject,Tizen.UIExtensions.Common.Rect)
   name: UpdateBounds(EvasObject, Rect)
   href: api/Tizen.UIExtensions.ElmSharp.GeometryExtensions.html#Tizen_UIExtensions_ElmSharp_GeometryExtensions_UpdateBounds_EvasObject_Tizen_UIExtensions_Common_Rect_
@@ -7688,6 +7727,189 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.ElmSharp.ImageExtensions.SetIsAnimationPlaying
   nameWithType: ImageExtensions.SetIsAnimationPlaying
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer
+  name: INavigationDrawer
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html
+  commentId: T:Tizen.UIExtensions.ElmSharp.INavigationDrawer
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer
+  nameWithType: INavigationDrawer
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen
+  name: IsOpen
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_IsOpen
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen
+  nameWithType: INavigationDrawer.IsOpen
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen*
+  name: IsOpen
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_IsOpen_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsOpen
+  nameWithType: INavigationDrawer.IsOpen
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit
+  name: IsSplit
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_IsSplit
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit
+  nameWithType: INavigationDrawer.IsSplit
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit*
+  name: IsSplit
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_IsSplit_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.IsSplit
+  nameWithType: INavigationDrawer.IsSplit
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main
+  name: Main
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_Main
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main
+  nameWithType: INavigationDrawer.Main
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main*
+  name: Main
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_Main_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Main
+  nameWithType: INavigationDrawer.Main
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView
+  name: NavigationView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_NavigationView
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView
+  nameWithType: INavigationDrawer.NavigationView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView*
+  name: NavigationView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_NavigationView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.NavigationView
+  nameWithType: INavigationDrawer.NavigationView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_TargetView
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView
+  nameWithType: INavigationDrawer.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView*
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_TargetView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.TargetView
+  nameWithType: INavigationDrawer.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Toggled
+  name: Toggled
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html#Tizen_UIExtensions_ElmSharp_INavigationDrawer_Toggled
+  commentId: E:Tizen.UIExtensions.ElmSharp.INavigationDrawer.Toggled
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationDrawer.Toggled
+  nameWithType: INavigationDrawer.Toggled
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView
+  name: INavigationView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html
+  commentId: T:Tizen.UIExtensions.ElmSharp.INavigationView
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView
+  nameWithType: INavigationView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor
+  name: BackgroundColor
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BackgroundColor
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor
+  nameWithType: INavigationView.BackgroundColor
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor*
+  name: BackgroundColor
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BackgroundColor_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundColor
+  nameWithType: INavigationView.BackgroundColor
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage
+  name: BackgroundImage
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BackgroundImage
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage
+  nameWithType: INavigationView.BackgroundImage
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage*
+  name: BackgroundImage
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BackgroundImage_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BackgroundImage
+  nameWithType: INavigationView.BackgroundImage
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu(System.Collections.Generic.IEnumerable{System.Object})
+  name: BuildMenu(IEnumerable<Object>)
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BuildMenu_System_Collections_Generic_IEnumerable_System_Object__
+  commentId: M:Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu(System.Collections.Generic.IEnumerable{System.Object})
+  name.vb: BuildMenu(IEnumerable(Of Object))
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu(System.Collections.Generic.IEnumerable<System.Object>)
+  fullName.vb: Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu(System.Collections.Generic.IEnumerable(Of System.Object))
+  nameWithType: INavigationView.BuildMenu(IEnumerable<Object>)
+  nameWithType.vb: INavigationView.BuildMenu(IEnumerable(Of Object))
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu*
+  name: BuildMenu
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_BuildMenu_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.BuildMenu
+  nameWithType: INavigationView.BuildMenu
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.Header
+  name: Header
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_Header
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationView.Header
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.Header
+  nameWithType: INavigationView.Header
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.Header*
+  name: Header
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_Header_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.Header
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.Header
+  nameWithType: INavigationView.Header
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior
+  name: HeaderBehavior
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_HeaderBehavior
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior
+  nameWithType: INavigationView.HeaderBehavior
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior*
+  name: HeaderBehavior
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_HeaderBehavior_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.HeaderBehavior
+  nameWithType: INavigationView.HeaderBehavior
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.ItemSelected
+  name: ItemSelected
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_ItemSelected
+  commentId: E:Tizen.UIExtensions.ElmSharp.INavigationView.ItemSelected
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.ItemSelected
+  nameWithType: INavigationView.ItemSelected
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.TargetView
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_TargetView
+  commentId: P:Tizen.UIExtensions.ElmSharp.INavigationView.TargetView
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.TargetView
+  nameWithType: INavigationView.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.TargetView*
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_TargetView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.TargetView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.TargetView
+  nameWithType: INavigationView.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  name: UpdateHeaderLayout()
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout
+  commentId: M:Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout()
+  nameWithType: INavigationView.UpdateHeaderLayout()
+- uid: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout*
+  name: UpdateHeaderLayout
+  href: api/Tizen.UIExtensions.ElmSharp.INavigationView.html#Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  nameWithType: INavigationView.UpdateHeaderLayout
 - uid: Tizen.UIExtensions.ElmSharp.IndicatorView
   name: IndicatorView
   href: api/Tizen.UIExtensions.ElmSharp.IndicatorView.html
@@ -8873,6 +9095,45 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationDrawer
   nameWithType: NavigationDrawer.NavigationDrawer
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main
+  name: Main
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_Main
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main
+  nameWithType: NavigationDrawer.Main
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main*
+  name: Main
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_Main_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.Main
+  nameWithType: NavigationDrawer.Main
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView
+  name: NavigationView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_NavigationView
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView
+  nameWithType: NavigationDrawer.NavigationView
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView*
+  name: NavigationView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_NavigationView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.NavigationView
+  nameWithType: NavigationDrawer.NavigationView
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_TargetView
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView
+  nameWithType: NavigationDrawer.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView*
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html#Tizen_UIExtensions_ElmSharp_NavigationDrawer_TargetView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationDrawer.TargetView
+  nameWithType: NavigationDrawer.TargetView
 - uid: Tizen.UIExtensions.ElmSharp.NavigationView
   name: NavigationView
   href: api/Tizen.UIExtensions.ElmSharp.NavigationView.html
@@ -8966,6 +9227,100 @@ references:
   commentId: E:Tizen.UIExtensions.ElmSharp.NavigationView.ItemSelected
   fullName: Tizen.UIExtensions.ElmSharp.NavigationView.ItemSelected
   nameWithType: NavigationView.ItemSelected
+- uid: Tizen.UIExtensions.ElmSharp.NavigationView.TargetView
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationView.html#Tizen_UIExtensions_ElmSharp_NavigationView_TargetView
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationView.TargetView
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationView.TargetView
+  nameWithType: NavigationView.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.NavigationView.TargetView*
+  name: TargetView
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationView.html#Tizen_UIExtensions_ElmSharp_NavigationView_TargetView_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationView.TargetView
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationView.TargetView
+  nameWithType: NavigationView.TargetView
+- uid: Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout
+  name: INavigationView.UpdateHeaderLayout()
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationView.html#Tizen_UIExtensions_ElmSharp_NavigationView_Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout
+  commentId: M:Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout
+  name.vb: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout()
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationView.Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout()
+  nameWithType: NavigationView.INavigationView.UpdateHeaderLayout()
+  nameWithType.vb: NavigationView.Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout()
+- uid: Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout*
+  name: INavigationView.UpdateHeaderLayout
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationView.html#Tizen_UIExtensions_ElmSharp_NavigationView_Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout
+  isSpec: "True"
+  name.vb: Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationView.Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+  nameWithType: NavigationView.INavigationView.UpdateHeaderLayout
+  nameWithType.vb: NavigationView.Tizen.UIExtensions.ElmSharp.INavigationView.UpdateHeaderLayout
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem
+  name: NavigationViewItem
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html
+  commentId: T:Tizen.UIExtensions.ElmSharp.NavigationViewItem
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem
+  nameWithType: NavigationViewItem
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.#ctor
+  name: NavigationViewItem()
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem__ctor
+  commentId: M:Tizen.UIExtensions.ElmSharp.NavigationViewItem.#ctor
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.NavigationViewItem()
+  nameWithType: NavigationViewItem.NavigationViewItem()
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.#ctor*
+  name: NavigationViewItem
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem__ctor_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationViewItem.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.NavigationViewItem
+  nameWithType: NavigationViewItem.NavigationViewItem
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data
+  name: Data
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_Data
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data
+  nameWithType: NavigationViewItem.Data
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data*
+  name: Data
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_Data_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.Data
+  nameWithType: NavigationViewItem.Data
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent
+  name: GetContent
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_GetContent
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent
+  nameWithType: NavigationViewItem.GetContent
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent*
+  name: GetContent
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_GetContent_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContent
+  nameWithType: NavigationViewItem.GetContent
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate
+  name: NavigationViewItem.GetContentDelegate
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate.html
+  commentId: T:Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate
+  nameWithType: NavigationViewItem.GetContentDelegate
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst
+  name: IsFirst
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_IsFirst
+  commentId: P:Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst
+  nameWithType: NavigationViewItem.IsFirst
+- uid: Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst*
+  name: IsFirst
+  href: api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html#Tizen_UIExtensions_ElmSharp_NavigationViewItem_IsFirst_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.NavigationViewItem.IsFirst
+  nameWithType: NavigationViewItem.IsFirst
 - uid: Tizen.UIExtensions.ElmSharp.Page
   name: Page
   href: api/Tizen.UIExtensions.ElmSharp.Page.html
@@ -13876,6 +14231,19 @@ references:
   commentId: T:Tizen.UIExtensions.ElmSharp.ViewExtensions
   fullName: Tizen.UIExtensions.ElmSharp.ViewExtensions
   nameWithType: ViewExtensions
+- uid: Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable(ElmSharp.EvasObject,System.Boolean)
+  name: SetEnable(ElmSharp.EvasObject, Boolean)
+  href: api/Tizen.UIExtensions.ElmSharp.ViewExtensions.html#Tizen_UIExtensions_ElmSharp_ViewExtensions_SetEnable_ElmSharp_EvasObject_System_Boolean_
+  commentId: M:Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable(ElmSharp.EvasObject,System.Boolean)
+  fullName: Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable(ElmSharp.EvasObject, System.Boolean)
+  nameWithType: ViewExtensions.SetEnable(ElmSharp.EvasObject, Boolean)
+- uid: Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable*
+  name: SetEnable
+  href: api/Tizen.UIExtensions.ElmSharp.ViewExtensions.html#Tizen_UIExtensions_ElmSharp_ViewExtensions_SetEnable_
+  commentId: Overload:Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.ElmSharp.ViewExtensions.SetEnable
+  nameWithType: ViewExtensions.SetEnable
 - uid: Tizen.UIExtensions.ElmSharp.ViewExtensions.UpdateBackgroundColor(ElmSharp.EvasObject,Tizen.UIExtensions.Common.Color)
   name: UpdateBackgroundColor(ElmSharp.EvasObject, Color)
   href: api/Tizen.UIExtensions.ElmSharp.ViewExtensions.html#Tizen_UIExtensions_ElmSharp_ViewExtensions_UpdateBackgroundColor_ElmSharp_EvasObject_Tizen_UIExtensions_Common_Color_
@@ -14670,6 +15038,336 @@ references:
   commentId: F:Tizen.UIExtensions.NUI.CollectionViewSelectionMode.SingleAlways
   fullName: Tizen.UIExtensions.NUI.CollectionViewSelectionMode.SingleAlways
   nameWithType: CollectionViewSelectionMode.SingleAlways
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView
+  name: CustomRenderingView
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html
+  commentId: T:Tizen.UIExtensions.NUI.CustomRenderingView
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView
+  nameWithType: CustomRenderingView
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.#ctor
+  name: CustomRenderingView()
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView__ctor
+  commentId: M:Tizen.UIExtensions.NUI.CustomRenderingView.#ctor
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.CustomRenderingView()
+  nameWithType: CustomRenderingView.CustomRenderingView()
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.#ctor*
+  name: CustomRenderingView
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView__ctor_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.CustomRenderingView
+  nameWithType: CustomRenderingView.CustomRenderingView
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate
+  name: Invalidate()
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_Invalidate
+  commentId: M:Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate()
+  nameWithType: CustomRenderingView.Invalidate()
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate*
+  name: Invalidate
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_Invalidate_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.Invalidate
+  nameWithType: CustomRenderingView.Invalidate
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext
+  name: MainloopContext
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_MainloopContext
+  commentId: P:Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext
+  nameWithType: CustomRenderingView.MainloopContext
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext*
+  name: MainloopContext
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_MainloopContext_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.MainloopContext
+  nameWithType: CustomRenderingView.MainloopContext
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame
+  name: OnDrawFrame()
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnDrawFrame
+  commentId: M:Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame()
+  nameWithType: CustomRenderingView.OnDrawFrame()
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame*
+  name: OnDrawFrame
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnDrawFrame_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.OnDrawFrame
+  nameWithType: CustomRenderingView.OnDrawFrame
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.OnResized
+  name: OnResized()
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnResized
+  commentId: M:Tizen.UIExtensions.NUI.CustomRenderingView.OnResized
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.OnResized()
+  nameWithType: CustomRenderingView.OnResized()
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.OnResized*
+  name: OnResized
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnResized_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.OnResized
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.OnResized
+  nameWithType: CustomRenderingView.OnResized
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.PaintSurface
+  name: PaintSurface
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_PaintSurface
+  commentId: E:Tizen.UIExtensions.NUI.CustomRenderingView.PaintSurface
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.PaintSurface
+  nameWithType: CustomRenderingView.PaintSurface
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface(SKPaintSurfaceEventArgs)
+  name: SendPaintSurface(SKPaintSurfaceEventArgs)
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_SendPaintSurface_SKPaintSurfaceEventArgs_
+  commentId: M:Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface(SKPaintSurfaceEventArgs)
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface(SKPaintSurfaceEventArgs)
+  nameWithType: CustomRenderingView.SendPaintSurface(SKPaintSurfaceEventArgs)
+- uid: Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface*
+  name: SendPaintSurface
+  href: api/Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_SendPaintSurface_
+  commentId: Overload:Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.CustomRenderingView.SendPaintSurface
+  nameWithType: CustomRenderingView.SendPaintSurface
+- uid: Tizen.UIExtensions.NUI.DeviceInfo
+  name: DeviceInfo
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html
+  commentId: T:Tizen.UIExtensions.NUI.DeviceInfo
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo
+  nameWithType: DeviceInfo
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DeviceType
+  name: DeviceType
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DeviceType
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.DeviceType
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DeviceType
+  nameWithType: DeviceInfo.DeviceType
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DeviceType*
+  name: DeviceType
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DeviceType_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.DeviceType
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DeviceType
+  nameWithType: DeviceInfo.DeviceType
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit
+  name: DisplayResolutionUnit
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DisplayResolutionUnit
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit
+  nameWithType: DeviceInfo.DisplayResolutionUnit
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit*
+  name: DisplayResolutionUnit
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DisplayResolutionUnit_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DisplayResolutionUnit
+  nameWithType: DeviceInfo.DisplayResolutionUnit
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DPI
+  name: DPI
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DPI
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.DPI
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DPI
+  nameWithType: DeviceInfo.DPI
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DPI*
+  name: DPI
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DPI_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.DPI
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DPI
+  nameWithType: DeviceInfo.DPI
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize
+  name: DPScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DPScreenSize
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize
+  nameWithType: DeviceInfo.DPScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize*
+  name: DPScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_DPScreenSize_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.DPScreenSize
+  nameWithType: DeviceInfo.DPScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale
+  name: PhysicalScale
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_PhysicalScale
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale
+  nameWithType: DeviceInfo.PhysicalScale
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale*
+  name: PhysicalScale
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_PhysicalScale_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.PhysicalScale
+  nameWithType: DeviceInfo.PhysicalScale
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize
+  name: PixelScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_PixelScreenSize
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize
+  nameWithType: DeviceInfo.PixelScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize*
+  name: PixelScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_PixelScreenSize_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.PixelScreenSize
+  nameWithType: DeviceInfo.PixelScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.Profile
+  name: Profile
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_Profile
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.Profile
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.Profile
+  nameWithType: DeviceInfo.Profile
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.Profile*
+  name: Profile
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_Profile_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.Profile
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.Profile
+  nameWithType: DeviceInfo.Profile
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize
+  name: ScaledDPScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScaledDPScreenSize
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize
+  nameWithType: DeviceInfo.ScaledDPScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize*
+  name: ScaledDPScreenSize
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScaledDPScreenSize_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScaledDPScreenSize
+  nameWithType: DeviceInfo.ScaledDPScreenSize
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor
+  name: ScalingFactor
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScalingFactor
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor
+  nameWithType: DeviceInfo.ScalingFactor
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor*
+  name: ScalingFactor
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScalingFactor_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScalingFactor
+  nameWithType: DeviceInfo.ScalingFactor
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight
+  name: ScreenHeight
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScreenHeight
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight
+  nameWithType: DeviceInfo.ScreenHeight
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight*
+  name: ScreenHeight
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScreenHeight_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScreenHeight
+  nameWithType: DeviceInfo.ScreenHeight
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth
+  name: ScreenWidth
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScreenWidth
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth
+  nameWithType: DeviceInfo.ScreenWidth
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth*
+  name: ScreenWidth
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ScreenWidth_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ScreenWidth
+  nameWithType: DeviceInfo.ScreenWidth
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth
+  name: ViewPortWidth
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ViewPortWidth
+  commentId: P:Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth
+  nameWithType: DeviceInfo.ViewPortWidth
+- uid: Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth*
+  name: ViewPortWidth
+  href: api/Tizen.UIExtensions.NUI.DeviceInfo.html#Tizen_UIExtensions_NUI_DeviceInfo_ViewPortWidth_
+  commentId: Overload:Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.DeviceInfo.ViewPortWidth
+  nameWithType: DeviceInfo.ViewPortWidth
+- uid: Tizen.UIExtensions.NUI.DeviceType
+  name: DeviceType
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html
+  commentId: T:Tizen.UIExtensions.NUI.DeviceType
+  fullName: Tizen.UIExtensions.NUI.DeviceType
+  nameWithType: DeviceType
+- uid: Tizen.UIExtensions.NUI.DeviceType.IoT
+  name: IoT
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_IoT
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.IoT
+  fullName: Tizen.UIExtensions.NUI.DeviceType.IoT
+  nameWithType: DeviceType.IoT
+- uid: Tizen.UIExtensions.NUI.DeviceType.Mobile
+  name: Mobile
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_Mobile
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.Mobile
+  fullName: Tizen.UIExtensions.NUI.DeviceType.Mobile
+  nameWithType: DeviceType.Mobile
+- uid: Tizen.UIExtensions.NUI.DeviceType.Refrigerator
+  name: Refrigerator
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_Refrigerator
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.Refrigerator
+  fullName: Tizen.UIExtensions.NUI.DeviceType.Refrigerator
+  nameWithType: DeviceType.Refrigerator
+- uid: Tizen.UIExtensions.NUI.DeviceType.TV
+  name: TV
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_TV
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.TV
+  fullName: Tizen.UIExtensions.NUI.DeviceType.TV
+  nameWithType: DeviceType.TV
+- uid: Tizen.UIExtensions.NUI.DeviceType.Unknown
+  name: Unknown
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_Unknown
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.Unknown
+  fullName: Tizen.UIExtensions.NUI.DeviceType.Unknown
+  nameWithType: DeviceType.Unknown
+- uid: Tizen.UIExtensions.NUI.DeviceType.Watch
+  name: Watch
+  href: api/Tizen.UIExtensions.NUI.DeviceType.html#Tizen_UIExtensions_NUI_DeviceType_Watch
+  commentId: F:Tizen.UIExtensions.NUI.DeviceType.Watch
+  fullName: Tizen.UIExtensions.NUI.DeviceType.Watch
+  nameWithType: DeviceType.Watch
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit
+  name: DisplayResolutionUnit
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html
+  commentId: T:Tizen.UIExtensions.NUI.DisplayResolutionUnit
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit
+  nameWithType: DisplayResolutionUnit
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledDP
+  name: DeviceScaledDP
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html#Tizen_UIExtensions_NUI_DisplayResolutionUnit_DeviceScaledDP
+  commentId: F:Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledDP
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledDP
+  nameWithType: DisplayResolutionUnit.DeviceScaledDP
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledPixel
+  name: DeviceScaledPixel
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html#Tizen_UIExtensions_NUI_DisplayResolutionUnit_DeviceScaledPixel
+  commentId: F:Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledPixel
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DeviceScaledPixel
+  nameWithType: DisplayResolutionUnit.DeviceScaledPixel
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DP
+  name: DP
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html#Tizen_UIExtensions_NUI_DisplayResolutionUnit_DP
+  commentId: F:Tizen.UIExtensions.NUI.DisplayResolutionUnit.DP
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit.DP
+  nameWithType: DisplayResolutionUnit.DP
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit.Pixel
+  name: Pixel
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html#Tizen_UIExtensions_NUI_DisplayResolutionUnit_Pixel
+  commentId: F:Tizen.UIExtensions.NUI.DisplayResolutionUnit.Pixel
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit.Pixel
+  nameWithType: DisplayResolutionUnit.Pixel
+- uid: Tizen.UIExtensions.NUI.DisplayResolutionUnit.VP
+  name: VP
+  href: api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html#Tizen_UIExtensions_NUI_DisplayResolutionUnit_VP
+  commentId: F:Tizen.UIExtensions.NUI.DisplayResolutionUnit.VP
+  fullName: Tizen.UIExtensions.NUI.DisplayResolutionUnit.VP
+  nameWithType: DisplayResolutionUnit.VP
 - uid: Tizen.UIExtensions.NUI.Editor
   name: Editor
   href: api/Tizen.UIExtensions.NUI.Editor.html
@@ -14689,6 +15387,19 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.Editor.Editor
   nameWithType: Editor.Editor
+- uid: Tizen.UIExtensions.NUI.Editor.AutoCapital
+  name: AutoCapital
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_AutoCapital
+  commentId: P:Tizen.UIExtensions.NUI.Editor.AutoCapital
+  fullName: Tizen.UIExtensions.NUI.Editor.AutoCapital
+  nameWithType: Editor.AutoCapital
+- uid: Tizen.UIExtensions.NUI.Editor.AutoCapital*
+  name: AutoCapital
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_AutoCapital_
+  commentId: Overload:Tizen.UIExtensions.NUI.Editor.AutoCapital
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Editor.AutoCapital
+  nameWithType: Editor.AutoCapital
 - uid: Tizen.UIExtensions.NUI.Editor.FontAttributes
   name: FontAttributes
   href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_FontAttributes
@@ -14754,6 +15465,19 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.Editor.IsTextPredictionEnabled
   nameWithType: Editor.IsTextPredictionEnabled
+- uid: Tizen.UIExtensions.NUI.Editor.Keyboard
+  name: Keyboard
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_Keyboard
+  commentId: P:Tizen.UIExtensions.NUI.Editor.Keyboard
+  fullName: Tizen.UIExtensions.NUI.Editor.Keyboard
+  nameWithType: Editor.Keyboard
+- uid: Tizen.UIExtensions.NUI.Editor.Keyboard*
+  name: Keyboard
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_Keyboard_
+  commentId: Overload:Tizen.UIExtensions.NUI.Editor.Keyboard
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Editor.Keyboard
+  nameWithType: Editor.Keyboard
 - uid: Tizen.UIExtensions.NUI.Editor.Measure(System.Double,System.Double)
   name: Measure(Double, Double)
   href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_Measure_System_Double_System_Double_
@@ -14793,6 +15517,19 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.Editor.PlaceholderColor
   nameWithType: Editor.PlaceholderColor
+- uid: Tizen.UIExtensions.NUI.Editor.ReturnType
+  name: ReturnType
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_ReturnType
+  commentId: P:Tizen.UIExtensions.NUI.Editor.ReturnType
+  fullName: Tizen.UIExtensions.NUI.Editor.ReturnType
+  nameWithType: Editor.ReturnType
+- uid: Tizen.UIExtensions.NUI.Editor.ReturnType*
+  name: ReturnType
+  href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_ReturnType_
+  commentId: Overload:Tizen.UIExtensions.NUI.Editor.ReturnType
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Editor.ReturnType
+  nameWithType: Editor.ReturnType
 - uid: Tizen.UIExtensions.NUI.Editor.TextColor
   name: TextColor
   href: api/Tizen.UIExtensions.NUI.Editor.html#Tizen_UIExtensions_NUI_Editor_TextColor
@@ -15057,6 +15794,19 @@ references:
   commentId: T:Tizen.UIExtensions.NUI.GeometryExtensions
   fullName: Tizen.UIExtensions.NUI.GeometryExtensions
   nameWithType: GeometryExtensions
+- uid: Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
+  name: GetBounds(NUI.BaseComponents.View)
+  href: api/Tizen.UIExtensions.NUI.GeometryExtensions.html#Tizen_UIExtensions_NUI_GeometryExtensions_GetBounds_Tizen_NUI_BaseComponents_View_
+  commentId: M:Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
+  fullName: Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
+  nameWithType: GeometryExtensions.GetBounds(NUI.BaseComponents.View)
+- uid: Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds*
+  name: GetBounds
+  href: api/Tizen.UIExtensions.NUI.GeometryExtensions.html#Tizen_UIExtensions_NUI_GeometryExtensions_GetBounds_
+  commentId: Overload:Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.GeometryExtensions.GetBounds
+  nameWithType: GeometryExtensions.GetBounds
 - uid: Tizen.UIExtensions.NUI.GeometryExtensions.UpdateBounds(Tizen.NUI.BaseComponents.View,Tizen.UIExtensions.Common.Rect)
   name: UpdateBounds(NUI.BaseComponents.View, Rect)
   href: api/Tizen.UIExtensions.NUI.GeometryExtensions.html#Tizen_UIExtensions_NUI_GeometryExtensions_UpdateBounds_Tizen_NUI_BaseComponents_View_Tizen_UIExtensions_Common_Rect_
@@ -15790,6 +16540,31 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.ImageExtensions.GetAspect
   nameWithType: ImageExtensions.GetAspect
+- uid: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.IO.Stream)
+  name: LoadAsync(NUI.BaseComponents.ImageView, Stream)
+  href: api/Tizen.UIExtensions.NUI.ImageExtensions.html#Tizen_UIExtensions_NUI_ImageExtensions_LoadAsync_Tizen_NUI_BaseComponents_ImageView_System_IO_Stream_
+  commentId: M:Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.IO.Stream)
+  fullName: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView, System.IO.Stream)
+  nameWithType: ImageExtensions.LoadAsync(NUI.BaseComponents.ImageView, Stream)
+- uid: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.String)
+  name: LoadAsync(NUI.BaseComponents.ImageView, String)
+  href: api/Tizen.UIExtensions.NUI.ImageExtensions.html#Tizen_UIExtensions_NUI_ImageExtensions_LoadAsync_Tizen_NUI_BaseComponents_ImageView_System_String_
+  commentId: M:Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.String)
+  fullName: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView, System.String)
+  nameWithType: ImageExtensions.LoadAsync(NUI.BaseComponents.ImageView, String)
+- uid: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.Uri)
+  name: LoadAsync(NUI.BaseComponents.ImageView, Uri)
+  href: api/Tizen.UIExtensions.NUI.ImageExtensions.html#Tizen_UIExtensions_NUI_ImageExtensions_LoadAsync_Tizen_NUI_BaseComponents_ImageView_System_Uri_
+  commentId: M:Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView,System.Uri)
+  fullName: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync(Tizen.NUI.BaseComponents.ImageView, System.Uri)
+  nameWithType: ImageExtensions.LoadAsync(NUI.BaseComponents.ImageView, Uri)
+- uid: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync*
+  name: LoadAsync
+  href: api/Tizen.UIExtensions.NUI.ImageExtensions.html#Tizen_UIExtensions_NUI_ImageExtensions_LoadAsync_
+  commentId: Overload:Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.ImageExtensions.LoadAsync
+  nameWithType: ImageExtensions.LoadAsync
 - uid: Tizen.UIExtensions.NUI.ImageExtensions.Measure(Tizen.NUI.BaseComponents.ImageView,System.Double,System.Double)
   name: Measure(NUI.BaseComponents.ImageView, Double, Double)
   href: api/Tizen.UIExtensions.NUI.ImageExtensions.html#Tizen_UIExtensions_NUI_ImageExtensions_Measure_Tizen_NUI_BaseComponents_ImageView_System_Double_System_Double_
@@ -16573,6 +17348,128 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.LinearLayoutManager.SizeAllocated
   nameWithType: LinearLayoutManager.SizeAllocated
+- uid: Tizen.UIExtensions.NUI.Popup
+  name: Popup
+  href: api/Tizen.UIExtensions.NUI.Popup.html
+  commentId: T:Tizen.UIExtensions.NUI.Popup
+  fullName: Tizen.UIExtensions.NUI.Popup
+  nameWithType: Popup
+- uid: Tizen.UIExtensions.NUI.Popup.#ctor
+  name: Popup()
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup__ctor
+  commentId: M:Tizen.UIExtensions.NUI.Popup.#ctor
+  fullName: Tizen.UIExtensions.NUI.Popup.Popup()
+  nameWithType: Popup.Popup()
+- uid: Tizen.UIExtensions.NUI.Popup.#ctor*
+  name: Popup
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup__ctor_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.Popup
+  nameWithType: Popup.Popup
+- uid: Tizen.UIExtensions.NUI.Popup.Close
+  name: Close()
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Close
+  commentId: M:Tizen.UIExtensions.NUI.Popup.Close
+  fullName: Tizen.UIExtensions.NUI.Popup.Close()
+  nameWithType: Popup.Close()
+- uid: Tizen.UIExtensions.NUI.Popup.Close*
+  name: Close
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Close_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.Close
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.Close
+  nameWithType: Popup.Close
+- uid: Tizen.UIExtensions.NUI.Popup.CloseAll
+  name: CloseAll()
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseAll
+  commentId: M:Tizen.UIExtensions.NUI.Popup.CloseAll
+  fullName: Tizen.UIExtensions.NUI.Popup.CloseAll()
+  nameWithType: Popup.CloseAll()
+- uid: Tizen.UIExtensions.NUI.Popup.CloseAll*
+  name: CloseAll
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseAll_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.CloseAll
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.CloseAll
+  nameWithType: Popup.CloseAll
+- uid: Tizen.UIExtensions.NUI.Popup.Closed
+  name: Closed
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Closed
+  commentId: E:Tizen.UIExtensions.NUI.Popup.Closed
+  fullName: Tizen.UIExtensions.NUI.Popup.Closed
+  nameWithType: Popup.Closed
+- uid: Tizen.UIExtensions.NUI.Popup.CloseLast
+  name: CloseLast()
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseLast
+  commentId: M:Tizen.UIExtensions.NUI.Popup.CloseLast
+  fullName: Tizen.UIExtensions.NUI.Popup.CloseLast()
+  nameWithType: Popup.CloseLast()
+- uid: Tizen.UIExtensions.NUI.Popup.CloseLast*
+  name: CloseLast
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseLast_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.CloseLast
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.CloseLast
+  nameWithType: Popup.CloseLast
+- uid: Tizen.UIExtensions.NUI.Popup.Content
+  name: Content
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Content
+  commentId: P:Tizen.UIExtensions.NUI.Popup.Content
+  fullName: Tizen.UIExtensions.NUI.Popup.Content
+  nameWithType: Popup.Content
+- uid: Tizen.UIExtensions.NUI.Popup.Content*
+  name: Content
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Content_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.Content
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.Content
+  nameWithType: Popup.Content
+- uid: Tizen.UIExtensions.NUI.Popup.HasOpenedPopup
+  name: HasOpenedPopup
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_HasOpenedPopup
+  commentId: P:Tizen.UIExtensions.NUI.Popup.HasOpenedPopup
+  fullName: Tizen.UIExtensions.NUI.Popup.HasOpenedPopup
+  nameWithType: Popup.HasOpenedPopup
+- uid: Tizen.UIExtensions.NUI.Popup.HasOpenedPopup*
+  name: HasOpenedPopup
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_HasOpenedPopup_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.HasOpenedPopup
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.HasOpenedPopup
+  nameWithType: Popup.HasOpenedPopup
+- uid: Tizen.UIExtensions.NUI.Popup.IsOpen
+  name: IsOpen
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_IsOpen
+  commentId: P:Tizen.UIExtensions.NUI.Popup.IsOpen
+  fullName: Tizen.UIExtensions.NUI.Popup.IsOpen
+  nameWithType: Popup.IsOpen
+- uid: Tizen.UIExtensions.NUI.Popup.IsOpen*
+  name: IsOpen
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_IsOpen_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.IsOpen
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.IsOpen
+  nameWithType: Popup.IsOpen
+- uid: Tizen.UIExtensions.NUI.Popup.Open
+  name: Open()
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Open
+  commentId: M:Tizen.UIExtensions.NUI.Popup.Open
+  fullName: Tizen.UIExtensions.NUI.Popup.Open()
+  nameWithType: Popup.Open()
+- uid: Tizen.UIExtensions.NUI.Popup.Open*
+  name: Open
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Open_
+  commentId: Overload:Tizen.UIExtensions.NUI.Popup.Open
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.Popup.Open
+  nameWithType: Popup.Open
+- uid: Tizen.UIExtensions.NUI.Popup.OutsideClicked
+  name: OutsideClicked
+  href: api/Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_OutsideClicked
+  commentId: E:Tizen.UIExtensions.NUI.Popup.OutsideClicked
+  fullName: Tizen.UIExtensions.NUI.Popup.OutsideClicked
+  nameWithType: Popup.OutsideClicked
 - uid: Tizen.UIExtensions.NUI.ScrollView
   name: ScrollView
   href: api/Tizen.UIExtensions.NUI.ScrollView.html
@@ -16773,6 +17670,122 @@ references:
   isSpec: "True"
   fullName: Tizen.UIExtensions.NUI.SimpleViewStack.Top
   nameWithType: SimpleViewStack.Top
+- uid: Tizen.UIExtensions.NUI.SKCanvasView
+  name: SKCanvasView
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html
+  commentId: T:Tizen.UIExtensions.NUI.SKCanvasView
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView
+  nameWithType: SKCanvasView
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.#ctor
+  name: SKCanvasView()
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView__ctor
+  commentId: M:Tizen.UIExtensions.NUI.SKCanvasView.#ctor
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.SKCanvasView()
+  nameWithType: SKCanvasView.SKCanvasView()
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.#ctor*
+  name: SKCanvasView
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView__ctor_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKCanvasView.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.SKCanvasView
+  nameWithType: SKCanvasView.SKCanvasView
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_Dispose_System_Boolean_
+  commentId: M:Tizen.UIExtensions.NUI.SKCanvasView.Dispose(System.Boolean)
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.Dispose(System.Boolean)
+  nameWithType: SKCanvasView.Dispose(Boolean)
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.Dispose*
+  name: Dispose
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_Dispose_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKCanvasView.Dispose
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.Dispose
+  nameWithType: SKCanvasView.Dispose
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame
+  name: OnDrawFrame()
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_OnDrawFrame
+  commentId: M:Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame()
+  nameWithType: SKCanvasView.OnDrawFrame()
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame*
+  name: OnDrawFrame
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_OnDrawFrame_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.OnDrawFrame
+  nameWithType: SKCanvasView.OnDrawFrame
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.OnResized
+  name: OnResized()
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_OnResized
+  commentId: M:Tizen.UIExtensions.NUI.SKCanvasView.OnResized
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.OnResized()
+  nameWithType: SKCanvasView.OnResized()
+- uid: Tizen.UIExtensions.NUI.SKCanvasView.OnResized*
+  name: OnResized
+  href: api/Tizen.UIExtensions.NUI.SKCanvasView.html#Tizen_UIExtensions_NUI_SKCanvasView_OnResized_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKCanvasView.OnResized
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKCanvasView.OnResized
+  nameWithType: SKCanvasView.OnResized
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView
+  name: SKGLSurfaceView
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html
+  commentId: T:Tizen.UIExtensions.NUI.SKGLSurfaceView
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView
+  nameWithType: SKGLSurfaceView
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor
+  name: SKGLSurfaceView()
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView__ctor
+  commentId: M:Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.SKGLSurfaceView()
+  nameWithType: SKGLSurfaceView.SKGLSurfaceView()
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor*
+  name: SKGLSurfaceView
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView__ctor_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.SKGLSurfaceView
+  nameWithType: SKGLSurfaceView.SKGLSurfaceView
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_Dispose_System_Boolean_
+  commentId: M:Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose(System.Boolean)
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose(System.Boolean)
+  nameWithType: SKGLSurfaceView.Dispose(Boolean)
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose*
+  name: Dispose
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_Dispose_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose
+  nameWithType: SKGLSurfaceView.Dispose
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame
+  name: OnDrawFrame()
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_OnDrawFrame
+  commentId: M:Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame()
+  nameWithType: SKGLSurfaceView.OnDrawFrame()
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame*
+  name: OnDrawFrame
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_OnDrawFrame_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame
+  nameWithType: SKGLSurfaceView.OnDrawFrame
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized
+  name: OnResized()
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_OnResized
+  commentId: M:Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized()
+  nameWithType: SKGLSurfaceView.OnResized()
+- uid: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized*
+  name: OnResized
+  href: api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html#Tizen_UIExtensions_NUI_SKGLSurfaceView_OnResized_
+  commentId: Overload:Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized
+  isSpec: "True"
+  fullName: Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized
+  nameWithType: SKGLSurfaceView.OnResized
 - uid: Tizen.UIExtensions.NUI.SpanExtensions
   name: SpanExtensions
   href: api/Tizen.UIExtensions.NUI.SpanExtensions.html
@@ -16949,19 +17962,6 @@ references:
   commentId: T:Tizen.UIExtensions.NUI.ViewExtensions
   fullName: Tizen.UIExtensions.NUI.ViewExtensions
   nameWithType: ViewExtensions
-- uid: Tizen.UIExtensions.NUI.ViewExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
-  name: GetBounds(NUI.BaseComponents.View)
-  href: api/Tizen.UIExtensions.NUI.ViewExtensions.html#Tizen_UIExtensions_NUI_ViewExtensions_GetBounds_Tizen_NUI_BaseComponents_View_
-  commentId: M:Tizen.UIExtensions.NUI.ViewExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
-  fullName: Tizen.UIExtensions.NUI.ViewExtensions.GetBounds(Tizen.NUI.BaseComponents.View)
-  nameWithType: ViewExtensions.GetBounds(NUI.BaseComponents.View)
-- uid: Tizen.UIExtensions.NUI.ViewExtensions.GetBounds*
-  name: GetBounds
-  href: api/Tizen.UIExtensions.NUI.ViewExtensions.html#Tizen_UIExtensions_NUI_ViewExtensions_GetBounds_
-  commentId: Overload:Tizen.UIExtensions.NUI.ViewExtensions.GetBounds
-  isSpec: "True"
-  fullName: Tizen.UIExtensions.NUI.ViewExtensions.GetBounds
-  nameWithType: ViewExtensions.GetBounds
 - uid: Tizen.UIExtensions.NUI.ViewExtensions.SetEnable(Tizen.NUI.BaseComponents.View,System.Boolean)
   name: SetEnable(NUI.BaseComponents.View, Boolean)
   href: api/Tizen.UIExtensions.NUI.ViewExtensions.html#Tizen_UIExtensions_NUI_ViewExtensions_SetEnable_Tizen_NUI_BaseComponents_View_System_Boolean_

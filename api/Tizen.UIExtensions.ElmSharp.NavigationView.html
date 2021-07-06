@@ -91,11 +91,15 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">NavigationView</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Tizen.UIExtensions.ElmSharp.INavigationView.html">INavigationView</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.ElmSharp.html">Tizen.UIExtensions.ElmSharp</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.ElmSharp.dll</h6>
   <h5 id="Tizen_UIExtensions_ElmSharp_NavigationView_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NavigationView : Background</code></pre>
+    <pre><code class="lang-csharp hljs">public class NavigationView : Background, INavigationView</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -224,6 +228,30 @@
       </tr>
     </tbody>
   </table>
+  <a id="Tizen_UIExtensions_ElmSharp_NavigationView_TargetView_" data-uid="Tizen.UIExtensions.ElmSharp.NavigationView.TargetView*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_NavigationView_TargetView" data-uid="Tizen.UIExtensions.ElmSharp.NavigationView.TargetView">TargetView</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the target view of the NavigtiaonView.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvasObject TargetView { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EvasObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <a id="Tizen_UIExtensions_ElmSharp_NavigationView_BuildMenu_" data-uid="Tizen.UIExtensions.ElmSharp.NavigationView.BuildMenu*"></a>
@@ -260,7 +288,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler&lt;SelectedItemChangedEventArgs&gt; ItemSelected</code></pre>
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;ItemSelectedEventArgs&gt; ItemSelected</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -272,11 +300,25 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Tizen.UIExtensions.ElmSharp.SelectedItemChangedEventArgs.html">SelectedItemChangedEventArgs</a>&gt;</td>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Tizen.UIExtensions.Common.ItemSelectedEventArgs.html">ItemSelectedEventArgs</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Tizen_UIExtensions_ElmSharp_NavigationView_Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout_" data-uid="Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout*"></a>
+  <h4 id="Tizen_UIExtensions_ElmSharp_NavigationView_Tizen_UIExtensions_ElmSharp_INavigationView_UpdateHeaderLayout" data-uid="Tizen.UIExtensions.ElmSharp.NavigationView.Tizen#UIExtensions#ElmSharp#INavigationView#UpdateHeaderLayout">INavigationView.UpdateHeaderLayout()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void INavigationView.UpdateHeaderLayout()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Tizen.UIExtensions.ElmSharp.INavigationView.html">INavigationView</a>
+  </div>
 </article>
           </div>
           

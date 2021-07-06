@@ -276,6 +276,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.ItemSelectedEventArgs.html",
+          "hash": "0+Z9TEH0ymbf6BFHMePkOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Keyboard.yml",
       "output": {
         ".html": {
@@ -432,18 +444,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.Common.SelectedItemChangedEventArgs.html",
-          "hash": "0agwtfCgC7p42RKMrsSEWw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Size.yml",
       "output": {
         ".html": {
@@ -520,7 +520,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.html",
-          "hash": "9Ua2e8drhgNnmpYkyNWCVQ=="
+          "hash": "1op8BlFWhW23qjSq9cBVEA=="
         }
       },
       "is_incremental": false,
@@ -724,7 +724,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html",
-          "hash": "W5TZNUbor8m/8o7Ri9uDTA=="
+          "hash": "m+4o40RXUawhgkmFIzHDWQ=="
         }
       },
       "is_incremental": false,
@@ -928,7 +928,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.GeometryExtensions.html",
-          "hash": "Di0ZR2XxMmgtahdsiPp4Mg=="
+          "hash": "QM+PffV5i/o2VHO6JMeEhA=="
         }
       },
       "is_incremental": false,
@@ -1025,6 +1025,30 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.IEntry.html",
           "hash": "Ddbq79iRhQv9sC7bb0r5aw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.INavigationDrawer.html",
+          "hash": "arywI/JjWXf7UdR1Nler+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.INavigationView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.INavigationView.html",
+          "hash": "KuGtA3ivlaQtzS+ZiEZziQ=="
         }
       },
       "is_incremental": false,
@@ -1192,7 +1216,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationDrawer.html",
-          "hash": "nMg3BYFLpeVPPTqx+SZR+g=="
+          "hash": "7ugrrDWBkL4Z3QUJlzU57w=="
         }
       },
       "is_incremental": false,
@@ -1204,7 +1228,31 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationView.html",
-          "hash": "kXpqh26gghoUjBG/VWCLTw=="
+          "hash": "Hjizp9ymIXbLU3pxBj5VHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.GetContentDelegate.html",
+          "hash": "+XCa5nPfCmB63r9BTsCmqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.NavigationViewItem.html",
+          "hash": "TZLm3DyJh0THM9kzZH3SNg=="
         }
       },
       "is_incremental": false,
@@ -2716,7 +2764,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.ViewExtensions.html",
-          "hash": "WiFCyXWyPHB96Ifrtny+uw=="
+          "hash": "1nvJLl8GA7YUoEwPM5RP+w=="
         }
       },
       "is_incremental": false,
@@ -2776,7 +2824,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.html",
-          "hash": "IaR65/QIJkXlj8J7U0eCyw=="
+          "hash": "/VML/+mdX3sw9GKRBsm9OA=="
         }
       },
       "is_incremental": false,
@@ -2832,11 +2880,59 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.CustomRenderingView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.CustomRenderingView.html",
+          "hash": "QY1D1KR1gsKZ5Hty/A4F2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DeviceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.DeviceInfo.html",
+          "hash": "TQOoe3UN8AHAo2mxd2kG6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.DeviceType.html",
+          "hash": "fW6Qr5U2xVnDLrePzr78xA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html",
+          "hash": "m/hLk4pEmpwNDPNW+gM5WA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Editor.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.Editor.html",
-          "hash": "Uul1BNfdYIvenV5do3d/MA=="
+          "hash": "3+lOIgfzKLtTDHudM0evYQ=="
         }
       },
       "is_incremental": false,
@@ -2884,7 +2980,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.GeometryExtensions.html",
-          "hash": "Ls5rVFqUNmJCi3uZ1NmvaA=="
+          "hash": "OZ/moikbFSA4HjnGpx/HNg=="
         }
       },
       "is_incremental": false,
@@ -2944,7 +3040,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.ImageExtensions.html",
-          "hash": "5+ImRBFk+AXpu6+5PkHDFQ=="
+          "hash": "wbAl+APANNQ45QMDoRvBGQ=="
         }
       },
       "is_incremental": false,
@@ -3005,6 +3101,42 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.LinearLayoutManager.html",
           "hash": "EQOF0ZggOLHM16JE/giqlg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Popup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.Popup.html",
+          "hash": "40u46f0LgyVuJF/VByi9bA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.SKCanvasView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.SKCanvasView.html",
+          "hash": "3JSUHt3A23hb98iEzq76fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.SKGLSurfaceView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html",
+          "hash": "rcE1SrKFHg12YsC/o5PzWQ=="
         }
       },
       "is_incremental": false,
@@ -3076,7 +3208,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.ViewExtensions.html",
-          "hash": "UOedCTvYRDzT47DjeV0dDw=="
+          "hash": "yDhnlwKemMhVjmXnsV3xcQ=="
         }
       },
       "is_incremental": false,
@@ -3124,7 +3256,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.html",
-          "hash": "d6fM5PdhP4VLXsUVVp1Zdw=="
+          "hash": "u+F8p/4JDq9AFCAX6zqqRQ=="
         }
       },
       "is_incremental": false,
@@ -3136,7 +3268,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "yMUV849fZ2iZ/g/vqp7PSg=="
+          "hash": "jg0i3fuVn4TGVAwmRHX9Vg=="
         }
       },
       "is_incremental": false,
@@ -3175,7 +3307,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 252,
+          "total_file_count": 263,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
