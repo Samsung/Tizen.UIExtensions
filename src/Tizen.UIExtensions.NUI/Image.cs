@@ -1,7 +1,6 @@
-﻿using System;
-using ImageView = Tizen.NUI.BaseComponents.ImageView;
-using Tizen.UIExtensions.Common;
+﻿using Tizen.UIExtensions.Common;
 using CSize = Tizen.UIExtensions.Common.Size;
+using ImageView = Tizen.NUI.BaseComponents.ImageView;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -10,7 +9,6 @@ namespace Tizen.UIExtensions.NUI
     /// </summary>
     public class Image : ImageView, IMeasurable
     {
-
         /// <summary>
         /// Gets or sets the scaling mode for the image.
         /// </summary>

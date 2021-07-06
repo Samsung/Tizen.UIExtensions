@@ -22,5 +22,11 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             view.Geometry = new ERect((int)bounds.X, (int)bounds.Y, (int)bounds.Width, (int)bounds.Height);
         }
+
+        public static Rect GetBounds(this EvasObject view)
+        {
+            var geometry = view.Geometry;
+            return new Rect(geometry.X, geometry.Y, geometry.Width, geometry.Height);
+        }
     }
 }

@@ -11,11 +11,6 @@ namespace Tizen.UIExtensions.NUI
             view.BackgroundColor = color.IsDefault ? Color.Transparent.ToNative() : color.ToNative();
         }
 
-        public static Rect GetBounds(this View view)
-        {
-            return new Rect(view.Position.ToCommon(), view.Size.ToCommon());
-        }
-
         public static void SetEnable(this View view, bool enable)
         {
             if (view is NButton button)

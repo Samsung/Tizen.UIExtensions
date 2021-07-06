@@ -9,7 +9,7 @@ namespace Tizen.UIExtensions.ElmSharp
     /// <summary>
     /// The native widget that is configured with an header and an list of items to be used in NavigationDrawer.
     /// </summary>
-    public class NavigationView : Background
+    public class NavigationView : Background, INavigationView
     {
         static readonly EColor s_defaultBackgroundColor = ThemeConstants.Shell.ColorClass.DefaultNavigationViewBackgroundColor;
 
@@ -93,9 +93,14 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
+        /// Gets or sets the target view of the NavigtiaonView.
+        /// </summary>
+        public EvasObject TargetView => this;
+
+        /// <summary>
         /// Occurs when an item is selected in the NavigationView.
         /// </summary>
-        public event EventHandler<SelectedItemChangedEventArgs>? ItemSelected;
+        public event EventHandler<ItemSelectedEventArgs>? ItemSelected;
 
         /// <summary>
         /// Create the list of items to be displayed on the NavigationView.
@@ -103,10 +108,21 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <param name="items"></param>
         public void BuildMenu(IEnumerable<object> items)
         {
-            foreach (var item in items)
+            _menu.Clear();
+
+            foreach(var item in items)
             {
                 var genItem = _menu.Append(_templateClass, item);
                 genItem.SetBackgroundColor(EColor.Transparent);
+
+                if (item is NavigationViewItem naviItem)
+                {
+                    if (!naviItem.IsFirst)
+                    {
+                        genItem.SetBottomlineColor(EColor.Transparent);
+                    }
+                }
+
             }
         }
 
@@ -138,7 +154,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
             _menu.ItemSelected += (s, e) =>
             {
-                ItemSelected?.Invoke(this, new SelectedItemChangedEventArgs(e.Item.Data, e.Item.Index));
+                ItemSelected?.Invoke(this, new ItemSelectedEventArgs(e.Item.Data, e.Item.Index));
             };
 
 
@@ -155,7 +171,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         EvasObject GetHeaderContent(object data, string part)
         {
-            if(_headerBox == null)
+            if (_headerBox == null)
             {
                 _headerBox = new Box(this)
                 {
@@ -164,33 +180,37 @@ namespace Tizen.UIExtensions.ElmSharp
                     WeightX = 1,
                     WeightY = 1,
                 };
-                _headerBox.SetLayoutCallback(OnHeaderBoxLayout);
-                _headerBox.MinimumHeight = _header!.MinimumHeight;
             }
 
             var header = (EvasObject)data;
             _headerBox.PackEnd(header);
+            _headerBox.SetLayoutCallback(OnHeaderBoxLayout);
+            _headerBox.MinimumHeight = header!.MinimumHeight;
 
             return _headerBox;
         }
-
-        void OnHeaderBoxLayout()
-        {
-            if (_header != null)
-            {
-                _header.Geometry = _headerBox!.Geometry;
-            }
-        }
-
         EvasObject GetTemplatedContent(object data, string part)
         {
-            if (data is EvasObject evas)
-                return evas;
+            if (data is NavigationViewItem item)
+            {
+                if (item.GetContent != null)
+                {
+                    return item.GetContent(item.Data);
+                }
+            }
 
             return new Label(this)
             {
                 Text = data.ToString()
             };
+        }
+
+        void OnHeaderBoxLayout()
+        {
+            if (_header != null && _headerBox != null)
+            {
+                _header.Geometry = _headerBox.Geometry;
+            }
         }
 
         void OnLayout()
@@ -266,6 +286,16 @@ namespace Tizen.UIExtensions.ElmSharp
             OnLayout();
         }
 
+        void ResetHeaderOnMenu()
+        {
+            if (_menu.FirstItem != null && _headerBox != null)
+            {
+                _headerBox.UnPackAll();
+                _menu.FirstItem.Delete();
+                _headerBox = null;
+            }
+        }
+
         void UpdateHeaderOnMenu(EvasObject header)
         {
             if (_menu.FirstItem != null && _menu.FirstItem.Data == header)
@@ -283,14 +313,42 @@ namespace Tizen.UIExtensions.ElmSharp
             item.SelectionMode = GenItemSelectionMode.None;
         }
 
-        void ResetHeaderOnMenu()
+        void INavigationView.UpdateHeaderLayout()
         {
-            if (_menu.FirstItem != null && _headerBox != null)
+            if (_header == null)
+                return;
+
+            ResetHeaderOnMenu();
+            if (HeaderOnMenu)
             {
-                _headerBox.UnPackAll();
-                _menu.FirstItem.Delete();
-                _headerBox = null;
+                UpdateHeaderOnMenu(_header);
             }
+            else
+            {
+                if (_header != null)
+                {
+                    _mainLayout.PackEnd(_header);
+                }
+            }
+            OnLayout();
         }
+    }
+
+    public class NavigationViewItem
+    {
+        public NavigationViewItem()
+        {
+            Data = null;
+            GetContent = null;
+            IsFirst = false;
+        }
+
+        public bool IsFirst { get; set; }
+
+        public object? Data { get; set; }
+
+        public GetContentDelegate? GetContent { get; set; }
+
+        public delegate EvasObject GetContentDelegate(object? data);
     }
 }
