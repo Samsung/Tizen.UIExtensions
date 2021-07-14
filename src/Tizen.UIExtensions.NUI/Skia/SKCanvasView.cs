@@ -39,6 +39,8 @@ namespace Tizen.UIExtensions.NUI
                 surface.Canvas.Flush();
             }
             _nativeImageSource.ReleaseBuffer();
+           _imageUrl?.Dispose();
+           _imageUrl = _nativeImageSource.GenerateUrl();
             var url = _imageUrl?.ToString();
             SetImage(url);
         }
