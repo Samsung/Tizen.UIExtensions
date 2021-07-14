@@ -1,5 +1,6 @@
 using System;
 using ElmSharp;
+using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
 namespace Tizen.UIExtensions.ElmSharp
 {

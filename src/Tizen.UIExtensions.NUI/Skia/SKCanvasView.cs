@@ -10,6 +10,7 @@ namespace Tizen.UIExtensions.NUI
     public class SKCanvasView : CustomRenderingView
     {
         NativeImageSource? _nativeImageSource;
+        ImageUrl? _imageUrl;
 
         int _bufferWidth = 0;
         int _bufferHeight = 0;
@@ -38,8 +39,9 @@ namespace Tizen.UIExtensions.NUI
                 surface.Canvas.Flush();
             }
             _nativeImageSource.ReleaseBuffer();
-
-            var url = _nativeImageSource.Url;
+           _imageUrl?.Dispose();
+           _imageUrl = _nativeImageSource.GenerateUrl();
+            var url = _imageUrl?.ToString();
             SetImage(url);
         }
 
@@ -56,6 +58,8 @@ namespace Tizen.UIExtensions.NUI
             {
                 _nativeImageSource?.Dispose();
                 _nativeImageSource = null;
+                _imageUrl?.Dispose();
+                _imageUrl = null;
             }
             base.Dispose(disposing);
         }
@@ -64,6 +68,7 @@ namespace Tizen.UIExtensions.NUI
         {
             _nativeImageSource?.Dispose();
             _nativeImageSource = new NativeImageSource((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
+            _imageUrl = _nativeImageSource.GenerateUrl();
         }
     }
 }

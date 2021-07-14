@@ -1,11 +1,87 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 
 namespace Tizen.UIExtensions.NUI
 {
+    /// <summary>
+    /// Base class for custom popup
+    /// </summary>
+    /// <typeparam name="T">A type to return on Popup</typeparam>
+    public abstract class Popup<T> : Popup
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Popup"/> class.
+        /// </summary>
+        protected Popup()
+        {
+            Closed += OnClosed;
+        }
+
+        /// <summary>
+        /// A TaskCompletionSource for result of popup
+        /// </summary>
+        protected TaskCompletionSource<T>? ResponseTcs { get; set; }
+
+        /// <summary>
+        /// Open popup
+        /// </summary>
+        /// <returns>The return value on Popup</returns>
+        public new async Task<T> Open()
+        {
+            if (ResponseTcs != null && !ResponseTcs.Task.IsCompleted)
+                return await ResponseTcs.Task;
+
+            ResponseTcs = new TaskCompletionSource<T>();
+
+            if (Content == null)
+                Content = CreateContent();
+
+            base.Open();
+
+            try
+            {
+                return await ResponseTcs.Task;
+            }
+            finally
+            {
+                ResponseTcs = null;
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// Create content of popup
+        /// </summary>
+        /// <returns>Content View</returns>
+        protected abstract View CreateContent();
+
+        /// <summary>
+        /// Submit value to return
+        /// </summary>
+        /// <param name="value">The value to submit</param>
+        protected void SendSubmit(T value)
+        {
+            ResponseTcs?.TrySetResult(value);
+        }
+
+        /// <summary>
+        /// Cancel popup
+        /// </summary>
+        protected void SendCancel()
+        {
+            ResponseTcs?.TrySetCanceled();
+        }
+
+        void OnClosed(object? sender, EventArgs e)
+        {
+            SendCancel();
+        }
+    }
+
     /// <summary>
     /// A Popup provides a class which can be display topmost area
     /// </summary>
