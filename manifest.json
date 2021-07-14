@@ -136,7 +136,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.Color.html",
-          "hash": "t0H9irTRMI082IMwi18ewQ=="
+          "hash": "F4EDdxvwJEuWNz73nEXDbQ=="
         }
       },
       "is_incremental": false,
@@ -156,11 +156,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DeviceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DeviceInfo.html",
+          "hash": "sXpW4r7Wq1oSYkRdmawUVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DeviceOrientation.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.DeviceOrientation.html",
           "hash": "xCeVCAD7kuyKIZYGbPf7UA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DeviceType.html",
+          "hash": "bsCzvKvXDPqHgJ7w+g26ZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.DisplayResolutionUnit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.DisplayResolutionUnit.html",
+          "hash": "V6bWbrSB0y2nFo05lkMEGA=="
         }
       },
       "is_incremental": false,
@@ -209,6 +245,270 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.FormattedString.html",
           "hash": "yrgBt5gzE2zctY0bc7dGSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ActivityIndicatorDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ActivityIndicatorDrawable.html",
+          "hash": "RTlHEep7PBMbFBkUm9yDfw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ButtonDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ButtonDrawable.html",
+          "hash": "PkIn5QzM4H/Tk9nzRphrQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.CheckBoxDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.CheckBoxDrawable.html",
+          "hash": "HHjS5Zb4ayANQsa9wxErYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.EditorDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.EditorDrawable.html",
+          "hash": "qNnMdZRQPZlTUGWkckIG/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.EntryDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.EntryDrawable.html",
+          "hash": "Y4g5XvQHaBguU4EctQ64Lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.GraphicsColorExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.GraphicsColorExtensions.html",
+          "hash": "zAcgC/y7PdQTGoBRrPzWEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.GraphicsViewDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.GraphicsViewDrawable.html",
+          "hash": "BmXvAYZyUrbeV4E9IvBflQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IActivityIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IActivityIndicator.html",
+          "hash": "CbLPT5/oF4sngUp+xPA3ug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IButton.html",
+          "hash": "6brh0rzk5ho1921TWM8XIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ICheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ICheckBox.html",
+          "hash": "R1icheo5mR3xPXQPUmF+wQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IEditor.html",
+          "hash": "nz9aiiMokXntMs+hkkiDpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IEntry.html",
+          "hash": "qdcYDnKTfcRlOCgM3MNKTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IProgressBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IProgressBar.html",
+          "hash": "XveZ5z0cbLjcvvCbrs6p+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ISlider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ISlider.html",
+          "hash": "QDy0Wo9TAnIJYIqWz3hfZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.IStepper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.IStepper.html",
+          "hash": "ZxbCyq48iPIFALdv5ubAlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ISwitch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ISwitch.html",
+          "hash": "0U32muwtBjdSqIg3hpTrpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.ProgressBarDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.ProgressBarDrawable.html",
+          "hash": "OVhDMxtudacAoSgfOgK1DA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.RippleEffectDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.RippleEffectDrawable.html",
+          "hash": "H8uOx8XOA0gR+93bMhlNrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.SliderDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.SliderDrawable.html",
+          "hash": "U5xu3Zq5moV5ZUcSpOjpkw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.StepperDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.StepperDrawable.html",
+          "hash": "QRMZQSb4ZreHSWfPQ4NIQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.SwitchDrawable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.SwitchDrawable.html",
+          "hash": "Imlvo7hMyyf0+XGf7yKBcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.GraphicsView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.GraphicsView.html",
+          "hash": "xAh0P6BIsnGUOjKhwu9o9A=="
         }
       },
       "is_incremental": false,
@@ -269,6 +569,78 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.ITextable.html",
           "hash": "T+T3JfMlcDME7CU/iLOirA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.Animation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.Animation.html",
+          "hash": "5iKrowxjuIrzwSO8j3cwRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.AnimationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.AnimationExtensions.html",
+          "hash": "8e1nhvSaHD4vGMwmVsbyyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.Easing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.Easing.html",
+          "hash": "zTpZwsRIsl/UYcHilb1UnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.IAnimatable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.IAnimatable.html",
+          "hash": "uGG4jN3MRaVIMRrh04E35A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.Ticker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.Ticker.html",
+          "hash": "6r43ZmzwzUM3zcCHU1rn7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.Common.Internal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.Common.Internal.html",
+          "hash": "CSOS8xjXk7CGqExA9zeAKA=="
         }
       },
       "is_incremental": false,
@@ -520,7 +892,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.Common.html",
-          "hash": "1op8BlFWhW23qjSq9cBVEA=="
+          "hash": "6HzPbmjawYFz0PoipjzBYQ=="
         }
       },
       "is_incremental": false,
@@ -636,6 +1008,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.ClipperExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.ClipperExtension.html",
+          "hash": "7DHH4ovp5JQfnUpg5uRp9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.CollectionView.yml",
       "output": {
         ".html": {
@@ -720,47 +1104,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DeviceInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DeviceInfo.html",
-          "hash": "m+4o40RXUawhgkmFIzHDWQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DeviceType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DeviceType.html",
-          "hash": "h5h0yO0C/PHlgKHB9pkFlw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.Dialog.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.Dialog.html",
           "hash": "SVQIy1CLXF/CrNS8MRvA0w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.DisplayResolutionUnit.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.ElmSharp.DisplayResolutionUnit.html",
-          "hash": "Bfps7Cgct5u5Bs0wXInA+A=="
         }
       },
       "is_incremental": false,
@@ -1337,6 +1685,18 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.RectView.html",
           "hash": "ICzze31YiXHA/T2IUPtmgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.ElmSharp.SKClipperView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.ElmSharp.SKClipperView.html",
+          "hash": "3dDcH+0hOaljkmUM6JGnUg=="
         }
       },
       "is_incremental": false,
@@ -2824,7 +3184,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.ElmSharp.html",
-          "hash": "/VML/+mdX3sw9GKRBsm9OA=="
+          "hash": "woWRW33eKui1yZv8Qp0Htg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.ActionSheetPopup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.ActionSheetPopup.html",
+          "hash": "ug+FGj18nY2AGIvLOvs0bA=="
         }
       },
       "is_incremental": false,
@@ -2892,42 +3264,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DeviceInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.NUI.DeviceInfo.html",
-          "hash": "TQOoe3UN8AHAo2mxd2kG6g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DeviceType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.NUI.DeviceType.html",
-          "hash": "fW6Qr5U2xVnDLrePzr78xA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tizen.UIExtensions.NUI.DisplayResolutionUnit.html",
-          "hash": "m/hLk4pEmpwNDPNW+gM5WA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Editor.yml",
       "output": {
         ".html": {
@@ -2981,6 +3317,150 @@
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.GeometryExtensions.html",
           "hash": "OZ/moikbFSA4HjnGpx/HNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.ActivityIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.ActivityIndicator.html",
+          "hash": "DUEbbc1tfjxm6uejSp23mg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Button.html",
+          "hash": "g9OePjitZRT4WkxpivK5HQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.CheckBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.CheckBox.html",
+          "hash": "5FDfu7+dngNrkjbc9v+eNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Editor.html",
+          "hash": "s6oBlRYWl6D0Fv7lucJ0YQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Entry.html",
+          "hash": "oA54j4QmqZHQr1dSNfG+1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.GraphicsView-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.GraphicsView-1.html",
+          "hash": "k2WfPvz54mfOdO4a5S2Mkw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.ProgressBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.ProgressBar.html",
+          "hash": "oqiGFj9lyYDpwgzk8JROKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.SkiaGraphicsView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.SkiaGraphicsView.html",
+          "hash": "CvzBnGHQwiHgn0m9Bct2DQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Slider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Slider.html",
+          "hash": "HL9tdhJk1UCJW1Ffksnotg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Stepper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Stepper.html",
+          "hash": "TiI9VPSxdilimXOZsq/bSg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.Switch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.Switch.html",
+          "hash": "e2CoBaI0DmTZ0PJiw//+UQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.GraphicsView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.GraphicsView.html",
+          "hash": "Tq+9OEohPrXzT96zOFVQ5w=="
         }
       },
       "is_incremental": false,
@@ -3108,11 +3588,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.MessagePopup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.MessagePopup.html",
+          "hash": "Ul5KbjjhnOkAtM7YJ7pmbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Popup-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.Popup-1.html",
+          "hash": "1HJPNXG26upgrQAH+ksiOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.Popup.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.Popup.html",
-          "hash": "40u46f0LgyVuJF/VByi9bA=="
+          "hash": "vDwSFHEI4rninyAAt2y4kQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.PromptPopup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.PromptPopup.html",
+          "hash": "9gmhK2hPEwsuzTfzdfS7gA=="
         }
       },
       "is_incremental": false,
@@ -3132,11 +3648,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.SKClipperView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tizen.UIExtensions.NUI.SKClipperView.html",
+          "hash": "6j9LoA214U+H66Rmz8momg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Tizen.UIExtensions.NUI.SKGLSurfaceView.yml",
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.SKGLSurfaceView.html",
-          "hash": "rcE1SrKFHg12YsC/o5PzWQ=="
+          "hash": "vGw4UAsgG8tTn7ad8p+kSA=="
         }
       },
       "is_incremental": false,
@@ -3256,7 +3784,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tizen.UIExtensions.NUI.html",
-          "hash": "u+F8p/4JDq9AFCAX6zqqRQ=="
+          "hash": "TTbI9ZDJTWCruXUuRk3jfA=="
         }
       },
       "is_incremental": false,
@@ -3268,7 +3796,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "jg0i3fuVn4TGVAwmRHX9Vg=="
+          "hash": "jsFLL1Fg4Pr9syLSqTzOog=="
         }
       },
       "is_incremental": false,
@@ -3307,7 +3835,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 263,
+          "total_file_count": 307,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

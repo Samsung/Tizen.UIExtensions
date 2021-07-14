@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Popup
+    <title>Interface IStepper
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Popup
+    <meta name="title" content="Interface IStepper
    ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -78,47 +78,28 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.Popup">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper">
   
   
-  <h1 id="Tizen_UIExtensions_NUI_Popup" data-uid="Tizen.UIExtensions.NUI.Popup" class="text-break">Class Popup
+  <h1 id="Tizen_UIExtensions_Common_GraphicsView_IStepper" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper" class="text-break">Interface IStepper
   </h1>
-  <div class="markdown level0 summary"><p>A Popup provides a class which can be display topmost area</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Popup</span></div>
-      <div class="level2"><a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html">Popup&lt;T&gt;</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.NUI.html">Tizen.UIExtensions.NUI</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.Common.GraphicsView.html">Tizen.UIExtensions.Common.GraphicsView</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.NUI.dll</h6>
-  <h5 id="Tizen_UIExtensions_NUI_Popup_syntax">Syntax</h5>
+  <h5 id="Tizen_UIExtensions_Common_GraphicsView_IStepper_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Popup : View</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup__ctor_" data-uid="Tizen.UIExtensions.NUI.Popup.#ctor*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup__ctor" data-uid="Tizen.UIExtensions.NUI.Popup.#ctor">Popup()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html">Popup</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Popup()</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStepper</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup_Content_" data-uid="Tizen.UIExtensions.NUI.Popup.Content*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Content" data-uid="Tizen.UIExtensions.NUI.Popup.Content">Content</h4>
-  <div class="markdown level1 summary"><p>Content of popup</p>
-</div>
+  <a id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Increment_" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Increment*"></a>
+  <h4 id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Increment" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Increment">Increment</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public View? Content { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double Increment { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -130,18 +111,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">View</span>&gt;</td>
+        <td><span class="xref">System.Double</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Tizen_UIExtensions_NUI_Popup_HasOpenedPopup_" data-uid="Tizen.UIExtensions.NUI.Popup.HasOpenedPopup*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_HasOpenedPopup" data-uid="Tizen.UIExtensions.NUI.Popup.HasOpenedPopup">HasOpenedPopup</h4>
+  <a id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Maximum_" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Maximum*"></a>
+  <h4 id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Maximum" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Maximum">Maximum</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool HasOpenedPopup { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double Maximum { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -153,19 +134,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="xref">System.Double</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Tizen_UIExtensions_NUI_Popup_IsOpen_" data-uid="Tizen.UIExtensions.NUI.Popup.IsOpen*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_IsOpen" data-uid="Tizen.UIExtensions.NUI.Popup.IsOpen">IsOpen</h4>
-  <div class="markdown level1 summary"><p>Gets a value that indicates open state</p>
-</div>
+  <a id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Minimum_" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Minimum*"></a>
+  <h4 id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Minimum" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Minimum">Minimum</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsOpen { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double Minimum { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -177,58 +157,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="xref">System.Double</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup_Close_" data-uid="Tizen.UIExtensions.NUI.Popup.Close*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Close" data-uid="Tizen.UIExtensions.NUI.Popup.Close">Close()</h4>
-  <div class="markdown level1 summary"><p>Close popup</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Close()</code></pre>
-  </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_CloseAll_" data-uid="Tizen.UIExtensions.NUI.Popup.CloseAll*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_CloseAll" data-uid="Tizen.UIExtensions.NUI.Popup.CloseAll">CloseAll()</h4>
+  <a id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Value_" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Value*"></a>
+  <h4 id="Tizen_UIExtensions_Common_GraphicsView_IStepper_Value" data-uid="Tizen.UIExtensions.Common.GraphicsView.IStepper.Value">Value</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CloseAll()</code></pre>
+    <pre><code class="lang-csharp hljs">double Value { get; set; }</code></pre>
   </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_CloseLast_" data-uid="Tizen.UIExtensions.NUI.Popup.CloseLast*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_CloseLast" data-uid="Tizen.UIExtensions.NUI.Popup.CloseLast">CloseLast()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CloseLast()</code></pre>
-  </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_Open_" data-uid="Tizen.UIExtensions.NUI.Popup.Open*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Open" data-uid="Tizen.UIExtensions.NUI.Popup.Open">Open()</h4>
-  <div class="markdown level1 summary"><p>Open popup</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Open()</code></pre>
-  </div>
-  <h3 id="events">Events
-  </h3>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Closed" data-uid="Tizen.UIExtensions.NUI.Popup.Closed">Closed</h4>
-  <div class="markdown level1 summary"><p>Closed will be triggered when the popup has been closed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler Closed</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -238,30 +180,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.EventHandler</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_OutsideClicked" data-uid="Tizen.UIExtensions.NUI.Popup.OutsideClicked">OutsideClicked</h4>
-  <div class="markdown level1 summary"><p>OutsideClicked will be triggered when users taps on the outside of Popup.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler OutsideClicked</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.EventHandler</span></td>
+        <td><span class="xref">System.Double</span></td>
         <td></td>
       </tr>
     </tbody>

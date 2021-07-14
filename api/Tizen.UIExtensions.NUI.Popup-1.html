@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Popup
+    <title>Class Popup&lt;T&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Popup
+    <meta name="title" content="Class Popup&lt;T&gt;
    ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -78,47 +78,93 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.Popup">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.Popup`1">
   
   
-  <h1 id="Tizen_UIExtensions_NUI_Popup" data-uid="Tizen.UIExtensions.NUI.Popup" class="text-break">Class Popup
+  <h1 id="Tizen_UIExtensions_NUI_Popup_1" data-uid="Tizen.UIExtensions.NUI.Popup`1" class="text-break">Class Popup&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>A Popup provides a class which can be display topmost area</p>
+  <div class="markdown level0 summary"><p>Base class for custom popup</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Popup</span></div>
-      <div class="level2"><a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html">Popup&lt;T&gt;</a></div>
+    <div class="level1"><a class="xref" href="Tizen.UIExtensions.NUI.Popup.html">Popup</a></div>
+    <div class="level2"><span class="xref">Popup&lt;T&gt;</span></div>
+      <div class="level3"><a class="xref" href="Tizen.UIExtensions.NUI.ActionSheetPopup.html">ActionSheetPopup</a></div>
+      <div class="level3"><a class="xref" href="Tizen.UIExtensions.NUI.MessagePopup.html">MessagePopup</a></div>
+      <div class="level3"><a class="xref" href="Tizen.UIExtensions.NUI.PromptPopup.html">PromptPopup</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_HasOpenedPopup">Popup.HasOpenedPopup</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_OutsideClicked">Popup.OutsideClicked</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Closed">Popup.Closed</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Content">Popup.Content</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_IsOpen">Popup.IsOpen</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Close">Popup.Close()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseAll">Popup.CloseAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseLast">Popup.CloseLast()</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.NUI.html">Tizen.UIExtensions.NUI</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.NUI.dll</h6>
-  <h5 id="Tizen_UIExtensions_NUI_Popup_syntax">Syntax</h5>
+  <h5 id="Tizen_UIExtensions_NUI_Popup_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Popup : View</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class Popup&lt;T&gt; : Popup</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>A type to return on Popup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup__ctor_" data-uid="Tizen.UIExtensions.NUI.Popup.#ctor*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup__ctor" data-uid="Tizen.UIExtensions.NUI.Popup.#ctor">Popup()</h4>
+  <a id="Tizen_UIExtensions_NUI_Popup_1__ctor_" data-uid="Tizen.UIExtensions.NUI.Popup`1.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1__ctor" data-uid="Tizen.UIExtensions.NUI.Popup`1.#ctor">Popup()</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html">Popup</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Popup()</code></pre>
+    <pre><code class="lang-csharp hljs">protected Popup()</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup_Content_" data-uid="Tizen.UIExtensions.NUI.Popup.Content*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Content" data-uid="Tizen.UIExtensions.NUI.Popup.Content">Content</h4>
-  <div class="markdown level1 summary"><p>Content of popup</p>
+  <a id="Tizen_UIExtensions_NUI_Popup_1_ResponseTcs_" data-uid="Tizen.UIExtensions.NUI.Popup`1.ResponseTcs*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1_ResponseTcs" data-uid="Tizen.UIExtensions.NUI.Popup`1.ResponseTcs">ResponseTcs</h4>
+  <div class="markdown level1 summary"><p>A TaskCompletionSource for result of popup</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public View? Content { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TaskCompletionSource&lt;T&gt; ResponseTcs { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -130,105 +176,48 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">View</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Tizen_UIExtensions_NUI_Popup_HasOpenedPopup_" data-uid="Tizen.UIExtensions.NUI.Popup.HasOpenedPopup*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_HasOpenedPopup" data-uid="Tizen.UIExtensions.NUI.Popup.HasOpenedPopup">HasOpenedPopup</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool HasOpenedPopup { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Tizen_UIExtensions_NUI_Popup_IsOpen_" data-uid="Tizen.UIExtensions.NUI.Popup.IsOpen*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_IsOpen" data-uid="Tizen.UIExtensions.NUI.Popup.IsOpen">IsOpen</h4>
-  <div class="markdown level1 summary"><p>Gets a value that indicates open state</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsOpen { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="xref">System.Threading.Tasks.TaskCompletionSource</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="Tizen_UIExtensions_NUI_Popup_Close_" data-uid="Tizen.UIExtensions.NUI.Popup.Close*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Close" data-uid="Tizen.UIExtensions.NUI.Popup.Close">Close()</h4>
-  <div class="markdown level1 summary"><p>Close popup</p>
+  <a id="Tizen_UIExtensions_NUI_Popup_1_CreateContent_" data-uid="Tizen.UIExtensions.NUI.Popup`1.CreateContent*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1_CreateContent" data-uid="Tizen.UIExtensions.NUI.Popup`1.CreateContent">CreateContent()</h4>
+  <div class="markdown level1 summary"><p>Create content of popup</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Close()</code></pre>
+    <pre><code class="lang-csharp hljs">protected abstract View CreateContent()</code></pre>
   </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_CloseAll_" data-uid="Tizen.UIExtensions.NUI.Popup.CloseAll*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_CloseAll" data-uid="Tizen.UIExtensions.NUI.Popup.CloseAll">CloseAll()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CloseAll()</code></pre>
-  </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_CloseLast_" data-uid="Tizen.UIExtensions.NUI.Popup.CloseLast*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_CloseLast" data-uid="Tizen.UIExtensions.NUI.Popup.CloseLast">CloseLast()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CloseLast()</code></pre>
-  </div>
-  <a id="Tizen_UIExtensions_NUI_Popup_Open_" data-uid="Tizen.UIExtensions.NUI.Popup.Open*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Open" data-uid="Tizen.UIExtensions.NUI.Popup.Open">Open()</h4>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">View</span></td>
+        <td><p>Content View</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Tizen_UIExtensions_NUI_Popup_1_Open_" data-uid="Tizen.UIExtensions.NUI.Popup`1.Open*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1_Open" data-uid="Tizen.UIExtensions.NUI.Popup`1.Open">Open()</h4>
   <div class="markdown level1 summary"><p>Open popup</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Open()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; Open()</code></pre>
   </div>
-  <h3 id="events">Events
-  </h3>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_Closed" data-uid="Tizen.UIExtensions.NUI.Popup.Closed">Closed</h4>
-  <div class="markdown level1 summary"><p>Closed will be triggered when the popup has been closed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler Closed</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -238,31 +227,45 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.EventHandler</span></td>
-        <td></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>The return value on Popup</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h4 id="Tizen_UIExtensions_NUI_Popup_OutsideClicked" data-uid="Tizen.UIExtensions.NUI.Popup.OutsideClicked">OutsideClicked</h4>
-  <div class="markdown level1 summary"><p>OutsideClicked will be triggered when users taps on the outside of Popup.</p>
+  <a id="Tizen_UIExtensions_NUI_Popup_1_SendCancel_" data-uid="Tizen.UIExtensions.NUI.Popup`1.SendCancel*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1_SendCancel" data-uid="Tizen.UIExtensions.NUI.Popup`1.SendCancel">SendCancel()</h4>
+  <div class="markdown level1 summary"><p>Cancel popup</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event EventHandler OutsideClicked</code></pre>
+    <pre><code class="lang-csharp hljs">protected void SendCancel()</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
+  <a id="Tizen_UIExtensions_NUI_Popup_1_SendSubmit_" data-uid="Tizen.UIExtensions.NUI.Popup`1.SendSubmit*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_Popup_1_SendSubmit__0_" data-uid="Tizen.UIExtensions.NUI.Popup`1.SendSubmit(`0)">SendSubmit(T)</h4>
+  <div class="markdown level1 summary"><p>Submit value to return</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SendSubmit(T value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.EventHandler</span></td>
-        <td></td>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to submit</p>
+</td>
       </tr>
     </tbody>
   </table>

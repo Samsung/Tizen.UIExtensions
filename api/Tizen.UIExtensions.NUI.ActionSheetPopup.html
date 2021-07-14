@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SKGLSurfaceView
+    <title>Class ActionSheetPopup
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SKGLSurfaceView
+    <meta name="title" content="Class ActionSheetPopup
    ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -78,60 +78,76 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView">
+            <article class="content wrap" id="_content" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup">
   
   
-  <h1 id="Tizen_UIExtensions_NUI_SKGLSurfaceView" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView" class="text-break">Class SKGLSurfaceView
+  <h1 id="Tizen_UIExtensions_NUI_ActionSheetPopup" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup" class="text-break">Class ActionSheetPopup
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A custom popup with list and returning a string value</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html">CustomRenderingView</a></div>
-    <div class="level2"><span class="xref">SKGLSurfaceView</span></div>
-      <div class="level3"><a class="xref" href="Tizen.UIExtensions.NUI.GraphicsView.SkiaGraphicsView.html">SkiaGraphicsView</a></div>
+    <div class="level1"><a class="xref" href="Tizen.UIExtensions.NUI.Popup.html">Popup</a></div>
+    <div class="level2"><a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html">Popup</a>&lt;<span class="xref">System.String</span>&gt;</div>
+    <div class="level3"><span class="xref">ActionSheetPopup</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_MainloopContext">CustomRenderingView.MainloopContext</a>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html#Tizen_UIExtensions_NUI_Popup_1_ResponseTcs">Popup&lt;String&gt;.ResponseTcs</a>
     </div>
     <div>
-      <a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_PaintSurface">CustomRenderingView.PaintSurface</a>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html#Tizen_UIExtensions_NUI_Popup_1_Open">Popup&lt;String&gt;.Open()</a>
     </div>
     <div>
-      <a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_Invalidate">CustomRenderingView.Invalidate()</a>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html#Tizen_UIExtensions_NUI_Popup_1_SendSubmit__0_">Popup&lt;String&gt;.SendSubmit(String)</a>
     </div>
     <div>
-      <a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_SendPaintSurface_SKPaintSurfaceEventArgs_">CustomRenderingView.SendPaintSurface(SKPaintSurfaceEventArgs)</a>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup-1.html#Tizen_UIExtensions_NUI_Popup_1_SendCancel">Popup&lt;String&gt;.SendCancel()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_HasOpenedPopup">Popup.HasOpenedPopup</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_OutsideClicked">Popup.OutsideClicked</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Closed">Popup.Closed</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Content">Popup.Content</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_IsOpen">Popup.IsOpen</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_Close">Popup.Close()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseAll">Popup.CloseAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tizen.UIExtensions.NUI.Popup.html#Tizen_UIExtensions_NUI_Popup_CloseLast">Popup.CloseLast()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Tizen.UIExtensions.NUI.html">Tizen.UIExtensions.NUI</a></h6>
   <h6><strong>Assembly</strong>: Tizen.UIExtensions.NUI.dll</h6>
-  <h5 id="Tizen_UIExtensions_NUI_SKGLSurfaceView_syntax">Syntax</h5>
+  <h5 id="Tizen_UIExtensions_NUI_ActionSheetPopup_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SKGLSurfaceView : CustomRenderingView</code></pre>
+    <pre><code class="lang-csharp hljs">public class ActionSheetPopup : Popup&lt;string&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="Tizen_UIExtensions_NUI_SKGLSurfaceView__ctor_" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_SKGLSurfaceView__ctor" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.#ctor">SKGLSurfaceView()</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Tizen_UIExtensions_NUI_ActionSheetPopup__ctor_" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup.#ctor*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ActionSheetPopup__ctor_System_String_System_String_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">ActionSheetPopup(String, String, String, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Tizen.UIExtensions.NUI.ActionSheetPopup.html">ActionSheetPopup</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SKGLSurfaceView()</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="Tizen_UIExtensions_NUI_SKGLSurfaceView_Dispose_" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_SKGLSurfaceView_Dispose_System_Boolean_" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.Dispose(System.Boolean)">Dispose(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+    <pre><code class="lang-csharp hljs">public ActionSheetPopup(string title, string cancel, string destruction = null, IEnumerable&lt;string&gt; buttons = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -144,32 +160,58 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">disposing</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>Title text</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cancel</span></td>
+        <td><p>Cancel text</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">destruction</span></td>
+        <td><p>Destruction text</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">buttons</span></td>
+        <td><p>A value list to choose</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Tizen_UIExtensions_NUI_ActionSheetPopup_CreateContent_" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup.CreateContent*"></a>
+  <h4 id="Tizen_UIExtensions_NUI_ActionSheetPopup_CreateContent" data-uid="Tizen.UIExtensions.NUI.ActionSheetPopup.CreateContent">CreateContent()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override View CreateContent()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">View</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Tizen_UIExtensions_NUI_SKGLSurfaceView_OnDrawFrame_" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_SKGLSurfaceView_OnDrawFrame" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.OnDrawFrame">OnDrawFrame()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void OnDrawFrame()</code></pre>
-  </div>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnDrawFrame">CustomRenderingView.OnDrawFrame()</a></div>
-  <a id="Tizen_UIExtensions_NUI_SKGLSurfaceView_OnResized_" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized*"></a>
-  <h4 id="Tizen_UIExtensions_NUI_SKGLSurfaceView_OnResized" data-uid="Tizen.UIExtensions.NUI.SKGLSurfaceView.OnResized">OnResized()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void OnResized()</code></pre>
-  </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Tizen.UIExtensions.NUI.CustomRenderingView.html#Tizen_UIExtensions_NUI_CustomRenderingView_OnResized">CustomRenderingView.OnResized()</a></div>
+  <div><span class="xref">Tizen.UIExtensions.NUI.Popup&lt;System.String&gt;.CreateContent()</span></div>
 </article>
           </div>
           
