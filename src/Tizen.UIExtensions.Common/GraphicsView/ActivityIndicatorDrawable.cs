@@ -97,7 +97,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override TSize Measure(double availableWidth, double availableHeight)
         {
-            return new TSize(45 * DeviceInfo.ScalingFactor, 45 * DeviceInfo.ScalingFactor);
+            return new TSize(46 * DeviceInfo.ScalingFactor, 46 * DeviceInfo.ScalingFactor);
         }
 
         protected override void Dispose(bool disposing)

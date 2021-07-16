@@ -129,7 +129,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             canvas.FontColor = View.PlaceholderColor.ToGraphicsColor(Material.Color.Dark);
-            canvas.FontSize = (float)(PlaceholderFontSize * DeviceInfo.ScalingFactor);
+            canvas.FontSize = PlaceholderFontSize;
 
             float margin = 12f;
 
@@ -191,7 +191,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
                 //    tX = iconMarginX;
                 //}
 
-                canvas.Translate((float)(tX * DeviceInfo.ScalingFactor), (float)(tY * DeviceInfo.ScalingFactor));
+                canvas.Translate(tX, tY);
 
                 var vBuilder = new PathBuilder();
                 var path = vBuilder.BuildPath(MaterialEntryIndicatorIcon);

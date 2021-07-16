@@ -15,8 +15,6 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         {
             _canvas = new SkiaCanvas();
             _scalingCanvas = new ScalingCanvas(_canvas);
-
-            _scalingCanvas.Scale((float)DeviceInfo.ScalingFactor, (float)DeviceInfo.ScalingFactor);
             Drawable = drawable;
             PaintSurface += OnPaintSurface;
         }
@@ -42,7 +40,10 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             var height = (float)(e.Info.Height / DeviceInfo.ScalingFactor);
 
             _canvas.Canvas = skiaCanvas;
+            _scalingCanvas.SaveState();
+            _scalingCanvas.Scale((float)DeviceInfo.ScalingFactor, (float)DeviceInfo.ScalingFactor);
             _drawable.Draw(_scalingCanvas, new RectangleF(0, 0, width, height));
+            _scalingCanvas.RestoreState();
         }
     }
 }
