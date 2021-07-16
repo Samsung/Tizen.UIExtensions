@@ -70,7 +70,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var height = MaterialBackgroundHeight - MaterialShadowOffset;
             canvas.SetShadow(new SizeF(0, 1), 3, GColor.FromArgb(Material.Color.Gray2));
 
-            canvas.FillRoundedRectangle(x, y, width, height, (float)(View.CornerRadius * DeviceInfo.ScalingFactor));
+            canvas.FillRoundedRectangle(x, y, width, height, (float)View.CornerRadius);
 
             canvas.RestoreState();
 
@@ -83,17 +83,13 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.FontName = "Roboto";
             canvas.FontColor = View.TextColor.ToGraphicsColor(Material.Color.White);
-            var fontSize = canvas.FontSize = (float)(Material.Font.Button * DeviceInfo.ScalingFactor);
 
             var x = dirtyRect.X;
             var y = dirtyRect.Y;
 
             var width = dirtyRect.Width - MaterialShadowOffset;
-            var height = dirtyRect.Height - MaterialShadowOffset;
 
-            //canvas.DrawString(View.Text.ToUpper(), x, y, width, MaterialBackgroundHeight, HorizontalAlignment.Center, VerticalAlignment.Center);
-
-            canvas.DrawString(View.Text, x, height / 2.0f - fontSize / 3.0f, width, height, HorizontalAlignment.Center, VerticalAlignment.Top);
+            canvas.DrawString(View.Text, x, y, width, MaterialBackgroundHeight, HorizontalAlignment.Center, VerticalAlignment.Center);
 
             canvas.RestoreState();
         }

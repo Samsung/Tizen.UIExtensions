@@ -119,7 +119,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             canvas.FontColor = View.PlaceholderColor.ToGraphicsColor(Material.Color.Dark);
-            canvas.FontSize = (float)(PlaceholderFontSize * DeviceInfo.ScalingFactor);
+            canvas.FontSize = PlaceholderFontSize;
 
             float margin = 12f;
 

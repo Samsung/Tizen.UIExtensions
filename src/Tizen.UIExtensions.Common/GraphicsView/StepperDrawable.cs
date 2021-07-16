@@ -90,7 +90,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
 
-            canvas.Translate((float)(20 * DeviceInfo.ScalingFactor), (float)(20 * DeviceInfo.ScalingFactor));
+            canvas.Translate(20, 20);
 
             var vBuilder = new PathBuilder();
             var path = vBuilder.BuildPath(MaterialStepperMinusIcon);
@@ -118,7 +118,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
 
-            canvas.Translate((float)(80 * DeviceInfo.ScalingFactor), (float)(14 * DeviceInfo.ScalingFactor));
+            canvas.Translate(80, 14);
 
             var vBuilder = new PathBuilder();
             var path = vBuilder.BuildPath(MaterialStepperPlusIcon);
