@@ -4,7 +4,7 @@ namespace Tizen.UIExtensions.ElmSharp
 {
     public class Tabs : Toolbar, ITabs
     {
-        TabsScrollType _type;
+        TabsType _type;
 
         public Tabs(EvasObject parent) :base(parent)
         {
@@ -12,17 +12,17 @@ namespace Tizen.UIExtensions.ElmSharp
             SelectionMode = ToolbarSelectionMode.Always;
         }
 
-        public TabsScrollType ScrollType
+        public TabsType Scrollable
         {
             get => _type;
             set
             {
                 switch (value)
                 {
-                    case TabsScrollType.Fixed:
+                    case TabsType.Fixed:
                         this.ShrinkMode = ToolbarShrinkMode.Expand;
                         break;
-                    case TabsScrollType.Scrollable:
+                    case TabsType.Scrollable:
                         this.ShrinkMode = ToolbarShrinkMode.Scroll;
                         break;
                 }

@@ -6,7 +6,7 @@ namespace Tizen.UIExtensions.ElmSharp
 {
     public interface ITabs
     {
-        TabsScrollType ScrollType { get; set; }
+        TabsType Scrollable { get; set; }
 
         EColor BackgroundColor { get; set; }
 
@@ -21,7 +21,7 @@ namespace Tizen.UIExtensions.ElmSharp
         ToolbarItem InsertBefore(ToolbarItem before, string label, string icon);
     }
 
-    public enum TabsScrollType
+    public enum TabsType
     {
         Fixed,
         Scrollable
