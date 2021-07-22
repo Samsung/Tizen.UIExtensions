@@ -588,9 +588,9 @@ namespace Tizen.UIExtensions.ElmSharp
 
             public class ColorClass
             {
-                public static readonly Color DefaultBackgroundColor = Color.FromRgb(33, 150, 243);
-                public static readonly Color DefaultForegroundColor = Color.White;
-                public static readonly Color DefaultTitleColor = Color.White;
+                public static readonly EColor DefaultBackgroundColor = EColor.FromRgb(33, 150, 243);
+                public static readonly EColor DefaultForegroundColor = EColor.White;
+                public static readonly EColor DefaultTitleColor = EColor.White;
                 public static readonly EColor DefaultNavigationViewBackgroundColor = EColor.White;
                 public static readonly EColor DefaultDrawerDimBackgroundColor = new EColor(0, 0, 0, 82);
 
