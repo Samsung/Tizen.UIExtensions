@@ -57,7 +57,7 @@ namespace Tizen.UIExtensions.NUI
         /// User customized push animation function
         /// </summary>
         /// <remarks>
-        /// View is a target that is pushed and `double` is progess of push
+        /// View is a target that is pushed and `double` is progress of push
         /// </remarks>
         public Action<View, double>? PushAnimation { get; set; }
 
@@ -65,7 +65,7 @@ namespace Tizen.UIExtensions.NUI
         /// User customized pop animation function
         /// </summary>
         /// <remarks>
-        /// View is a target that is popped and `double` is progess of push
+        /// View is a target that is popped and `double` is progress of pop
         /// </remarks>
         public Action<View, double>? PopAnimation { get; set; }
 
