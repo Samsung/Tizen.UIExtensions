@@ -33,7 +33,7 @@ namespace Tizen.UIExtensions.NUI
             "   gl_FragColor = texture2D(sTexture, vTexCoord) * uColor;\n" +
             "}\n";
 
-        NativeImageSource? _nativeImageSource;
+        NativeImageQueue? _nativeImageSource;
 
         int _bufferWidth = 0;
         int _bufferHeight = 0;
@@ -57,28 +57,31 @@ namespace Tizen.UIExtensions.NUI
             if (Size.Width == 0 || Size.Height == 0)
                 return;
 
-            UpdateSurface();
-
-            var buffer = _nativeImageSource!.AcquireBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
-            Debug.Assert(buffer != IntPtr.Zero, "AcquireBuffer is faild");
-
-            var info = new SKImageInfo(_bufferWidth, _bufferHeight);
-            using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+            if (_nativeImageSource?.CanDequeueBuffer() ?? false)
             {
-                // draw using SkiaSharp
-                SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
-                surface.Canvas.Flush();
-            }
-            _nativeImageSource.ReleaseBuffer();
+                var buffer = _nativeImageSource!.DequeueBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
+                Debug.Assert(buffer != IntPtr.Zero, "AcquireBuffer is faild");
 
-            UpdateTexture();
+                var info = new SKImageInfo(_bufferWidth, _bufferHeight);
+                using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+                {
+                    // draw using SkiaSharp
+                    SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
+                    surface.Canvas.Flush();
+                }
+                _nativeImageSource.EnqueueBuffer(buffer);
+                Window.Instance.KeepRendering(0);
+            }
         }
 
         protected override void OnResized()
         {
             if (Size.Width == 0 || Size.Height == 0)
                 return;
+
+            UpdateSurface();
             OnDrawFrame();
+            UpdateTexture();
         }
 
         protected override void Dispose(bool disposing)
@@ -94,7 +97,7 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _nativeImageSource?.Dispose();
-            _nativeImageSource = new NativeImageSource((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
+            _nativeImageSource = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
         }
 
         void UpdateTexture()

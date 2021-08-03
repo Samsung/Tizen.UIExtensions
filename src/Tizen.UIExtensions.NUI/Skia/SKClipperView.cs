@@ -43,7 +43,7 @@ namespace Tizen.UIExtensions.NUI
         Geometry _geometry;
         Shader _shader;
 
-        NativeImageSource? _buffer;
+        NativeImageQueue? _bufferQueue;
         Texture? _texture;
         TextureSet? _textureSet;
 
@@ -69,8 +69,8 @@ namespace Tizen.UIExtensions.NUI
 
             RemoveRenderer(0);
 
-            _buffer = new NativeImageSource(1, 1, NativeImageSource.ColorDepth.Default);
-            _texture = new Texture(_buffer);
+            _bufferQueue = new NativeImageQueue(1, 1, NativeImageSource.ColorDepth.Default);
+            _texture = new Texture(_bufferQueue);
             _textureSet = new TextureSet();
             _textureSet.SetTexture(0u, _texture);
             _renderer = new Renderer(_geometry, _shader);
@@ -96,7 +96,7 @@ namespace Tizen.UIExtensions.NUI
                 MainloopContext.Post((s)=>
                 {
                     _redrawRequest = false;
-                    if (!Disposed && _buffer != null)
+                    if (!Disposed && _bufferQueue != null)
                     {
                         OnDrawFrame();
                     }
@@ -109,26 +109,26 @@ namespace Tizen.UIExtensions.NUI
             if (Size.Width == 0 || Size.Height == 0)
                 return;
 
-            UpdateSurface();
-
-            var buffer = _buffer!.AcquireBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
-            var info = new SKImageInfo(_bufferWidth, _bufferHeight);
-            using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+            if (_bufferQueue?.CanDequeueBuffer() ?? false)
             {
-                // draw using SkiaSharp
-                OnDrawFrame(new SKPaintSurfaceEventArgs(surface, info));
-                surface.Canvas.Flush();
+                var buffer = _bufferQueue!.DequeueBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
+                var info = new SKImageInfo(_bufferWidth, _bufferHeight);
+                using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+                {
+                    // draw using SkiaSharp
+                    OnDrawFrame(new SKPaintSurfaceEventArgs(surface, info));
+                    surface.Canvas.Flush();
+                }
+                _bufferQueue.EnqueueBuffer(buffer);
+                Window.Instance.KeepRendering(0);
             }
-            _buffer.ReleaseBuffer();
-
-            UpdateBuffer();
         }
 
         void UpdateBuffer()
         {
             _texture?.Dispose();
             _textureSet?.Dispose();
-            _texture = new Texture(_buffer);
+            _texture = new Texture(_bufferQueue);
             _textureSet = new TextureSet();
             _textureSet.SetTexture(0u, _texture);
             _renderer.SetTextures(_textureSet);
@@ -146,13 +146,14 @@ namespace Tizen.UIExtensions.NUI
 
             UpdateSurface();
             OnDrawFrame();
+            UpdateBuffer();
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                _buffer?.Dispose();
+                _bufferQueue?.Dispose();
                 _texture?.Dispose();
                 _textureSet?.Dispose();
                 _renderer?.Dispose();
@@ -162,8 +163,8 @@ namespace Tizen.UIExtensions.NUI
 
         void UpdateSurface()
         {
-            _buffer?.Dispose();
-            _buffer = new NativeImageSource((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
+            _bufferQueue?.Dispose();
+            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
         }
 
         void OnResized(object source, PropertyNotification.NotifyEventArgs e)
