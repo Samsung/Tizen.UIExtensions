@@ -113,9 +113,9 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animated">Flags for animation</param>
         public async Task Pop(bool animated)
         {
-            if (_lastTop != null)
+            if (Top != null)
             {
-                var tobeRemoved = _lastTop;
+                var tobeRemoved = Top;
 
                 if (animated && PopAnimation != null)
                 {
@@ -143,8 +143,6 @@ namespace Tizen.UIExtensions.NUI
                 InternalStack.Remove(tobeRemoved);
                 Remove(tobeRemoved);
                 UpdateTopView();
-                // if Pop was called by removed page,
-                // Unrealize cause deletation of NativeCallback, it could be a cause of crash
                 tobeRemoved.Dispose();
             }
         }
