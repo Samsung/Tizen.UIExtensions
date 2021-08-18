@@ -69,7 +69,7 @@ namespace Tizen.UIExtensions.NUI
 
             RemoveRenderer(0);
 
-            _bufferQueue = new NativeImageQueue(1, 1, NativeImageSource.ColorDepth.Default);
+            _bufferQueue = new NativeImageQueue(1, 1, NativeImageQueue.ColorFormat.RGBA8888);
             _texture = new Texture(_bufferQueue);
             _textureSet = new TextureSet();
             _textureSet.SetTexture(0u, _texture);
@@ -164,7 +164,7 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _bufferQueue?.Dispose();
-            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
+            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
         }
 
         void OnResized(object source, PropertyNotification.NotifyEventArgs e)
