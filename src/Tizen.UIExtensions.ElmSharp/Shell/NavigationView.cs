@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using ElmSharp;
+﻿using ElmSharp;
+using System;
 using Tizen.UIExtensions.Common;
 using EColor = ElmSharp.Color;
 
@@ -14,20 +13,13 @@ namespace Tizen.UIExtensions.ElmSharp
         static readonly EColor s_defaultBackgroundColor = ThemeConstants.Shell.ColorClass.DefaultNavigationViewBackgroundColor;
 
         Box _mainLayout;
-        Box? _headerBox;
-
-        GenList _menu;
-        GenItemClass _templateClass;
-        GenItemClass _headerClass;
 
         EvasObject? _header;
+        EvasObject? _footer;
+        EvasObject? _content;
+
         EvasObject? _backgroundImage;
         EColor _backgroundColor;
-
-        DrawerHeaderBehavior _headerBehavior = DrawerHeaderBehavior.Fixed;
-
-        bool HeaderOnMenu => HeaderBehavior == DrawerHeaderBehavior.Scroll ||
-                     HeaderBehavior == DrawerHeaderBehavior.CollapseOnScroll;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tizen.UIExtensions.ElmSharp.NavigationView"/> class.
@@ -38,22 +30,6 @@ namespace Tizen.UIExtensions.ElmSharp
 #pragma warning restore CS8618
         {
             InitializeComponent(parent);
-        }
-
-        /// <summary>
-        /// Gets or sets the header behavior.
-        /// </summary>
-        public DrawerHeaderBehavior HeaderBehavior
-        {
-            get => _headerBehavior;
-            set
-            {
-                if (_headerBehavior == value)
-                    return;
-
-                _headerBehavior = value;
-                UpdateHeaderBehavior();
-            }
         }
 
         /// <summary>
@@ -93,38 +69,29 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
+        /// Gets or sets the footer view of the NavigtiaonView.
+        /// </summary>
+        public EvasObject? Footer
+        {
+            get => _footer;
+            set => UpdateFooter(value);
+        }
+
+        public EvasObject? Content
+        {
+            get => _content;
+            set => UpdateContent(value);
+        }
+
+        /// <summary>
         /// Gets or sets the target view of the NavigtiaonView.
         /// </summary>
         public EvasObject TargetView => this;
 
         /// <summary>
-        /// Occurs when an item is selected in the NavigationView.
+        /// Notifies that the layout has been updated.
         /// </summary>
-        public event EventHandler<ItemSelectedEventArgs>? ItemSelected;
-
-        /// <summary>
-        /// Create the list of items to be displayed on the NavigationView.
-        /// </summary>
-        /// <param name="items"></param>
-        public void BuildMenu(IEnumerable<object> items)
-        {
-            _menu.Clear();
-
-            foreach(var item in items)
-            {
-                var genItem = _menu.Append(_templateClass, item);
-                genItem.SetBackgroundColor(EColor.Transparent);
-
-                if (item is NavigationViewItem naviItem)
-                {
-                    if (!naviItem.IsFirst)
-                    {
-                        genItem.SetBottomlineColor(EColor.Transparent);
-                    }
-                }
-
-            }
-        }
+        public event EventHandler<LayoutEventArgs>? LayoutUpdated;
 
         void InitializeComponent(EvasObject parent)
         {
@@ -139,78 +106,8 @@ namespace Tizen.UIExtensions.ElmSharp
             };
             _mainLayout.SetLayoutCallback(OnLayout);
             _mainLayout.Show();
+
             SetContent(_mainLayout);
-
-            _menu = new GenList(parent)
-            {
-                Homogeneous = false,
-                SelectionMode = GenItemSelectionMode.Always,
-                BackgroundColor = EColor.Transparent,
-                Style = ThemeConstants.GenList.Styles.Solid,
-                ListMode = GenListMode.Scroll,
-            };
-            _menu.Show();
-            _mainLayout.PackEnd(_menu);
-
-            _menu.ItemSelected += (s, e) =>
-            {
-                ItemSelected?.Invoke(this, new ItemSelectedEventArgs(e.Item.Data, e.Item.Index));
-            };
-
-
-            _templateClass = new GenItemClass(ThemeConstants.GenItemClass.Styles.Full)
-            {
-                GetContentHandler = GetTemplatedContent,
-            };
-
-            _headerClass = new GenItemClass(ThemeConstants.GenItemClass.Styles.Full)
-            {
-                GetContentHandler = GetHeaderContent
-            };
-        }
-
-        EvasObject GetHeaderContent(object data, string part)
-        {
-            if (_headerBox == null)
-            {
-                _headerBox = new Box(this)
-                {
-                    AlignmentX = -1,
-                    AlignmentY = -1,
-                    WeightX = 1,
-                    WeightY = 1,
-                };
-            }
-
-            var header = (EvasObject)data;
-            _headerBox.PackEnd(header);
-            _headerBox.SetLayoutCallback(OnHeaderBoxLayout);
-            _headerBox.MinimumHeight = header!.MinimumHeight;
-
-            return _headerBox;
-        }
-        EvasObject GetTemplatedContent(object data, string part)
-        {
-            if (data is NavigationViewItem item)
-            {
-                if (item.GetContent != null)
-                {
-                    return item.GetContent(item.Data);
-                }
-            }
-
-            return new Label(this)
-            {
-                Text = data.ToString()
-            };
-        }
-
-        void OnHeaderBoxLayout()
-        {
-            if (_header != null && _headerBox != null)
-            {
-                _header.Geometry = _headerBox.Geometry;
-            }
         }
 
         void OnLayout()
@@ -220,135 +117,89 @@ namespace Tizen.UIExtensions.ElmSharp
 
             var bound = Geometry;
             int headerHeight = 0;
+            int footerHeight = 0;
 
-            if (!HeaderOnMenu && _header != null)
+            if (_header != null)
             {
-                var headerbound = bound;
+                var headerBound = bound;
                 headerHeight = _header.MinimumHeight;
-                headerbound.Height = headerHeight;
-                _header.Geometry = headerbound;
+                headerBound.Height = headerHeight;
+                _header.Geometry = headerBound;
             }
 
-            bound.Y += headerHeight;
-            bound.Height -= headerHeight;
-            _menu.Geometry = bound;
+            if (_footer != null)
+            {
+                var footerbound = bound;
+                footerHeight = _footer.MinimumHeight;
+                footerbound.Y = bound.Y + bound.Height - footerHeight;
+                footerbound.Height = footerHeight;
+                _footer.Geometry = footerbound;
+            }
+
+            if (_content != null)
+            {
+                bound.Y += headerHeight;
+                bound.Height = bound.Height - headerHeight - footerHeight;
+                _content.Geometry = bound;
+            }
+
+            NotifyOnLayout();
+        }
+
+        void NotifyOnLayout()
+        {
+            LayoutUpdated?.Invoke(this, new LayoutEventArgs() { Geometry = Geometry.ToCommon() });
         }
 
         void UpdateHeader(EvasObject? header)
         {
             if (_header != null)
             {
-                if (HeaderOnMenu)
-                {
-                    ResetHeaderOnMenu();
-                }
-                else if (_header != null)
-                {
-                    _mainLayout.UnPack(_header);
-                    _header.Unrealize();
-                    _header = null;
-                }
+                _mainLayout.UnPack(_header);
+                _header.Unrealize();
+                _header = null;
             }
 
             if (header != null)
             {
-                if (HeaderOnMenu)
-                {
-                    UpdateHeaderOnMenu(header);
-                }
-                else
-                {
-                    _mainLayout.PackEnd(header);
-                }
+                _mainLayout.PackStart(header);
             }
             _header = header;
             _header?.Show();
         }
 
-        void UpdateHeaderBehavior()
+        void UpdateFooter(EvasObject? footer)
         {
-            if (_header == null)
-                return;
+            if (_footer != null)
+            {
+                _mainLayout.UnPack(_footer);
+                _footer.Unrealize();
+                _footer = null;
+            }
 
-            if (HeaderOnMenu)
+            if(footer != null)
             {
-                _mainLayout.UnPack(_header);
-                UpdateHeaderOnMenu(_header);
+                _mainLayout.PackEnd(footer);
             }
-            else
-            {
-                ResetHeaderOnMenu();
-                if (_header != null)
-                {
-                    _mainLayout.PackEnd(_header);
-                }
-            }
-            OnLayout();
+            _footer = footer;
+            _footer?.Show();
         }
 
-        void ResetHeaderOnMenu()
+        void UpdateContent(EvasObject? content)
         {
-            if (_menu.FirstItem != null && _headerBox != null)
+            if (_content != null)
             {
-                _headerBox.UnPackAll();
-                _menu.FirstItem.Delete();
-                _headerBox = null;
+                _mainLayout.UnPack(_content);
+                _content.Unrealize();
+                _content = null;
             }
+
+            if(content != null)
+            {
+                _mainLayout.PackEnd(content);
+            }
+            _content = content;
+            _content?.Show();
         }
-
-        void UpdateHeaderOnMenu(EvasObject header)
-        {
-            if (_menu.FirstItem != null && _menu.FirstItem.Data == header)
-                return;
-
-            GenListItem item;
-            if (_menu.Count > 0)
-            {
-                item = _menu.InsertBefore(_headerClass, header, _menu.FirstItem);
-            }
-            else
-            {
-                item = _menu.Append(_headerClass, header);
-            }
-            item.SelectionMode = GenItemSelectionMode.None;
-        }
-
-        void INavigationView.UpdateHeaderLayout()
-        {
-            if (_header == null)
-                return;
-
-            ResetHeaderOnMenu();
-            if (HeaderOnMenu)
-            {
-                UpdateHeaderOnMenu(_header);
-            }
-            else
-            {
-                if (_header != null)
-                {
-                    _mainLayout.PackEnd(_header);
-                }
-            }
-            OnLayout();
-        }
-    }
-
-    public class NavigationViewItem
-    {
-        public NavigationViewItem()
-        {
-            Data = null;
-            GetContent = null;
-            IsFirst = false;
-        }
-
-        public bool IsFirst { get; set; }
-
-        public object? Data { get; set; }
-
-        public GetContentDelegate? GetContent { get; set; }
-
-        public delegate EvasObject GetContentDelegate(object? data);
     }
 }

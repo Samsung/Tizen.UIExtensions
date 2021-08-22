@@ -809,13 +809,16 @@ namespace Tizen.UIExtensions.ElmSharp
         void CreateEmptyView()
         {
             _emptyView = Adaptor!.CreateNativeView(this);
-            _emptyView.Show();
-            Adaptor!.SetBinding(_emptyView, 0);
-            _emptyView.Geometry = Geometry;
-            _emptyView.MinimumHeight = Geometry.Height;
-            _emptyView.MinimumWidth = Geometry.Width;
+            _emptyView?.Show();
+            if (_emptyView != null)
+            {
+                Adaptor!.SetBinding(_emptyView, 0);
 
-            Scroller.SetContent(_emptyView, true);
+                _emptyView.Geometry = Geometry;
+                _emptyView.MinimumHeight = Geometry.Height;
+                _emptyView.MinimumWidth = Geometry.Width;
+                Scroller.SetContent(_emptyView, true);
+            }
             _innerLayout.Hide();
         }
 

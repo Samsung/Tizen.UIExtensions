@@ -142,26 +142,26 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Create a new view
         /// </summary>
         /// <returns>Created view</returns>
-		public abstract EvasObject CreateNativeView(EvasObject parent);
+		public abstract EvasObject? CreateNativeView(EvasObject parent);
 
         /// <summary>
         /// Create a new view
         /// </summary>
         /// <param name="index">To used item when create a view</param>
         /// <returns>Created view</returns>
-		public abstract EvasObject CreateNativeView(int index, EvasObject parent);
+		public abstract EvasObject? CreateNativeView(int index, EvasObject parent);
 
         /// <summary>
         /// Create a header view, if header is not existed, null will be returned
         /// </summary>
         /// <returns>A created view</returns>
-		public abstract EvasObject GetHeaderView(EvasObject parent);
+		public abstract EvasObject? GetHeaderView(EvasObject parent);
 
         /// <summary>
         /// Create a footer view, if footer is not existed, null will be returned
         /// </summary>
         /// <returns>A created view</returns>
-		public abstract EvasObject GetFooterView(EvasObject parent);
+		public abstract EvasObject? GetFooterView(EvasObject parent);
 
         /// <summary>
         /// Remove view, a created view by Adaptor, should be removed by Adaptor
