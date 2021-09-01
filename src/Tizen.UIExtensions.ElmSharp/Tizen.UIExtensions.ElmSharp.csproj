@@ -4,7 +4,8 @@
     <TargetFrameworks>tizen40;net6.0-tizen6.5</TargetFrameworks>
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
-    <LangVersion>8.0</LangVersion>
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>NU5048, NU5104</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
