@@ -1,4 +1,4 @@
-name: Build
+name: Release Packages
 
 on:
   workflow_dispatch:
@@ -6,6 +6,10 @@ on:
       version:
         description: 'Package Version'
         required: true
+      deploy_to_nuget:
+        description: 'Deploy packages to nuget.org'
+        required: true
+        default: false
 
 jobs:
   deploy:
@@ -17,6 +21,25 @@ jobs:
       with:
         dotnet-version: '6.0.x'
         include-prerelease: true
-    - run: dotnet build Tizen.UIExtensions.sln
-    - run: dotnet pack Tizen.UIExtensions.sln
-    
+    - name: Install tizen workload
+      run: |
+        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | bash -s -- -v 6.5.100-preview.7.85 -d /home/runner/.dotnet
+
+    - name: Build and pack
+      run: |
+        dotnet pack -c Release -o artifacts -p:Version=${{ github.event.inputs.version }} Tizen.UIExtensions.sln
+
+    - name: Deploy packages
+      env:
+        NUGET_SOURCE: https://tizen.myget.org/F/dotnet/api/v2/package
+        APIKEY: ${{ secrets.MYGET_APIKEY }}
+      run: |
+        dotnet nuget push artifacts/Tizen.UIExtensions.*.nupkg -k $APIKEY -s $NUGET_SOURCE -t 3000
+
+    - name: Deploy packages to nuget.org
+      if: github.event.inputs.deploy_to_nuget == 'true'
+      env:
+        NUGET_SOURCE: https://www.nuget.org/api/v2/package
+        APIKEY: ${{ secrets.NUGET_APIKEY }}
+      run: |
+        dotnet nuget push artifacts/Tizen.UIExtensions.*.nupkg -k $APIKEY -s $NUGET_SOURCE -t 3000
