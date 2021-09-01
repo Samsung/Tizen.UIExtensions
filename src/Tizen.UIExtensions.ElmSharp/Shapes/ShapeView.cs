@@ -170,7 +170,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        void OnPaintSurface(object? sender, SKPaintSurfaceEventArgs e)
         {
             var canvas = e.Surface.Canvas;
             _drawableBounds = e.Info.Rect;
@@ -224,7 +224,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnLayoutUpdated(object sender, LayoutEventArgs e)
+        void OnLayoutUpdated(object? sender, LayoutEventArgs e)
         {
             _skCanvasView.Geometry = Geometry;
         }

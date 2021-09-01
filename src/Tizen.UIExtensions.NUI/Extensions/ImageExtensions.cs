@@ -132,7 +132,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public static async Task<bool> LoadAsync(this ImageView view, Stream stream)
+        public static async Task<bool> LoadAsync(this Image view, Stream stream)
         {
             if (stream == null)
                 throw new ArgumentNullException(nameof(stream));
@@ -146,7 +146,7 @@ namespace Tizen.UIExtensions.NUI
 
             try
             {
-                view.ResourceUrl = await StreamImageSourceService.Instance.AddStreamAsync(view, stream);
+                view.Load(stream);
                 return await tcs.Task;
             }
             finally

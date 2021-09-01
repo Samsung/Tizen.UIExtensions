@@ -565,9 +565,9 @@ namespace Tizen.UIExtensions.ElmSharp
             public class Resources
             {
                 // The source of icon resources is https://materialdesignicons.com/
-                public const string MenuIcon = "Resource.menu.png";
-                public const string BackIcon = "Resource.arrow_left.png";
-                public const string DotsIcon = "Resource.dots_horizontal.png";
+                public const string MenuIcon = "Platform.Tizen.Resources.menu.png";
+                public const string BackIcon = "Platform.Tizen.Resources.arrow_left.png";
+                public const string DotsIcon = "Platform.Tizen.Resources.dots_horizontal.png";
                 public const int DefaultDrawerDimOpacity = 30;
 
                 public class Watch
@@ -588,9 +588,9 @@ namespace Tizen.UIExtensions.ElmSharp
 
             public class ColorClass
             {
-                public static readonly Color DefaultBackgroundColor = Color.FromRgb(33, 150, 243);
-                public static readonly Color DefaultForegroundColor = Color.White;
-                public static readonly Color DefaultTitleColor = Color.White;
+                public static readonly EColor DefaultBackgroundColor = EColor.FromRgb(33, 150, 243);
+                public static readonly EColor DefaultForegroundColor = EColor.White;
+                public static readonly EColor DefaultTitleColor = EColor.White;
                 public static readonly EColor DefaultNavigationViewBackgroundColor = EColor.White;
                 public static readonly EColor DefaultDrawerDimBackgroundColor = new EColor(0, 0, 0, 82);
 

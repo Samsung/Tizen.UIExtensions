@@ -9,7 +9,7 @@ namespace Tizen.UIExtensions.NUI
 
     public class SKCanvasView : CustomRenderingView
     {
-        NativeImageSource? _nativeImageSource;
+        NativeImageQueue? _nativeImageSource;
         ImageUrl? _imageUrl;
 
         int _bufferWidth = 0;
@@ -26,30 +26,31 @@ namespace Tizen.UIExtensions.NUI
             if (Size.Width == 0 || Size.Height == 0)
                 return;
 
-            UpdateSurface();
-
-            var buffer = _nativeImageSource!.AcquireBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
-            Debug.Assert(buffer != IntPtr.Zero, "AcquireBuffer is faild");
-            var info = new SKImageInfo(_bufferWidth, _bufferHeight);
-
-            using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+            if (_nativeImageSource?.CanDequeueBuffer() ?? false)
             {
-                // draw using SkiaSharp
-                SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
-                surface.Canvas.Flush();
+                var buffer = _nativeImageSource!.DequeueBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
+                Debug.Assert(buffer != IntPtr.Zero, "AcquireBuffer is faild");
+                var info = new SKImageInfo(_bufferWidth, _bufferHeight);
+
+                using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+                {
+                    // draw using SkiaSharp
+                    SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
+                    surface.Canvas.Flush();
+                }
+                _nativeImageSource.EnqueueBuffer(buffer);
+                Window.Instance.KeepRendering(0);
             }
-            _nativeImageSource.ReleaseBuffer();
-           _imageUrl?.Dispose();
-           _imageUrl = _nativeImageSource.GenerateUrl();
-            var url = _imageUrl?.ToString();
-            SetImage(url);
         }
 
         protected override void OnResized()
         {
             if (Size.Width == 0 || Size.Height == 0)
                 return;
+
+            UpdateSurface();
             OnDrawFrame();
+            UpdateImageUrl();
         }
 
         protected override void Dispose(bool disposing)
@@ -67,8 +68,14 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _nativeImageSource?.Dispose();
-            _nativeImageSource = new NativeImageSource((uint)Size.Width, (uint)Size.Height, NativeImageSource.ColorDepth.Default);
-            _imageUrl = _nativeImageSource.GenerateUrl();
+            _nativeImageSource = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
+        }
+
+        void UpdateImageUrl()
+        {
+            _imageUrl?.Dispose();
+            _imageUrl = _nativeImageSource!.GenerateUrl();
+            SetImage(_imageUrl.ToString());
         }
     }
 }

@@ -376,9 +376,12 @@ namespace Tizen.UIExtensions.ElmSharp
             return holder;
         }
 
-        void OnItemStateChanged(object sender, EventArgs e)
+        void OnItemStateChanged(object? sender, EventArgs e)
         {
-            ViewHolder holder = (ViewHolder)sender;
+            var holder = (ViewHolder?)sender;
+            if (holder == null)
+                return;
+
             if (holder.Content != null)
             {
                 Adaptor?.UpdateViewState(holder.Content, holder.State);
@@ -398,7 +401,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnRequestItemSelection(object sender, EventArgs e)
+        void OnRequestItemSelection(object? sender, EventArgs e)
         {
             if (SelectionMode == CollectionViewSelectionMode.None)
                 return;
@@ -568,9 +571,9 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
-            if (sender != Adaptor)
+            if (sender != Adaptor || Adaptor == null)
             {
                 return;
             }
@@ -580,7 +583,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 return;
             }
 
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
             {
                 int idx = e.NewStartingIndex;
                 if (idx == -1)
@@ -599,7 +602,7 @@ namespace Tizen.UIExtensions.ElmSharp
                     LayoutManager?.ItemInserted(idx++);
                 }
             }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
                 int idx = e.OldStartingIndex;
 
@@ -628,7 +631,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 LayoutManager?.ItemRemoved(e.OldStartingIndex);
                 LayoutManager?.ItemInserted(e.NewStartingIndex);
             }
-            else if (e.Action == NotifyCollectionChangedAction.Replace)
+            else if (e.Action == NotifyCollectionChangedAction.Replace && e.OldItems != null)
             {
                 // Can't tracking if there is no information old data
                 if (e.OldItems.Count > 1 || e.NewStartingIndex == -1)
@@ -721,18 +724,18 @@ namespace Tizen.UIExtensions.ElmSharp
         int _previousHorizontalOffset = 0;
         int _previousVerticalOffset = 0;
 
-        void OnScrollStarted(object sender, EventArgs e)
+        void OnScrollStarted(object? sender, EventArgs e)
         {
             _isScrollAnimationStarted = true;
         }
 
-        void OnScrollStopped(object sender, EventArgs e)
+        void OnScrollStopped(object? sender, EventArgs e)
         {
             SendScrolledEvent();
             _isScrollAnimationStarted = false;
         }
 
-        void OnScrolled(object sender, EventArgs e)
+        void OnScrolled(object? sender, EventArgs e)
         {
             LayoutManager?.LayoutItems(ViewPort);
             if (!_isScrollAnimationStarted)
@@ -741,13 +744,13 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnKeyDown(object sender, EvasKeyEventArgs e)
+        void OnKeyDown(object? sender, EvasKeyEventArgs e)
         {
             _allowFocusOnItem = true;
             UpdateAllowFocusOnItem(_allowFocusOnItem);
         }
 
-        void OnDragStart(object sender, EventArgs e)
+        void OnDragStart(object? sender, EventArgs e)
         {
             _allowFocusOnItem = false;
             UpdateAllowFocusOnItem(_allowFocusOnItem);
@@ -809,13 +812,16 @@ namespace Tizen.UIExtensions.ElmSharp
         void CreateEmptyView()
         {
             _emptyView = Adaptor!.CreateNativeView(this);
-            _emptyView.Show();
-            Adaptor!.SetBinding(_emptyView, 0);
-            _emptyView.Geometry = Geometry;
-            _emptyView.MinimumHeight = Geometry.Height;
-            _emptyView.MinimumWidth = Geometry.Width;
+            _emptyView?.Show();
+            if (_emptyView != null)
+            {
+                Adaptor!.SetBinding(_emptyView, 0);
 
-            Scroller.SetContent(_emptyView, true);
+                _emptyView.Geometry = Geometry;
+                _emptyView.MinimumHeight = Geometry.Height;
+                _emptyView.MinimumWidth = Geometry.Width;
+                Scroller.SetContent(_emptyView, true);
+            }
             _innerLayout.Hide();
         }
 

@@ -55,7 +55,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 size.Height = availableRatio > imageRatio ? availableHeight : imageSize.Height * availableWidth / imageSize.Width;
             }
 
-            return new CSize();
+            return size;
         }
     }
 }

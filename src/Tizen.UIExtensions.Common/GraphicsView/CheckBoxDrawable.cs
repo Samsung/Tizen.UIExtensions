@@ -90,7 +90,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
                     y += (dirtyRect.Height - size) / 2;
                 }
 
-                canvas.Translate((float)(x * DeviceInfo.ScalingFactor), (float)(y * DeviceInfo.ScalingFactor));
+                canvas.Translate(x, y);
 
                 var vBuilder = new PathBuilder();
                 var path = vBuilder.BuildPath(MaterialCheckBoxMark);
@@ -107,8 +107,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             canvas.FontColor = View.TextColor.ToGraphicsColor(Cupertino.Color.Label.Light.Primary);
-            var fontSize = (float)(14 * DeviceInfo.ScalingFactor);
-            canvas.FontSize = fontSize;
+            canvas.FontSize = 14;
 
             float size = 20f;
             float margin = 8f;
