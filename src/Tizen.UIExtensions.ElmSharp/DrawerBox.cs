@@ -117,7 +117,7 @@ namespace Tizen.UIExtensions.ElmSharp
             _panel.SetScrollable(_isGestureEnabled);
             _panel.SetScrollableArea(1.0);
             _panel.Direction = PanelDirection.Left;
-            _panel.Toggled += (object sender, EventArgs e) =>
+            _panel.Toggled += (object? sender, EventArgs e) =>
             {
                 if (_panel.IsOpen)
                     _dimArea.Show();

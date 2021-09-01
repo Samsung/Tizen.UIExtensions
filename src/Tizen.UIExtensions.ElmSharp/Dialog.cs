@@ -49,7 +49,9 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Occurs whenever the dialog is first displayed.
         /// </summary>
-        public event EventHandler? Shown;
+#pragma warning disable CS0109
+        public new event EventHandler? Shown;
+#pragma warning restore CS0109
 
         /// <summary>
         /// Gets or sets the title of the dialog

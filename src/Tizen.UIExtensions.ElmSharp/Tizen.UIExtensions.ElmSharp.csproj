@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>tizen40</TargetFramework>
+    <TargetFrameworks>tizen40;net6.0-tizen6.5</TargetFrameworks>
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
     <LangVersion>8.0</LangVersion>
@@ -27,6 +27,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Graphics" Version="6.0.100-preview.6.299" />
     <PackageReference Include="SkiaSharp.Views" Version="2.88.0-preview.61" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('tizen')) == true">
     <PackageReference Include="Tizen.NET" Version="4.0.0" />
   </ItemGroup>
 

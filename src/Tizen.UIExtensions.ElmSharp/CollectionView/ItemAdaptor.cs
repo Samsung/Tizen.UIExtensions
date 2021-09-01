@@ -86,7 +86,7 @@ namespace Tizen.UIExtensions.ElmSharp
 			}
 		}
 
-		public object this[int index]
+		public object? this[int index]
 		{
 			get
 			{
@@ -100,7 +100,7 @@ namespace Tizen.UIExtensions.ElmSharp
 		public int Count => _itemsSource.Count;
 
 		INotifyCollectionChanged? _observableCollection;
-		event NotifyCollectionChangedEventHandler INotifyCollectionChanged.CollectionChanged
+		event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
 		{
 			add
 			{

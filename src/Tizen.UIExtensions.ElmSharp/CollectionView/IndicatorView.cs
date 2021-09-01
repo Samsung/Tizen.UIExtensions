@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ElmSharp;
+using Index = ElmSharp.Index;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
@@ -61,9 +62,11 @@ namespace Tizen.UIExtensions.ElmSharp
             Clear();
         }
 
-		void OnSelected(object sender, EventArgs e)
+		void OnSelected(object? sender, EventArgs e)
 		{
-			var index = _list.IndexOf((IndexItem)sender);
+			if (sender == null)
+				return;
+			int index = _list.IndexOf((IndexItem)sender);
 			SelectedPosition?.Invoke(this, new SelectedPositionChangedEventArgs(index));
 			UpdateSelectedIndex(index);
 		}

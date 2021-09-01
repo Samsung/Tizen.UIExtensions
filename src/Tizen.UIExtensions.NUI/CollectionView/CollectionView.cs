@@ -533,14 +533,14 @@ namespace Tizen.UIExtensions.NUI
         }
 
 
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (sender != Adaptor)
             {
                 return;
             }
 
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
             {
                 int idx = e.NewStartingIndex;
                 if (idx == -1)
@@ -568,7 +568,7 @@ namespace Tizen.UIExtensions.NUI
                     LayoutManager?.ItemInserted(idx++);
                 }
             }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
                 int idx = e.OldStartingIndex;
 
@@ -611,7 +611,7 @@ namespace Tizen.UIExtensions.NUI
                 LayoutManager?.ItemRemoved(e.OldStartingIndex);
                 LayoutManager?.ItemInserted(e.NewStartingIndex);
             }
-            else if (e.Action == NotifyCollectionChangedAction.Replace)
+            else if (e.Action == NotifyCollectionChangedAction.Replace && e.OldItems != null)
             {
                 // Can't tracking if there is no information old data
                 if (e.OldItems.Count > 1 || e.NewStartingIndex == -1)
@@ -751,7 +751,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        ViewHolder FindViewHolder(int index)
+        ViewHolder? FindViewHolder(int index)
         {
             return _viewHolderIndexTable.Where(d => d.Value == index).Select(d => d.Key).FirstOrDefault();
         }

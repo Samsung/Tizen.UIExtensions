@@ -93,13 +93,13 @@ namespace Tizen.UIExtensions.ElmSharp
                 Hide();
                 PickerClosed?.Invoke(this, EventArgs.Empty);
             };
-            BackButtonPressed += (object s, EventArgs e) =>
+            BackButtonPressed += (object? s, EventArgs e) =>
             {
                 Hide();
                 PickerClosed?.Invoke(this, EventArgs.Empty);
             };
 
-            ShowAnimationFinished += (object s, EventArgs e) =>
+            ShowAnimationFinished += (object? s, EventArgs e) =>
             {
                 PickerOpened?.Invoke(this, EventArgs.Empty);
             };

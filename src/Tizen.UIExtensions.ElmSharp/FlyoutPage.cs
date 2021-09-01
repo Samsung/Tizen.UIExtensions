@@ -26,7 +26,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public FlyoutPage(EvasObject parent) : base(parent)
         {
-            Toggled += (object sender, EventArgs e) =>
+            Toggled += (object? sender, EventArgs e) =>
             {
                 IsPresentedChanged?.Invoke(this, new IsPresentedChangedEventArgs(IsPresented));
             };

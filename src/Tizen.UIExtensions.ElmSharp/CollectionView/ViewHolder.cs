@@ -102,17 +102,17 @@ namespace Tizen.UIExtensions.ElmSharp
 			Show();
 		}
 
-		protected virtual void OnFocused(object sender, EventArgs e)
+		protected virtual void OnFocused(object? sender, EventArgs e)
 		{
 			UpdateFocusState();
 		}
 
-		protected virtual void OnUnfocused(object sender, EventArgs e)
+		protected virtual void OnUnfocused(object? sender, EventArgs e)
 		{
 			UpdateFocusState();
 		}
 
-		protected virtual void OnClicked(object sender, EventArgs e)
+		protected virtual void OnClicked(object? sender, EventArgs e)
 		{
 			RequestSelected?.Invoke(this, EventArgs.Empty);
 		}
@@ -152,7 +152,7 @@ namespace Tizen.UIExtensions.ElmSharp
 			}
 		}
 
-		void OnKeyUp(object sender, EvasKeyEventArgs e)
+		void OnKeyUp(object? sender, EvasKeyEventArgs e)
 		{
 			if (e.KeyName == "Enter" && _focusArea.IsFocused)
 			{
