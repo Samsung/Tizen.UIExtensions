@@ -17,6 +17,7 @@ namespace Tizen.UIExtensions.ElmSharp
         public Box(EvasObject parent) : base(parent)
         {
             SetLayoutCallback(() => { NotifyOnLayout(); });
+
         }
 
         /// <summary>
