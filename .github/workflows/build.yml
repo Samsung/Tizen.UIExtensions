@@ -1,6 +1,12 @@
 name: Release Packages
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       version:
@@ -12,6 +18,19 @@ on:
         default: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Build
+      env:
+        PULLREQUEST_ID: ${{ github.event.number }}
+      run: |
+        dotnet build Tizen.UIExtensions.sln
+      working-directory: .
+
   deploy:
     runs-on: ubuntu-latest
     steps:
