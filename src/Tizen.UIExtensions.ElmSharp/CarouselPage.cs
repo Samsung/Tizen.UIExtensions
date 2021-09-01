@@ -1,6 +1,7 @@
 using ElmSharp;
 using System;
 using System.Collections.Generic;
+using Index = ElmSharp.Index;
 using EBox = Tizen.UIExtensions.ElmSharp.Box;
 
 namespace Tizen.UIExtensions.ElmSharp
@@ -145,7 +146,7 @@ namespace Tizen.UIExtensions.ElmSharp
                 _items[selectIndex].Select(true);
         }
 
-        void OnIndexChanged(object sender, EventArgs e)
+        void OnIndexChanged(object? sender, EventArgs e)
         {
             var changedIndex = _items.IndexOf(_index.SelectedItem);
             if (changedIndex != CurrentPageIndex)
@@ -186,7 +187,7 @@ namespace Tizen.UIExtensions.ElmSharp
             _index.Geometry = newGeometry;
         }
 
-        void OnPageScrolled(object sender, EventArgs e)
+        void OnPageScrolled(object? sender, EventArgs e)
         {
             int previousPageIndex = CurrentPageIndex;
             CurrentPageIndex = _scroller.HorizontalPageIndex;

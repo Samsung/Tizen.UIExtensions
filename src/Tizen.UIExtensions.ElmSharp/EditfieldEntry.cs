@@ -187,7 +187,7 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
-        void OnClearButtonClicked(object sender, EventArgs e)
+        void OnClearButtonClicked(object? sender, EventArgs e)
         {
             Text = string.Empty;
         }

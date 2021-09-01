@@ -10,7 +10,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets the selected item.
         /// </summary>
-        public object SelectedItem { get; }
+        public object? SelectedItem { get; }
 
         /// <summary>
         /// Gets the selected item index
@@ -20,7 +20,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Initializes a new instance of the SelectedItemChangedEventArgs class.
         /// </summary>
-        public SelectedItemChangedEventArgs(object selectedItem, int selectedItemIndex)
+        public SelectedItemChangedEventArgs(object? selectedItem, int selectedItemIndex)
         {
             SelectedItem = selectedItem;
             SelectedItemIndex = selectedItemIndex;

@@ -57,7 +57,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             _children.CollectionChanged += (o, e) =>
             {
-                if (e.Action == NotifyCollectionChangedAction.Add)
+                if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
                 {
                     foreach (var v in e.NewItems)
                     {
@@ -68,7 +68,7 @@ namespace Tizen.UIExtensions.ElmSharp
                         }
                     }
                 }
-                else if (e.Action == NotifyCollectionChangedAction.Remove)
+                else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
                 {
                     foreach (var v in e.OldItems)
                     {

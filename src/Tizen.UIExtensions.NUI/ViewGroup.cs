@@ -93,9 +93,9 @@ namespace Tizen.UIExtensions.NUI
             });
         }
 
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
             {
                 foreach (var v in e.NewItems)
                 {
@@ -105,7 +105,7 @@ namespace Tizen.UIExtensions.NUI
                     }
                 }
             }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
                 foreach (var v in e.OldItems)
                 {
