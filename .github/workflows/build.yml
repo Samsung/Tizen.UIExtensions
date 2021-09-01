@@ -1,12 +1,6 @@
 name: Release Packages
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       version:
@@ -18,27 +12,6 @@ on:
         default: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x'
-        include-prerelease: true
-    - name: Install tizen workload
-      run: |
-        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | bash -s -- -v 6.5.100-preview.7.85 -d /home/runner/.dotnet        
-    - name: Build
-      env:
-        PULLREQUEST_ID: ${{ github.event.number }}
-      run: |
-        dotnet build Tizen.UIExtensions.sln
-      working-directory: .
-
   deploy:
     runs-on: ubuntu-latest
     steps:
