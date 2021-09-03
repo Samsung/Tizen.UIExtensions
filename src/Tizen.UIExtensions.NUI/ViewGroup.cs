@@ -55,11 +55,21 @@ namespace Tizen.UIExtensions.NUI
 
         public override void Add(View child)
         {
+            Children.Add(child);
+        }
+
+        public override void Remove(View child)
+        {
+            Children.Remove(child);
+        }
+
+        void AddInternal(View child)
+        {
             base.Add(child);
             LayoutRequest();
         }
 
-        public override void Remove(View child)
+        void RemoveInternal(View child)
         {
             base.Remove(child);
             LayoutRequest();
@@ -87,6 +97,7 @@ namespace Tizen.UIExtensions.NUI
             if (this == null)
                 return;
 
+            _layoutRequested = false;
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
@@ -101,7 +112,7 @@ namespace Tizen.UIExtensions.NUI
                 {
                     if (v is View view)
                     {
-                        Add(view);
+                        AddInternal(view);
                     }
                 }
             }
@@ -111,7 +122,7 @@ namespace Tizen.UIExtensions.NUI
                 {
                     if (v is View view)
                     {
-                        Remove(view);
+                        RemoveInternal(view);
                     }
                 }
             }
@@ -119,7 +130,7 @@ namespace Tizen.UIExtensions.NUI
             {
                 foreach (var child in base.Children.ToList())
                 {
-                    Remove(child);
+                    RemoveInternal(child);
                 }
             }
         }
