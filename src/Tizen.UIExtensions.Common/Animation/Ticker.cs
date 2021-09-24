@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Tizen.NUI;
+using System.Threading;
+using Tizen.Applications;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
@@ -10,6 +11,7 @@ namespace Tizen.UIExtensions.Common.Internal
         static Ticker? s_ticker;
         readonly Stopwatch _stopwatch;
         readonly List<Tuple<int, Func<long, bool>>> _timeouts;
+        readonly SynchronizationContext? _context;
         Timer _timer;
 
         int _count;
@@ -20,14 +22,13 @@ namespace Tizen.UIExtensions.Common.Internal
             _count = 0;
             _timeouts = new List<Tuple<int, Func<long, bool>>>();
             _stopwatch = new Stopwatch();
-            _timer = new Timer(16);
-            _timer.Tick += OnTick;
-        }
 
-        bool OnTick(object source, Timer.TickEventArgs e)
-        {
-            SendSignals(-1);
-            return true;
+            if (SynchronizationContext.Current == null)
+            {
+                TizenSynchronizationContext.Initialize();
+            }
+            _context = SynchronizationContext.Current;
+            _timer = new Timer((object? o) => HandleElapsed(o), this, Timeout.Infinite, Timeout.Infinite);
         }
 
         public static Ticker Default
@@ -75,12 +76,12 @@ namespace Tizen.UIExtensions.Common.Internal
 
         protected void DisableTimer()
         {
-            _timer.Stop();
+            _timer.Change(-1, -1);
         }
 
         protected void EnableTimer()
         {
-            _timer.Start();
+            _timer.Change(16, 16);
         }
 
         protected void SendFinish()
@@ -115,6 +116,11 @@ namespace Tizen.UIExtensions.Common.Internal
                 _enabled = false;
                 Disable();
             }
+        }
+
+        void HandleElapsed(object? state)
+        {
+            _context?.Post((o) => SendSignals(-1), null);
         }
 
         void Disable()
