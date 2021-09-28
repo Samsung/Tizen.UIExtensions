@@ -24,23 +24,25 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         float MaterialRefreshViewIconEndAngle { get; set; }
 
+        float MaterialRefreshViewIconDistance { get; set; }
+
 
         public override void Draw(ICanvas canvas, RectangleF dirtyRect)
         {
             DrawRefreshIcon(canvas, dirtyRect);
         }
 
-        public void UpdateAnimation(bool animate)
+        public void UpdateRunningAnimation(bool animate)
         {
             if (animate)
             {
-                StartAnimation();
+                StartRunningAnimation();
                 return;
             }
-            AbortAnimation();
+            AbortRunningAnimation();
         }
 
-        void StartAnimation()
+        void StartRunningAnimation()
         {
             var startAngle = 90;
             var endAngle = 360;
@@ -62,9 +64,15 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             materialRefreshViewIconAngleAnimation.Commit(this, "MaterialRefreshIcon", length: animationLength, repeat: () => true, finished: (l, c) => materialRefreshViewIconAngleAnimation = null);
         }
 
-        void AbortAnimation()
+        void AbortRunningAnimation()
         {
             this.AbortAnimation("MaterialRefreshIcon");
+            SendInvalidated();
+        }
+
+        public void UpdateIconDistance(float distanceRate)
+        {
+            MaterialRefreshViewIconDistance = View.MaximumPullDistance * distanceRate;
             SendInvalidated();
         }
 
@@ -75,6 +83,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var x = dirtyRect.X + StrokeWidth;
             var y = dirtyRect.Y + StrokeWidth;
+            if (View.IsPulling)
+            {
+                y += MaterialRefreshViewIconDistance;
+            }
+
             if (View.IsRunning)
             {
                 DrawRunningIcon(canvas, x, y);
@@ -102,8 +115,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override TSize Measure(double availableWidth, double availableHeight)
         {
-            var size = (IconSize + (StrokeWidth * 2)) * DeviceInfo.ScalingFactor;
-            return new TSize(size, size);
+            var iconSize = (IconSize + (StrokeWidth * 2)) * DeviceInfo.ScalingFactor;
+            return new TSize(iconSize, iconSize);
         }
 
         protected override void Dispose(bool disposing)

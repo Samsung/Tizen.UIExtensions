@@ -13,6 +13,8 @@ namespace ElmSharpExGallery.TC
 
         public override void Run(ElmSharp.Box parent)
         {
+            int _maximumPullDistance = 100;
+
             var layout = new ElmSharp.Box(parent)
             {
                 AlignmentX = -1,
@@ -35,11 +37,69 @@ namespace ElmSharpExGallery.TC
                 AlignmentX = -1,
                 AlignmentY = -1,
                 WeightX = 1,
-                WeightY = 1
+                WeightY = 1,
+                MaximumPullDistance = _maximumPullDistance
             };
             refreshIcon.Show();
             layout.PackEnd(refreshIcon);
 
+            var distanceLabel = new Label(parent)
+            {
+                Text = "Pull Distance",
+                FontSize = 20
+            };
+            distanceLabel.Show();
+            layout.PackEnd(distanceLabel);
+            var distanceSlider = new ElmSharp.Slider(parent)
+            {
+                AlignmentX = -1,
+                AlignmentY = -1,
+                WeightX = 1
+            };
+            distanceSlider.ValueChanged += (s, e) =>
+            {
+                refreshIcon.PullDistance = (float)distanceSlider.Value;
+            };
+            distanceSlider.Show();
+            layout.PackEnd(distanceSlider);
+
+            var isPullingButton = new Button(parent)
+            {
+                Text = $"IsPulling : {refreshIcon.IsPulling}",
+                AlignmentX = -1,
+                AlignmentY = -1,
+                WeightX = 1
+            };
+            isPullingButton.Clicked += (s, e) =>
+            {
+                refreshIcon.IsPulling = refreshIcon.IsPulling ? false : true;
+                isPullingButton.Text = $"IsPulling : {refreshIcon.IsPulling}";
+            };
+            isPullingButton.Show();
+            layout.PackEnd(isPullingButton);
+
+            var MaxpullDistanceButton = new Button(parent)
+            {
+                Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}",
+                AlignmentX = -1,
+                AlignmentY = -1,
+                WeightX = 1
+            };
+            MaxpullDistanceButton.Clicked += (s, e) =>
+            {
+                if (refreshIcon.MaximumPullDistance == _maximumPullDistance)
+                {
+                    refreshIcon.MaximumPullDistance = _maximumPullDistance * 2;
+                    MaxpullDistanceButton.Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}";
+                }
+                else
+                {
+                    refreshIcon.MaximumPullDistance = _maximumPullDistance;
+                    MaxpullDistanceButton.Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}";
+                }
+            };
+            MaxpullDistanceButton.Show();
+            layout.PackEnd(MaxpullDistanceButton);
             var isRunningButton = new Button(parent)
             {
                 Text = "IsRefreshing",

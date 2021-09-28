@@ -14,6 +14,9 @@ namespace Tizen.UIExtensions.ElmSharp
         RefreshIconDrawable _drawable;
         bool _isRunning;
         Common.Color _color;
+        bool _isPulling;
+        float _pullDistance;
+        int _maximumPullDistance;
 
         /// <summary>
         /// Initializes a new instance of the RefreshIcon.
@@ -24,8 +27,10 @@ namespace Tizen.UIExtensions.ElmSharp
             _drawable.Invalidated += OnRefreshIconInvalidated;
             Drawable = _drawable;
 
-            var size = (RefreshIconDrawable.IconSize + (RefreshIconDrawable.StrokeWidth * 2)) * DeviceInfo.ScalingFactor;
-            Resize((int)size, (int)size);
+            var iconSize = (RefreshIconDrawable.IconSize + (RefreshIconDrawable.StrokeWidth * 2)) * DeviceInfo.ScalingFactor;
+            _maximumPullDistance = (int)iconSize;
+            var iconHeight = iconSize + _maximumPullDistance;
+            Resize((int)iconSize, (int)iconHeight);
         }
 
         /// <summary>
@@ -37,7 +42,7 @@ namespace Tizen.UIExtensions.ElmSharp
             set
             {
                 _isRunning = value;
-                _drawable.UpdateAnimation(value);
+                _drawable.UpdateRunningAnimation(value);
             }
         }
 
@@ -51,6 +56,45 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 _color = value;
                 Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the value indicating if the RefreshIcon is pulling.
+        /// </summary>
+        public bool IsPulling
+        {
+            get => _isPulling;
+            set
+            {
+                _isPulling = value;
+                Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the value(0.0 ~ 1.0) indicating the icon pulling rate.
+        /// </summary>
+        public float PullDistance
+        {
+            get => _pullDistance;
+            set
+            {
+                _pullDistance = value;
+                _drawable.UpdateIconDistance(value);
+            }
+        }
+
+        /// <summary>
+        /// Represents a maximum pull distance.
+        /// </summary>
+        public int MaximumPullDistance
+        {
+            get => _maximumPullDistance;
+            set
+            {
+                _maximumPullDistance = value;
+                _drawable.UpdateIconDistance(_pullDistance);
             }
         }
 
