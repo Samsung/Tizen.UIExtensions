@@ -24,9 +24,6 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         float MaterialRefreshViewIconEndAngle { get; set; }
 
-        float MaterialRefreshViewIconDistance { get; set; }
-
-
         public override void Draw(ICanvas canvas, RectangleF dirtyRect)
         {
             DrawRefreshIcon(canvas, dirtyRect);
@@ -70,12 +67,6 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             SendInvalidated();
         }
 
-        public void UpdateIconDistance(float distanceRate)
-        {
-            MaterialRefreshViewIconDistance = View.MaximumPullDistance * distanceRate;
-            SendInvalidated();
-        }
-
         void DrawRefreshIcon(ICanvas canvas, RectangleF dirtyRect)
         {
             canvas.SaveState();
@@ -83,11 +74,6 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var x = dirtyRect.X + StrokeWidth;
             var y = dirtyRect.Y + StrokeWidth;
-            if (View.IsPulling)
-            {
-                y += MaterialRefreshViewIconDistance;
-            }
-
             if (View.IsRunning)
             {
                 DrawRunningIcon(canvas, x, y);

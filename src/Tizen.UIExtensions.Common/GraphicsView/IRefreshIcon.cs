@@ -8,8 +8,6 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         Color Color { get; }
 
-        int MaximumPullDistance { get; }
-
         float PullDistance { get; }
     }
 }

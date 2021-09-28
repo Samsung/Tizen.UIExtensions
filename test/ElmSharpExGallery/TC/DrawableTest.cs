@@ -1,11 +1,13 @@
+using System.Threading.Tasks;
 using Tizen.UIExtensions.Common;
+using Tizen.UIExtensions.Common.Internal;
 using Tizen.UIExtensions.ElmSharp;
 using Button = Tizen.UIExtensions.ElmSharp.Button;
 using Label = Tizen.UIExtensions.ElmSharp.Label;
 
 namespace ElmSharpExGallery.TC
 {
-    public class DrawableTest : TestCaseBase
+    public class DrawableTest : TestCaseBase, IAnimatable
     {
         public override string TestName => "Drawable Test";
 
@@ -13,8 +15,6 @@ namespace ElmSharpExGallery.TC
 
         public override void Run(ElmSharp.Box parent)
         {
-            int _maximumPullDistance = 100;
-
             var layout = new ElmSharp.Box(parent)
             {
                 AlignmentX = -1,
@@ -37,31 +37,10 @@ namespace ElmSharpExGallery.TC
                 AlignmentX = -1,
                 AlignmentY = -1,
                 WeightX = 1,
-                WeightY = 1,
-                MaximumPullDistance = _maximumPullDistance
+                WeightY = 1
             };
             refreshIcon.Show();
             layout.PackEnd(refreshIcon);
-
-            var distanceLabel = new Label(parent)
-            {
-                Text = "Pull Distance",
-                FontSize = 20
-            };
-            distanceLabel.Show();
-            layout.PackEnd(distanceLabel);
-            var distanceSlider = new ElmSharp.Slider(parent)
-            {
-                AlignmentX = -1,
-                AlignmentY = -1,
-                WeightX = 1
-            };
-            distanceSlider.ValueChanged += (s, e) =>
-            {
-                refreshIcon.PullDistance = (float)distanceSlider.Value;
-            };
-            distanceSlider.Show();
-            layout.PackEnd(distanceSlider);
 
             var isPullingButton = new Button(parent)
             {
@@ -78,28 +57,6 @@ namespace ElmSharpExGallery.TC
             isPullingButton.Show();
             layout.PackEnd(isPullingButton);
 
-            var MaxpullDistanceButton = new Button(parent)
-            {
-                Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}",
-                AlignmentX = -1,
-                AlignmentY = -1,
-                WeightX = 1
-            };
-            MaxpullDistanceButton.Clicked += (s, e) =>
-            {
-                if (refreshIcon.MaximumPullDistance == _maximumPullDistance)
-                {
-                    refreshIcon.MaximumPullDistance = _maximumPullDistance * 2;
-                    MaxpullDistanceButton.Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}";
-                }
-                else
-                {
-                    refreshIcon.MaximumPullDistance = _maximumPullDistance;
-                    MaxpullDistanceButton.Text = $"Max PullDistance: {refreshIcon.MaximumPullDistance}";
-                }
-            };
-            MaxpullDistanceButton.Show();
-            layout.PackEnd(MaxpullDistanceButton);
             var isRunningButton = new Button(parent)
             {
                 Text = "IsRefreshing",
@@ -127,6 +84,36 @@ namespace ElmSharpExGallery.TC
             };
             colorChangeButton.Show();
             layout.PackEnd(colorChangeButton);
+
+            var simulateButton = new Button(parent)
+            {
+                Text = "Simulate Animation",
+                AlignmentX = -1,
+                AlignmentY = -1,
+                WeightX = 1
+            };
+            simulateButton.Clicked += async (s, e) =>
+            {
+                if (refreshIcon.IsPulling)
+                {
+                    var iconMoveLength = 150;
+                    var iconGeometry = refreshIcon.Geometry;
+                    var _refreshIconStartAnimation = new Animation(v => {
+                        refreshIcon.PullDistance = (float)(v / iconMoveLength);
+                        refreshIcon.Move(iconGeometry.X, iconGeometry.Y + (int)v);
+                    }, 0, iconMoveLength, Easing.Linear);
+                    _refreshIconStartAnimation.Commit(this, "RefreshStart");
+                    await Task.Delay(2000);
+                    var _refreshIconEndAnimation = new Animation(v => refreshIcon.Move(iconGeometry.X, iconGeometry.Y + iconMoveLength - (int)v), 0, iconMoveLength, Easing.Linear);
+                    _refreshIconEndAnimation.Commit(this, "RefreshEnd");
+                }
+            };
+            simulateButton.Show();
+            layout.PackEnd(simulateButton);
         }
+
+        public void BatchBegin() { }
+
+        public void BatchCommit() { }
     }
 }
