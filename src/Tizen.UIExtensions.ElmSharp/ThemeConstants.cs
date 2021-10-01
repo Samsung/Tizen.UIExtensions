@@ -510,13 +510,14 @@ namespace Tizen.UIExtensions.ElmSharp
         }
         #endregion
 
-        #region RefreshView
-        public class RefreshView
+        #region RefreshLayout
+        public class RefreshLayout
         {
             public class Resources
             {
-                public const int IconSize = 48;
-                public const string IconPath = "Xamarin.Forms.Platform.Tizen.Resource.refresh_48dp.png";
+                public const float IconSize = 40f;
+                public const float IconStrokeWidth = 4f;
+                public const int IconRotationAngle = 360;
             }
 
             public class ColorClass
@@ -614,6 +615,7 @@ namespace Tizen.UIExtensions.ElmSharp
         }
         #endregion
 
+        #region FontWeight
         public static class FontWeight
         {
             public class Styles
@@ -632,5 +634,6 @@ namespace Tizen.UIExtensions.ElmSharp
                 public const string ExtraBlack = "ExtraBlack";
             }
         }
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Maui.Graphics.Skia.Views;
 using Tizen.UIExtensions.Common.GraphicsView;
 using ElmSharp;
+using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
@@ -15,6 +16,8 @@ namespace Tizen.UIExtensions.ElmSharp
         Common.Color _color;
         bool _isPulling;
         float _pullDistance;
+        float _iconSize = ThemeConstants.RefreshLayout.Resources.IconSize;
+        float _strokeWidth = ThemeConstants.RefreshLayout.Resources.IconStrokeWidth;
 
         /// <summary>
         /// Initializes a new instance of the RefreshIcon.
@@ -25,7 +28,8 @@ namespace Tizen.UIExtensions.ElmSharp
             _drawable.Invalidated += OnRefreshIconInvalidated;
             Drawable = _drawable;
 
-            Resize((int)_drawable.MeasuredWidth, (int)_drawable.MeasuredHeight);
+            var iconSize = (_iconSize + (_strokeWidth * 2)) * DeviceInfo.ScalingFactor;
+            Resize((int)iconSize, (int)iconSize);
         }
 
         /// <summary>
@@ -79,7 +83,7 @@ namespace Tizen.UIExtensions.ElmSharp
                     _pullDistance = 1.0f;
                 else
                     _pullDistance = value;
-                _drawable.UpdateIconDistance(_pullDistance);
+                Invalidate();
             }
         }
 
