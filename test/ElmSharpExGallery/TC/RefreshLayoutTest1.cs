@@ -20,7 +20,8 @@ namespace ElmSharpExGallery.TC
                 AlignmentY = -1,
                 AlignmentX = -1,
             };
-            var box = new Tizen.UIExtensions.ElmSharp.Box(parent)
+
+            var contentBox = new Box(parent)
             {
                 WeightX = 1,
                 WeightY = 1,
@@ -28,7 +29,7 @@ namespace ElmSharpExGallery.TC
                 AlignmentX = -1,
                 BackgroundColor = ElmSharp.Color.Gray
             };
-            var changeIconButton = new Tizen.UIExtensions.ElmSharp.Button(parent)
+            var changeIconButton = new Button(parent)
             {
                 Text = "Change Icon Color",
                 WeightX = 1,
@@ -46,7 +47,7 @@ namespace ElmSharpExGallery.TC
                     refreshLayout.RefreshIconColor = Color.Default;
             };
             changeIconButton.Show();
-            var statusLabel = new Tizen.UIExtensions.ElmSharp.Label(parent)
+            var statusLabel = new Label(parent)
             {
                 Text = "Idle",
                 WeightX = 1,
@@ -63,7 +64,7 @@ namespace ElmSharpExGallery.TC
             statusLabel.Resize(300, 100);
             statusLabel.Show();
 
-            var changeRefreshingButton = new Tizen.UIExtensions.ElmSharp.Button(parent)
+            var changeRefreshingButton = new Button(parent)
             {
                 Text = $"Start Refreshing",
                 WeightX = 1,
@@ -79,12 +80,25 @@ namespace ElmSharpExGallery.TC
             };
             changeRefreshingButton.Show();
 
-            box.PackEnd(statusLabel);
-            box.PackEnd(changeIconButton);
-            box.PackEnd(changeRefreshingButton);
-            box.Show();
+            contentBox.PackEnd(statusLabel);
+            contentBox.PackEnd(changeIconButton);
+            contentBox.PackEnd(changeRefreshingButton);
+            contentBox.Show();
 
-            refreshLayout.Content = box;
+            var scrollView = new ScrollView(parent)
+            {
+                WeightX = 1,
+                WeightY = 1,
+                AlignmentY = -1,
+                AlignmentX = -1,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Default,
+            };
+
+            scrollView.SetScrollCanvas(contentBox);
+            scrollView.SetContentSize(720, 2000);
+            scrollView.Show();
+
+            refreshLayout.Content = scrollView;
             refreshLayout.IsRefreshEnabled = true;
             refreshLayout.Refreshing += async (s, e) =>
             {
@@ -94,8 +108,6 @@ namespace ElmSharpExGallery.TC
                 statusLabel.Text = "Refreshed";
 
             };
-
-            refreshLayout.Resize(300, 900);
             refreshLayout.Show();
             parent.PackEnd(refreshLayout);
         }

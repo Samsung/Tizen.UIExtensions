@@ -61,6 +61,18 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public event EventHandler? Refreshing;
 
+        public RefreshIcon RefreshIcon
+        {
+            get
+            {
+                return _refreshIcon;
+            }
+            set
+            {
+                _refreshIcon = value;
+            }
+        }
+
         public bool IsRefreshEnabled
         {
             get
@@ -137,6 +149,8 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void OnLayoutUpdate()
         {
+            _maximumDistance = _maximumDistance + Geometry.Y;
+
             var iconGeometryX = Geometry.X + (Geometry.Width - _refreshIcon.Geometry.Width) / 2;
             var iconBottomPadding = (int)_iconSize / 2;
             _initialIconGeometryY = Geometry.Y - (_refreshIcon.Geometry.Height+ iconBottomPadding);
@@ -151,9 +165,13 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void OnMoved(GestureLayer.MomentumData moment)
         {
+
             if (_refreshState == RefreshState.Idle && _isRefreshEnabled)
             {
-                _refreshState = RefreshState.Drag;
+                if (IsEdgeScrolling())
+                {
+                    _refreshState = RefreshState.Drag;
+                }
             }
 
             if (_refreshState == RefreshState.Drag)
@@ -163,6 +181,18 @@ namespace Tizen.UIExtensions.ElmSharp
                     return;
                 MoveLayout(dy);
             }
+        }
+
+        bool IsEdgeScrolling()
+        {
+            if (_content is ScrollView scrollView)
+            {
+                if (scrollView.ScrollBound.Y != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         void OnEnded(GestureLayer.MomentumData moment)
@@ -186,7 +216,7 @@ namespace Tizen.UIExtensions.ElmSharp
         void BeginRefreshing(bool isPulledRefresh)
         {
             var movedDistance = GetMovedDistance();
-            var refreshDistance = _refreshIcon.Geometry.Height + _maximumDistance;
+            var refreshDistance = _maximumDistance - Geometry.Y + _refreshIcon.Geometry.Height;
             var contentDistanceDiff = refreshDistance - movedDistance;
             var _refreshStartAnimation = new Animation(v => _contentLayout.Move(Geometry.X, Geometry.Y + movedDistance + (int)v), 0, contentDistanceDiff, Easing.Linear);
             _refreshStartAnimation.Commit(this, "RefreshBegin", length: _animationLength);
