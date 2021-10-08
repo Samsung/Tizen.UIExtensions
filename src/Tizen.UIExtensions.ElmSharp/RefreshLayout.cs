@@ -25,10 +25,10 @@ namespace Tizen.UIExtensions.ElmSharp
         bool _isRefreshing;
         bool _isRefreshEnabled;
         int _initialIconGeometryY;
+        int _maximumDistance;
+        float _iconSize;
 
-        int _maximumDistance = ThemeConstants.RefreshLayout.Resources.RefreshDistance;
         int _minimumSize = ThemeConstants.RefreshLayout.Resources.MinimumLayoutSize;
-        float _iconSize = ThemeConstants.RefreshLayout.Resources.IconSize;
         uint _animationLength = ThemeConstants.RefreshLayout.Resources.RefreshAnimationLength;
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace Tizen.UIExtensions.ElmSharp
             _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.End, OnEnded);
             _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.Abort, OnEnded);
 
-            this.PackEnd(_refreshIcon);
             this.PackEnd(_contentLayout);
+            this.PackEnd(_refreshIcon);
 
             SetLayoutCallback(OnLayoutUpdate);
         }
@@ -61,18 +61,14 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public event EventHandler? Refreshing;
 
-        public RefreshIcon RefreshIcon
-        {
-            get
-            {
-                return _refreshIcon;
-            }
-            set
-            {
-                _refreshIcon = value;
-            }
-        }
+        /// <summary>
+        /// Gets or sets the delegate to decide if the RefreshLayout is at the edge of scrolling when it has scrolling contents.
+        /// </summary>
+        public Func<bool>? IsEdgeScrolling { get; set; }
 
+        /// <summary>
+        /// Gets or sets if the RefreshLayout is in its refresh state.
+        /// </summary>
         public bool IsRefreshEnabled
         {
             get
@@ -115,7 +111,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the color of the refresh icon.
         /// </summary>
-        public Common.Color RefreshIconColor
+        public Common.Color IconColor
         {
             get
             {
@@ -124,6 +120,21 @@ namespace Tizen.UIExtensions.ElmSharp
             set
             {
                 _refreshIcon.Color = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the background color of the refresh icon.
+        /// </summary>
+        public Common.Color IconBackgroundColor
+        {
+            get
+            {
+                return _refreshIcon.BackgroundColor;
+            }
+            set
+            {
+                _refreshIcon.BackgroundColor = value;
             }
         }
 
@@ -149,13 +160,12 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void OnLayoutUpdate()
         {
-            _maximumDistance = _maximumDistance + Geometry.Y;
+            _iconSize = _refreshIcon.Geometry.Height;
+            _maximumDistance = (int)_iconSize + Geometry.Y;
 
             var iconGeometryX = Geometry.X + (Geometry.Width - _refreshIcon.Geometry.Width) / 2;
-            var iconBottomPadding = (int)_iconSize / 2;
-            _initialIconGeometryY = Geometry.Y - (_refreshIcon.Geometry.Height+ iconBottomPadding);
-            var iconHeight = _refreshIcon.Geometry.Height + iconBottomPadding;
-            _refreshIcon.Geometry = new Rect(iconGeometryX, _initialIconGeometryY, _refreshIcon.Geometry.Width, iconHeight);
+            _initialIconGeometryY = Geometry.Y - (int)_iconSize;
+            _refreshIcon.Geometry = new Rect(iconGeometryX, _initialIconGeometryY, _refreshIcon.Geometry.Width, _refreshIcon.Geometry.Height);
             _contentLayout.Geometry = Geometry;
             if (_content != null)
             {
@@ -168,9 +178,11 @@ namespace Tizen.UIExtensions.ElmSharp
 
             if (_refreshState == RefreshState.Idle && _isRefreshEnabled)
             {
-                if (IsEdgeScrolling())
+                var isEdge = IsEdgeScrolling?.Invoke() ?? true;
+                if (isEdge)
                 {
                     _refreshState = RefreshState.Drag;
+                    _refreshIcon.IsPulling = true;
                 }
             }
 
@@ -181,18 +193,6 @@ namespace Tizen.UIExtensions.ElmSharp
                     return;
                 MoveLayout(dy);
             }
-        }
-
-        bool IsEdgeScrolling()
-        {
-            if (_content is ScrollView scrollView)
-            {
-                if (scrollView.ScrollBound.Y != 0)
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         void OnEnded(GestureLayer.MomentumData moment)
@@ -211,23 +211,15 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 ResetRefreshing();
             }
+            _refreshIcon.IsPulling = false;
         }
 
         void BeginRefreshing(bool isPulledRefresh)
         {
-            var movedDistance = GetMovedDistance();
-            var refreshDistance = _maximumDistance - Geometry.Y + _refreshIcon.Geometry.Height;
-            var contentDistanceDiff = refreshDistance - movedDistance;
-            var _refreshStartAnimation = new Animation(v => _contentLayout.Move(Geometry.X, Geometry.Y + movedDistance + (int)v), 0, contentDistanceDiff, Easing.Linear);
-            _refreshStartAnimation.Commit(this, "RefreshBegin", length: _animationLength);
-
-            if (!isPulledRefresh)
-            {
-                var currentIconGeometryY = Geometry.Y + _refreshIcon.Geometry.Y;
-                var iconDistanceDiff = _maximumDistance - currentIconGeometryY;
-                var _refreshIconBeginAnimation = new Animation(v => _refreshIcon.Move(_refreshIcon.Geometry.X, currentIconGeometryY + (int)v), 0, iconDistanceDiff, Easing.Linear);
-                _refreshIconBeginAnimation.Commit(this, "RefreshIconBegin", length: _animationLength);
-            }
+            var currentIconGeometryY = _refreshIcon.Geometry.Y;
+            var contentDistanceDiff = _maximumDistance - currentIconGeometryY;
+            var _refreshIconBeginAnimation = new Animation(v => _refreshIcon.Move(_refreshIcon.Geometry.X, currentIconGeometryY + (int)v), 0, contentDistanceDiff, Easing.Linear);
+            _refreshIconBeginAnimation.Commit(this, "RefreshIconBegin", length: _animationLength);
 
             _refreshState = RefreshState.Loading;
             _isRefreshing = true;
@@ -237,10 +229,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
         void ResetRefreshing()
         {
-            var movedDistance = GetMovedDistance();
-            var _refreshResetAnimation = new Animation(v => _contentLayout.Move(Geometry.X, Geometry.Y + movedDistance - (int)v), 0, movedDistance, Easing.Linear);
-            _refreshResetAnimation.Commit(this, "RefreshReset", length: _animationLength);
-
+            var movedDistance = _refreshIcon.Geometry.Y - _initialIconGeometryY;
             var currentIconGeometryY = _refreshIcon.Geometry.Y;
             var _refreshIconResetAnimation = new Animation(v => _refreshIcon.Move(_refreshIcon.Geometry.X, currentIconGeometryY - (int)v), 0, movedDistance, Easing.Linear);
             _refreshIconResetAnimation.Commit(this, "RefreshIconReset", length: _animationLength);
@@ -249,17 +238,11 @@ namespace Tizen.UIExtensions.ElmSharp
             _refreshIcon.IsRunning = false;
         }
 
-        int GetMovedDistance()
-        {
-            return _contentLayout.Geometry.Y - Geometry.Y;
-        }
-
         void MoveLayout(int distance)
         {
             var iconDistance = _initialIconGeometryY + distance;
             if (iconDistance > _maximumDistance)
             {
-                iconDistance = _maximumDistance;
                 _shouldRefresh = true;
             }
             else
@@ -267,7 +250,9 @@ namespace Tizen.UIExtensions.ElmSharp
                 _shouldRefresh = false;
             }
             _refreshIcon.Move(_refreshIcon.Geometry.X, iconDistance);
-            _contentLayout.Move(_contentLayout.Geometry.X, Geometry.Y + distance);
+            var totalDistance = Math.Abs(_initialIconGeometryY) + _maximumDistance - Geometry.Y;
+            var pullDistance = (float)distance / totalDistance;
+            _refreshIcon.PullDistance = pullDistance >= 1f ? 1f : pullDistance;
         }
 
         void IAnimatable.BatchBegin() {}

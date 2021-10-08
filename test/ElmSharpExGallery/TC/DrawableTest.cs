@@ -85,6 +85,20 @@ namespace ElmSharpExGallery.TC
             colorChangeButton.Show();
             layout.PackEnd(colorChangeButton);
 
+            var backgroundColorChangeButton = new Button(parent)
+            {
+                Text = "Change Background",
+                AlignmentX = -1,
+                AlignmentY = -1,
+                WeightX = 1
+            };
+            backgroundColorChangeButton.Clicked += (s, e) =>
+            {
+                refreshIcon.BackgroundColor = refreshIcon.BackgroundColor == Color.Yellow ? Color.White : Color.Yellow;
+            };
+            backgroundColorChangeButton.Show();
+            layout.PackEnd(backgroundColorChangeButton);
+
             var simulateButton = new Button(parent)
             {
                 Text = "Simulate Animation",
