@@ -1,21 +1,16 @@
 ﻿using System;
-using Microsoft.Maui.Graphics.Skia.Views;
 using Tizen.UIExtensions.Common.GraphicsView;
 using ElmSharp;
 using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
-namespace Tizen.UIExtensions.ElmSharp
+namespace Tizen.UIExtensions.ElmSharp.GraphicsView
 {
     /// <summary>
     /// A visual control used to indicate that refreshing is ongoing.
     /// </summary>
-    public class RefreshIcon : SkiaGraphicsView, IRefreshIcon
+    public class RefreshIcon : GraphicsView<RefreshIconDrawable>, IRefreshIcon
     {
         RefreshIconDrawable _drawable;
-        bool _isRunning;
-        Common.Color _color;
-        bool _isPulling;
-        float _pullDistance;
         float _iconSize = ThemeConstants.RefreshLayout.Resources.IconSize;
         float _strokeWidth = ThemeConstants.RefreshLayout.Resources.IconStrokeWidth;
 
@@ -25,7 +20,6 @@ namespace Tizen.UIExtensions.ElmSharp
         public RefreshIcon(EvasObject parent) : base(parent)
         {
             _drawable = new RefreshIconDrawable(this);
-            _drawable.Invalidated += OnRefreshIconInvalidated;
             Drawable = _drawable;
 
             var iconSize = (_iconSize + (_strokeWidth * 2)) * DeviceInfo.ScalingFactor;
@@ -41,6 +35,7 @@ namespace Tizen.UIExtensions.ElmSharp
             set
             {
                 _drawable.BackgroundColor = value;
+                Invalidate();
             }
         }
 
@@ -49,10 +44,10 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public bool IsRunning
         {
-            get => _isRunning;
+            get => GetProperty<bool>(nameof(IsRunning));
             set
             {
-                _isRunning = value;
+                SetProperty(nameof(IsRunning), value);
                 _drawable.UpdateRunningAnimation(value);
             }
         }
@@ -62,12 +57,8 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public bool IsPulling
         {
-            get => _isPulling;
-            set
-            {
-                _isPulling = value;
-                Invalidate();
-            }
+            get => GetProperty<bool>(nameof(IsPulling));
+            set => SetProperty(nameof(IsPulling), value);
         }
 
         /// <summary>
@@ -75,12 +66,8 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public new Common.Color Color
         {
-            get => _color;
-            set
-            {
-                _color = value;
-                Invalidate();
-            }
+            get => GetProperty<Common.Color>(nameof(Color));
+            set => SetProperty(nameof(Color), value);
         }
 
         /// <summary>
@@ -88,20 +75,14 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         public float PullDistance
         {
-            get => _pullDistance;
+            get => GetProperty<float>(nameof(PullDistance));
             set
             {
                 if (value > 1.0)
-                    _pullDistance = 1.0f;
+                    SetProperty(nameof(PullDistance), 1.0f);
                 else
-                    _pullDistance = value;
-                Invalidate();
+                    SetProperty(nameof(PullDistance), value);
             }
-        }
-
-        void OnRefreshIconInvalidated(object? sender, EventArgs e)
-        {
-            Invalidate();
         }
     }
 }

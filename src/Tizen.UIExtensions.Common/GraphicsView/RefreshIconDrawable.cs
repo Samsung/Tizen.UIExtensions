@@ -11,13 +11,13 @@ namespace Tizen.UIExtensions.Common.GraphicsView
     /// </summary>
     public class RefreshIconDrawable : GraphicsViewDrawable, IAnimatable
     {
-        Color _backgroundColor;
-
         public const float IconPaddingSize = 10f;
         public const float IconArcSize = 40f;
         public const float IconSize = IconArcSize + IconPaddingSize * 2;
         public const float StrokeWidth = 4f;
         public const int RotationAngle = 360;
+
+        Color _backgroundColor;
 
         /// <summary>
         /// Initializes a new instance of the RefreshIconDrawable.
