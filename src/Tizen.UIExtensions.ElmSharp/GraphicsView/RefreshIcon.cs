@@ -1,5 +1,4 @@
-﻿using System;
-using Tizen.UIExtensions.Common.GraphicsView;
+﻿using Tizen.UIExtensions.Common.GraphicsView;
 using ElmSharp;
 using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
@@ -10,7 +9,6 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
     /// </summary>
     public class RefreshIcon : GraphicsView<RefreshIconDrawable>, IRefreshIcon
     {
-        RefreshIconDrawable _drawable;
         float _iconSize = ThemeConstants.RefreshLayout.Resources.IconSize;
         float _strokeWidth = ThemeConstants.RefreshLayout.Resources.IconStrokeWidth;
 
@@ -19,8 +17,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         /// </summary>
         public RefreshIcon(EvasObject parent) : base(parent)
         {
-            _drawable = new RefreshIconDrawable(this);
-            Drawable = _drawable;
+            Drawable = new RefreshIconDrawable(this);
 
             var iconSize = (_iconSize + (_strokeWidth * 2)) * DeviceInfo.ScalingFactor;
             Resize((int)iconSize, (int)iconSize);
@@ -31,10 +28,19 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         /// </summary>
         public new Common.Color BackgroundColor
         {
-            get =>  _drawable.BackgroundColor;
+            get
+            {
+                if (Drawable == null)
+                    return Common.Color.Transparent;
+                else
+                    return Drawable.BackgroundColor;
+            }
             set
             {
-                _drawable.BackgroundColor = value;
+                if (Drawable == null)
+                    return;
+
+                Drawable.BackgroundColor = value;
                 Invalidate();
             }
         }
@@ -48,7 +54,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
             set
             {
                 SetProperty(nameof(IsRunning), value);
-                _drawable.UpdateRunningAnimation(value);
+                Drawable?.UpdateRunningAnimation(value);
             }
         }
 
@@ -80,6 +86,8 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
             {
                 if (value > 1.0)
                     SetProperty(nameof(PullDistance), 1.0f);
+                else if (value < 0)
+                    SetProperty(nameof(PullDistance), 0f);
                 else
                     SetProperty(nameof(PullDistance), value);
             }

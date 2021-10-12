@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using Microsoft.Maui.Graphics.Skia.Views;
 using Tizen.UIExtensions.Common;
 using Tizen.UIExtensions.Common.GraphicsView;
+using EvasObject = ElmSharp.EvasObject;
 using GestureLayer = ElmSharp.GestureLayer;
 using GPoint = Microsoft.Maui.Graphics.Point;
 
 namespace Tizen.UIExtensions.ElmSharp.GraphicsView
 {
+    /// <summary>
+    /// A base class for Views that inherits `SkiaGraphicsView`.
+    /// It helps Views covering `GraphicsViewDrawable` methods.
+    /// </summary>
     public abstract class GraphicsView<TDrawable> : SkiaGraphicsView, IMeasurable where TDrawable : GraphicsViewDrawable
     {
         Dictionary<string, object> _propertyBag = new Dictionary<string, object>();
@@ -15,29 +20,38 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         bool _isEnabled = true;
         GestureLayer _gestureLayer;
 
-        protected GraphicsView(global::ElmSharp.EvasObject parent) : base(parent)
+        protected GraphicsView(EvasObject parent) : base(parent)
         {
             _gestureLayer = new GestureLayer(parent);
             _gestureLayer.Attach(this);
-            _gestureLayer.SetTapCallback(GestureLayer.GestureType.Tap, GestureLayer.GestureState.Start, OnTapStart);
-            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.Move, OnTapMove);
-            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.End, OnTapEnd);
-            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.Abort, OnTapEnd);
+            _gestureLayer.SetTapCallback(GestureLayer.GestureType.Tap, GestureLayer.GestureState.Start, OnTapStartCallback);
+            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.Move, OnTapMoveCallback);
+            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.End, OnTapEndCallback);
+            _gestureLayer.SetMomentumCallback(GestureLayer.GestureState.Abort, OnTapEndCallback);
 
             Focused += OnFocused;
             Unfocused += OnUnfocused;
         }
 
+        /// <summary>
+        /// Gets or sets the state of the view, which might be enabled or disabled.
+        /// </summary>
         public override bool IsEnabled
         {
             get => _isEnabled;
             set
             {
-                IsEnabled = _isEnabled = value;
-                Invalidate();
+                if (value != _isEnabled)
+                {
+                    IsEnabled = _isEnabled = value;
+                    Invalidate();
+                }
             }
         }
 
+        /// <summary>
+        /// Measures the size of the view based on a drawable.
+        /// </summary>
         public virtual Size Measure(double availableWidth, double availableHeight)
         {
             return Drawable?.Measure(availableWidth, availableHeight) ?? new Size(availableWidth, availableHeight);
@@ -60,7 +74,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         }
 #nullable enable
 
-        protected new TDrawable? Drawable
+        public new TDrawable? Drawable
         {
             get => _drawable;
             set
@@ -92,28 +106,40 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
             Drawable?.OnFocused();
         }
 
-        protected virtual void OnTapStart(GestureLayer.TapData e)
+        void OnTapStartCallback(GestureLayer.TapData e)
         {
             if (!IsEnabled)
                 return;
-
-            Drawable?.OnTouchDown(GetScaledGraphicsPoint(e.X, e.Y));
+            OnTapStart(GetScaledGraphicsPoint(e.X, e.Y));
         }
 
-        protected virtual void OnTapMove(GestureLayer.MomentumData e)
+        void OnTapMoveCallback(GestureLayer.MomentumData e)
         {
             if (!IsEnabled)
                 return;
-
-            Drawable?.OnTouchMove(GetScaledGraphicsPoint(e.X2, e.Y2));
+            OnTapMove(GetScaledGraphicsPoint(e.X2, e.Y2));
         }
 
-        protected virtual void OnTapEnd(GestureLayer.MomentumData e)
+        void OnTapEndCallback(GestureLayer.MomentumData e)
         {
             if (!IsEnabled)
                 return;
+            OnTapEnd(GetScaledGraphicsPoint(e.X2, e.Y2));
+        }
 
-            Drawable?.OnTouchUp(GetScaledGraphicsPoint(e.X2, e.Y2));
+        protected virtual void OnTapStart(GPoint touchPoint)
+        {
+            Drawable?.OnTouchDown(touchPoint);
+        }
+
+        protected virtual void OnTapMove(GPoint touchPoint)
+        {
+            Drawable?.OnTouchMove(touchPoint);
+        }
+
+        protected virtual void OnTapEnd(GPoint touchPoint)
+        {
+            Drawable?.OnTouchUp(touchPoint);
         }
 
         GPoint GetScaledGraphicsPoint(int x, int y)
