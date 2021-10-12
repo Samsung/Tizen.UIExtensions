@@ -33,6 +33,18 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
+        /// Gets or sets the background of RefreshIcon.
+        /// </summary>
+        public new Common.Color BackgroundColor
+        {
+            get =>  _drawable.BackgroundColor;
+            set
+            {
+                _drawable.BackgroundColor = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the value indicating if the RefreshIcon is running.
         /// </summary>
         public bool IsRunning

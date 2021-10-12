@@ -515,9 +515,12 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             public class Resources
             {
-                public const float IconSize = 40f;
+                public const float IconSize = 60f;
                 public const float IconStrokeWidth = 4f;
                 public const int IconRotationAngle = 360;
+                public const int MinimumLayoutSize = 200;
+                public const int RefreshDistance = 100;
+                public const uint RefreshAnimationLength = 100;
             }
 
             public class ColorClass

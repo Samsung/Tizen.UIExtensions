@@ -11,8 +11,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
     /// </summary>
     public class RefreshIconDrawable : GraphicsViewDrawable, IAnimatable
     {
+        Color _backgroundColor;
 
-        public const float IconSize = 40f;
+        public const float IconPaddingSize = 10f;
+        public const float IconArcSize = 40f;
+        public const float IconSize = IconArcSize + IconPaddingSize * 2;
         public const float StrokeWidth = 4f;
         public const int RotationAngle = 360;
 
@@ -31,6 +34,19 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         float MaterialRefreshViewIconStartAngle { get; set; }
 
         float MaterialRefreshViewIconEndAngle { get; set; }
+
+        public Color BackgroundColor
+        {
+            get
+            {
+                return _backgroundColor;
+            }
+            set
+            {
+                _backgroundColor = value;
+                SendInvalidated();
+            }
+        }
 
         /// <summary>
         /// Implementation of the IDrawable.Draw() method.
@@ -90,6 +106,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var x = dirtyRect.X + StrokeWidth;
             var y = dirtyRect.Y + StrokeWidth;
+
+            DrawBackground(canvas, x, y);
             if (View.IsRunning)
             {
                 DrawRunningIcon(canvas, x, y);
@@ -101,18 +119,28 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
+        void DrawBackground(ICanvas canvas, float x, float y)
+        {
+            canvas.FillColor = _backgroundColor.ToGraphicsColor(Material.Color.White);
+            canvas.FillEllipse(x, y, IconSize, IconSize);
+        }
+
         void DrawRunningIcon(ICanvas canvas, float x, float y)
         {
-            canvas.Rotate(MaterialRefreshViewIconRotate, x + IconSize / 2, y + IconSize / 2);
+            var arcX = x + IconPaddingSize;
+            var arcY = y + IconPaddingSize;
+            canvas.Rotate(MaterialRefreshViewIconRotate, arcX + IconArcSize / 2, arcY + IconArcSize / 2);
             canvas.StrokeColor = View.Color.ToGraphicsColor(Material.Color.Blue);
-            canvas.DrawArc(x, y, IconSize, IconSize, MaterialRefreshViewIconStartAngle, MaterialRefreshViewIconEndAngle, false, false);
+            canvas.DrawArc(arcX , arcY, IconArcSize, IconArcSize, MaterialRefreshViewIconStartAngle, MaterialRefreshViewIconEndAngle, false, false);
         }
 
         void DrawIdleIcon(ICanvas canvas, float x, float y)
         {
-            canvas.Rotate(0, x + IconSize / 2, y + IconSize / 2);
+            var arcX = x + IconPaddingSize;
+            var arcY = y + IconPaddingSize;
+            canvas.Rotate(0, arcX + IconArcSize / 2, arcY + IconArcSize / 2);
             canvas.StrokeColor = View.Color.IsDefault ? GColor.FromArgb(Material.Color.LightBlue) : View.Color.MultiplyAlpha(0.5).ToGraphicsColor(Material.Color.LightBlue);
-            canvas.DrawArc(x, y, IconSize, IconSize, 0, RotationAngle, false, false);
+            canvas.DrawArc(arcX, arcY, IconArcSize, IconArcSize, 0, RotationAngle, false, false);
         }
 
         /// <summary>
