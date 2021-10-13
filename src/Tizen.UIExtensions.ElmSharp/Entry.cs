@@ -29,6 +29,7 @@ namespace Tizen.UIExtensions.ElmSharp
         readonly Span _span = new Span();
         readonly Span _placeholderSpan = new Span();
         int _changedByUserCallbackDepth;
+        int _cursorPositionUpdating = 0;
         Keyboard _keyboard;
 
         /// <summary>
@@ -55,6 +56,16 @@ namespace Tizen.UIExtensions.ElmSharp
         /// Occurs when the text has changed.
         /// </summary>
         public event EventHandler<TextChangedEventArgs> TextChanged;
+
+        /// <summary>
+        /// Occurs when the current cursor position is changed.
+        /// </summary>
+        public event EventHandler<EventArgs> CursorPositionChanged;
+
+        /// <summary>
+        /// Occurs when the selection is cleared.
+        /// </summary>
+        public event EventHandler<EventArgs> SelectionCleared;
 
         /// <summary>
         /// Gets or sets the text.
@@ -265,6 +276,15 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
+        /// Gets the value to check whether an event which affects the cursor position is finished
+        /// </summary>
+        /// <value> <c>true</c> if the event is not finished </value>
+        public bool IsUpdatingCursorPosition
+        {
+            get => (_cursorPositionUpdating > 0);
+        }
+
+        /// <summary>
         /// Implementation of the IMeasurable.Measure() method.
         /// </summary>
         public virtual Common.Size Measure(double availableWidth, double availableHeight)
@@ -354,6 +374,26 @@ namespace Tizen.UIExtensions.ElmSharp
 
                 _changedByUserCallbackDepth--;
             };
+
+            CursorChanged += (s, e) =>
+            {
+                _cursorPositionUpdating++;
+
+                CursorPositionChanged?.Invoke(this, EventArgs.Empty);
+
+                _cursorPositionUpdating--;
+            };
+
+            SmartEvent selectionCleared = new SmartEvent(this, RealHandle, ThemeConstants.Entry.Signals.SelectionCleared);
+            selectionCleared.On += (s, e) =>
+            {
+                _cursorPositionUpdating++;
+
+                SelectionCleared?.Invoke(this, EventArgs.Empty);
+
+                _cursorPositionUpdating--;
+            };
+
 
             ApplyKeyboard(Keyboard.Normal);
         }
