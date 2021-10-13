@@ -108,23 +108,26 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
 
         void OnTapStartCallback(GestureLayer.TapData e)
         {
-            if (!IsEnabled)
-                return;
-            OnTapStart(GetScaledGraphicsPoint(e.X, e.Y));
+            if (IsEnabled)
+            {
+                OnTapStart(GetScaledGraphicsPoint(e.X, e.Y));
+            }
         }
 
         void OnTapMoveCallback(GestureLayer.MomentumData e)
         {
-            if (!IsEnabled)
-                return;
-            OnTapMove(GetScaledGraphicsPoint(e.X2, e.Y2));
+            if (IsEnabled)
+            {
+                OnTapMove(GetScaledGraphicsPoint(e.X2, e.Y2));
+            }
         }
 
         void OnTapEndCallback(GestureLayer.MomentumData e)
         {
-            if (!IsEnabled)
-                return;
-            OnTapEnd(GetScaledGraphicsPoint(e.X2, e.Y2));
+            if (IsEnabled)
+            {
+                OnTapEnd(GetScaledGraphicsPoint(e.X2, e.Y2));
+            }
         }
 
         protected virtual void OnTapStart(GPoint touchPoint)
