@@ -104,8 +104,8 @@ namespace Tizen.UIExtensions.NUI
 
         double ItemSpacing => IsHorizontal ? HorizontalItemSpacing : VerticalItemSpacing;
 
-        double ItemWidthConstraint => IsHorizontal ? _allocatedSize.Width * 100 : ColumnSize;
-        double ItemHeightConstraint => IsHorizontal ? ColumnSize : _allocatedSize.Height * 100;
+        double ItemWidthConstraint => IsHorizontal ? double.PositiveInfinity : ColumnSize;
+        double ItemHeightConstraint => IsHorizontal ? ColumnSize : double.PositiveInfinity;
 
         double ColumnSize
         {
