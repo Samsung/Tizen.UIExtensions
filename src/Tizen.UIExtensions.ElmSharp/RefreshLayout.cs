@@ -1,6 +1,7 @@
 ﻿using System;
 using ElmSharp;
 using Tizen.UIExtensions.Common.Internal;
+using Tizen.UIExtensions.ElmSharp.GraphicsView;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
