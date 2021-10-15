@@ -193,6 +193,17 @@ namespace Tizen.UIExtensions.NUI
             Closed?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Actions when back button was pressed
+        /// A default behavior is closing popup
+        /// </summary>
+        /// <returns>if you consume back button pressed event returing true, otherwise false</returns>
+        protected virtual bool OnBackButtonPressed()
+        {
+            Close();
+            return true;
+        }
+
         public static void CloseAll()
         {
             foreach (var popup in s_openedPopup.ToList())
@@ -201,18 +212,21 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public static void CloseLast()
+        public static bool CloseLast()
         {
-            s_openedPopup.LastOrDefault()?.Close();
+            return s_openedPopup.LastOrDefault()?.BackButtonPressed() ?? false;
+        }
+
+        bool BackButtonPressed()
+        {
+            return OnBackButtonPressed();
         }
 
         bool OnKeyEvent(object source, KeyEventArgs e)
         {
             if (IsOpen && e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
-                Console.WriteLine($"Popup - OnKeyEvent - {e.Key.KeyPressedName}");
-                Close();
-                return true;
+                return OnBackButtonPressed();
             }
             return false;
         }
