@@ -46,7 +46,8 @@ namespace Tizen.UIExtensions.NUI
         {
             Layout = new LinearLayout
             {
-                LinearAlignment = LinearLayout.Alignment.Center
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center
             };
             BackgroundColor = new TColor(0.1f, 0.1f, 0.1f, 0.5f).ToNative();
 
@@ -54,7 +55,8 @@ namespace Tizen.UIExtensions.NUI
             {
                 Layout = new LinearLayout
                 {
-                    LinearAlignment = LinearLayout.Alignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
                     LinearOrientation = LinearLayout.Orientation.Vertical,
                 },
                 SizeWidth = Window.Instance.WindowSize.Width * 0.8f,
@@ -104,7 +106,7 @@ namespace Tizen.UIExtensions.NUI
             {
                 Layout = new LinearLayout
                 {
-                    LinearAlignment = LinearLayout.Alignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
                     LinearOrientation = LinearLayout.Orientation.Horizontal,
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
