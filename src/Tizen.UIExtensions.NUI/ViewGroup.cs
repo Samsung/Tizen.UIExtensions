@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
@@ -21,9 +19,11 @@ namespace Tizen.UIExtensions.NUI
     public class ViewGroup : View, IContainable<View>
     {
         readonly ObservableCollection<View> _children = new ObservableCollection<View>();
-        bool _layoutRequested;
         bool _disposed;
-        SynchronizationContext _mainloopContext;
+
+        float _cachedWidth;
+        float _cachedHeight;
+        bool _markChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewGroup"/> class.
@@ -31,13 +31,12 @@ namespace Tizen.UIExtensions.NUI
         /// <remarks>ViewGroup doesn't support replacing its children, this will be ignored.</remarks>
         public ViewGroup()
         {
-            Debug.Assert(SynchronizationContext.Current != null, "It must be used on main thread");
-            _mainloopContext = SynchronizationContext.Current;
-
-            Layout = new AbsoluteLayout();
+            Layout = new ViewGroupLayout
+            {
+                LayoutRequest = () => SendLayoutUpdated()
+            };
             WidthSpecification = LayoutParamPolicies.MatchParent;
             HeightSpecification = LayoutParamPolicies.MatchParent;
-            Relayout += OnRelayout;
             _children.CollectionChanged += OnCollectionChanged;
         }
 
@@ -53,6 +52,8 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public event EventHandler<LayoutEventArgs>? LayoutUpdated;
 
+        public void MarkChanged() => _markChanged = true;
+
         public override void Add(View child)
         {
             Children.Add(child);
@@ -65,28 +66,14 @@ namespace Tizen.UIExtensions.NUI
 
         void AddInternal(View child)
         {
+            _markChanged = true;
             base.Add(child);
-            LayoutRequest();
         }
 
         void RemoveInternal(View child)
         {
+            _markChanged = true;
             base.Remove(child);
-            LayoutRequest();
-        }
-
-        void OnRelayout(object? sender, EventArgs e)
-        {
-            SendLayoutUpdated();
-        }
-
-        void LayoutRequest()
-        {
-            if (!_layoutRequested)
-            {
-                _layoutRequested = true;
-                _mainloopContext.Post((s) => SendLayoutUpdated(), null);
-            }
         }
 
         void SendLayoutUpdated()
@@ -97,7 +84,16 @@ namespace Tizen.UIExtensions.NUI
             if (this == null)
                 return;
 
-            _layoutRequested = false;
+            var currentSize = Size2D;
+            var needUpdate = _cachedWidth != currentSize.Width || _cachedHeight != currentSize.Height || _markChanged;
+
+            _cachedWidth = currentSize.Width;
+            _cachedHeight = currentSize.Height;
+            _markChanged = false;
+
+            if (!needUpdate)
+                return;
+
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
@@ -153,5 +149,17 @@ namespace Tizen.UIExtensions.NUI
             }
             base.Dispose(disposing);
         }
+
+        class ViewGroupLayout : AbsoluteLayout
+        {
+            public Action? LayoutRequest { get; set; }
+
+            protected override void OnLayout(bool changed, LayoutLength left, LayoutLength top, LayoutLength right, LayoutLength bottom)
+            {
+                LayoutRequest?.Invoke();
+                base.OnLayout(changed, left, top, right, bottom);
+            }
+        }
+
     }
 }

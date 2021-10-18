@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.NUI;
 
@@ -13,7 +14,10 @@ namespace NUIExGallery.TC
 
         public override View Run()
         {
-            var viewgroup = new ViewGroup();
+            var viewgroup = new ViewGroup()
+            {
+                BackgroundColor = Tizen.NUI.Color.Red
+            };
             viewgroup.LayoutUpdated += (s, e) =>
             {
                 var blockSize = viewgroup.Size.Height / viewgroup.Children.Count;
@@ -21,6 +25,7 @@ namespace NUIExGallery.TC
                 foreach (var child in viewgroup.Children)
                 {
                     child.UpdateBounds(new Tizen.UIExtensions.Common.Rect(0, currentTop, viewgroup.Size.Width, blockSize));
+                    Thread.Sleep(100);
                     currentTop += blockSize;
                 }
             };
