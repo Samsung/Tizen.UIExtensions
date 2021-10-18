@@ -9,15 +9,16 @@ namespace Tizen.UIExtensions.NUI
     public abstract class CustomRenderingView : NImageView
     {
         bool _redrawRequest;
-        PropertyNotification _resized;
 
         protected SynchronizationContext MainloopContext { get; }
 
         protected CustomRenderingView()
         {
+            Layout = new CustomLayout
+            {
+                SizeUpdated = OnResized
+            };
             MainloopContext = SynchronizationContext.Current ?? throw new InvalidOperationException("Must create on main thread");
-            _resized = AddPropertyNotification("Size", PropertyCondition.Step(0.1f));
-            _resized.Notified += OnResized;
         }
 
         public event EventHandler<SKPaintSurfaceEventArgs>? PaintSurface;
@@ -47,9 +48,24 @@ namespace Tizen.UIExtensions.NUI
             PaintSurface?.Invoke(this, e);
         }
 
-        void OnResized(object source, PropertyNotification.NotifyEventArgs e)
+        class CustomLayout : AbsoluteLayout
         {
-            OnResized();
+            float _width;
+            float _height;
+
+            public Action? SizeUpdated { get; set; }
+
+            protected override void OnLayout(bool changed, LayoutLength left, LayoutLength top, LayoutLength right, LayoutLength bottom)
+            {
+                var sizeChanged = _width != Owner.SizeWidth || _height != Owner.SizeHeight;
+                _width = Owner.SizeWidth;
+                _height = Owner.SizeHeight;
+                if (sizeChanged)
+                {
+                    SizeUpdated?.Invoke();
+                }
+                base.OnLayout(changed, left, top, right, bottom);
+            }
         }
     }
 }
