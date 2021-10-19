@@ -1,5 +1,6 @@
 ﻿using System;
 using ElmSharp;
+using Tizen.UIExtensions.Common;
 using static ElmSharp.GestureLayer;
 using EBox = ElmSharp.Box;
 
@@ -69,6 +70,8 @@ namespace Tizen.UIExtensions.ElmSharp
         /// The <see cref="IsSplit"/> property value.
         /// </summary>
         bool _isSplit = false;
+
+        DrawerBehavior _drawerBehavior = Common.DrawerBehavior.Drawer;
 
         /// <summary>
         /// The <see cref="IsGestureEnabled"/> property value.
@@ -200,7 +203,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the DrawerBox is splited
         /// </summary>
-        public bool IsSplit 
+        public bool IsSplit
         {
             get
             {
@@ -213,6 +216,22 @@ namespace Tizen.UIExtensions.ElmSharp
                     _isSplit = value;
                     ConfigureLayout();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the behavior of the Drawer
+        /// </summary>
+        public DrawerBehavior DrawerBehavior
+        {
+            get
+            {
+                return _drawerBehavior;
+            }
+            set
+            {
+                _drawerBehavior = value;
+                IsSplit = (_drawerBehavior == DrawerBehavior.Locked) ? true : false;
             }
         }
 

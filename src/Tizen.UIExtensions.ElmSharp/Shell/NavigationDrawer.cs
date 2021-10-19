@@ -15,6 +15,9 @@ namespace Tizen.UIExtensions.ElmSharp
         {
         }
 
+        /// <summary>
+        /// Gets or sets the navigation view to be shown on the drawer.
+        /// </summary>
         public EvasObject? NavigationView
         {
             get
@@ -27,6 +30,9 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets of sets the main content of the NavigationDrawer.
+        /// </summary>
         public EvasObject? Main
         {
             get
@@ -39,6 +45,9 @@ namespace Tizen.UIExtensions.ElmSharp
             }
         }
 
+        /// <summary>
+        /// Gets the target view of the NaviagtionDrawer
+        /// </summary>
         public EvasObject TargetView => this;
     }
 }

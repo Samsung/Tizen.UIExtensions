@@ -766,5 +766,33 @@ namespace Tizen.UIExtensions.ElmSharp
         }
         #endregion
 
+
+        #region TVNavigationView
+        public static EColor GetTvDefaultBackgroundColor(this INavigationView nav)
+        {
+            return ThemeConstants.Shell.ColorClass.TV.DefaultBackgroundColor;
+        }
+        #endregion
+
+        #region TVNavigationDrawer
+        static int s_defaultDrawerItemHeight = -1;
+        public static int GetTvFocusedButtonHeight(this INavigationDrawer drawer)
+        {
+            if (s_defaultDrawerItemHeight > 0)
+                return s_defaultDrawerItemHeight;
+            return s_defaultDrawerItemHeight = ThemeConstants.Shell.Resources.DefaultDrawerItemHeight;
+        }
+
+        static double s_navigationDrawerRatio = -1;
+        public static double GetTvDrawerRatio(this INavigationDrawer drawer, int width, int height)
+        {
+            return s_navigationDrawerRatio = (width > height) ? ThemeConstants.Shell.Resources.TV.DefaultDrawerRatio : ThemeConstants.Shell.Resources.DefaultDrawerRatio;
+        }
+
+        public static double GetTvDrawerRatioMin(this INavigationDrawer drawer)
+        {
+            return ThemeConstants.Shell.Resources.TV.DefaultDrawerRatioMin;
+        }
+        #endregion
     }
 }
