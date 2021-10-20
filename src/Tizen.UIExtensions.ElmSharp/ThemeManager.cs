@@ -789,9 +789,9 @@ namespace Tizen.UIExtensions.ElmSharp
             return s_navigationDrawerRatio = (width > height) ? ThemeConstants.Shell.Resources.TV.DefaultDrawerRatio : ThemeConstants.Shell.Resources.DefaultDrawerRatio;
         }
 
-        public static double GetTvDrawerRatioMin(this INavigationDrawer drawer)
+        public static double GetTvDrawerCloseRatio(this INavigationDrawer drawer)
         {
-            return ThemeConstants.Shell.Resources.TV.DefaultDrawerRatioMin;
+            return ThemeConstants.Shell.Resources.TV.DefaultDrawerCloseRatio;
         }
         #endregion
     }

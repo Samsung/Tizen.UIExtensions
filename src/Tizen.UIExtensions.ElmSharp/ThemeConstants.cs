@@ -591,7 +591,7 @@ namespace Tizen.UIExtensions.ElmSharp
                     public const string DotsIconCode = "\u2026";
 
                     public const double DefaultDrawerRatio = 0.3;
-                    public const double DefaultDrawerRatioMin = 0.05;
+                    public const double DefaultDrawerCloseRatio = 0.05;
                 }
             }
 

@@ -21,10 +21,10 @@ namespace Tizen.UIExtensions.ElmSharp
         DrawerBehavior _behavior;
         bool _isOpen;
         bool _isSplit;
-        double _openRatio;
+        double _drawerRatio;
 
-        double _drawerRatioMax = -1;
-        double _drawerRatioMin = -1;
+        double _OpenRatio = -1;
+        double _closeRatio = -1;
 
 
         /// <summary>
@@ -150,14 +150,14 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or Sets the portion of the screen then the drawer is opened.
         /// </summary>
-        public double DrawerRatioMax
+        public double OpenRatio
         {
-            get => _drawerRatioMax;
+            get => _OpenRatio;
             set
             {
-                if (_drawerRatioMax != value)
+                if (_OpenRatio != value)
                 {
-                    _drawerRatioMax = value;
+                    _OpenRatio = value;
                     OnLayout();
                 }
             }
@@ -166,14 +166,14 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or Sets the portion of the screen then the drawer is closed.
         /// </summary>
-        public double DrawerRatioMin
+        public double CloseRatio
         {
-            get => _drawerRatioMin;
+            get => _closeRatio;
             set
             {
-                if (_drawerRatioMin != value)
+                if (_closeRatio != value)
                 {
-                    _drawerRatioMin = value;
+                    _closeRatio = value;
                     OnLayout();
                 }
             }
@@ -255,12 +255,12 @@ namespace Tizen.UIExtensions.ElmSharp
 
             var bound = Geometry;
 
-            var ratioMax = (_drawerRatioMax < 0) ? this.GetTvDrawerRatio(Geometry.Width, Geometry.Height) : _drawerRatioMax;
-            var ratioMin = (_behavior == DrawerBehavior.Disabled) ? 0 : ((_drawerRatioMin < 0) ? this.GetTvDrawerRatioMin() : _drawerRatioMin);
-            var drawerWidthMax = (int)(bound.Width * ratioMax);
-            var drawerWidthMin = (int)(bound.Width * ratioMin);
+            var openRatio = (_OpenRatio < 0) ? this.GetTvDrawerRatio(Geometry.Width, Geometry.Height) : _OpenRatio;
+            var closeRatio = (_behavior == DrawerBehavior.Disabled) ? 0 : ((_closeRatio < 0) ? this.GetTvDrawerCloseRatio() : _closeRatio);
+            var drawerWidthMax = (int)(bound.Width * openRatio);
+            var drawerWidthMin = (int)(bound.Width * closeRatio);
 
-            var drawerWidthOutBound = (int)((drawerWidthMax - drawerWidthMin) * (1 - _openRatio));
+            var drawerWidthOutBound = (int)((drawerWidthMax - drawerWidthMin) * (1 - _drawerRatio));
             var drawerWidthInBound = drawerWidthMax - drawerWidthOutBound;
 
             var drawerGeometry = bound;
@@ -281,9 +281,9 @@ namespace Tizen.UIExtensions.ElmSharp
             double endState = ((_behavior != DrawerBehavior.Disabled) && isOpen) ? 1 : 0;
             new Animation((r) =>
             {
-                _openRatio = r;
+                _drawerRatio = r;
                 OnLayout();
-            }, _openRatio, endState, Easing.SinOut).Commit(this, "DrawerMove", finished: (f, aborted) =>
+            }, _drawerRatio, endState, Easing.SinOut).Commit(this, "DrawerMove", finished: (f, aborted) =>
             {
                 if (!aborted)
                 {
