@@ -1,5 +1,6 @@
 ﻿using System;
 using ElmSharp;
+using Tizen.UIExtensions.Common;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
@@ -14,6 +15,8 @@ namespace Tizen.UIExtensions.ElmSharp
         bool IsOpen { get; set; }
 
         bool IsSplit { get; set; }
+
+        DrawerBehavior DrawerBehavior { get; set; }
 
         event EventHandler Toggled;
     }

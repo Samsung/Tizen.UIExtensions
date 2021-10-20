@@ -6,14 +6,13 @@ using ElmSharp;
 using Common = Tizen.UIExtensions.Common;
 using Ext = Tizen.UIExtensions.ElmSharp;
 
-
 namespace ElmSharpExGallery.TC
 {
-    public class NavigationDrawerTest1 : TestCaseBase
+    public class TVNavigationDrawerTest : TestCaseBase
     {
-        public override string TestName => "Shell NavigationDrawer Test 1";
+        public override string TestName => "Shell TVNavigationDrawer Test 1";
 
-        public override string TestDescription => "Shell NavigationDrawer Test 1";
+        public override string TestDescription => "Shell TVNavigationDrawer Test 1";
 
         Box _header;
 
@@ -26,7 +25,7 @@ namespace ElmSharpExGallery.TC
                 data.Add($"item {i}");
             }
 
-            var drawer = new Ext.NavigationDrawer(parent)
+            var drawer = new Ext.TVNavigationDrawer(parent)
             {
                 AlignmentX = -1,
                 AlignmentY = -1,
@@ -34,7 +33,7 @@ namespace ElmSharpExGallery.TC
                 WeightY = 1,
             };
 
-            var naviView = new Ext.NavigationView(parent);
+            var naviView = new Ext.TVNavigationView(parent);
 
             var content = new Box(parent)
             {
@@ -151,9 +150,6 @@ namespace ElmSharpExGallery.TC
                     naviView.Content = CreateContent(parent);
                 }
             };
-
-            drawer.DimArea.BackgroundColor = Color.Black;
-            drawer.DimArea.Opacity = 30;
 
             naviView.Header = CreateHeader(parent);
             naviView.Footer = CreateFooter(parent);
