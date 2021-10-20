@@ -41,6 +41,11 @@ namespace Tizen.UIExtensions.NUI
                 _nativeImageSource.EnqueueBuffer(buffer);
                 Window.Instance.KeepRendering(0);
             }
+            else
+            {
+                Invalidate();
+            }
+
         }
 
         protected override void OnResized()

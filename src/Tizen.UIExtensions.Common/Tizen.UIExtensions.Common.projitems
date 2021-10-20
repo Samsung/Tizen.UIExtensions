@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DeviceInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\IRefreshIcon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\MaterialIconDrawable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\RefreshIconDrawable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\ActivityIndicatorDrawable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GraphicsView\ButtonDrawable.cs" />
