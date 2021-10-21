@@ -8,26 +8,38 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
     /// <summary>
     /// A control that can edit multiple lines of text.
     /// </summary>
-    public class Editor : GraphicsView<EditorDrawable>, IEditor
+    public class Editor : View, IEditor, IMeasurable
     {
+        GrapchisEditor _editor;
+
         /// <summary>
         /// Initializes a new instance of the Editor class.
         /// </summary>
         public Editor()
         {
-            Layout = new Tizen.NUI.LinearLayout();
+            Layout = new Tizen.NUI.AbsoluteLayout();
             EmbedEditor = new TEditor
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 Margin = new Tizen.NUI.Extents((ushort)(12 * DeviceInfo.ScalingFactor), (ushort)(12 * DeviceInfo.ScalingFactor), (ushort)(20 * DeviceInfo.ScalingFactor), (ushort)(12 * DeviceInfo.ScalingFactor))
             };
-            EmbedEditor.FocusGained += OnFocused;
-            EmbedEditor.FocusLost += OnUnfocused;
-            EmbedEditor.TextChanged += OnTextChanged;
-            Add(EmbedEditor);
+            _editor = new GrapchisEditor(EmbedEditor)
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+            };
+            Add(_editor);
 
-            Drawable = new EditorDrawable(this);
+            // NUI AbsoluteLayout not support Margin, so add a internal view as LinearLayout
+            var marginView = new View
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+                Layout = new Tizen.NUI.LinearLayout(),
+            };
+            Add(marginView);
+            marginView.Add(EmbedEditor);
         }
 
         public TEditor EmbedEditor { get; }
@@ -37,8 +49,8 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public string Text
         {
-            get => EmbedEditor.Text;
-            set => EmbedEditor.Text = value;
+            get => _editor.Text;
+            set => _editor.Text = value;
         }
 
         /// <summary>
@@ -46,8 +58,8 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public Color TextColor
         {
-            get => EmbedEditor.TextColor;
-            set => EmbedEditor.TextColor = value;
+            get => _editor.TextColor;
+            set => _editor.TextColor = value;
         }
 
         /// <summary>
@@ -55,8 +67,8 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public string Placeholder
         {
-            get => GetProperty<string>(nameof(Placeholder));
-            set => SetProperty(nameof(Placeholder), value);
+            get => _editor.Placeholder;
+            set => _editor.Placeholder = value;
         }
 
         /// <summary>
@@ -64,8 +76,13 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public Color PlaceholderColor
         {
-            get => GetProperty<Color>(nameof(PlaceholderColor));
-            set => SetProperty(nameof(PlaceholderColor), value);
+            get => _editor.PlaceholderColor;
+            set => _editor.PlaceholderColor = value;
+        }
+
+        public bool IsFocused
+        {
+            get => _editor.IsFocused;
         }
 
         /// <summary>
@@ -73,16 +90,69 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public new Color BackgroundColor
         {
-            get => GetProperty<Color>(nameof(BackgroundColor));
-            set => SetProperty(nameof(BackgroundColor), value);
+            get => _editor.BackgroundColor;
+            set => _editor.BackgroundColor = value;
         }
         Color IEditor.BackgroundColor => BackgroundColor;
 
-        public bool IsFocused => EmbedEditor.HasFocus();
 
-        void OnTextChanged(object? sender, TextEditor.TextChangedEventArgs e)
+        public Size Measure(double availableWidth, double availableHeight)
         {
-            Invalidate();
+            return _editor.Measure(availableWidth, availableHeight);
+        }
+
+        class GrapchisEditor : GraphicsView<EditorDrawable>, IEditor
+        {
+            public GrapchisEditor(TEditor editor)
+            {
+                EmbedEditor = editor;
+                EmbedEditor.FocusGained += OnFocused;
+                EmbedEditor.FocusLost += OnUnfocused;
+                EmbedEditor.TextChanged += OnTextChanged;
+
+                Drawable = new EditorDrawable(this);
+            }
+
+            public TEditor EmbedEditor { get; }
+
+            public string Text
+            {
+                get => EmbedEditor.Text;
+                set => EmbedEditor.Text = value;
+            }
+
+            public Color TextColor
+            {
+                get => EmbedEditor.TextColor;
+                set => EmbedEditor.TextColor = value;
+            }
+
+            public string Placeholder
+            {
+                get => GetProperty<string>(nameof(Placeholder));
+                set => SetProperty(nameof(Placeholder), value);
+            }
+
+            public Color PlaceholderColor
+            {
+                get => GetProperty<Color>(nameof(PlaceholderColor));
+                set => SetProperty(nameof(PlaceholderColor), value);
+            }
+
+            public new Color BackgroundColor
+            {
+                get => GetProperty<Color>(nameof(BackgroundColor));
+                set => SetProperty(nameof(BackgroundColor), value);
+            }
+            Color IEditor.BackgroundColor => BackgroundColor;
+
+            public bool IsFocused => EmbedEditor.HasFocus();
+
+            void OnTextChanged(object? sender, TextEditor.TextChangedEventArgs e)
+            {
+                Invalidate();
+            }
         }
     }
+    
 }
