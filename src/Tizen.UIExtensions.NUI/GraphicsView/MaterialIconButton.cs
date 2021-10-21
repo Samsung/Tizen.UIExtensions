@@ -15,6 +15,9 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         public MaterialIconButton()
         {
             Drawable = new MaterialIconDrawable();
+            var measured = Drawable.Measure(double.PositiveInfinity, double.PositiveInfinity);
+            SizeWidth = (float)measured.Width;
+            SizeHeight = (float)measured.Height;
         }
 
         /// <summary>
