@@ -38,7 +38,6 @@ namespace Tizen.UIExtensions.NUI
             "}\n" +
             "";
 
-        PropertyNotification _resized;
         Renderer _renderer;
         Geometry _geometry;
         Shader _shader;
@@ -60,12 +59,14 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public SKClipperView()
         {
+            Layout = new CustomLayout
+            {
+                SizeUpdated = OnResized
+            };
             ClippingMode = ClippingModeType.ClipChildren;
             MainloopContext = SynchronizationContext.Current ?? throw new InvalidOperationException("Must create on main thread");
             _geometry = CreateQuadGeometry();
             _shader = new Shader(VERTEX_SHADER, FRAGMENT_SHADER);
-            _resized = AddPropertyNotification("Size", PropertyCondition.Step(0.1f));
-            _resized.Notified += OnResized;
 
             RemoveRenderer(0);
 
@@ -167,11 +168,6 @@ namespace Tizen.UIExtensions.NUI
             _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
         }
 
-        void OnResized(object source, PropertyNotification.NotifyEventArgs e)
-        {
-            OnResized();
-        }
-
         static Geometry CreateQuadGeometry()
         {
             PropertyBuffer vertexData = CreateVertextBuffer();
@@ -223,6 +219,26 @@ namespace Tizen.UIExtensions.NUI
             {
                 x = xIn;
                 y = yIn;
+            }
+        }
+
+        class CustomLayout : AbsoluteLayout
+        {
+            float _width;
+            float _height;
+
+            public Action? SizeUpdated { get; set; }
+
+            protected override void OnLayout(bool changed, LayoutLength left, LayoutLength top, LayoutLength right, LayoutLength bottom)
+            {
+                var sizeChanged = _width != Owner.SizeWidth || _height != Owner.SizeHeight;
+                _width = Owner.SizeWidth;
+                _height = Owner.SizeHeight;
+                if (sizeChanged)
+                {
+                    SizeUpdated?.Invoke();
+                }
+                base.OnLayout(changed, left, top, right, bottom);
             }
         }
     }
