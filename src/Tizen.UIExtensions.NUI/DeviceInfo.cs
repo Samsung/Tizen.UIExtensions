@@ -141,6 +141,7 @@ namespace Tizen.UIExtensions.Common
                 }
             }
             s_scalingFactor = scalingFactor;
+            SkiaSharp.Views.Tizen.ScalingInfo.SetScalingFactor(scalingFactor);
         }
     }
 
