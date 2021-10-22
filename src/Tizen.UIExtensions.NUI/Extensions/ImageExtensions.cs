@@ -4,9 +4,7 @@ using ImageView = Tizen.NUI.BaseComponents.ImageView;
 using CSize = Tizen.UIExtensions.Common.Size;
 using System.Threading.Tasks;
 using System.IO;
-using System.Threading;
-using Tizen.Applications;
-using System.Diagnostics;
+using Tizen.NUI;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -132,7 +130,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public static async Task<bool> LoadAsync(this Image view, Stream stream)
+        public static async Task<bool> LoadAsync(this ImageView view, Stream stream)
         {
             if (stream == null)
                 throw new ArgumentNullException(nameof(stream));
@@ -146,7 +144,9 @@ namespace Tizen.UIExtensions.NUI
 
             try
             {
-                view.Load(stream);
+                using var imageBuffer = new EncodedImageBuffer(stream);
+                using var imageUrl = imageBuffer.GenerateUrl();
+                view.ResourceUrl = imageUrl.ToString();
                 return await tcs.Task;
             }
             finally

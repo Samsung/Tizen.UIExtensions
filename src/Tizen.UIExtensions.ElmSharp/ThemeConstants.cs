@@ -510,13 +510,17 @@ namespace Tizen.UIExtensions.ElmSharp
         }
         #endregion
 
-        #region RefreshView
-        public class RefreshView
+        #region RefreshLayout
+        public class RefreshLayout
         {
             public class Resources
             {
-                public const int IconSize = 48;
-                public const string IconPath = "Xamarin.Forms.Platform.Tizen.Resource.refresh_48dp.png";
+                public const float IconSize = 60f;
+                public const float IconStrokeWidth = 4f;
+                public const int IconRotationAngle = 360;
+                public const int MinimumLayoutSize = 200;
+                public const int RefreshDistance = 100;
+                public const uint RefreshAnimationLength = 100;
             }
 
             public class ColorClass
@@ -569,6 +573,8 @@ namespace Tizen.UIExtensions.ElmSharp
                 public const string BackIcon = "Platform.Tizen.Resources.arrow_left.png";
                 public const string DotsIcon = "Platform.Tizen.Resources.dots_horizontal.png";
                 public const int DefaultDrawerDimOpacity = 30;
+                public const int DefaultDrawerItemHeight = 10;
+                public const double DefaultDrawerRatio = 0.83;
 
                 public class Watch
                 {
@@ -583,6 +589,9 @@ namespace Tizen.UIExtensions.ElmSharp
                     public const string MenuIconCode = "\u2630";
                     public const string BackIconCode = "\u2190";
                     public const string DotsIconCode = "\u2026";
+
+                    public const double DefaultDrawerRatio = 0.3;
+                    public const double DefaultDrawerCloseRatio = 0.05;
                 }
             }
 
@@ -599,6 +608,11 @@ namespace Tizen.UIExtensions.ElmSharp
                     public static readonly EColor DefaultNavigationViewForegroundColor = EColor.Default;
                     public static readonly EColor DefaultNavigationViewBackgroundColor = EColor.Black;
                 }
+
+                public class TV
+                {
+                    public static readonly EColor DefaultBackgroundColor = EColor.Black;
+                }
             }
         }
         #endregion
@@ -614,6 +628,7 @@ namespace Tizen.UIExtensions.ElmSharp
         }
         #endregion
 
+        #region FontWeight
         public static class FontWeight
         {
             public class Styles
@@ -632,5 +647,6 @@ namespace Tizen.UIExtensions.ElmSharp
                 public const string ExtraBlack = "ExtraBlack";
             }
         }
+        #endregion
     }
 }

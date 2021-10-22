@@ -124,7 +124,7 @@ namespace NUIExGallery.TC
             };
             selectionChange.Clicked += (s, e) =>
             {
-                searchkey.SelectedTextEnd = (searchkey.SelectedTextStart + searchkey.SelectedTextEnd) / 2;
+                searchkey.SelectText(searchkey.SelectedTextStart, (searchkey.SelectedTextStart + searchkey.SelectedTextEnd) / 2);
             };
             view.Add(selectionChange);
 

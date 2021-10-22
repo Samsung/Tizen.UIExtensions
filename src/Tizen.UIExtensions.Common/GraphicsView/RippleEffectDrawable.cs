@@ -17,7 +17,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override void Draw(ICanvas canvas, RectangleF dirtyRect)
         {
-            if (ClipRectangle == RectangleF.Zero || ClipRectangle.Contains(TouchPoint))
+            if ((ClipRectangle == RectangleF.Zero || ClipRectangle.Contains(TouchPoint)) && RippleEffectSize > 0)
             {
                 canvas.SaveState();
 
@@ -73,7 +73,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var to = ClipRectangle != RectangleF.Zero ? ClipRectangle.Width : 1000;
 
             var thumbSizeAnimation = new Animation(v => RippleEffectSize = (int)v, from, to, easing: Easing.SinInOut);
-            thumbSizeAnimation.Commit(this, "RippleEffectAnimation", length: 350, finished: (l, c) =>
+            thumbSizeAnimation.Commit(this, "RippleEffectAnimation", rate:32, length: 350, finished: (l, c) =>
             {
                 _rippleEffectSize = 0;
                 thumbSizeAnimation = null;

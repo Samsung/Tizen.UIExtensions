@@ -305,6 +305,19 @@ namespace NUIExGallery.TC
                     Console.WriteLine($"Popup outside clicked");
                 };
             };
+
+
+            var btn5 = new Button
+            {
+                Text = "Unclosed pupup"
+            };
+            view.Add(btn5);
+            btn5.Clicked += (s, e) =>
+            {
+                var popup = new NotClosedPopup();
+
+                popup.Open();
+            };
             return view;
         }
 
@@ -353,5 +366,41 @@ namespace NUIExGallery.TC
             return popup;
         }
 
+    }
+
+    class NotClosedPopup : Popup
+    {
+        public NotClosedPopup()
+        {
+            BackgroundColor = new Color(0.1f, 0.1f, 0.1f, 0.7f).ToNative();
+            Layout = new LinearLayout
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+            };
+
+            Content = new Label
+            {
+                TextColor = Tizen.UIExtensions.Common.Color.White,
+                Text = "This Popup is not closed until 5 seconds"
+            };
+        }
+
+        public new void Open()
+        {
+            base.Open();
+            var timer = new Timer(5000);
+            timer.Start();
+            timer.Tick += (s, e) =>
+            {
+                Close();
+                return false;
+            };
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

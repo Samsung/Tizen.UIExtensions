@@ -316,8 +316,8 @@ namespace Tizen.UIExtensions.NUI
 
         Size ICollectionViewController.GetItemSize()
         {
-            var widthConstraint = LayoutManager!.IsHorizontal ? AllocatedSize.Width * 100 : AllocatedSize.Width;
-            var heightConstraint = LayoutManager!.IsHorizontal ? AllocatedSize.Height : AllocatedSize.Height * 100;
+            var widthConstraint = LayoutManager!.IsHorizontal ? double.PositiveInfinity : AllocatedSize.Width;
+            var heightConstraint = LayoutManager!.IsHorizontal ? AllocatedSize.Height : double.PositiveInfinity;
             return GetItemSize(widthConstraint,heightConstraint);
         }
 

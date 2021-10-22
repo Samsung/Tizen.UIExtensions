@@ -4,8 +4,7 @@
     <TargetFrameworks>tizen90;net6.0-tizen6.5</TargetFrameworks>
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
-    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>NU5048, NU5104</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -25,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Graphics" Version="6.0.100-preview.6.299" />
     <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="6.0.100-preview.6.299" />
-    <PackageReference Include="SkiaSharp.Views" Version="2.88.0-preview.61" />
+    <PackageReference Include="SkiaSharp.Views" Version="2.88.0-preview.145" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('tizen')) == true">
