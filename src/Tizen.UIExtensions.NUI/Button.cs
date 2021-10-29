@@ -1,5 +1,4 @@
-﻿using System;
-using Tizen.UIExtensions.Common;
+﻿using Tizen.UIExtensions.Common;
 using NButton = Tizen.NUI.Components.Button;
 using NColor = Tizen.NUI.Color;
 
@@ -58,31 +57,9 @@ namespace Tizen.UIExtensions.NUI
         {
             // Issue : NaturalSize of Button is fixed when SizeWidth and SizeHight is set
             // so, Button's measured size never smaller than before
-            var buttonNaturalSize = NaturalSize;
             var textNaturalSize = TextLabel.NaturalSize;
             float buttonPadding = 46;
-
-#pragma warning disable CS0618
-            // select bigger size between button and label
-            var requiredWidth = Math.Max(buttonNaturalSize.Width, textNaturalSize.Width + buttonPadding);
-
-            if (availableWidth < requiredWidth)
-            {
-                // If label on button could be a multiline
-                //return new Size(availableWidth, Math.Max(GetHeightForWidth((float)availableWidth), TextLabel.GetHeightForWidth((float)availableWidth)));
-
-                // Do not allow multiline button
-                return new Size(availableWidth, buttonNaturalSize.Height);
-            }
-            else
-            {
-                // If label on button could be a multiline
-                //return new Size(requiredWidth, Math.Max(GetHeightForWidth(requiredWidth), TextLabel.GetHeightForWidth(requiredWidth)));
-
-                // Do not allow multiline button
-                return new Size(requiredWidth, buttonNaturalSize.Height);
-            }
-#pragma warning restore CS0618
+            return new Size(textNaturalSize.Width + buttonPadding, textNaturalSize.Height + buttonPadding);
         }
     }
 }

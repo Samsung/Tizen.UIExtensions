@@ -86,8 +86,8 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        double ItemWidthConstraint => IsHorizontal ? _allocatedSize.Width * 100 : _allocatedSize.Width;
-        double ItemHeightConstraint => IsHorizontal ? _allocatedSize.Height : _allocatedSize.Height * 100;
+        double ItemWidthConstraint => IsHorizontal ? double.PositiveInfinity : _allocatedSize.Width;
+        double ItemHeightConstraint => IsHorizontal ? _allocatedSize.Height : double.PositiveInfinity;
 
         double FooterSize => IsHorizontal ? _footerSize.Width : _footerSize.Height;
         double HeaderSize => IsHorizontal ? _headerSize.Width : _headerSize.Height;
