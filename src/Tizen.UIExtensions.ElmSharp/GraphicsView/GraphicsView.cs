@@ -44,6 +44,8 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
                 if (value != _isEnabled)
                 {
                     IsEnabled = _isEnabled = value;
+                    if (_drawable != null)
+                        _drawable.IsEnabled = value;
                     Invalidate();
                 }
             }

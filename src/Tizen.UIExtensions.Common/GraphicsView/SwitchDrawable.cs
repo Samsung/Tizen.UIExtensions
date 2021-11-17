@@ -1,5 +1,6 @@
 using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
+using GColor = Microsoft.Maui.Graphics.Color;
 using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
@@ -55,12 +56,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             if (View.IsToggled)
             {
-                canvas.FillColor = View.OnColor.ToGraphicsColor(Material.Color.LightBlue);
+                canvas.FillColor = IsEnabled ? View.OnColor.ToGraphicsColor(Material.Color.LightBlue) : GColor.FromArgb(Material.Color.Gray1);
                 canvas.Alpha = 0.5f;
             }
             else
             {
-                canvas.FillColor = View.BackgroundColor.ToGraphicsColor(Material.Color.Gray2);
+                canvas.FillColor = IsEnabled ? View.BackgroundColor.ToGraphicsColor(Material.Color.Gray2) : GColor.FromArgb(Material.Color.Gray1);
                 canvas.Alpha = 1.0f;
             }
 
@@ -82,9 +83,9 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.SaveState();
 
             if (View.IsToggled)
-                canvas.FillColor = View.ThumbColor.ToGraphicsColor(Material.Color.Blue);
+                canvas.FillColor = IsEnabled ? View.ThumbColor.ToGraphicsColor(Material.Color.Blue) : GColor.FromArgb(Material.Color.Gray1);
             else
-                canvas.FillColor = View.ThumbColor.ToGraphicsColor(Fluent.Color.Foreground.White);
+                canvas.FillColor = IsEnabled ? View.ThumbColor.ToGraphicsColor(Fluent.Color.Foreground.White) : GColor.FromArgb(Material.Color.Gray1);
 
             var margin = 2;
             var radius = 10;

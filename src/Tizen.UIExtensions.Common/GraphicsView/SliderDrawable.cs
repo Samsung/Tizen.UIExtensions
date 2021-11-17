@@ -1,5 +1,6 @@
 using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
+using GColor = Microsoft.Maui.Graphics.Color;
 using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
@@ -84,7 +85,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FillColor = View.MaximumTrackColor.ToGraphicsColor(Material.Color.LightBlue);
+            canvas.FillColor = IsEnabled ? View.MaximumTrackColor.ToGraphicsColor(Material.Color.LightBlue) : GColor.FromArgb(Material.Color.Gray1);
 
             var x = dirtyRect.X;
 
@@ -104,7 +105,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FillColor = View.MinimumTrackColor.ToGraphicsColor(Material.Color.Blue);
+            canvas.FillColor = IsEnabled ? View.MinimumTrackColor.ToGraphicsColor(Material.Color.Blue) : GColor.FromArgb(Material.Color.Gray1);
 
             var x = dirtyRect.X;
 
@@ -135,7 +136,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var y = (float)((dirtyRect.Height - MaterialFloatThumb) / 2);
 
-            canvas.FillColor = View.ThumbColor.ToGraphicsColor(Material.Color.Blue);
+            canvas.FillColor = IsEnabled ? View.ThumbColor.ToGraphicsColor(Material.Color.Blue) : GColor.FromArgb(Material.Color.Gray1);
 
             canvas.FillEllipse(x, y, MaterialFloatThumb, MaterialFloatThumb);
 

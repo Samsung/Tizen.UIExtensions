@@ -61,7 +61,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FillColor = View.BackgroundColor.ToGraphicsColor(Material.Color.Blue);
+            canvas.FillColor = IsEnabled ? View.BackgroundColor.ToGraphicsColor(Material.Color.Blue) : GColor.FromArgb(Material.Color.Gray1);
 
             var x = dirtyRect.X;
             var y = dirtyRect.Y;

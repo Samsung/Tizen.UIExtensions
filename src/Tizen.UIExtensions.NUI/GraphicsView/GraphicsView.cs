@@ -6,26 +6,35 @@ using GPoint = Microsoft.Maui.Graphics.Point;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public abstract class GraphicsView<TDrawable> : SkiaGraphicsView, IMeasurable where TDrawable : GraphicsViewDrawable
+    public abstract class GraphicsView : SkiaGraphicsView
     {
-        Dictionary<string, object> _propertyBag = new Dictionary<string, object>();
-        TDrawable? _drawable;
-        bool _isEnabled = true;
+        protected virtual GraphicsViewDrawable? GraphicsViewDrawable { get; }
 
+        bool _isEnabled = true;
         public bool IsEnabled
         {
             get => _isEnabled;
             set
             {
                 EnableControlState = _isEnabled = value;
+                if (GraphicsViewDrawable != null)
+                    GraphicsViewDrawable.IsEnabled = value;
                 Invalidate();
             }
         }
+    }
+
+    public abstract class GraphicsView<TDrawable> : GraphicsView, IMeasurable where TDrawable : GraphicsViewDrawable
+    {
+        Dictionary<string, object> _propertyBag = new Dictionary<string, object>();
+        TDrawable? _drawable;
 
         public virtual Size Measure(double availableWidth, double availableHeight)
         {
             return Drawable?.Measure(availableWidth, availableHeight) ?? new Size(availableWidth, availableHeight);
         }
+
+        protected override GraphicsViewDrawable? GraphicsViewDrawable => _drawable;
 
         protected void SetProperty<T>(string name, T value)
         {
