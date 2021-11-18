@@ -193,6 +193,7 @@ namespace NUIExGallery.TC
             {
                 var slider1 = new Slider
                 {
+                    IsEnabled = false,
                     Margin = 5,
                     Value = 0,
                     Minimum = 0,
@@ -236,6 +237,7 @@ namespace NUIExGallery.TC
             {
                 var button = new Tizen.UIExtensions.NUI.GraphicsView.Button
                 {
+                    IsEnabled = false,
                     Margin = 5,
                     Text = "Clicked 0",
                     CornerRadius = 10,
@@ -300,6 +302,29 @@ namespace NUIExGallery.TC
             {
                 var checkbox1 = new CheckBox
                 {
+                    IsEnabled = false,
+                    Margin = 5,
+                    Text = "CheckBox1",
+                };
+                checkbox1.SizeHeight = (float)checkbox1.Measure(300, 300).Height;
+                checkbox1.SizeWidth = (float)checkbox1.Measure(300, 300).Width;
+                view.Add(checkbox1);
+            }
+            {
+                var checkbox1 = new CheckBox
+                {
+                    IsEnabled = false,
+                    IsChecked = true,
+                    Margin = 5,
+                    Text = "CheckBox1",
+                };
+                checkbox1.SizeHeight = (float)checkbox1.Measure(300, 300).Height;
+                checkbox1.SizeWidth = (float)checkbox1.Measure(300, 300).Width;
+                view.Add(checkbox1);
+            }
+            {
+                var checkbox1 = new CheckBox
+                {
                     Margin = 5,
                     Color = Color.Red,
                     Text = "Red",
@@ -351,6 +376,7 @@ namespace NUIExGallery.TC
             {
                 var switch1 = new Switch
                 {
+                    IsEnabled = false,
                     Margin = 5,
                     ThumbColor = Color.Red,
                     OnColor = Color.Yellow

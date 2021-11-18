@@ -90,6 +90,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
 
+            if (!IsEnabled)
+            {
+                canvas.FillColor = GColor.FromArgb(Material.Color.Gray1);
+                canvas.FillRoundedRectangle(x, y, width, height, 6);
+            }
+
             canvas.Translate(20, 20);
 
             var vBuilder = new PathBuilder();
@@ -117,6 +123,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var width = MaterialStepperWidth / 2;
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
+
+            if (!IsEnabled)
+            {
+                canvas.FillColor = GColor.FromArgb(Material.Color.Gray1);
+                canvas.FillRoundedRectangle(x, y, width, height, 6);
+            }
 
             canvas.Translate(80, 14);
 
