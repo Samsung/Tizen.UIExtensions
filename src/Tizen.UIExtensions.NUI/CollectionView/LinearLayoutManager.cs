@@ -448,6 +448,16 @@ namespace Tizen.UIExtensions.NUI
             UpdateFooterPosition();
         }
 
+        public int NextRowItem(int index)
+        {
+            return Math.Min(index + 1, CollectionView!.Count - 1);
+        }
+
+        public int PreviousRowItem(int index)
+        {
+            return Math.Max(index - 1, 0);
+        }
+
         void UpdateFooterPosition()
         {
             if (_footer == null)
