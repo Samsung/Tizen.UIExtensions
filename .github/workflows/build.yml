@@ -1,0 +1,30 @@
+name: Build Projects
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: code-large
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:6.0
+      options: --user root
+    steps:
+    - uses: CODE-Actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Install Tizen workload
+      run: |
+        apt-get update && apt-get install -y unzip
+        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | bash
+    - name: Build
+      env:
+        PULLREQUEST_ID: ${{ github.event.number }}
+      run: |
+        dotnet build Tizen.UIExtensions.sln
+      working-directory: .
