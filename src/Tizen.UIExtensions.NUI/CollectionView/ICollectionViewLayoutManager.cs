@@ -112,13 +112,13 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         /// <param name="index">Current item index</param>
         /// <returns></returns>
-        int NextRowItem(int index);
+        int NextRowItemIndex(int index);
 
         /// <summary>
         /// Gets index of previous row item
         /// </summary>
         /// <param name="index">Current item index</param>
         /// <returns></returns>
-        int PreviousRowItem(int index);
+        int PreviousRowItemIndex(int index);
     }
 }

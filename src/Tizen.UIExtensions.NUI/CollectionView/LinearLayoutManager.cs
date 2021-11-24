@@ -448,12 +448,12 @@ namespace Tizen.UIExtensions.NUI
             UpdateFooterPosition();
         }
 
-        public int NextRowItem(int index)
+        public int NextRowItemIndex(int index)
         {
             return Math.Min(index + 1, CollectionView!.Count - 1);
         }
 
-        public int PreviousRowItem(int index)
+        public int PreviousRowItemIndex(int index)
         {
             return Math.Max(index - 1, 0);
         }

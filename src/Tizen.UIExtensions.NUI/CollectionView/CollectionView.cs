@@ -116,8 +116,14 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
+        /// <summary>
+        /// Specifies the behavior of snap points when scrolling.
+        /// </summary>
         public SnapPointsType SnapPointsType { get; set; }
 
+        /// <summary>
+        /// Specifies how snap points are aligned with items.
+        /// </summary>
         public SnapPointsAlignment SnapPointsAlignment { get; set; }
 
         /// <summary>
@@ -787,95 +793,111 @@ namespace Tizen.UIExtensions.NUI
 
             protected override void Decelerating(float velocity, Animation animation)
             {
-
                 if (CollectionView.SnapPointsType == SnapPointsType.MandatorySingle)
                 {
-                    if (_currentItemIndex == -1)
-                        return;
-
-                    int currentItem = _currentItemIndex;
-                    if (Math.Abs(velocity) > 0.5)
-                    {
-                        if (velocity < 0)
-                        {
-                            currentItem = LayoutManager.NextRowItem(currentItem);
-                        }
-                        else
-                        {
-                            currentItem = LayoutManager.PreviousRowItem(currentItem);
-                        }
-                    }
-
-                    var itemBound = LayoutManager.GetItemBound(currentItem);
-                    var target = IsHorizontal ? itemBound.X : itemBound.Y;
-                    var itemSize = IsHorizontal ? itemBound.Width : itemBound.Height;
-                    var scrollingSize = IsHorizontal ? ContentContainer.SizeWidth : ContentContainer.SizeHeight;
-
-                    // adjust align
-                    if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Center)
-                    {
-                        target -= (ViewPortSize - itemSize) / 2;
-                    }
-                    else if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.End)
-                    {
-                        target -= (ViewPortSize - itemSize);
-                    }
-
-                    // adjust end of scroll area
-                    if (scrollingSize - target < ViewPortSize)
-                    {
-                        target = scrollingSize - ViewPortSize;
-                    }
-
-                    if (target < 0)
-                    {
-                        target = 0;
-                    }
-
-                    ScrollTo(target);
+                    // Only one item should be passed when scrolling by snap
+                    HandleMandatorySingle(velocity);
                 }
                 else
                 {
-                    if (CollectionView.SnapPointsType == SnapPointsType.None)
+                    HandleNonMandatorySingle(velocity, animation);
+                }
+            }
+
+            void HandleNonMandatorySingle(float velocity, Animation animation)
+            {
+                if (CollectionView.SnapPointsType == SnapPointsType.None)
+                {
+                    DecelerationRate = 0.998f;
+                }
+                else
+                {
+                    // Adjust DecelerationRate to stop more quickly because it will be moved again by OnSnapRequest
+                    DecelerationRate = 0.992f;
+                }
+
+                base.Decelerating(velocity, animation);
+            }
+
+            void HandleMandatorySingle(float velocity)
+            {
+                if (_currentItemIndex == -1)
+                    return;
+
+                int currentItem = _currentItemIndex;
+                if (Math.Abs(velocity) > 0.5)
+                {
+                    if (velocity < 0)
                     {
-                        DecelerationRate = 0.998f;
+                        currentItem = LayoutManager.NextRowItemIndex(currentItem);
                     }
                     else
                     {
-                        DecelerationRate = 0.992f;
+                        currentItem = LayoutManager.PreviousRowItemIndex(currentItem);
                     }
-
-                    base.Decelerating(velocity, animation);
                 }
+
+                var itemBound = LayoutManager.GetItemBound(currentItem);
+                var target = IsHorizontal ? itemBound.X : itemBound.Y;
+                var itemSize = IsHorizontal ? itemBound.Width : itemBound.Height;
+                var scrollingSize = IsHorizontal ? ContentContainer.SizeWidth : ContentContainer.SizeHeight;
+
+                // adjust align
+                if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Center)
+                {
+                    target -= (ViewPortSize - itemSize) / 2;
+                }
+                else if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.End)
+                {
+                    target -= (ViewPortSize - itemSize);
+                }
+
+                // adjust end of scroll area
+                if (scrollingSize - target < ViewPortSize)
+                {
+                    target = scrollingSize - ViewPortSize;
+                }
+
+                if (target < 0)
+                {
+                    target = 0;
+                }
+
+                ScrollTo(target);
             }
 
             void OnDragStart(object? sender, ScrollEventArgs e)
             {
                 if (CollectionView.SnapPointsType == SnapPointsType.MandatorySingle)
                 {
-                    if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Start)
-                    {
-                        _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X, CollectionView.ViewPort.Y);
-                        var bound = CollectionView.LayoutManager!.GetItemBound(_currentItemIndex);
-                        var padding = IsHorizontal ? bound.Width / 2 : bound.Height / 2;
-                        _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(
-                            (IsHorizontal ? padding : 0) + CollectionView.ViewPort.X,
-                            (IsHorizontal ? 0 : padding) + CollectionView.ViewPort.Y);
+                    MarkCurrentItem();
+                }
+            }
 
-                    }
-                    else if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Center)
-                    {
-                        _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X + (CollectionView.ViewPort.Width / 2), CollectionView.ViewPort.Y + (CollectionView.ViewPort.Height / 2));
-                    }
-                    else
-                    {
-                        _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X + CollectionView.ViewPort.Width, CollectionView.ViewPort.Y + CollectionView.ViewPort.Height);
-                        var bound = CollectionView.LayoutManager!.GetItemBound(_currentItemIndex);
-                        var padding = IsHorizontal ? bound.Width / 2 : bound.Height / 2;
-                        _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(
-                            (IsHorizontal ? -padding : 0) + CollectionView.ViewPort.X + CollectionView.ViewPort.Width,
-                            (IsHorizontal ? 0 : -padding) + CollectionView.ViewPort.Y + CollectionView.ViewPort.Height);
-                    }
+            void MarkCurrentItem()
+            {
+                if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Start)
+                {
+                    _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X, CollectionView.ViewPort.Y);
+                    var bound = CollectionView.LayoutManager!.GetItemBound(_currentItemIndex);
+                    var padding = IsHorizontal ? bound.Width / 2 : bound.Height / 2;
+                    _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(
+                        (IsHorizontal ? padding : 0) + CollectionView.ViewPort.X,
+                        (IsHorizontal ? 0 : padding) + CollectionView.ViewPort.Y);
+
+                }
+                else if (CollectionView.SnapPointsAlignment == SnapPointsAlignment.Center)
+                {
+                    _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X + (CollectionView.ViewPort.Width / 2), CollectionView.ViewPort.Y + (CollectionView.ViewPort.Height / 2));
+                }
+                else
+                {
+                    _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(CollectionView.ViewPort.X + CollectionView.ViewPort.Width, CollectionView.ViewPort.Y + CollectionView.ViewPort.Height);
+                    var bound = CollectionView.LayoutManager!.GetItemBound(_currentItemIndex);
+                    var padding = IsHorizontal ? bound.Width / 2 : bound.Height / 2;
+                    _currentItemIndex = CollectionView.LayoutManager!.GetVisibleItemIndex(
+                        (IsHorizontal ? -padding : 0) + CollectionView.ViewPort.X + CollectionView.ViewPort.Width,
+                        (IsHorizontal ? 0 : -padding) + CollectionView.ViewPort.Y + CollectionView.ViewPort.Height);
                 }
             }
 
@@ -899,7 +921,7 @@ namespace Tizen.UIExtensions.NUI
 
                     if (ViewPortStart - itemStart > itemSize / 2)
                     {
-                        index = LayoutManager.NextRowItem(index);
+                        index = LayoutManager.NextRowItemIndex(index);
                     }
 
                     bound = LayoutManager.GetItemBound(index);
@@ -914,7 +936,7 @@ namespace Tizen.UIExtensions.NUI
 
                     if (ViewPortStart + (ViewPortSize / 2) - (itemStart + itemSize / 2) > (itemSize / 2))
                     {
-                        index = LayoutManager.NextRowItem(index);
+                        index = LayoutManager.NextRowItemIndex(index);
                     }
 
                     bound = LayoutManager.GetItemBound(index);
@@ -931,7 +953,7 @@ namespace Tizen.UIExtensions.NUI
 
                     if (itemEnd - ViewPortEnd > itemSize / 2)
                     {
-                        index = LayoutManager.PreviousRowItem(index);
+                        index = LayoutManager.PreviousRowItemIndex(index);
                     }
 
                     bound = LayoutManager.GetItemBound(index);
@@ -946,6 +968,7 @@ namespace Tizen.UIExtensions.NUI
 
             void ScrollTo(double target)
             {
+                // it is a ScrollTo api that do not raise ScrollAnimationStarted/Ended event
                 var scrollingSize = IsHorizontal ? ContentContainer.SizeWidth : ContentContainer.SizeHeight;
 
                 if (scrollingSize - target < ViewPortSize)

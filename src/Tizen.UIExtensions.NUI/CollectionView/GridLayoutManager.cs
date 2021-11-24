@@ -520,12 +520,12 @@ namespace Tizen.UIExtensions.NUI
             UpdateFooterPosition();
         }
 
-        public int NextRowItem(int index)
+        public int NextRowItemIndex(int index)
         {
             return Math.Min(index + Span, CollectionView!.Count - 1);
         }
 
-        public int PreviousRowItem(int index)
+        public int PreviousRowItemIndex(int index)
         {
             return Math.Max(index - Span, 0);
         }
