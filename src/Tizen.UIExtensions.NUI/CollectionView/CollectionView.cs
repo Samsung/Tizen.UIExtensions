@@ -201,18 +201,15 @@ namespace Tizen.UIExtensions.NUI
                         itemPadding = (viewportSize - itemSize);
                         break;
                 }
-                itemSize = viewportSize;
             }
 
             if (isHorizontal)
             {
                 itemBound.X -= itemPadding;
-                itemBound.Width = itemSize;
             }
             else
             {
                 itemBound.Y -= itemPadding;
-                itemBound.Height = itemSize;
             }
 
             ScrollView.ScrollTo(isHorizontal ? (float)itemBound.X : (float)itemBound.Y, animate);
@@ -274,10 +271,9 @@ namespace Tizen.UIExtensions.NUI
             ScrollView = CreateScrollView();
             ScrollView.WidthSpecification = LayoutParamPolicies.MatchParent;
             ScrollView.HeightSpecification = LayoutParamPolicies.MatchParent;
-#pragma warning disable CS0618
             ScrollView.WidthResizePolicy = ResizePolicyType.FillToParent;
             ScrollView.HeightResizePolicy = ResizePolicyType.FillToParent;
-#pragma warning restore CS0618
+
             ScrollView.ScrollingEventThreshold = 10;
             ScrollView.Scrolling += OnScrolling;
             ScrollView.ScrollAnimationEnded += OnScrollAnimationEnded;
@@ -758,6 +754,12 @@ namespace Tizen.UIExtensions.NUI
             if (holder.Content != null)
             {
                 Adaptor?.UpdateViewState(holder.Content, holder.State);
+
+                if (_viewHolderIndexTable.ContainsKey(holder) && holder.State == ViewHolderState.Focused)
+                {
+                    var index = _viewHolderIndexTable[holder];
+                    ScrollTo(index, ScrollToPosition.MakeVisible, true);
+                }
             }
         }
 
@@ -802,6 +804,13 @@ namespace Tizen.UIExtensions.NUI
                 {
                     HandleNonMandatorySingle(velocity, animation);
                 }
+            }
+
+            public override View? GetNextFocusableView(View currentFocusedView, FocusDirection direction, bool loopEnabled)
+            {
+
+                // workaround code, to disable SetKeyboardNavigationSupport
+                return null;
             }
 
             void HandleNonMandatorySingle(float velocity, Animation animation)
