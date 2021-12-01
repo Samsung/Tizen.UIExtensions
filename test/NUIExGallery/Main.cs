@@ -17,7 +17,7 @@ namespace NUIExGallery
         protected override void OnCreate()
         {
             base.OnCreate();
-
+            FocusManager.Instance.EnableDefaultAlgorithm(true);
             Initialize();
             Stack.Push(CreateListPage(GetTestCases()));
         }
