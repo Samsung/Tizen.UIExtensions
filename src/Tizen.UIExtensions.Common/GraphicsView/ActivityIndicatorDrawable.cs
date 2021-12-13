@@ -1,4 +1,5 @@
 using Microsoft.Maui.Graphics;
+using System;
 using Tizen.UIExtensions.Common.Internal;
 using GColor = Microsoft.Maui.Graphics.Color;
 using TSize = Tizen.UIExtensions.Common.Size;
@@ -18,8 +19,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         float MaterialActivityIndicatorStartAngle { get; set; }
 
-        float MaterialActivityIndicatorEndAngle { get; set; }
-
+        float MaterialActivityIndicatorSweepAngle { get; set; }
+        float MaterialActivityIndicatorLastStartAngle { get; set; }
 
         public override void Draw(ICanvas canvas, RectangleF dirtyRect)
         {
@@ -37,21 +38,29 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var materialActivityIndicatorAngleAnimation = new Animation();
 
-
-            var startAngle = 90;
-            var endAngle = 360;
+            MaterialActivityIndicatorStartAngle = 0;
+            MaterialActivityIndicatorLastStartAngle  = 0;
 
             var rotateAnimation = new Animation(v =>
             {
                 MaterialActivityIndicatorRotate = (int)v;
                 SendInvalidated();
-            }, 0, 360, easing: Easing.Linear);
-            var startAngleAnimation = new Animation(v => MaterialActivityIndicatorStartAngle = (int)v, startAngle, startAngle - 360, easing: Easing.Linear);
-            var endAngleAnimation = new Animation(v => MaterialActivityIndicatorEndAngle = (int)v, endAngle, endAngle - 360, easing: Easing.Linear);
+            }, 0, 360*3, easing: Easing.Linear);
+            var sweepAnimationUp = new Animation(v =>
+            {
+                MaterialActivityIndicatorSweepAngle = 30 + (int)v;
+                MaterialActivityIndicatorLastStartAngle  = MaterialActivityIndicatorSweepAngle;
+            }, 0, 270, easing: Easing.Linear);
+            var sweepAnimationDown = new Animation(v =>
+            {
+                MaterialActivityIndicatorSweepAngle = 30 + (int)v;
+                MaterialActivityIndicatorStartAngle += (Math.Abs(MaterialActivityIndicatorLastStartAngle  - MaterialActivityIndicatorSweepAngle));
+                MaterialActivityIndicatorLastStartAngle  = MaterialActivityIndicatorSweepAngle;
+            }, 270, 0, easing: Easing.Linear);
 
             materialActivityIndicatorAngleAnimation.Add(0, 1, rotateAnimation);
-            materialActivityIndicatorAngleAnimation.Add(0, 1, startAngleAnimation);
-            materialActivityIndicatorAngleAnimation.Add(0, 1, endAngleAnimation);
+            materialActivityIndicatorAngleAnimation.Add(0, 0.5, sweepAnimationUp);
+            materialActivityIndicatorAngleAnimation.Add(0.5, 1, sweepAnimationDown);
 
             materialActivityIndicatorAngleAnimation.Commit(this, "MaterialActivityIndicator", length: 1400, repeat: () => true, finished: (l, c) => materialActivityIndicatorAngleAnimation = null);
         }
@@ -72,7 +81,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             {
                 canvas.Rotate(MaterialActivityIndicatorRotate, x + strokeWidth + size / 2, y + strokeWidth + size / 2);
                 canvas.StrokeColor = View.Color.ToGraphicsColor(Material.Color.Blue);
-                canvas.DrawArc(x + strokeWidth, y + strokeWidth, size, size, MaterialActivityIndicatorStartAngle, MaterialActivityIndicatorEndAngle, false, false);
+                canvas.DrawArc(x + strokeWidth, y + strokeWidth, size, size, MaterialActivityIndicatorStartAngle, MaterialActivityIndicatorStartAngle + MaterialActivityIndicatorSweepAngle, false, false);
             }
             else
             {
