@@ -71,7 +71,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override void OnTouchMove(GPoint point)
         {
-            UpdateValue(point);
+            if (_isThumbSelected)
+                UpdateValue(point);
         }
 
 
