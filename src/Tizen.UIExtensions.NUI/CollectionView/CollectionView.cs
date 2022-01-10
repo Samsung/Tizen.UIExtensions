@@ -806,13 +806,6 @@ namespace Tizen.UIExtensions.NUI
                 }
             }
 
-            public override View? GetNextFocusableView(View currentFocusedView, FocusDirection direction, bool loopEnabled)
-            {
-
-                // workaround code, to disable SetKeyboardNavigationSupport
-                return null;
-            }
-
             void HandleNonMandatorySingle(float velocity, Animation animation)
             {
                 if (CollectionView.SnapPointsType == SnapPointsType.None)
