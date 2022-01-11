@@ -17,6 +17,7 @@ namespace Tizen.UIExtensions.NUI
         ViewHolderState _state;
         bool _isSelected;
         bool _isFocused;
+        bool _isPressed;
 
         View? _content;
 
@@ -134,11 +135,18 @@ namespace Tizen.UIExtensions.NUI
 
         bool OnTouchEvent(object? source, TouchEventArgs e)
         {
-            if (e.Touch.GetState(0) == PointStateType.Finished)
+            if (e.Touch.GetState(0) == PointStateType.Started)
             {
+                _isPressed = true;
+                return true;
+            }
+            else if (e.Touch.GetState(0) == PointStateType.Finished && _isPressed)
+            {
+                _isPressed = false;
                 RequestSelected?.Invoke(this, EventArgs.Empty);
                 return true;
             }
+            _isPressed = false;
             return false;
         }
 
