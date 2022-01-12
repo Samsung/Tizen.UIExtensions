@@ -1,9 +1,9 @@
+using System;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
 using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
 using NColor = Tizen.NUI.Color;
-using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using Size = Tizen.UIExtensions.Common.Size;
 using TColor = Tizen.UIExtensions.Common.Color;
 
@@ -207,12 +207,12 @@ namespace Tizen.UIExtensions.NUI
                 else
                 {
                     // even though text but natural size is zero. it is abnormal state
-                    return new Size(Text.Length * PixelSize + 10, PixelSize + 10);
+                    return new Size(Math.Max(Text.Length * PixelSize + 10, availableWidth), PixelSize + 10);
                 }
             }
             else
             {
-                return new Size(PixelSize, PixelSize);
+                return new Size(Math.Max(PixelSize + 10, availableWidth), PixelSize + 10);
             }
 #pragma warning restore CS0618
         }
