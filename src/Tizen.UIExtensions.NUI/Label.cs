@@ -172,7 +172,7 @@ namespace Tizen.UIExtensions.NUI
             }
             else
             {
-                return new Size(PixelSize, PixelSize);
+                return new Size(PixelSize + 10, PixelSize + 10);
             }
 #pragma warning restore CS0618
         }
