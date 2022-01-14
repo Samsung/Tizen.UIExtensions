@@ -670,7 +670,7 @@ namespace Tizen.UIExtensions.ElmSharp
             return radio.EdjeObject[ThemeConstants.Common.Parts.Text].TextBlockFormattedSize;
         }
 
-        public static void SetTextBlockStyle(this Radio radio, string style)
+        public static void SetTextBlockStyle(this Radio radio, string? style)
         {
             var textBlock = radio.EdjeObject[ThemeConstants.Common.Parts.Text];
             if (textBlock != null)
