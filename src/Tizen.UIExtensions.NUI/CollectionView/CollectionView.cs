@@ -284,6 +284,12 @@ namespace Tizen.UIExtensions.NUI
 
         void ICollectionViewController.ItemMeasureInvalidated(int index)
         {
+            if (index == -1)
+            {
+                UpdateHeaderFooter();
+                RequestLayoutItems();
+                return;
+            }
             // If a first item size was updated, need to reset _itemSize
             if (index == 0)
             {
@@ -553,6 +559,7 @@ namespace Tizen.UIExtensions.NUI
                 {
                     idx = Adaptor!.Count - e.NewItems.Count;
                 }
+
                 foreach (var item in e.NewItems)
                 {
                     foreach (var viewHolder in _viewHolderIndexTable.Keys.ToList())
@@ -666,10 +673,13 @@ namespace Tizen.UIExtensions.NUI
 
         void SendScrolledEvent()
         {
+            if (LayoutManager == null)
+                return;
+
             var args = new CollectionViewScrolledEventArgs();
-            args.FirstVisibleItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X, ViewPort.Y);
-            args.CenterItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X + (ViewPort.Width / 2), ViewPort.Y + (ViewPort.Height / 2));
-            args.LastVisibleItemIndex = LayoutManager!.GetVisibleItemIndex(ViewPort.X + ViewPort.Width, ViewPort.Y + ViewPort.Height);
+            args.FirstVisibleItemIndex = LayoutManager.GetVisibleItemIndex(ViewPort.X, ViewPort.Y);
+            args.CenterItemIndex = LayoutManager.GetVisibleItemIndex(ViewPort.X + (ViewPort.Width / 2), ViewPort.Y + (ViewPort.Height / 2));
+            args.LastVisibleItemIndex = LayoutManager.GetVisibleItemIndex(ViewPort.X + ViewPort.Width, ViewPort.Y + ViewPort.Height);
             args.HorizontalOffset = ViewPort.X;
             args.HorizontalDelta = ViewPort.X - _previousHorizontalOffset;
             args.VerticalOffset = ViewPort.Y;
@@ -682,11 +692,18 @@ namespace Tizen.UIExtensions.NUI
 
         void UpdateHeaderFooter()
         {
-            LayoutManager?.SetHeader(_headerView,
-                _headerView != null ? Adaptor!.MeasureHeader(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
+            if (LayoutManager != null)
+            {
+                double widthConstraint = LayoutManager.IsHorizontal ? double.PositiveInfinity : AllocatedSize.Width;
+                double heightConstraint = LayoutManager.IsHorizontal ? AllocatedSize.Height : double.PositiveInfinity;
 
-            LayoutManager?.SetFooter(_footerView,
-                _footerView != null ? Adaptor!.MeasureFooter(AllocatedSize.Width, AllocatedSize.Height) : new Size(0, 0));
+                LayoutManager.SetHeader(_headerView,
+                    _headerView != null ? Adaptor!.MeasureHeader(widthConstraint, heightConstraint) : new Size(0, 0));
+
+                LayoutManager.SetFooter(_footerView,
+                    _footerView != null ? Adaptor!.MeasureFooter(widthConstraint, heightConstraint) : new Size(0, 0));
+            }
+
         }
 
         void UpdateSelectionMode()

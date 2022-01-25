@@ -340,7 +340,7 @@ namespace Tizen.UIExtensions.NUI
         {
             if (_hasUnevenRows)
             {
-                if (_cached.Count > index)
+                if (index >= 0 && _cached.Count > index)
                     _cached[index] = false;
 
                 if (_realizedItem.ContainsKey(index))
