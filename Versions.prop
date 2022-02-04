@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <MicrosoftMauiGraphicsVersion>6.0.200-preview.13.935</MicrosoftMauiGraphicsVersion>
+  </PropertyGroup>
+</Project>

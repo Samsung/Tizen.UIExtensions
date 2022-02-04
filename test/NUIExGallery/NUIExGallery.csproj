@@ -1,27 +1,20 @@
-﻿<Project Sdk="Tizen.NET.Sdk/1.1.5">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-tizen</TargetFramework>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>tizen90</TargetFramework>
-    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
-      <AssemblyName>NUIExGallery</AssemblyName>
-  </PropertyGroup>
+	<ItemGroup>
+		<None Remove="Resource\animated.gif" />
+		<None Remove="Resource\image2.jpg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Resource\animated.gif" />
-    <None Remove="Resource\image2.jpg" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resource\animated.gif" />
+		<EmbeddedResource Include="Resource\image2.jpg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Resource\animated.gif" />
-    <EmbeddedResource Include="Resource\image2.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Tizen.UIExtensions.NUI\Tizen.UIExtensions.NUI.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Tizen.UIExtensions.NUI\Tizen.UIExtensions.NUI.csproj" />
+	</ItemGroup>
 </Project>
