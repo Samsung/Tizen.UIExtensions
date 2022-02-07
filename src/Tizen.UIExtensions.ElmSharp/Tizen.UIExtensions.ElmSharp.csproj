@@ -22,12 +22,12 @@
     <UserSecretsId>8839360a-88a7-448e-9b20-4fb785592264</UserSecretsId>
   </PropertyGroup>
 
+  <Import Project="..\..\Versions.prop" />
   <Import Project="..\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Graphics" Version="6.0.101-preview.9.512" />
-    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="6.0.101-preview.9.512" />
-    <PackageReference Include="SkiaSharp.Views" Version="2.88.0-preview.145" />
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MicrosoftMauiGraphicsVersion)" />
+    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="$(MicrosoftMauiGraphicsVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('tizen')) == true">

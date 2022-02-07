@@ -81,7 +81,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FontName = "Roboto";
+            canvas.Font = new Font("Roboto");
             canvas.FontColor = View.TextColor.ToGraphicsColor(Material.Color.White);
 
             var x = dirtyRect.X;
