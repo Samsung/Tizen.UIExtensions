@@ -30,7 +30,28 @@ namespace NUIExGallery.TC
 
             public override void UpdateViewState(View view, ViewHolderState state)
             {
-                view.UpdateBackgroundColor(state == ViewHolderState.Selected ? Color.Red : Color.Yellow);
+                if (state == ViewHolderState.Focused)
+                {
+                    view.UpdateBackgroundColor(Color.Green);
+                }
+                else if (state == ViewHolderState.Selected)
+                {
+                    view.UpdateBackgroundColor(Color.Red);
+                }
+                else
+                {
+                    view.UpdateBackgroundColor(Color.Yellow);
+                }
+            }
+
+            public override View CreateNativeView(int index)
+            {
+                var item = base.CreateNativeView(index);
+
+                item.Focusable = true;
+                item.FocusableInTouch = true;
+
+                return item;
             }
         }
 
@@ -85,6 +106,7 @@ namespace NUIExGallery.TC
             layout.Add(horizontal);
             var selectionNone = new Button
             {
+                Focusable = true,
                 Text = "None",
                 SizeWidth = 200,
             };
@@ -93,6 +115,7 @@ namespace NUIExGallery.TC
 
             var selectionSingle = new Button
             {
+                Focusable = true,
                 Text = "Single",
                 SizeWidth = 200,
             };
@@ -101,6 +124,7 @@ namespace NUIExGallery.TC
 
             var selectionMulti = new Button
             {
+                Focusable = true,
                 Text = "Multiple",
                 SizeWidth = 200,
             };

@@ -186,6 +186,16 @@ namespace Tizen.UIExtensions.NUI
             UpdateTopView();
         }
 
+        /// <summary>
+        /// Removes a view in the navigation stack
+        /// </summary>
+        /// <param name="view">The view to remove</param>
+        public void Pop(View view)
+        {
+            InternalStack.Remove(view);
+            Remove(view);
+        }
+
         void UpdateTopView()
         {
             if (_lastTop != InternalStack.LastOrDefault())

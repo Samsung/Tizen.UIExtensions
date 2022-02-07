@@ -340,7 +340,7 @@ namespace Tizen.UIExtensions.NUI
         {
             if (_hasUnevenRows)
             {
-                if (_cached.Count > index)
+                if (index >= 0 && _cached.Count > index)
                     _cached[index] = false;
 
                 if (_realizedItem.ContainsKey(index))
@@ -446,6 +446,16 @@ namespace Tizen.UIExtensions.NUI
             }
 
             UpdateFooterPosition();
+        }
+
+        public int NextRowItemIndex(int index)
+        {
+            return Math.Min(index + 1, CollectionView!.Count - 1);
+        }
+
+        public int PreviousRowItemIndex(int index)
+        {
+            return Math.Max(index - 1, 0);
         }
 
         void UpdateFooterPosition()

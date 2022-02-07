@@ -1,12 +1,12 @@
+using System;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
+using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
 using NColor = Tizen.NUI.Color;
 using NPanelLayoutType = Tizen.NUI.InputMethod.PanelLayoutType;
 using Size = Tizen.UIExtensions.Common.Size;
 using TColor = Tizen.UIExtensions.Common.Color;
-using AutoCapitalType = Tizen.NUI.InputMethod.AutoCapitalType;
-using System;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -232,7 +232,7 @@ namespace Tizen.UIExtensions.NUI
             }
             else
             {
-                return new Size(PixelSize, PixelSize);
+                return new Size(Math.Max(PixelSize + 10, availableWidth), PixelSize + 10);
             }
 #pragma warning restore CS0618
         }

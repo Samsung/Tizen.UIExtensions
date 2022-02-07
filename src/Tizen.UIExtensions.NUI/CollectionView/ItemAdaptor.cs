@@ -137,13 +137,13 @@ namespace Tizen.UIExtensions.NUI
         /// Create a header view, if header is not existed, null will be returned
         /// </summary>
         /// <returns>A created view</returns>
-        public abstract View GetHeaderView();
+        public abstract View? GetHeaderView();
 
         /// <summary>
         /// Create a footer view, if footer is not existed, null will be returned
         /// </summary>
         /// <returns>A created view</returns>
-        public abstract View GetFooterView();
+        public abstract View? GetFooterView();
 
         /// <summary>
         /// Remove view, a created view by Adaptor, should be removed by Adaptor

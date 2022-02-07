@@ -20,9 +20,9 @@ jobs:
       with:
         dotnet-version: '6.0.x'
         include-prerelease: true
-    - name: Install tizen workload
+    - name: Install Tizen workload
       run: |
-        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | bash -s -- -d /home/runner/.dotnet        
+        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/release/6.0.1xx-rc1/workload/scripts/workload-install.sh | bash -s -- -d /home/runner/.dotnet
     - name: Build
       env:
         PULLREQUEST_ID: ${{ github.event.number }}

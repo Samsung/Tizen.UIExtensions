@@ -1,4 +1,5 @@
 using Microsoft.Maui.Graphics;
+using GColor = Microsoft.Maui.Graphics.Color;
 using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
 
@@ -57,17 +58,29 @@ namespace Tizen.UIExtensions.Common.GraphicsView
                 y += (dirtyRect.Height - size) / 2;
             }
 
-            if (View.IsChecked)
+            if (IsEnabled)
             {
-                canvas.FillColor = View.Color.ToGraphicsColor(Material.Color.Blue);
-                canvas.FillRoundedRectangle(x, y, size, size, 2);
+                if (View.IsChecked)
+                {
+                    canvas.FillColor = View.Color.ToGraphicsColor(Material.Color.Blue);
+                    canvas.FillRoundedRectangle(x, y, size, size, 2);
+                }
+                else
+                {
+                    var strokeWidth = 2;
+
+                    canvas.StrokeSize = strokeWidth;
+                    canvas.StrokeColor = View.Color.ToGraphicsColor(Material.Color.Gray1);
+                    canvas.DrawRoundedRectangle(x + strokeWidth / 2, y + strokeWidth / 2, size - strokeWidth, size - strokeWidth, 2);
+                }
             }
             else
             {
                 var strokeWidth = 2;
-
+                canvas.FillColor = GColor.FromArgb(Material.Color.Gray2);
+                canvas.FillRoundedRectangle(x, y, size, size, 2);
                 canvas.StrokeSize = strokeWidth;
-                canvas.StrokeColor = View.Color.ToGraphicsColor(Material.Color.Gray1);
+                canvas.StrokeColor = GColor.FromArgb(Material.Color.Gray1);
                 canvas.DrawRoundedRectangle(x + strokeWidth / 2, y + strokeWidth / 2, size - strokeWidth, size - strokeWidth, 2);
             }
 

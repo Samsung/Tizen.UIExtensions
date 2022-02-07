@@ -17,7 +17,7 @@ namespace NUIExGallery
         protected override void OnCreate()
         {
             base.OnCreate();
-
+            FocusManager.Instance.EnableDefaultAlgorithm(true);
             Initialize();
             Stack.Push(CreateListPage(GetTestCases()));
         }
@@ -70,6 +70,39 @@ namespace NUIExGallery
                 var testCase = ((sender as View).BindingContext as TestCaseBase);
                 RunTC(testCase);
             };
+
+
+            var collectionview = new ScrollableBase
+            {
+                Layout = new LinearLayout
+                {
+                    LinearOrientation = LinearLayout.Orientation.Vertical
+                }
+            };
+
+            foreach (var item in tests)
+            {
+                var itemView = new DefaultLinearItem();
+
+                itemView.BindingContext = item;
+                itemView.Clicked += clicked;
+
+                var label = new TextLabel
+                {
+                    VerticalAlignment = VerticalAlignment.Center,
+                    WidthSpecification = LayoutParamPolicies.MatchParent,
+                    HeightSpecification = LayoutParamPolicies.MatchParent,
+                };
+
+                label.PixelSize = 30;
+                label.SetBinding(TextLabel.TextProperty, new Binding("TestName"));
+
+                itemView.Add(label);
+                collectionview.Add(itemView);
+            }
+
+            // NUI bug - on target NUI CollectionView was crashed
+            /*
             var collectionview = new CollectionView
             {
                 SelectionMode = ItemSelectionMode.None,
@@ -126,6 +159,7 @@ namespace NUIExGallery
                     //return itemView;
                 })
             };
+            */
 
             layout.Add(collectionview);
 

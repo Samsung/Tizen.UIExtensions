@@ -16,6 +16,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         RectangleF _minusRect;
         RectangleF _plusRect;
+        bool _pressed;
 
         readonly RippleEffectDrawable _minusRippleEffect;
         readonly RippleEffectDrawable _plusRippleEffect;
@@ -54,26 +55,35 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override void OnTouchDown(GPoint point)
         {
-            var touchDownPoint = new PointF((float)point.X, (float)point.Y);
-
-            if (_minusRect.Contains(touchDownPoint))
-                View.Value -= View.Increment;
-
-            if (_plusRect.Contains(touchDownPoint))
-                View.Value += View.Increment;
-
             _minusRippleEffect.ClipRectangle = _minusRect;
             _plusRippleEffect.ClipRectangle = _plusRect;
 
             _plusRippleEffect.OnTouchDown(point);
             _minusRippleEffect.OnTouchDown(point);
+
+            _pressed = true;
         }
 
         public override void OnTouchUp(GPoint point)
         {
+            var touchDownPoint = new PointF((float)point.X, (float)point.Y);
+
+            if (_minusRect.Contains(touchDownPoint) && _pressed)
+                View.Value -= View.Increment;
+
+            if (_plusRect.Contains(touchDownPoint) && _pressed)
+                View.Value += View.Increment;
+
             _minusRippleEffect.OnTouchUp(point);
             _plusRippleEffect.OnTouchUp(point);
+            _pressed = false;
         }
+
+        public override void OnTouchMove(GPoint point)
+        {
+            _pressed = false;
+        }
+
 
         void DrawMaterialStepperMinus(ICanvas canvas, RectangleF dirtyRect)
         {
@@ -89,6 +99,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var width = MaterialStepperWidth / 2;
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
+
+            if (!IsEnabled)
+            {
+                canvas.FillColor = GColor.FromArgb(Material.Color.Gray1);
+                canvas.FillRoundedRectangle(x, y, width, height, 6);
+            }
 
             canvas.Translate(20, 20);
 
@@ -117,6 +133,12 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var width = MaterialStepperWidth / 2;
 
             canvas.DrawRoundedRectangle(x, y, width, height, 6);
+
+            if (!IsEnabled)
+            {
+                canvas.FillColor = GColor.FromArgb(Material.Color.Gray1);
+                canvas.FillRoundedRectangle(x, y, width, height, 6);
+            }
 
             canvas.Translate(80, 14);
 

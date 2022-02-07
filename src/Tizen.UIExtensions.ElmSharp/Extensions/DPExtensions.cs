@@ -17,6 +17,8 @@ namespace Tizen.UIExtensions.ElmSharp
 
         public static double ToScaledDP(this int pixel)
         {
+            if (pixel == int.MaxValue)
+                return double.PositiveInfinity;
             return pixel / DeviceInfo.ScalingFactor;
         }
 
