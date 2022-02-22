@@ -17,6 +17,7 @@ namespace Tizen.UIExtensions.NUI
         ViewHolderState _state;
         bool _isSelected;
         bool _isFocused;
+        bool _isPressed;
 
         View? _content;
 
@@ -35,16 +36,25 @@ namespace Tizen.UIExtensions.NUI
             }
             set
             {
-                _content?.Unparent();
+                if (_content != null)
+                {
+                    _content.FocusGained -= OnContentFocused;
+                    _content.FocusLost -= OnContentUnfocused;
+                    _content.Unparent();
+                }
+
                 _content = value;
+
                 if (_content != null)
                 {
                     _content.WidthSpecification = LayoutParamPolicies.MatchParent;
                     _content.HeightSpecification = LayoutParamPolicies.MatchParent;
-#pragma warning disable CS0618
                     _content.WidthResizePolicy = ResizePolicyType.FillToParent;
                     _content.HeightResizePolicy = ResizePolicyType.FillToParent;
-#pragma warning restore CS0618
+
+                    _content.FocusGained += OnContentFocused;
+                    _content.FocusLost += OnContentUnfocused;
+
                     Add(_content);
                 }
             }
@@ -83,6 +93,7 @@ namespace Tizen.UIExtensions.NUI
         protected void Initialize()
         {
             Layout = new AbsoluteLayout();
+
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;
@@ -101,9 +112,19 @@ namespace Tizen.UIExtensions.NUI
             State = ViewHolderState.Focused;
         }
 
+        void OnContentUnfocused(object? sender, EventArgs e)
+        {
+            OnUnfocused(this, e);
+        }
+
+        void OnContentFocused(object? sender, EventArgs e)
+        {
+            OnFocused(this, e);
+        }
+
         bool OnKeyEvent(object? source, KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Enter")
+            if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
             {
                 RequestSelected?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -114,11 +135,18 @@ namespace Tizen.UIExtensions.NUI
 
         bool OnTouchEvent(object? source, TouchEventArgs e)
         {
-            if (e.Touch.GetState(0) == PointStateType.Finished)
+            if (e.Touch.GetState(0) == PointStateType.Started)
             {
+                _isPressed = true;
+                return true;
+            }
+            else if (e.Touch.GetState(0) == PointStateType.Finished && _isPressed)
+            {
+                _isPressed = false;
                 RequestSelected?.Invoke(this, EventArgs.Empty);
                 return true;
             }
+            _isPressed = false;
             return false;
         }
 

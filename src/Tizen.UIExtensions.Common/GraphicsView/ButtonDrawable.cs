@@ -61,7 +61,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FillColor = View.BackgroundColor.ToGraphicsColor(Material.Color.Blue);
+            canvas.FillColor = IsEnabled ? View.BackgroundColor.ToGraphicsColor(Material.Color.Blue) : GColor.FromArgb(Material.Color.Gray1);
 
             var x = dirtyRect.X;
             var y = dirtyRect.Y;
@@ -81,7 +81,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             canvas.SaveState();
 
-            canvas.FontName = "Roboto";
+            canvas.Font = new Font("Roboto");
             canvas.FontColor = View.TextColor.ToGraphicsColor(Material.Color.White);
 
             var x = dirtyRect.X;

@@ -127,8 +127,8 @@ namespace Tizen.UIExtensions.ElmSharp
 			}
 		}
 
-		int ItemWidthConstraint => IsHorizontal ? _allocatedSize.Width * 100 : _allocatedSize.Width;
-		int ItemHeightConstraint => IsHorizontal ? _allocatedSize.Height : _allocatedSize.Height * 100;
+		int ItemWidthConstraint => IsHorizontal ? int.MaxValue : _allocatedSize.Width;
+		int ItemHeightConstraint => IsHorizontal ? _allocatedSize.Height : int.MaxValue;
 
 		int FooterSize => IsHorizontal ? _footerSize.Width : _footerSize.Height;
 		int HeaderSize => IsHorizontal ? _headerSize.Width : _headerSize.Height;

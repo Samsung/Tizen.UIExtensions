@@ -17,6 +17,10 @@ namespace Tizen.UIExtensions.NUI
             {
                 button.IsEnabled = enable;
             }
+            else if (view is GraphicsView.GraphicsView gv)
+            {
+                gv.IsEnabled = enable;
+            }
             else
             {
                 view.EnableControlState = enable;

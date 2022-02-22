@@ -9,6 +9,9 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
     /// </summary>
     public class MaterialIconButton : GraphicsView<MaterialIconDrawable>
     {
+
+        Tizen.NUI.PointStateType _lastPointState;
+
         /// <summary>
         /// Initializes a new instance of the Button class.
         /// </summary>
@@ -84,13 +87,17 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             {
                 IsPressed = true;
                 Pressed?.Invoke(this, EventArgs.Empty);
-                Clicked?.Invoke(this, EventArgs.Empty);
             }
             else if (state == Tizen.NUI.PointStateType.Up)
             {
                 IsPressed = false;
                 Released?.Invoke(this, EventArgs.Empty);
+                if (_lastPointState == Tizen.NUI.PointStateType.Down)
+                {
+                    Clicked?.Invoke(this, EventArgs.Empty);
+                }
             }
+            _lastPointState = state;
             return base.OnTouch(source, e);
         }
     }

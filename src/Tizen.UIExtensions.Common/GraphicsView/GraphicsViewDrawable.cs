@@ -8,6 +8,9 @@ namespace Tizen.UIExtensions.Common.GraphicsView
     public abstract class GraphicsViewDrawable : IDrawable, IMeasurable, IDisposable
     {
         public event EventHandler? Invalidated;
+
+        public bool IsEnabled { get; set; } = true;
+
         public abstract void Draw(ICanvas canvas, RectangleF dirtyRect);
 
         public virtual void OnTouchDown(GPoint point) { }

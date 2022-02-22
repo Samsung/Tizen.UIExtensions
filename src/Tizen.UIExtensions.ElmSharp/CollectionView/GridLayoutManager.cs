@@ -148,8 +148,8 @@ namespace Tizen.UIExtensions.ElmSharp
 
 		int ItemSpacing => IsHorizontal ? HorizontalItemSpacing : VerticalItemSpacing;
 
-		int ItemWidthConstraint => IsHorizontal ? _allocatedSize.Width * 100 : ColumnSize;
-		int ItemHeightConstraint => IsHorizontal ? ColumnSize : _allocatedSize.Height * 100;
+		int ItemWidthConstraint => IsHorizontal ? int.MaxValue : ColumnSize;
+		int ItemHeightConstraint => IsHorizontal ? ColumnSize : int.MaxValue;
 
 		int ColumnSize
 		{

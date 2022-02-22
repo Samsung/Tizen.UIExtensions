@@ -106,5 +106,19 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="footer">Fotter view</param>
         /// <param name="size">Size of footer</param>
 		void SetFooter(View? footer, Size size);
-	}
+
+        /// <summary>
+        /// Gets index of next row item
+        /// </summary>
+        /// <param name="index">Current item index</param>
+        /// <returns></returns>
+        int NextRowItemIndex(int index);
+
+        /// <summary>
+        /// Gets index of previous row item
+        /// </summary>
+        /// <param name="index">Current item index</param>
+        /// <returns></returns>
+        int PreviousRowItemIndex(int index);
+    }
 }
