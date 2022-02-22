@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: code-large
+    runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/dotnet/sdk:6.0.200
       options: --user root
