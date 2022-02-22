@@ -10,7 +10,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: code-large
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:6.0.200
+      options: --user root
     steps:
     - uses: actions/checkout@v2
       with:
@@ -22,7 +25,8 @@ jobs:
         include-prerelease: true
     - name: Install Tizen workload
       run: |
-        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/release/6.0.1xx-rc1/workload/scripts/workload-install.sh | bash -s -- -d /home/runner/.dotnet
+        apt-get update && apt-get install -y unzip
+        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/release/7.0.100-preview.6/workload/scripts/workload-install.sh | bash
     - name: Build
       env:
         PULLREQUEST_ID: ${{ github.event.number }}
