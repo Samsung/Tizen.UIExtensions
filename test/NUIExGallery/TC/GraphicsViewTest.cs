@@ -224,6 +224,22 @@ namespace NUIExGallery.TC
                 view.Add(slider1);
             }
 
+            {
+                var slider1 = new Slider
+                {
+                    Margin = 5,
+                    Value = 0,
+                    Minimum = -20,
+                    Maximum = 10,
+                    SizeHeight = 50,
+                    MaximumTrackColor = Color.Red,
+                    MinimumTrackColor = Color.Green,
+                    ThumbColor = Color.Yellow,
+                    WidthSpecification = LayoutParamPolicies.MatchParent,
+                };
+                view.Add(slider1);
+            }
+
             view.Add(new Label
             {
                 Padding = new Extents(10, 0, 10, 0),
