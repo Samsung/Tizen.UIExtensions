@@ -29,7 +29,9 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         {
             get
             {
-                return View.Value / View.Maximum;
+                double start = View.Minimum;
+                double diff = View.Maximum - View.Minimum;
+                return (View.Value - start) / diff;
             }
             set
             {
