@@ -34,7 +34,7 @@ namespace Tizen.UIExtensions.NUI
             "void main(){\n" +
             "  mediump vec4 texColor = texture2D(sTexture, vTexCoord) * uColor;\n" +
             "  if (texColor.r < 1 || texColor.g < 1 || texColor.b < 1) discard;\n" +
-            "  gl_FragColor = texColor;\n" +
+            "  gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n" +
             "}\n" +
             "";
 
