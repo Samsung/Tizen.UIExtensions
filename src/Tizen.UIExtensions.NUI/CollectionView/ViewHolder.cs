@@ -12,7 +12,7 @@ namespace Tizen.UIExtensions.NUI
         Focused,
     }
 
-    public class ViewHolder : View
+    public class ViewHolder : ViewGroup
     {
         ViewHolderState _state;
         bool _isSelected;
@@ -40,7 +40,7 @@ namespace Tizen.UIExtensions.NUI
                 {
                     _content.FocusGained -= OnContentFocused;
                     _content.FocusLost -= OnContentUnfocused;
-                    _content.Unparent();
+                    Children.Remove(_content);
                 }
 
                 _content = value;
@@ -55,7 +55,7 @@ namespace Tizen.UIExtensions.NUI
                     _content.FocusGained += OnContentFocused;
                     _content.FocusLost += OnContentUnfocused;
 
-                    Add(_content);
+                    Children.Add(_content);
                 }
             }
         }
@@ -92,12 +92,27 @@ namespace Tizen.UIExtensions.NUI
 
         protected void Initialize()
         {
-            Layout = new AbsoluteLayout();
+            if (Common.DeviceInfo.DeviceType == Common.DeviceType.TV)
+            {
+                Focusable = true;
+            }
 
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;
             FocusLost += OnUnfocused;
+            LayoutUpdated += OnLayout;
+        }
+
+        void OnLayout(object? sender, Common.LayoutEventArgs e)
+        {
+            var bounds = this.GetBounds();
+            bounds.X = 0;
+            bounds.Y = 0;
+            foreach (var child in Children)
+            {
+                child.UpdateBounds(bounds);
+            }
         }
 
         void OnUnfocused(object? sender, EventArgs e)
