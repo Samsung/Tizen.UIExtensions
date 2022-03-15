@@ -42,7 +42,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             _canvas.Canvas = skiaCanvas;
             _scalingCanvas.SaveState();
             _scalingCanvas.Scale((float)DeviceInfo.ScalingFactor, (float)DeviceInfo.ScalingFactor);
-            _drawable.Draw(_scalingCanvas, new RectangleF(0, 0, width, height));
+            _drawable.Draw(_scalingCanvas, new RectF(0, 0, width, height));
             _scalingCanvas.RestoreState();
         }
     }

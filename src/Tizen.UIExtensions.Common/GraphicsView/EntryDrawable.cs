@@ -19,7 +19,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         float _placeholderY;
         float _placeholderFontSize;
 
-        RectangleF _indicatorRect;
+        RectF _indicatorRect;
 
         public EntryDrawable(IEntry view)
         {
@@ -51,7 +51,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             }
         }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialEntryBackground(canvas, dirtyRect);
             DrawMaterialEntryBorder(canvas, dirtyRect);
@@ -82,7 +82,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
                 View.Text = string.Empty;
         }
 
-        void DrawMaterialEntryBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEntryBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -100,7 +100,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialEntryBorder(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEntryBorder(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -124,7 +124,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialEntryPlaceholder(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEntryPlaceholder(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -151,7 +151,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialEntryIndicators(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEntryIndicators(ICanvas canvas, RectF dirtyRect)
         {
             if (!string.IsNullOrEmpty(View.Text))
             {
@@ -175,7 +175,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
                 canvas.RestoreState();
 
-                _indicatorRect = new RectangleF(x - radius, y - radius, radius * 2, radius * 2);
+                _indicatorRect = new RectF(x - radius, y - radius, radius * 2, radius * 2);
 
                 canvas.SaveState();
 

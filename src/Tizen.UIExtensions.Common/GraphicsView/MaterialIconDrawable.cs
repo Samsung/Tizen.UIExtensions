@@ -92,7 +92,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         public MaterialIcons Icon { get; set; }
         public Color Color { get; set; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawIcon(canvas, dirtyRect);
         }
@@ -103,7 +103,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         }
 
 
-        void DrawIcon(ICanvas canvas, RectangleF dirtyRect)
+        void DrawIcon(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

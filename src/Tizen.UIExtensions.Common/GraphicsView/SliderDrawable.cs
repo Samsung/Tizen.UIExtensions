@@ -22,8 +22,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         float MaterialFloatThumb { get; set; } = NormalMaterialThumbSize;
 
-        public RectangleF ThumbRect { get; set; }
-        public RectangleF TrackRect { get; set; }
+        public RectF ThumbRect { get; set; }
+        public RectF TrackRect { get; set; }
 
         public double ValueRate
         {
@@ -41,7 +41,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             }
         }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialSliderTrackBackground(canvas, dirtyRect);
             DrawMaterialSliderTrackProgress(canvas, dirtyRect);
@@ -84,7 +84,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             SendInvalidated();
         }
 
-        void DrawMaterialSliderTrackBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialSliderTrackBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -101,10 +101,10 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.RestoreState();
 
-            TrackRect = new RectangleF(x, y, width, height);
+            TrackRect = new RectF(x, y, width, height);
         }
 
-        protected virtual void DrawMaterialSliderTrackProgress(ICanvas canvas, RectangleF dirtyRect)
+        protected virtual void DrawMaterialSliderTrackProgress(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -124,7 +124,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        protected virtual void DrawMaterialSliderThumb(ICanvas canvas, RectangleF dirtyRect)
+        protected virtual void DrawMaterialSliderThumb(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -145,7 +145,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.RestoreState();
 
-            ThumbRect = new RectangleF(x, y, MaterialFloatThumb, MaterialFloatThumb);
+            ThumbRect = new RectF(x, y, MaterialFloatThumb, MaterialFloatThumb);
         }
 
         public void AnimateMaterialThumbSize(bool increase)
