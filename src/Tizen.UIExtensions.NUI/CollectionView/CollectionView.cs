@@ -279,6 +279,11 @@ namespace Tizen.UIExtensions.NUI
             ScrollView.ScrollAnimationEnded += OnScrollAnimationEnded;
             ScrollView.Relayout += OnLayout;
 
+            if (ScrollView is SnappableScrollView snappable)
+            {
+                snappable.SnapRequestFinished += OnSnapRequestFinished;
+            }
+
             Add(ScrollView);
         }
 
@@ -650,6 +655,11 @@ namespace Tizen.UIExtensions.NUI
             SendScrolledEvent();
         }
 
+        void OnSnapRequestFinished(object? sender, EventArgs e)
+        {
+            SendScrolledEvent();
+        }
+
         void OnLayout(object? sender, EventArgs e)
         {
             //called when resized
@@ -801,6 +811,8 @@ namespace Tizen.UIExtensions.NUI
 
                 ScrollAnimationEnded += OnAnimationEnd;
             }
+
+            public event EventHandler? SnapRequestFinished;
 
             CollectionView CollectionView { get; }
             ICollectionViewLayoutManager LayoutManager => CollectionView.LayoutManager!;
@@ -1003,6 +1015,7 @@ namespace Tizen.UIExtensions.NUI
                 var animation = new Animation();
                 animation.Duration = 200;
                 animation.AnimateTo(ContentContainer, IsHorizontal ? "PositionX" : "PositionY", -(float)target);
+                animation.Finished += (s, e) => SnapRequestFinished?.Invoke(this, EventArgs.Empty);
                 animation.Play();
             }
         }
