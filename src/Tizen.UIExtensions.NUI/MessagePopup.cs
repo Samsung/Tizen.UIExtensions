@@ -104,6 +104,7 @@ namespace Tizen.UIExtensions.NUI
                 Text = _cancel,
                 SizeWidth = content.SizeWidth * 0.4f,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
+                Focusable = true,
             };
             cancelButton.Clicked += (s, e) => SendSubmit(false);
             hlayout.Add(cancelButton);
@@ -116,6 +117,7 @@ namespace Tizen.UIExtensions.NUI
                     Text = _accept,
                     SizeWidth = content.SizeWidth * 0.4f,
                     HeightSpecification = LayoutParamPolicies.WrapContent,
+                    Focusable = true,
                 };
                 acceptButton.Clicked += (s, e) => SendSubmit(true);
                 hlayout.Add(acceptButton);

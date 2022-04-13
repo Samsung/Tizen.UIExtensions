@@ -30,6 +30,11 @@ namespace Tizen.UIExtensions.NUI
         }
 
         /// <summary>
+        /// Raised when top page was changed
+        /// </summary>
+        public event EventHandler? Navigated;
+
+        /// <summary>
         /// A stack of views
         /// </summary>
         public IReadOnlyList<View> Stack => InternalStack;
@@ -68,6 +73,11 @@ namespace Tizen.UIExtensions.NUI
         /// View is a target that is popped and `double` is progress of pop
         /// </remarks>
         public Action<View, double>? PopAnimation { get; set; }
+
+        /// <summary>
+        /// Options to show the page that behind of the top page
+        /// </summary>
+        public bool ShownBehindPage { get; set; } = false;
 
         /// <summary>
         /// Push a view on stack
@@ -200,10 +210,27 @@ namespace Tizen.UIExtensions.NUI
         {
             if (_lastTop != InternalStack.LastOrDefault())
             {
-                _lastTop?.Hide();
+                if (_lastTop != null)
+                {
+                    if (!ShownBehindPage)
+                        _lastTop.Hide();
+                    _lastTop.FocusableChildren = false;
+                }
+
                 _lastTop = InternalStack.LastOrDefault();
-                _lastTop?.Show();
+
+                if (_lastTop != null)
+                {
+                    _lastTop.Show();
+                    _lastTop.FocusableChildren = true;
+                }
+                SendNavigated();
             }
+        }
+
+        void SendNavigated()
+        {
+            Navigated?.Invoke(this, EventArgs.Empty);
         }
 
         void IAnimatable.BatchBegin() {}

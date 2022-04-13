@@ -15,7 +15,9 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public Button()
         {
+            Focusable = true;
             Drawable = new ButtonDrawable(this);
+            KeyEvent += OnKeyEvent;
         }
 
         /// <summary>
@@ -100,6 +102,16 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             }
             _lastPointState = state;
             return base.OnTouch(source, e);
+        }
+
+        bool OnKeyEvent(object source, KeyEventArgs e)
+        {
+            if (e.Key.State == Tizen.NUI.Key.StateType.Up && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
+            {
+                Clicked?.Invoke(this, EventArgs.Empty);
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -139,7 +139,7 @@ namespace Tizen.UIExtensions.NUI
 
         bool OnKeyEvent(object? source, KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
+            if (e.Key.State == Key.StateType.Up && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
             {
                 RequestSelected?.Invoke(this, EventArgs.Empty);
                 return true;

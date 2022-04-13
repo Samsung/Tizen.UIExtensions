@@ -17,10 +17,12 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public MaterialIconButton()
         {
+            Focusable = true;
             Drawable = new MaterialIconDrawable();
             var measured = Drawable.Measure(double.PositiveInfinity, double.PositiveInfinity);
             SizeWidth = (float)measured.Width;
             SizeHeight = (float)measured.Height;
+            KeyEvent += OnKeyEvent;
         }
 
         /// <summary>
@@ -99,6 +101,16 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             }
             _lastPointState = state;
             return base.OnTouch(source, e);
+        }
+
+        bool OnKeyEvent(object source, KeyEventArgs e)
+        {
+            if (e.Key.State == Tizen.NUI.Key.StateType.Up && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
+            {
+                Clicked?.Invoke(this, EventArgs.Empty);
+                return true;
+            }
+            return false;
         }
     }
 }

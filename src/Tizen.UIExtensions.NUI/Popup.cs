@@ -174,7 +174,11 @@ namespace Tizen.UIExtensions.NUI
             PopupLayer.Add(this);
             IsOpen = true;
             s_openedPopup.Add(this);
-            FocusManager.Instance.SetCurrentFocusView(this);
+            var focusable = FindFocusableChild(this);
+            if (focusable != null)
+                FocusManager.Instance.SetCurrentFocusView(focusable);
+            else
+                FocusManager.Instance.SetCurrentFocusView(this);
         }
 
         /// <summary>
@@ -243,6 +247,20 @@ namespace Tizen.UIExtensions.NUI
         bool OnContentTouch(object source, TouchEventArgs e)
         {
             return true;
+        }
+
+        View? FindFocusableChild(View view)
+        {
+            if (view.Focusable && !(view is Popup))
+                return view;
+
+            foreach (var child in view.Children)
+            {
+                var focusable = FindFocusableChild(child);
+                if (focusable != null)
+                    return focusable;
+            }
+            return null;
         }
     }
 }

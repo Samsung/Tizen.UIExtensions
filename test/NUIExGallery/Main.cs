@@ -7,26 +7,27 @@ using System.Reflection;
 using System.Linq;
 using Tizen.NUI.Components;
 using Tizen.NUI.Binding;
+using Tizen.UIExtensions.NUI;
 
 namespace NUIExGallery
 {
     class App : NUIApplication
     {
-        SimpleViewStack Stack { get; set; }
+        public static NavigationStack Stack { get; set; }
 
         protected override void OnCreate()
         {
             base.OnCreate();
             FocusManager.Instance.EnableDefaultAlgorithm(true);
             Initialize();
-            Stack.Push(CreateListPage(GetTestCases()));
+            _ = Stack.Push(CreateListPage(GetTestCases()), true);
         }
 
         void Initialize()
         {
             Window.Instance.KeyEvent += OnKeyEvent;
 
-            Stack = new SimpleViewStack
+            Stack = new NavigationStack
             {
                 BackgroundColor = Color.White
             };
@@ -50,7 +51,7 @@ namespace NUIExGallery
 
         void RunTC(TestCaseBase tc)
         {
-            Stack.Push(tc.Run());
+            _ = Stack.Push(tc.Run(), true);
         }
 
         View CreateListPage(IEnumerable<TestCaseBase> tests)
@@ -84,6 +85,7 @@ namespace NUIExGallery
             {
                 var itemView = new DefaultLinearItem();
 
+                itemView.Focusable = true;
                 itemView.BindingContext = item;
                 itemView.Clicked += clicked;
 
@@ -193,7 +195,7 @@ namespace NUIExGallery
 
                 if (Stack.Stack.Count > 1)
                 {
-                    Stack.Pop();
+                    Stack.Pop(true);
                 }
                 else
                 {
