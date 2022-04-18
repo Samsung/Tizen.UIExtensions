@@ -16,6 +16,7 @@ namespace Tizen.UIExtensions.NUI
     public class NavigationStack : View, IAnimatable
     {
         View? _lastTop;
+        Dictionary<View, WeakReference<View>> _focusStack = new Dictionary<View, WeakReference<View>>();
 
         /// <summary>
         /// /// Initializes a new instance of the <see cref="NavigationStack"/> class.
@@ -86,9 +87,10 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animated">Flags for animation</param>
         public async Task Push(View view, bool animated)
         {
+            DidSaveFocus();
+
             view.WidthResizePolicy = ResizePolicyType.FillToParent;
             view.HeightResizePolicy = ResizePolicyType.FillToParent;
-
             InternalStack.Add(view);
             Add(view);
 
@@ -151,6 +153,7 @@ namespace Tizen.UIExtensions.NUI
                 }
 
                 InternalStack.Remove(tobeRemoved);
+                _focusStack.Remove(tobeRemoved);
                 Remove(tobeRemoved);
                 UpdateTopView();
                 tobeRemoved.Dispose();
@@ -179,6 +182,7 @@ namespace Tizen.UIExtensions.NUI
                 child.Dispose();
             }
             InternalStack.Clear();
+            _focusStack.Clear();
             _lastTop = null;
         }
 
@@ -203,7 +207,31 @@ namespace Tizen.UIExtensions.NUI
         public void Pop(View view)
         {
             InternalStack.Remove(view);
+            _focusStack.Remove(view);
             Remove(view);
+        }
+
+        protected virtual void DidSaveFocus()
+        {
+            if (Top != null)
+            {
+                var currentFocused = FocusManager.Instance.GetCurrentFocusView();
+                if (currentFocused != null)
+                {
+                    _focusStack[Top] = new WeakReference<View>(currentFocused);
+                }
+            }
+        }
+
+        protected virtual void DidRestoreFocus()
+        {
+            if (Top != null)
+            {
+                if (_focusStack.ContainsKey(Top) && _focusStack[Top].TryGetTarget(out var target))
+                {
+                    FocusManager.Instance.SetCurrentFocusView(target);
+                }
+            }
         }
 
         void UpdateTopView()
@@ -225,6 +253,7 @@ namespace Tizen.UIExtensions.NUI
                     _lastTop.FocusableChildren = true;
                 }
                 SendNavigated();
+                DidRestoreFocus();
             }
         }
 
