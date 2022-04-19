@@ -16,6 +16,10 @@ namespace Tizen.UIExtensions.ElmSharp
 
         bool IsSplit { get; set; }
 
+        double DrawerWidth { get; set; }
+
+        bool IsGestureEnabled { get; set; }
+
         DrawerBehavior DrawerBehavior { get; set; }
 
         event EventHandler Toggled;
