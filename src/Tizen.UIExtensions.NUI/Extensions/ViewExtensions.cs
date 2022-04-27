@@ -1,7 +1,6 @@
-﻿using View = Tizen.NUI.BaseComponents.View;
-using Color = Tizen.UIExtensions.Common.Color;
-using Rect = Tizen.UIExtensions.Common.Rect;
-using NButton = Tizen.NUI.Components.Button;
+﻿using Color = Tizen.UIExtensions.Common.Color;
+using View = Tizen.NUI.BaseComponents.View;
+
 namespace Tizen.UIExtensions.NUI
 {
     public static class ViewExtensions
@@ -13,18 +12,7 @@ namespace Tizen.UIExtensions.NUI
 
         public static void SetEnable(this View view, bool enable)
         {
-            if (view is NButton button)
-            {
-                button.IsEnabled = enable;
-            }
-            else if (view is GraphicsView.GraphicsView gv)
-            {
-                gv.IsEnabled = enable;
-            }
-            else
-            {
-                view.EnableControlState = enable;
-            }
+            view.IsEnabled = enable;
         }
     }
 }
