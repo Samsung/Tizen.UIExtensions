@@ -228,7 +228,7 @@ namespace Tizen.UIExtensions.NUI
 
         bool OnKeyEvent(object source, KeyEventArgs e)
         {
-            if (IsOpen && e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
+            if (IsOpen && e.Key.IsAcceptKeyEvent())
             {
                 return OnBackButtonPressed();
             }

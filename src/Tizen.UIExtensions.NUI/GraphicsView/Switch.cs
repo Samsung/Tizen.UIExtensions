@@ -66,7 +66,7 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
 
         bool OnKeyEVent(object source, KeyEventArgs e)
         {
-            if (e.Key.State == Tizen.NUI.Key.StateType.Up && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
+            if (e.Key.IsAcceptKeyEvent())
             {
                 IsToggled = !IsToggled;
                 return true;

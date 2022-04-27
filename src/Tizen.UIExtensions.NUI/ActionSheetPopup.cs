@@ -104,7 +104,7 @@ namespace Tizen.UIExtensions.NUI
                     };
                     itemLabel.KeyEvent += (s, e) =>
                     {
-                        if (e.Key.State == Key.StateType.Up && (e.Key.KeyPressedName == "Return" || e.Key.KeyPressedName == "Enter"))
+                        if (e.Key.IsAcceptKeyEvent())
                         {
                             SendSubmit(item);
                             return true;

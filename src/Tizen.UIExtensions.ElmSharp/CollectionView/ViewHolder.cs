@@ -1,6 +1,7 @@
 using System;
 using ElmSharp;
 using EColor = ElmSharp.Color;
+using Tizen.UIExtensions.Common;
 
 namespace Tizen.UIExtensions.ElmSharp
 {
@@ -154,7 +155,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
 		void OnKeyUp(object? sender, EvasKeyEventArgs e)
 		{
-			if (e.KeyName == "Enter" && _focusArea.IsFocused)
+			if (e.KeyName.IsEnterKey() && _focusArea.IsFocused)
 			{
 				RequestSelected?.Invoke(this, EventArgs.Empty);
 			}

@@ -185,7 +185,7 @@ namespace NUIExGallery
 
         void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
+            if (e.Key.IsDeclienKeyEvent())
             {
                 if (Tizen.UIExtensions.NUI.Popup.HasOpenedPopup)
                 {
