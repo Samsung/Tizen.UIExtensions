@@ -185,7 +185,7 @@ namespace NUIExGallery
 
         void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
-            if (e.Key.IsDeclienKeyEvent())
+            if (e.Key.IsDeclineKeyEvent())
             {
                 if (Tizen.UIExtensions.NUI.Popup.HasOpenedPopup)
                 {
