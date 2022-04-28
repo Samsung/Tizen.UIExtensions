@@ -13,7 +13,6 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         /// </summary>
         public MaterialIcon(EvasObject parent) : base(parent)
         {
-            AllowFocus(true);
             Drawable = new MaterialIconDrawable();
             var measured = Drawable.Measure(double.PositiveInfinity, double.PositiveInfinity);
 
@@ -24,7 +23,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         /// <summary>
         /// Gets of sets the type of the MaterialIcon
         /// </summary>
-        public MaterialIcons Type
+        public MaterialIcons IconType
         {
             get => Drawable?.Icon ?? MaterialIcons.Add;
             set

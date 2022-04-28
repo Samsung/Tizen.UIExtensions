@@ -24,7 +24,7 @@ namespace ElmSharpExGallery.TC
             page.Show();
             parent.PackEnd(page);
 
-            foreach (var type in Enum.GetValues(typeof(MaterialIcons)).Cast<MaterialIcons>())
+            foreach (var iconType in Enum.GetValues(typeof(MaterialIcons)).Cast<MaterialIcons>())
             {
                 var box = new ElmSharp.Box(parent)
                 {
@@ -42,7 +42,7 @@ namespace ElmSharpExGallery.TC
                     AlignmentY = -1,
                     WeightY = 1,
                     WeightX =1,
-                    Text = type.ToString(),
+                    Text = iconType.ToString(),
                 };
                 label.Show();
 
@@ -52,7 +52,7 @@ namespace ElmSharpExGallery.TC
                     AlignmentY = -1,
                     WeightY = 1,
                     WeightX = 1,
-                    Type = type,
+                    IconType = iconType,
                 };
                 icon.Show();
 
