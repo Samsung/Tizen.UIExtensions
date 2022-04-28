@@ -85,6 +85,7 @@ namespace Tizen.UIExtensions.NUI
                     var itemLabel = new Label
                     {
                         Text = item,
+                        Focusable = true,
                         HorizontalTextAlignment = TextAlignment.Center,
                         PixelSize = (int)(25 * DeviceInfo.ScalingFactor),
                         WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -95,6 +96,15 @@ namespace Tizen.UIExtensions.NUI
                     {
                         var state = e.Touch.GetState(0);
                         if (state == PointStateType.Up)
+                        {
+                            SendSubmit(item);
+                            return true;
+                        }
+                        return false;
+                    };
+                    itemLabel.KeyEvent += (s, e) =>
+                    {
+                        if (e.Key.IsAcceptKeyEvent())
                         {
                             SendSubmit(item);
                             return true;

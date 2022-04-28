@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         float MaterialActivityIndicatorSweepAngle { get; set; }
         float MaterialActivityIndicatorLastStartAngle { get; set; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialActivityIndicator(canvas, dirtyRect);
         }
@@ -65,7 +65,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             materialActivityIndicatorAngleAnimation.Commit(this, "MaterialActivityIndicator", length: 1400, repeat: () => true, finished: (l, c) => materialActivityIndicatorAngleAnimation = null);
         }
 
-        void DrawMaterialActivityIndicator(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialActivityIndicator(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

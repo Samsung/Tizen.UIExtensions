@@ -1,5 +1,5 @@
 <Project>
   <PropertyGroup>
-    <MicrosoftMauiGraphicsVersion>6.0.200-preview.13.935</MicrosoftMauiGraphicsVersion>
+    <MicrosoftMauiGraphicsVersion>6.0.300-rc.2.1310</MicrosoftMauiGraphicsVersion>
   </PropertyGroup>
 </Project>

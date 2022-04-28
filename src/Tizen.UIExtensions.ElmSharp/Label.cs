@@ -65,7 +65,7 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 if (value != _span.Text)
                 {
-                    _span.Text = value;
+                    _span.Text = value ?? string.Empty;
                     ApplyTextAndStyle();
                 }
             }

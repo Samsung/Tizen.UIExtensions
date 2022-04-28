@@ -59,7 +59,27 @@ namespace Tizen.UIExtensions.NUI
             // so, Button's measured size never smaller than before
             var textNaturalSize = TextLabel.NaturalSize;
             float buttonPadding = 46;
-            return new Size(textNaturalSize.Width + buttonPadding, textNaturalSize.Height + buttonPadding);
+            float horizontalPadding = buttonPadding;
+            float verticalPadding = buttonPadding;
+
+            if (Icon != null)
+            {
+                if (IconRelativeOrientation == IconOrientation.Bottom || IconRelativeOrientation == IconOrientation.Top)
+                {
+                    verticalPadding += Icon.NaturalSize.Height;
+                }
+                else
+                {
+                    horizontalPadding += Icon.NaturalSize.Width;
+                }
+                if (IconPadding != null)
+                {
+                    verticalPadding += IconPadding.Top + IconPadding.Bottom;
+                    horizontalPadding += IconPadding.Start + IconPadding.End;
+                }
+            }
+
+            return new Size(textNaturalSize.Width + horizontalPadding, textNaturalSize.Height + verticalPadding);
         }
     }
 }

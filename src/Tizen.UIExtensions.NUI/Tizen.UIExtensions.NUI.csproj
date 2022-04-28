@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>tizen90;net6.0-tizen6.5</TargetFrameworks>
+    <TargetFrameworks>tizen10.0;net6.0-tizen</TargetFrameworks>
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
+    <DisableImplicitTizenReferences>true</DisableImplicitTizenReferences>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>NU5048, NU5104</NoWarn>
@@ -24,10 +25,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MicrosoftMauiGraphicsVersion)" />
     <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="$(MicrosoftMauiGraphicsVersion)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$(TargetFramework.StartsWith('tizen')) == true">
-    <PackageReference Include="Tizen.NET" Version="9.0.0.*" />
+    <PackageReference Include="Tizen.NET" Version="10.0.0.*" />
   </ItemGroup>
 
   <Import Project="..\..\Versions.prop" />

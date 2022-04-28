@@ -20,7 +20,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         ISwitch View { get; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialSwitchBackground(canvas, dirtyRect);
             DrawMaterialSwitchThumb(canvas, dirtyRect);
@@ -50,7 +50,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             }
         }
 
-        void DrawMaterialSwitchBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialSwitchBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -78,7 +78,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialSwitchThumb(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialSwitchThumb(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

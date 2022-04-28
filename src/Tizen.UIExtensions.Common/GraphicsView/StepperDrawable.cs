@@ -14,8 +14,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         const float MaterialStepperWidth = 110.0f;
         const float MaterialButtonMargin = 6.0f;
 
-        RectangleF _minusRect;
-        RectangleF _plusRect;
+        RectF _minusRect;
+        RectF _plusRect;
         bool _pressed;
 
         readonly RippleEffectDrawable _minusRippleEffect;
@@ -40,7 +40,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         IStepper View { get; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialStepperMinus(canvas, dirtyRect);
             DrawMaterialStepperPlus(canvas, dirtyRect);
@@ -85,7 +85,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         }
 
 
-        void DrawMaterialStepperMinus(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialStepperMinus(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -116,10 +116,10 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.RestoreState();
 
-            _minusRect = new RectangleF(x, y, width, height);
+            _minusRect = new RectF(x, y, width, height);
         }
 
-        void DrawMaterialStepperPlus(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialStepperPlus(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -150,7 +150,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.RestoreState();
 
-            _plusRect = new RectangleF(x, y, width, height);
+            _plusRect = new RectF(x, y, width, height);
         }
     }
 }

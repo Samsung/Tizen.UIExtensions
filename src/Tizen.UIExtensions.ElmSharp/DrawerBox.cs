@@ -56,10 +56,15 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         EvasObject _mainWidget;
 
-        /// <summary>
-        /// The <see cref="SplitRatio"/> property value.
-        /// </summary>
+        ///// <summary>
+        ///// The <see cref="SplitRatio"/> property value.
+        ///// </summary>
         double _splitRatio = 0;
+
+        /// <summary>
+        /// The <see cref="DrawerWidth"/> property value.
+        /// </summary>
+        double _drawerWidth = -1;
 
         /// <summary>
         /// The <see cref="PopoverRatio"/> property value.
@@ -77,6 +82,8 @@ namespace Tizen.UIExtensions.ElmSharp
         /// The <see cref="IsGestureEnabled"/> property value.
         /// </summary>
         bool _isGestureEnabled = true;
+
+        double _screenWidth = DeviceInfo.PixelScreenSize.Width;
 
         /// <summary>
         /// Occurs when the Drawer is shown or hidden.
@@ -281,6 +288,28 @@ namespace Tizen.UIExtensions.ElmSharp
                 if (_splitRatio != value)
                 {
                     _splitRatio = value;
+                    _drawerWidth = (_splitRatio > 0) ? _screenWidth * _splitRatio : 0;
+                    ConfigureLayout();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets the width of the drawer that the DrawerBox takes in split mode.
+        /// </summary>
+        /// <value>The width of the drawer.</value>
+        public double DrawerWidth
+        {
+            get
+            {
+                return _drawerWidth;
+            }
+            set
+            {
+                if (_drawerWidth != value)
+                {
+                    _drawerWidth = value;
+                    _splitRatio = (_drawerWidth > 0) ? _drawerWidth / _screenWidth : 0;
                     ConfigureLayout();
                 }
             }
@@ -348,8 +377,6 @@ namespace Tizen.UIExtensions.ElmSharp
             // the structure for split mode and for popover mode looks differently
             if (IsSplit)
             {
-                if (_panel != null)
-
                 _splitPane.SetLeftPart(_drawerBox, true);
                 _splitPane.SetRightPart(_contentBox, true);
                 _splitPane.Proportion = (SplitRatio > 0) ? SplitRatio : this.GetSplitRatio();

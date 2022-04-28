@@ -52,7 +52,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         /// Implementation of the IDrawable.Draw() method.
         /// This method defines how to draw a refresh icon.
         /// </summary>
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawRefreshIcon(canvas, dirtyRect);
         }
@@ -99,7 +99,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             SendInvalidated();
         }
 
-        void DrawRefreshIcon(ICanvas canvas, RectangleF dirtyRect)
+        void DrawRefreshIcon(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
             canvas.StrokeSize = StrokeWidth;

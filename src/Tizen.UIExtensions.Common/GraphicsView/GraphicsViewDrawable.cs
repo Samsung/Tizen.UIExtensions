@@ -11,7 +11,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public bool IsEnabled { get; set; } = true;
 
-        public abstract void Draw(ICanvas canvas, RectangleF dirtyRect);
+        public abstract void Draw(ICanvas canvas, RectF dirtyRect);
 
         public virtual void OnTouchDown(GPoint point) { }
 

@@ -62,6 +62,8 @@ namespace NUIExGallery.TC
                 view.Add(btn3);
                 btn3.Clicked += async (s, e) =>
                 {
+                    App.Stack.ShownBehindPage = true;
+                    _ = App.Stack.Push(new View(), false);
                     try
                     {
                         var result = await new ActionSheetPopup("Choose", "Cancel", buttons: new string[]{
@@ -74,6 +76,11 @@ namespace NUIExGallery.TC
                     catch (TaskCanceledException)
                     {
                         _ = new MessagePopup("Result", $"Canceled", "OK").Open();
+                    }
+                    finally
+                    {
+                        App.Stack.ShownBehindPage = false;
+                        _ = App.Stack.Pop(false);
                     }
                 };
             }

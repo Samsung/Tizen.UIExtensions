@@ -14,8 +14,10 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public CheckBox()
         {
+            Focusable = true;
             Text = string.Empty;
             Drawable = new CheckBoxDrawable(this);
+            KeyEvent += OnKeyEvent;
         }
 
         /// <summary>
@@ -61,6 +63,16 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         {
             get => GetProperty<string>(nameof(Text));
             set => SetProperty(nameof(Text), value);
+        }
+
+        bool OnKeyEvent(object source, KeyEventArgs e)
+        {
+            if (e.Key.IsAcceptKeyEvent())
+            {
+                IsChecked = !IsChecked;
+                return true;
+            }
+            return false;
         }
     }
 }

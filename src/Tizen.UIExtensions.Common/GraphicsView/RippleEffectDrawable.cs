@@ -15,13 +15,13 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             RippleColor = Colors.White;
         }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            if ((ClipRectangle == RectangleF.Zero || ClipRectangle.Contains(TouchPoint)) && RippleEffectSize > 0)
+            if ((ClipRectangle == RectF.Zero || ClipRectangle.Contains(TouchPoint)) && RippleEffectSize > 0)
             {
                 canvas.SaveState();
 
-                if (ClipRectangle == RectangleF.Zero)
+                if (ClipRectangle == RectF.Zero)
                     ClipRectangle = dirtyRect;
 
                 canvas.ClipRectangle(ClipRectangle);
@@ -41,7 +41,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public GColor RippleColor { get; set; }
 
-        public RectangleF ClipRectangle { get; set; }
+        public RectF ClipRectangle { get; set; }
 
         public PointF TouchPoint { get; set; }
 
@@ -63,14 +63,14 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public override void OnTouchUp(GPoint point)
         {
-            if (ClipRectangle == RectangleF.Zero || ClipRectangle.Contains(TouchPoint))
+            if (ClipRectangle == RectF.Zero || ClipRectangle.Contains(TouchPoint))
                 AnimateDrawRipple();
         }
 
         void AnimateDrawRipple()
         {
             var from = 0;
-            var to = ClipRectangle != RectangleF.Zero ? ClipRectangle.Width : 1000;
+            var to = ClipRectangle != RectF.Zero ? ClipRectangle.Width : 1000;
 
             var thumbSizeAnimation = new Animation(v => RippleEffectSize = (int)v, from, to, easing: Easing.SinInOut);
             thumbSizeAnimation.Commit(this, "RippleEffectAnimation", rate:32, length: 350, finished: (l, c) =>

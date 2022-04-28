@@ -15,7 +15,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         IProgressBar View { get; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialProgressTrack(canvas, dirtyRect);
             DrawMaterialProgressBar(canvas, dirtyRect);
@@ -26,7 +26,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             return new TSize(availableWidth, MaterialTrackHeight * DeviceInfo.ScalingFactor);
         }
 
-        void DrawMaterialProgressTrack(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialProgressTrack(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -42,7 +42,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialProgressBar(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialProgressBar(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

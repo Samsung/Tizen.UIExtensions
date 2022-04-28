@@ -14,7 +14,9 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         /// </summary>
         public Switch()
         {
+            Focusable = true;
             Drawable = new SwitchDrawable(this);
+            KeyEvent += OnKeyEVent;
         }
 
         /// <summary>
@@ -60,6 +62,16 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         {
             get => GetProperty<Color>(nameof(BackgroundColor));
             set => SetProperty(nameof(BackgroundColor), value);
+        }
+
+        bool OnKeyEVent(object source, KeyEventArgs e)
+        {
+            if (e.Key.IsAcceptKeyEvent())
+            {
+                IsToggled = !IsToggled;
+                return true;
+            }
+            return false;
         }
     }
 }
