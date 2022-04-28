@@ -22,10 +22,12 @@ namespace Tizen.UIExtensions.ElmSharp
         bool _isOpen;
         bool _isSplit;
         double _drawerRatio;
-
-        double _OpenRatio = -1;
+        
+        double _drawerWidth = -1;
+        double _openRatio = -1;
         double _closeRatio = -1;
 
+        double _screenWidth = DeviceInfo.PixelScreenSize.Width;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tizen.UIExtensions.ElmSharp.TVNavigationDrawer"/> class.
@@ -148,16 +150,34 @@ namespace Tizen.UIExtensions.ElmSharp
         }
 
         /// <summary>
-        /// Gets or Sets the portion of the screen then the drawer is opened.
+        /// Gets or Sets the portion of the screen when the drawer is opened.
         /// </summary>
         public double OpenRatio
         {
-            get => _OpenRatio;
+            get => _openRatio;
             set
             {
-                if (_OpenRatio != value)
+                if (_openRatio != value)
                 {
-                    _OpenRatio = value;
+                    _openRatio = value;
+                    _drawerWidth = (_openRatio > 0) ? _screenWidth * _openRatio : 0;
+                    OnLayout();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets the width of the drawer when the drawer is opened.
+        /// </summary>
+        public double DrawerWidth
+        {
+            get => _drawerWidth;
+            set
+            {
+                if (_drawerWidth != value)
+                {
+                    _drawerWidth = value;
+                    _openRatio = (_drawerWidth > 0) ? _drawerWidth / _screenWidth : 0;
                     OnLayout();
                 }
             }
@@ -176,6 +196,19 @@ namespace Tizen.UIExtensions.ElmSharp
                     _closeRatio = value;
                     OnLayout();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the Drawer can be opend by swipe gesture.<br>
+        /// This property is not supported on TV.
+        /// </summary>
+        public bool IsGestureEnabled
+        {
+            get => false;
+            set
+            {
+                // Not supported on TV.
             }
         }
 
@@ -255,7 +288,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
             var bound = Geometry;
 
-            var openRatio = (_OpenRatio < 0) ? this.GetTvDrawerRatio(Geometry.Width, Geometry.Height) : _OpenRatio;
+            var openRatio = (_openRatio < 0) ? this.GetTvDrawerRatio(Geometry.Width, Geometry.Height) : _openRatio;
             var closeRatio = (_behavior == DrawerBehavior.Disabled) ? 0 : ((_closeRatio < 0) ? this.GetTvDrawerCloseRatio() : _closeRatio);
             var drawerWidthMax = (int)(bound.Width * openRatio);
             var drawerWidthMin = (int)(bound.Width * closeRatio);

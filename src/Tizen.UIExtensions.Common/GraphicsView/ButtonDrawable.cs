@@ -11,7 +11,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         const float MaterialShadowOffset = 3f;
 
         readonly RippleEffectDrawable _rippleEffect;
-        RectangleF _backgroundRect;
+        RectF _backgroundRect;
 
         public ButtonDrawable(IButton view)
         {
@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         IButton View { get; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialButtonBackground(canvas, dirtyRect);
             DrawMaterialButtonText(canvas, dirtyRect);
@@ -57,7 +57,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             _rippleEffect.OnTouchUp(point);
         }
 
-        void DrawMaterialButtonBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialButtonBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -74,10 +74,10 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             canvas.RestoreState();
 
-            _backgroundRect = new RectangleF(x, y, width, height);
+            _backgroundRect = new RectF(x, y, width, height);
         }
 
-        void DrawMaterialButtonText(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialButtonText(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

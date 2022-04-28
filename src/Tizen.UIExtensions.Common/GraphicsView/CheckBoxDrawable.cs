@@ -16,7 +16,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         ICheckBox View { get; }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialCheckBoxBackground(canvas, dirtyRect);
             DrawMaterialCheckBoxMark(canvas, dirtyRect);
@@ -44,7 +44,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             View.IsChecked = !View.IsChecked;
         }
 
-        void DrawMaterialCheckBoxBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialCheckBoxBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -87,7 +87,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialCheckBoxMark(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialCheckBoxMark(ICanvas canvas, RectF dirtyRect)
         {
             if (View.IsChecked)
             {
@@ -115,7 +115,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             }
         }
 
-        void DrawMaterialCheckBoxText(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialCheckBoxText(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 

@@ -10,17 +10,12 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
     {
         protected virtual GraphicsViewDrawable? GraphicsViewDrawable { get; }
 
-        bool _isEnabled = true;
-        public bool IsEnabled
+        protected override void OnEnabled(bool enabled)
         {
-            get => _isEnabled;
-            set
-            {
-                EnableControlState = _isEnabled = value;
-                if (GraphicsViewDrawable != null)
-                    GraphicsViewDrawable.IsEnabled = value;
-                Invalidate();
-            }
+            base.OnEnabled(enabled);
+            if (GraphicsViewDrawable != null)
+                GraphicsViewDrawable.IsEnabled = enabled;
+            Invalidate();
         }
     }
 

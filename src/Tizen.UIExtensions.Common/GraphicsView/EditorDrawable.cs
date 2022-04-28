@@ -45,7 +45,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             }
         }
 
-        public override void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public override void Draw(ICanvas canvas, RectF dirtyRect)
         {
             DrawMaterialEditorBackground(canvas, dirtyRect);
             DrawMaterialEditorBorder(canvas, dirtyRect);
@@ -67,7 +67,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             AnimateMaterialPlaceholder(false);
         }
 
-        void DrawMaterialEditorBackground(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEditorBackground(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -87,7 +87,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialEditorBorder(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEditorBorder(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
@@ -114,7 +114,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.RestoreState();
         }
 
-        void DrawMaterialEditorPlaceholder(ICanvas canvas, RectangleF dirtyRect)
+        void DrawMaterialEditorPlaceholder(ICanvas canvas, RectF dirtyRect)
         {
             canvas.SaveState();
 
