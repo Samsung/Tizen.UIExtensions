@@ -407,6 +407,7 @@ namespace NUIExGallery.TC
                     Margin = 5,
                     ThumbColor = Color.BlueViolet,
                     OnColor = Color.Red,
+                    IsToggled = true,
                 };
                 switch1.SizeHeight = (float)switch1.Measure(300, 300).Height;
                 switch1.SizeWidth = (float)switch1.Measure(300, 300).Width;
