@@ -52,7 +52,7 @@ namespace ElmSharpExGallery
                 list.Append(defaultClass, null);
             }
 
-            list.ItemReleased += (s, e) =>
+            list.ItemSelected += (s, e) =>
             {
                 TestCaseBase tc = e.Item.Data as TestCaseBase;
                 RunTC(tc);
