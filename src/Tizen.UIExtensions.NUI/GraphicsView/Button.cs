@@ -9,7 +9,6 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
     /// </summary>
     public class Button : GraphicsView<ButtonDrawable>, IButton
     {
-        Tizen.NUI.PointStateType _lastPointState;
         /// <summary>
         /// Initializes a new instance of the Button class.
         /// </summary>
@@ -96,12 +95,11 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
             {
                 IsPressed = false;
                 Released?.Invoke(this, EventArgs.Empty);
-                if (_lastPointState == Tizen.NUI.PointStateType.Down)
+                if (this.IsInside(e.Touch.GetLocalPosition(0)))
                 {
                     Clicked?.Invoke(this, EventArgs.Empty);
                 }
             }
-            _lastPointState = state;
             return consume;
         }
 

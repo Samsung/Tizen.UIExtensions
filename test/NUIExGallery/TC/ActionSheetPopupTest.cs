@@ -28,7 +28,6 @@ namespace NUIExGallery.TC
                 var btn3 = new Button
                 {
                     Text = "Open1",
-                    FontSize = 10,
                 };
                 view.Add(btn3);
                 btn3.Clicked += async (s, e) =>
@@ -57,7 +56,6 @@ namespace NUIExGallery.TC
                 var btn3 = new Button
                 {
                     Text = "Open2",
-                    FontSize = 10,
                 };
                 view.Add(btn3);
                 btn3.Clicked += async (s, e) =>
