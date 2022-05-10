@@ -497,10 +497,14 @@ namespace Tizen.UIExtensions.ElmSharp
             _layoutManager.CollectionView = this;
             _layoutManager.SizeAllocated(AllocatedSize);
             UpdateSnapPointsType(SnapPointsType);
-            if (Adaptor != null)
+            if (Adaptor != null && LayoutManager != null)
             {
-                LayoutManager?.SetHeader(_headerView, Adaptor.MeasureHeader(AllocatedSize.Width, AllocatedSize.Height));
-                LayoutManager?.SetFooter(_footerView, Adaptor.MeasureFooter(AllocatedSize.Width, AllocatedSize.Height));
+                int widthConstraint = LayoutManager.IsHorizontal ? int.MaxValue : AllocatedSize.Width;
+                int heightConstraint = LayoutManager.IsHorizontal ? AllocatedSize.Height : int.MaxValue;
+                LayoutManager.SetHeader(_headerView,
+                    _headerView != null ? Adaptor!.MeasureHeader(widthConstraint, heightConstraint) : new Size(0, 0));
+                LayoutManager.SetFooter(_footerView,
+                    _footerView != null ? Adaptor!.MeasureFooter(widthConstraint, heightConstraint) : new Size(0, 0));
             }
             RequestLayoutItems();
         }
@@ -566,8 +570,15 @@ namespace Tizen.UIExtensions.ElmSharp
                 {
                     _innerLayout.PackEnd(_footerView);
                 }
-                LayoutManager?.SetHeader(_headerView, Adaptor.MeasureHeader(AllocatedSize.Width, AllocatedSize.Height));
-                LayoutManager?.SetFooter(_footerView, Adaptor.MeasureFooter(AllocatedSize.Width, AllocatedSize.Height));
+                if (LayoutManager != null)
+                {
+                    int widthConstraint = LayoutManager.IsHorizontal ? int.MaxValue : AllocatedSize.Width;
+                    int heightConstraint = LayoutManager.IsHorizontal ? AllocatedSize.Height : int.MaxValue;
+                    LayoutManager.SetHeader(_headerView,
+                        _headerView != null ? Adaptor!.MeasureHeader(widthConstraint, heightConstraint) : new Size(0, 0));
+                    LayoutManager.SetFooter(_footerView,
+                        _footerView != null ? Adaptor!.MeasureFooter(widthConstraint, heightConstraint) : new Size(0, 0));
+                }
             }
         }
 
