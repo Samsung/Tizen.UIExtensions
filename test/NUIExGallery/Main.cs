@@ -25,6 +25,7 @@ namespace NUIExGallery
 
         void Initialize()
         {
+            View.SetDefaultGrabTouchAfterLeave(true);
             Window.Instance.KeyEvent += OnKeyEvent;
 
             Stack = new NavigationStack
@@ -47,6 +48,9 @@ namespace NUIExGallery
                 Console.WriteLine($"---------- Window Resized --------------------");
                 Console.WriteLine($"-- Orientation : {Window.Instance.GetCurrentOrientation()}");
             };
+
+            PerformanceMonitor.Attach();
+
         }
 
         void RunTC(TestCaseBase tc)
