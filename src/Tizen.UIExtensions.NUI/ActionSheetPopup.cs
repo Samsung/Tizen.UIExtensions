@@ -95,7 +95,7 @@ namespace Tizen.UIExtensions.NUI
                     itemLabel.TouchEvent += (s, e) =>
                     {
                         var state = e.Touch.GetState(0);
-                        if (state == PointStateType.Up)
+                        if (state == PointStateType.Up && itemLabel.IsInside(e.Touch.GetLocalPosition(0)))
                         {
                             SendSubmit(item);
                             return true;

@@ -1,5 +1,6 @@
 ﻿using Color = Tizen.UIExtensions.Common.Color;
 using View = Tizen.NUI.BaseComponents.View;
+using Vector2 = Tizen.NUI.Vector2;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -13,6 +14,11 @@ namespace Tizen.UIExtensions.NUI
         public static void SetEnable(this View view, bool enable)
         {
             view.IsEnabled = enable;
+        }
+
+        public static bool IsInside(this View view, Vector2 position)
+        {
+            return position.X > 0 && position.X < view.SizeWidth && position.Y > 0 && position.Y < view.SizeHeight;
         }
     }
 }
