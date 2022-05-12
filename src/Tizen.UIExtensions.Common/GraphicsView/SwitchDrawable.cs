@@ -13,6 +13,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         const float MaterialSwitchBackgroundWidth = 34;
         const float MaterialSwitchBackgroundMargin = 5;
 
+        bool _isAnimating;
+
         public SwitchDrawable(ISwitch view)
         {
             View = view;
@@ -87,6 +89,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             else
                 canvas.FillColor = IsEnabled ? View.ThumbColor.ToGraphicsColor(Fluent.Color.Foreground.White) : GColor.FromArgb(Material.Color.Gray1);
 
+            if (!_isAnimating)
+            {
+                MaterialSwitchThumbPosition = (View.IsToggled ? MaterialThumbOnPosition : MaterialThumbOffPosition);
+            }
+
             var margin = 2;
             var radius = 10;
 
@@ -104,7 +111,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             float end = on ? MaterialThumbOnPosition : MaterialThumbOffPosition;
 
             var thumbPositionAnimation = new Animation(v => MaterialSwitchThumbPosition = (int)v, start, end, easing: Easing.Linear);
-            thumbPositionAnimation.Commit(this, "MaterialSwitchThumbAnimation", length: 100, finished: (l, c) => thumbPositionAnimation = null);
+            _isAnimating = true;
+            thumbPositionAnimation.Commit(this, "MaterialSwitchThumbAnimation", length: 100, finished: (l, c) => {
+                thumbPositionAnimation = null;
+                _isAnimating = false;
+            });
         }
 
         void IAnimatable.BatchBegin() { }

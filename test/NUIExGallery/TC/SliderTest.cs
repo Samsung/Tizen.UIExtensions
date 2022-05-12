@@ -1,4 +1,6 @@
-﻿using Tizen.NUI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.NUI;
 using Tizen.UIExtensions.NUI.GraphicsView;
@@ -31,12 +33,13 @@ namespace NUIExGallery.TC
                 SizeHeight = 50,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
             };
+            view.Add(slider1);
+
             var label1 = new Label();
             slider1.ValueChanged += (s, e) =>
             {
                 label1.Text = $"{slider1.Value}";
             };
-            view.Add(slider1);
             view.Add(label1);
 
             var slider2 = new Slider
@@ -50,13 +53,20 @@ namespace NUIExGallery.TC
                 MaximumTrackColor = Color.Red,
                 ThumbColor = Color.Yellow,
             };
-            var label2 = new Label();
+            view.Add(slider2);
+
+            List<Label> labels = new List<Label>();
+            for (int i =0; i < 10; i++)
+            {
+                labels.Add(new Label());
+                view.Add(labels.Last());
+            }
+
             slider2.ValueChanged += (s, e) =>
             {
-                label2.Text = $"{slider2.Value}";
+                foreach (var label in labels)
+                    label.Text = $"{slider2.Value}";
             };
-            view.Add(slider2);
-            view.Add(label2);
 
             return view;
         }
