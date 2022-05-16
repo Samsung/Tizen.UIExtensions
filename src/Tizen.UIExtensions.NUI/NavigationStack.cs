@@ -94,26 +94,15 @@ namespace Tizen.UIExtensions.NUI
             InternalStack.Add(view);
             Add(view);
 
-            if (animated && PushAnimation != null)
+            if (animated)
             {
-                if (Top != null)
+                if (PushAnimation != null)
                 {
-                    Top.Sensitive = false;
+                    await RunCustomPushAnimation(view, PushAnimation);
                 }
-
-                view.Sensitive = false;
-                var tcs = new TaskCompletionSource<bool>();
-                var pushAni = new Animation((d) => PushAnimation(view, d), easing: Easing.SinOut);
-                pushAni.Commit(this, "PushAnimation", finished: (d, b) =>
-                 {
-                     tcs.SetResult(true);
-                 });
-                await tcs.Task;
-                view.Sensitive = true;
-
-                if (Top != null)
+                else
                 {
-                    Top.Sensitive = true;
+                    await RunDefaultPushAnimation(view);
                 }
             }
             UpdateTopView();
@@ -129,26 +118,15 @@ namespace Tizen.UIExtensions.NUI
             {
                 var tobeRemoved = Top;
 
-                if (animated && PopAnimation != null)
+                if (animated)
                 {
-                    tobeRemoved.Sensitive = false;
-                    if (BelowTop != null)
+                    if (PopAnimation != null)
                     {
-                        BelowTop.Show();
-                        BelowTop.Sensitive = false;
+                        await RunCustomPopAnimation(tobeRemoved, PopAnimation);
                     }
-
-                    var tcs = new TaskCompletionSource<bool>();
-                    var pushAni = new Animation((d) => PopAnimation(tobeRemoved, d), easing: Easing.SinOut);
-                    pushAni.Commit(this, "PopAnimation", finished: (d, b) =>
+                    else
                     {
-                        tcs.SetResult(true);
-                    });
-                    await tcs.Task;
-                    tobeRemoved.Sensitive = true;
-                    if (BelowTop != null)
-                    {
-                        BelowTop.Sensitive = true;
+                        await RunDefaultPopAnimation(tobeRemoved);
                     }
                 }
 
@@ -260,6 +238,115 @@ namespace Tizen.UIExtensions.NUI
         void SendNavigated()
         {
             Navigated?.Invoke(this, EventArgs.Empty);
+        }
+
+        async Task RunCustomPushAnimation(View view, Action<View, double> customAnimation)
+        {
+            if (Top != null)
+            {
+                Top.Sensitive = false;
+            }
+
+            view.Sensitive = false;
+            var tcs = new TaskCompletionSource<bool>();
+            var pushAni = new Animation((d) => customAnimation(view, d), easing: Easing.Linear);
+            pushAni.Commit(this, "PushAnimation", finished: (d, b) =>
+            {
+                tcs.SetResult(true);
+            });
+            await tcs.Task;
+            view.Sensitive = true;
+
+            if (Top != null)
+            {
+                Top.Sensitive = true;
+            }
+        }
+
+        async Task RunCustomPopAnimation(View tobeRemoved, Action<View, double> customAnimation)
+        {
+            tobeRemoved.Sensitive = false;
+            if (BelowTop != null)
+            {
+                BelowTop.Show();
+                BelowTop.Sensitive = false;
+            }
+
+            var tcs = new TaskCompletionSource<bool>();
+            var pushAni = new Animation((d) => customAnimation(tobeRemoved, d), easing: Easing.Linear);
+            pushAni.Commit(this, "PopAnimation", finished: (d, b) =>
+            {
+                tcs.SetResult(true);
+            });
+            await tcs.Task;
+            tobeRemoved.Sensitive = true;
+            if (BelowTop != null)
+            {
+                BelowTop.Sensitive = true;
+            }
+        }
+
+        async Task RunDefaultPushAnimation(View view)
+        {
+            if (Top != null)
+            {
+                Top.Sensitive = false;
+            }
+            view.Sensitive = false;
+            float oldOpacity = view.Opacity;
+
+            try
+            {
+                view.Opacity = 0.5f;
+                await view.FadeTo(1);
+
+            }
+            catch
+            {
+                // ignore exception
+            }
+            finally
+            {
+                view.Opacity = oldOpacity;
+                view.Sensitive = true;
+
+                if (Top != null)
+                {
+                    Top.Sensitive = true;
+                }
+            }
+        }
+
+        async Task RunDefaultPopAnimation(View view)
+        {
+            view.Sensitive = false;
+            if (BelowTop != null)
+            {
+                BelowTop.Show();
+                BelowTop.Sensitive = false;
+            }
+
+            var oldOpacity = view.Opacity;
+
+            try
+            {
+                view.Opacity = 1f;
+                await view.FadeTo(0);
+            }
+            catch
+            {
+                // ignore exception
+            }
+            finally
+            {
+                view.Opacity = oldOpacity;
+                view.Sensitive = true;
+
+                if (BelowTop != null)
+                {
+                    BelowTop.Sensitive = true;
+                }
+            }
         }
 
         void IAnimatable.BatchBegin() {}
