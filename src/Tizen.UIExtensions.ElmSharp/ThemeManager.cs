@@ -216,7 +216,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             if (!DeviceInfo.IsWatch)
             {
-                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.GetDeviceType());
+                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.DeviceType);
                 return button;
             }
             button.Style = ThemeConstants.Button.Styles.Watch.PopupRight;
@@ -227,7 +227,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             if (!DeviceInfo.IsWatch)
             {
-                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.GetDeviceType());
+                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.DeviceType);
                 return button;
             }
             button.Style = ThemeConstants.Button.Styles.Watch.PopupLeft;
@@ -238,7 +238,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             if (!DeviceInfo.IsWatch)
             {
-                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.GetDeviceType());
+                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.DeviceType);
                 return button;
             }
             button.Style = ThemeConstants.Button.Styles.Watch.Text;
@@ -291,7 +291,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             if (!DeviceInfo.IsWatch)
             {
-                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.GetDeviceType());
+                TLog.Error($"ToWatchPopupRightStyleButton is only supported on wearable profile : {0}", DeviceInfo.DeviceType);
                 return popup;
             }
             popup.Style = ThemeConstants.Popup.Styles.Watch.Circle;
@@ -481,7 +481,7 @@ namespace Tizen.UIExtensions.ElmSharp
         {
             if (!DeviceInfo.IsTV)
             {
-                TLog.Error($"ToWatchPopupRightStyleButton is only supported on TV profile : {0}", DeviceInfo.GetDeviceType());
+                TLog.Error($"ToWatchPopupRightStyleButton is only supported on TV profile : {0}", DeviceInfo.DeviceType);
                 return toolbar;
             }
             toolbar.Style = ThemeConstants.Toolbar.Styles.TV.TabbarWithTitle;
