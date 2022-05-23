@@ -205,7 +205,7 @@ namespace Tizen.UIExtensions.NUI
         {
             if (Top != null)
             {
-                if (_focusStack.ContainsKey(Top) && _focusStack[Top].TryGetTarget(out var target))
+                if (_focusStack.ContainsKey(Top) && _focusStack[Top].TryGetTarget(out var target) && target != null)
                 {
                     FocusManager.Instance.SetCurrentFocusView(target);
                 }
