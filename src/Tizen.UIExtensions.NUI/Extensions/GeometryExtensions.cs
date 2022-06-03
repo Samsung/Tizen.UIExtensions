@@ -19,8 +19,11 @@ namespace Tizen.UIExtensions.NUI
 
         public static void UpdateBounds(this View view, Rect bounds)
         {
-            view.Size = bounds.Size.ToNative();
-            view.Position = bounds.Location.ToNative();
+            if (view.Size.Width != bounds.Width || view.Size.Height != bounds.Height)
+                view.Size = bounds.Size.ToNative();
+
+            if (view.Position.X != bounds.X || view.Position.Y != bounds.Y)
+                view.Position = bounds.Location.ToNative();
         }
 
         public static Rect GetBounds(this View view)
