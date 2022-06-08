@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
     <MicrosoftMauiGraphicsVersion>6.0.300-rc.3.1336</MicrosoftMauiGraphicsVersion>
+    <MicrosoftCodeAnalysisPublicApiAnalyzersVersion>3.3.3</MicrosoftCodeAnalysisPublicApiAnalyzersVersion>
   </PropertyGroup>
 </Project>
