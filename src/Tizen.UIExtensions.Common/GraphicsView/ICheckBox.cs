@@ -1,5 +1,6 @@
 namespace Tizen.UIExtensions.Common.GraphicsView
-{    public interface ICheckBox
+{
+    public interface ICheckBox
     {
         /// <summary>
         /// Gets a value that indicates whether the CheckBox is checked.

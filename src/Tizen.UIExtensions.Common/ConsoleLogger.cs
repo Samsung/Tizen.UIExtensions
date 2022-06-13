@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using IOPath = System.IO.Path;
 
 namespace Tizen.UIExtensions.Common
 {
+    [ExcludeFromCodeCoverage]
     internal class ConsoleLogger : ILogger
     {
         public void Debug(string tag, string message, string file, string func, int line)

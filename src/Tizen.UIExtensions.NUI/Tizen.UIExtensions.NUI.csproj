@@ -5,7 +5,7 @@
     <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
     <DisableStandardFrameworkResolution>true</DisableStandardFrameworkResolution>
     <DisableImplicitTizenReferences>true</DisableImplicitTizenReferences>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>NU5048, NU5104</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

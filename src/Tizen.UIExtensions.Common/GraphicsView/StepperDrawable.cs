@@ -92,7 +92,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             canvas.StrokeSize = 1;
             canvas.StrokeColor = GColor.FromArgb(Material.Color.Gray6);
 
-            var x = dirtyRect.X+1;
+            var x = dirtyRect.X + 1;
             var y = dirtyRect.Y;
 
             var height = MaterialStepperHeight;

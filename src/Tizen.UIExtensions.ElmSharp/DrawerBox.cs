@@ -146,14 +146,14 @@ namespace Tizen.UIExtensions.ElmSharp
         /// </summary>
         /// <value>The Drawer.</value>
         public EvasObject? Drawer
-        { 
+        {
             get
             {
                 return _drawer;
             }
             set
             {
-                if(_drawer != null)
+                if (_drawer != null)
                 {
                     _drawerBox.UnPack(_drawer);
                     _drawer.Hide();
@@ -161,7 +161,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
                 _drawer = value;
 
-                if(_drawer != null)
+                if (_drawer != null)
                 {
                     _drawer.SetAlignment(-1, -1);
                     _drawer.SetWeight(1, 1);
@@ -191,7 +191,7 @@ namespace Tizen.UIExtensions.ElmSharp
 
                 _content = value;
 
-                if (_content != null) 
+                if (_content != null)
                 {
                     _content.SetAlignment(-1, -1);
                     _content.SetWeight(1, 1);
@@ -350,7 +350,7 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 if (_isGestureEnabled != value)
                 {
-                    
+
                     _isGestureEnabled = value;
                     // Fixme
                     // Elementary panel was not support to change scrollable property on runtime

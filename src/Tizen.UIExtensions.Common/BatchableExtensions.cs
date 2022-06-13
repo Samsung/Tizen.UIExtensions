@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace Tizen.UIExtensions.Common
 {
+    [ExcludeFromCodeCoverage]
     public static class BatchableExtensions
     {
         static readonly ConditionalWeakTable<IBatchable, BatchCount> s_counters = new ConditionalWeakTable<IBatchable, BatchCount>();

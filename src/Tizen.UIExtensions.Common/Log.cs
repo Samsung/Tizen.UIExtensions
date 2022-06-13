@@ -19,7 +19,12 @@ namespace Tizen.UIExtensions.Common
         /// Gets or sets the logger used to report messages.
         /// It's DlogLogger on a Tizen platform, ConsoleLogger on any other.
         /// </summary>
-        public static ILogger Logger { get; set; } = IsTizen() ? (ILogger)new DlogLogger() : (ILogger)new ConsoleLogger();
+        public static ILogger Logger { get; set; } =
+#if !TEST
+            IsTizen() ? (ILogger)new DlogLogger() : (ILogger)new ConsoleLogger();
+#else
+            (ILogger)new ConsoleLogger();
+#endif
 
         public static void Debug(string message,
                                  Guardian _ = default(Guardian),

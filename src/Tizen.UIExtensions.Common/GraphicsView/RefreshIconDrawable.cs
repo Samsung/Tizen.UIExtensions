@@ -14,7 +14,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
     {
         const float Margin = 10;
         const float IconSize = 40;
-        const float ArcSize= 20;
+        const float ArcSize = 20;
         const float StrokeWidth = 3f;
 
         /// <summary>

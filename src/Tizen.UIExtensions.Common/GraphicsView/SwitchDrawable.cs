@@ -112,7 +112,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
             var thumbPositionAnimation = new Animation(v => MaterialSwitchThumbPosition = (int)v, start, end, easing: Easing.Linear);
             _isAnimating = true;
-            thumbPositionAnimation.Commit(this, "MaterialSwitchThumbAnimation", length: 100, finished: (l, c) => {
+            thumbPositionAnimation.Commit(this, "MaterialSwitchThumbAnimation", length: 100, finished: (l, c) =>
+            {
                 thumbPositionAnimation = null;
                 _isAnimating = false;
             });
