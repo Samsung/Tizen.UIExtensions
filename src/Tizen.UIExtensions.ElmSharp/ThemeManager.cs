@@ -1,5 +1,6 @@
 using ElmSharp;
 using ElmSharp.Wearable;
+using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 using EColor = ElmSharp.Color;
 using EEntry = ElmSharp.Entry;
 using ELabel = ElmSharp.Label;
@@ -9,7 +10,6 @@ using ESize = ElmSharp.Size;
 using ESlider = ElmSharp.Slider;
 using EToolbarItem = ElmSharp.ToolbarItem;
 using TLog = Tizen.UIExtensions.Common.Log;
-using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
 
 namespace Tizen.UIExtensions.ElmSharp
 {

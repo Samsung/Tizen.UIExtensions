@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tizen.UIExtensions.Common
 {
@@ -32,9 +33,11 @@ namespace Tizen.UIExtensions.Common
 
         public static bool IsIoT => DeviceType == DeviceType.IoT;
 
+        [ExcludeFromCodeCoverage]
         [Obsolete("Use Tizen.UIExtensions.Commonm.DeviceInfo.Profie instead")]
         public static string GetProfile() => Profile;
 
+        [ExcludeFromCodeCoverage]
         [Obsolete("Use Tizen.UIExtensions.Commonm.DeviceInfo.DeviceType instead")]
         public static DeviceType GetDeviceType() => DeviceType;
 
@@ -84,6 +87,7 @@ namespace Tizen.UIExtensions.Common
             }
         }
 
+        [ExcludeFromCodeCoverage]
         static void UpdateScalingFactor()
         {
             var scalingFactor = 1.0;  // scaling is disabled, we're using pixels as Xamarin's geometry units
@@ -112,9 +116,12 @@ namespace Tizen.UIExtensions.Common
                 }
             }
             s_scalingFactor = scalingFactor;
+#if !TEST
             SkiaSharp.Views.Tizen.ScalingInfo.SetScalingFactor(scalingFactor);
+#endif
         }
 
+        [ExcludeFromCodeCoverage]
         static DeviceType ToDeviceType(this string deviceType)
         {
             switch (deviceType)

@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-tizen</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <NoWarn>NU1602</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +24,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  
+
   <ItemGroup>
-	<ProjectReference Include="..\..\src\Tizen.UIExtensions.NUI\Tizen.UIExtensions.NUI.csproj" />
+    <ProjectReference Include="..\TestStub\TestStub.csproj" />
   </ItemGroup>
 
 </Project>

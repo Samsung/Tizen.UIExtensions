@@ -39,23 +39,23 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var materialActivityIndicatorAngleAnimation = new Animation();
 
             MaterialActivityIndicatorStartAngle = 0;
-            MaterialActivityIndicatorLastStartAngle  = 0;
+            MaterialActivityIndicatorLastStartAngle = 0;
 
             var rotateAnimation = new Animation(v =>
             {
                 MaterialActivityIndicatorRotate = (int)v;
                 SendInvalidated();
-            }, 0, 360*3, easing: Easing.Linear);
+            }, 0, 360 * 3, easing: Easing.Linear);
             var sweepAnimationUp = new Animation(v =>
             {
                 MaterialActivityIndicatorSweepAngle = 30 + (int)v;
-                MaterialActivityIndicatorLastStartAngle  = MaterialActivityIndicatorSweepAngle;
+                MaterialActivityIndicatorLastStartAngle = MaterialActivityIndicatorSweepAngle;
             }, 0, 270, easing: Easing.Linear);
             var sweepAnimationDown = new Animation(v =>
             {
                 MaterialActivityIndicatorSweepAngle = 30 + (int)v;
-                MaterialActivityIndicatorStartAngle += (Math.Abs(MaterialActivityIndicatorLastStartAngle  - MaterialActivityIndicatorSweepAngle));
-                MaterialActivityIndicatorLastStartAngle  = MaterialActivityIndicatorSweepAngle;
+                MaterialActivityIndicatorStartAngle += (Math.Abs(MaterialActivityIndicatorLastStartAngle - MaterialActivityIndicatorSweepAngle));
+                MaterialActivityIndicatorLastStartAngle = MaterialActivityIndicatorSweepAngle;
             }, 270, 0, easing: Easing.Linear);
 
             materialActivityIndicatorAngleAnimation.Add(0, 1, rotateAnimation);
