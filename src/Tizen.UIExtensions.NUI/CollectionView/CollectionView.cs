@@ -827,6 +827,7 @@ namespace Tizen.UIExtensions.NUI
         {
             delegate float UserAlphaFunctionDelegate(float progress);
             UserAlphaFunctionDelegate? _customScrollingAlphaFunctionDelegate;
+            Func<float, float>? _scrollingAlpha;
             AlphaFunction? _customScrollingAlphaFunction;
             Animation? _snapAnimation;
 
@@ -835,6 +836,9 @@ namespace Tizen.UIExtensions.NUI
             public SnappableScrollView(CollectionView cv)
             {
                 CollectionView = cv;
+
+                _customScrollingAlphaFunctionDelegate = new UserAlphaFunctionDelegate(ScrollingAlpha);
+                _customScrollingAlphaFunction = new AlphaFunction(_customScrollingAlphaFunctionDelegate);
 
                 ScrollDragStarted += OnDragStart;
 
@@ -898,7 +902,7 @@ namespace Tizen.UIExtensions.NUI
                     return;
                 }
 
-                _customScrollingAlphaFunctionDelegate = new UserAlphaFunctionDelegate((progress) =>
+                _scrollingAlpha = (progress) =>
                 {
                     if (totalDistance == 0)
                         return 1;
@@ -906,12 +910,16 @@ namespace Tizen.UIExtensions.NUI
                     var time = totalTime * progress;
                     var distance = absVelocity * time - (friction * (float)Math.Pow(time, 2) / 2f);
                     return Math.Min(distance / totalDistance, 1);
-                });
-                _customScrollingAlphaFunction = new AlphaFunction(_customScrollingAlphaFunctionDelegate);
+                };
 
                 animation.Duration = (int)totalTime;
                 animation.AnimateTo(ContentContainer, (ScrollingDirection == Direction.Horizontal) ? "PositionX" : "PositionY", targetPosition, _customScrollingAlphaFunction);
                 animation.Play();
+            }
+
+            float ScrollingAlpha(float progress)
+            {
+                return _scrollingAlpha?.Invoke(progress) ?? 1.0f;
             }
 
             void HandleNonMandatorySingle(float velocity, Animation animation)
