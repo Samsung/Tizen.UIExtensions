@@ -10,9 +10,9 @@ using System.Diagnostics;
 
 namespace NUIExGallery.TC
 {
-    public class SKCanvasAnimationTest : TestCaseBase
+    public class SKGLSurfaceViewAnimationTest : TestCaseBase
     {
-        public override string TestName => "SKCanvasView Animation Test";
+        public override string TestName => "SKGLSurfaceView AnimationTest";
 
         public override string TestDescription => TestName;
 
@@ -34,7 +34,7 @@ namespace NUIExGallery.TC
 
             for (int i = 0; i < 5; i++)
             {
-                var canvas = new SKCanvasView()
+                var glSurface = new SKGLSurfaceView()
                 {
                     Margin = new Extents(5, 5, 5, 5),
                     SizeWidth = 300,
@@ -49,16 +49,14 @@ namespace NUIExGallery.TC
                         LinearAlignment = LinearLayout.Alignment.Center,
                     }
                 };
+                glSurface.PaintSurface += Draw;
 
-                canvas.PaintSurface += Draw;
-
-                hlayout.Add(canvas);
-                viewList.Add(canvas);
+                hlayout.Add(glSurface);
+                viewList.Add(glSurface);
                 scrollView.Add(hlayout);
             }
 
             timer = new Timer(10);
-
             timer.Tick += (s, e) =>
             {
                 startx += 10;
