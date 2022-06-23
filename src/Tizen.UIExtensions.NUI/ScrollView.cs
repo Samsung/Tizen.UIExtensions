@@ -1,8 +1,7 @@
-﻿using System;
-using Tizen.NUI.Components;
+﻿using Tizen.NUI.Components;
 using Tizen.UIExtensions.Common;
-using ScrollOrientation = Tizen.UIExtensions.Common.ScrollOrientation;
 using CRect = Tizen.UIExtensions.Common.Rect;
+using ScrollOrientation = Tizen.UIExtensions.Common.ScrollOrientation;
 
 namespace Tizen.UIExtensions.NUI
 {
@@ -26,19 +25,24 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public ScrollBarVisibility VerticalScrollBarVisibility
         {
-            //TODO : fix it, NUI not support ScrollBar visiblility
             get
             {
                 if (HideScrollbar)
                     return ScrollBarVisibility.Never;
                 else
-                    return ScrollBarVisibility.Always;
+                    return FadeScrollbar ? ScrollBarVisibility.Default : ScrollBarVisibility.Always;
             }
             set
             {
-                if (value == ScrollBarVisibility.Always)
+                if (ScrollBarVisibility.Always == value)
                 {
                     HideScrollbar = false;
+                    FadeScrollbar = false;
+                }
+                else if (ScrollBarVisibility.Default == value)
+                {
+                    HideScrollbar = false;
+                    FadeScrollbar = true;
                 }
                 else
                 {
@@ -52,25 +56,9 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public ScrollBarVisibility HorizontalScrollBarVisibility
         {
-            //TODO : fix it, NUI not support ScrollBar visiblility
-            get
-            {
-                if (HideScrollbar)
-                    return ScrollBarVisibility.Never;
-                else
-                    return ScrollBarVisibility.Always;
-            }
-            set
-            {
-                if (value == ScrollBarVisibility.Always)
-                {
-                    HideScrollbar = false;
-                }
-                else
-                {
-                    HideScrollbar = true;
-                }
-            }
+            // NUI not support individually setting of scrollbar visibility
+            get => VerticalScrollBarVisibility;
+            set => VerticalScrollBarVisibility = value;
         }
 
         /// <summary>
