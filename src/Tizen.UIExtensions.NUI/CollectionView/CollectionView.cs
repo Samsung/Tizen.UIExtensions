@@ -303,6 +303,7 @@ namespace Tizen.UIExtensions.NUI
             {
                 ScrollView.Dispose();
             }
+            base.Dispose(disposing);
         }
 
         void ICollectionViewController.ItemMeasureInvalidated(int index)
