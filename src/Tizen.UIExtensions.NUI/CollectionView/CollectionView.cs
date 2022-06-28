@@ -297,6 +297,14 @@ namespace Tizen.UIExtensions.NUI
             Add(ScrollView);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                ScrollView.Dispose();
+            }
+        }
+
         void ICollectionViewController.ItemMeasureInvalidated(int index)
         {
             if (index == -1)
