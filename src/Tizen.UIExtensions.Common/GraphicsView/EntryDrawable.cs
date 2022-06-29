@@ -36,8 +36,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             get { return _placeholderY; }
             set
             {
-                _placeholderY = value;
-                SendInvalidated();
+                if (_placeholderY != value)
+                {
+                    _placeholderY = value;
+                    SendInvalidated();
+                }
             }
         }
 
@@ -46,8 +49,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             get { return _placeholderFontSize; }
             set
             {
-                _placeholderFontSize = value;
-                SendInvalidated();
+                if (_placeholderFontSize != value)
+                {
+                    _placeholderFontSize = value;
+                    SendInvalidated();
+                }
             }
         }
 

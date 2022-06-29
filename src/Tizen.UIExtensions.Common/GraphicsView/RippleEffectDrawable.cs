@@ -50,8 +50,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             get { return _rippleEffectSize; }
             set
             {
-                _rippleEffectSize = value;
-                SendInvalidated();
+                if (_rippleEffectSize != value)
+                {
+                    _rippleEffectSize = value;
+                    SendInvalidated();
+                }
             }
         }
 

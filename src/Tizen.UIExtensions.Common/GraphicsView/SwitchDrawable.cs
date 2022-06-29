@@ -47,8 +47,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             get { return _materialSwitchThumbPosition; }
             set
             {
-                _materialSwitchThumbPosition = value;
-                SendInvalidated();
+                if (_materialSwitchThumbPosition != value)
+                {
+                    _materialSwitchThumbPosition = value;
+                    SendInvalidated();
+                }
             }
         }
 
