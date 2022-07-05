@@ -811,7 +811,9 @@ namespace Tizen.UIExtensions.NUI
                 return;
 
             ViewHolder holder = (ViewHolder)sender;
-            if (holder.Content != null)
+
+            // Hack, in NUI, equal was override and even though not null, if it has no Body , it treat as null
+            if (!object.ReferenceEquals(holder.Content,null))
             {
                 Adaptor?.UpdateViewState(holder.Content, holder.State);
 

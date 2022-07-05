@@ -28,6 +28,9 @@ namespace Tizen.UIExtensions.NUI
             HeightSpecification = LayoutParamPolicies.MatchParent;
 
             InternalStack = new List<View>();
+
+            // Hack, If anybody didn't handle touch event, it is not working as intended.
+            TouchEvent += (s, e) => false;
         }
 
         /// <summary>
