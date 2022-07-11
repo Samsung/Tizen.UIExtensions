@@ -129,7 +129,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         // The size of the area that layout in advance before it is visible
         /// </summary>
-        public float RedundancyLayoutBoundRatio { get; set; } = 2.5f;
+        public float RedundancyLayoutBoundRatio { get; set; } = 2f;
 
         /// <summary>
         /// A size of allocated by Layout, it become viewport size on scrolling
@@ -338,7 +338,7 @@ namespace Tizen.UIExtensions.NUI
                     if (Adaptor != null && LayoutManager != null)
                     {
                         ContentSizeUpdated();
-                        LayoutManager.LayoutItems(ViewPort, true);
+                        LayoutManager.LayoutItems(ExtendViewPort(ViewPort), true);
                     }
                 }, null);
             }
@@ -689,7 +689,7 @@ namespace Tizen.UIExtensions.NUI
                 LayoutManager.SizeAllocated(AllocatedSize);
                 UpdateHeaderFooter();
                 ContentSizeUpdated();
-                LayoutManager.LayoutItems(ViewPort);
+                LayoutManager.LayoutItems(ExtendViewPort(ViewPort));
             }
         }
 
@@ -701,17 +701,7 @@ namespace Tizen.UIExtensions.NUI
             var viewport = ViewPort;
             var viewportFromEvent = new Rect(-e.Position.X, -e.Position.Y, viewport.Width, viewport.Height);
 
-            if (LayoutManager.IsHorizontal)
-            {
-                viewportFromEvent.X = Math.Max(0, viewportFromEvent.X - viewport.Width * RedundancyLayoutBoundRatio / 2f);
-                viewportFromEvent.Width += viewport.Width * RedundancyLayoutBoundRatio;
-            }
-            else
-            {
-                viewportFromEvent.Y = Math.Max(0, viewportFromEvent.Y - viewport.Height * RedundancyLayoutBoundRatio / 2f);
-                viewportFromEvent.Height += viewport.Height * RedundancyLayoutBoundRatio;
-            }
-            LayoutManager?.LayoutItems(viewportFromEvent);
+            LayoutManager?.LayoutItems(ExtendViewPort(viewportFromEvent));
         }
 
         void SendScrolledEvent()
@@ -830,6 +820,23 @@ namespace Tizen.UIExtensions.NUI
             return _viewHolderIndexTable.Where(d => d.Value == index).Select(d => d.Key).FirstOrDefault();
         }
 
+        Rect ExtendViewPort(Rect viewport)
+        {
+            if (LayoutManager == null)
+                return viewport;
+
+            if (LayoutManager.IsHorizontal)
+            {
+                viewport.X = Math.Max(0, viewport.X - viewport.Width * RedundancyLayoutBoundRatio / 2f);
+                viewport.Width += viewport.Width * RedundancyLayoutBoundRatio;
+            }
+            else
+            {
+                viewport.Y = Math.Max(0, viewport.Y - viewport.Height * RedundancyLayoutBoundRatio / 2f);
+                viewport.Height += viewport.Height * RedundancyLayoutBoundRatio;
+            }
+            return viewport;
+        }
 
         /// <summary>
         /// A ScrollView that implemented snap points
