@@ -25,7 +25,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MicrosoftMauiGraphicsVersion)" />
     <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="$(MicrosoftMauiGraphicsVersion)" />
-    <PackageReference Include="Tizen.NET" Version="10.0.0.*" />
+    <PackageReference Include="Tizen.NET" Version="10.0.0.17305" />
   </ItemGroup>
 
   <Import Project="..\..\Versions.prop" />

@@ -69,8 +69,7 @@ namespace Tizen.UIExtensions.NUI
             _shader = new Shader(VERTEX_SHADER, FRAGMENT_SHADER);
 
             RemoveRenderer(0);
-
-            _bufferQueue = new NativeImageQueue(1, 1, NativeImageQueue.ColorFormat.RGBA8888);
+            _bufferQueue = new NativeImageQueue(1, 1, NativeImageQueue.ColorFormat.BGRA8888);
             _texture = new Texture(_bufferQueue);
             _textureSet = new TextureSet();
             _textureSet.SetTexture(0u, _texture);
@@ -165,7 +164,7 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _bufferQueue?.Dispose();
-            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
+            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.BGRA8888);
         }
 
         static Geometry CreateQuadGeometry()

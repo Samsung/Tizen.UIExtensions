@@ -101,7 +101,7 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _nativeImageSource?.Dispose();
-            _nativeImageSource = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
+            _nativeImageSource = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.BGRA8888);
         }
 
         void UpdateTexture()
