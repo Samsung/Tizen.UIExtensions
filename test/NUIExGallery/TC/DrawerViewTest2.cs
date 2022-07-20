@@ -45,11 +45,11 @@ namespace NUIExGallery.TC
 
             openButton.Clicked += (s, e) =>
             {
-                navigationDrawer.OpenDrawer(true);
+                navigationDrawer.OpenAsync(true);
             };
             openButton2.Clicked += (s, e) =>
             {
-                navigationDrawer.OpenDrawer();
+                navigationDrawer.OpenAsync();
             };
 
             gestureButton.Clicked += (s, e) =>
@@ -92,7 +92,7 @@ namespace NUIExGallery.TC
             var backdrop = new ViewGroup();
             backdrop.BackgroundColor = Tizen.NUI.Color.Blue;
             backdrop.Opacity = 0.5f;
-            navigationDrawer.BackDrop = backdrop;
+            navigationDrawer.Backdrop = backdrop;
 
             var naviView = new ViewGroup
             {
@@ -154,7 +154,7 @@ namespace NUIExGallery.TC
                 var backdrop = new ViewGroup();
                 backdrop.BackgroundColor = Tizen.NUI.Color.Red;
                 backdrop.Opacity = 0.5f;
-                navigationDrawer.BackDrop = backdrop;
+                navigationDrawer.Backdrop = backdrop;
             };
 
             naviView.Add(shadowButton);

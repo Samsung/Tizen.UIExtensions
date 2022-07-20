@@ -30,7 +30,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a view that blocks interaction when the drawer is opened.
         /// </summary>
-        public View? BackDrop { get; set; }
+        public View? Backdrop { get; set; }
 
         /// <summary>
         /// Event that is raised when the drawer is toggled.
@@ -41,26 +41,28 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override void OpenDrawer(bool animate = false)
+        public override async Task<bool> OpenAsync(bool animate = false)
         {
             if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+                return true;
 
-            base.OpenDrawer(animate);
+            await base.OpenAsync(animate);
             Toggled?.Invoke(this, EventArgs.Empty);
+            return true;
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override void CloseDrawer(bool animate = false)
+        public override async Task<bool> CloseAsync(bool animate = false)
         {
             if (!IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+                return true;
 
-            base.CloseDrawer(animate);
+            await base.CloseAsync(animate);
             Toggled?.Invoke(this, EventArgs.Empty);
+            return true;
         }
 
         protected override Task RunAnimationAsync(bool isOpen)
@@ -71,29 +73,38 @@ namespace Tizen.UIExtensions.NUI
                 return ResizeDrawerAsync(DrawerWidth, DrawerWidthCollapsed);
         }
 
-        protected override void OnDrawerFocusGained(object? sender, EventArgs args)
+        protected override async void OnDrawerFocusGained(object? sender, EventArgs args)
         {
             if (!IsOpened)
-                OpenDrawer(true);
+                await OpenAsync(true);
 
             DrawerViewGroup.FocusableChildren = true;
             base.OnDrawerFocusGained(sender, args);
         }
 
-        protected override void OnContentFocusGained(object? sender, EventArgs args)
+        protected override async void OnContentFocusGained(object? sender, EventArgs args)
         {
             if (IsOpened)
-                CloseDrawer(true);
+                await CloseAsync(true);
 
             DrawerViewGroup.FocusableChildren = false;
             base.OnContentFocusGained(sender, args);
         }
 
+        async void OpenCloseDrawer(bool open)
+        {
+            if (open)
+                await OpenAsync();
+            else
+                await CloseAsync();
+        }
+
         protected override bool OnDrawerKeyEventTriggered(object sender, KeyEventArgs args)
         {
-            if (args.Key.KeyPressedName == "XF86Back")
+            if (args.Key.IsDeclineKeyEvent())
             {
-                CloseDrawer(true);
+                //await CloseDrawer(true);
+                OpenCloseDrawer(false);
                 return true;
             }
 
@@ -101,7 +112,8 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (args.Key.State == Key.StateType.Up)
                 {
-                    CloseDrawer(true);
+                    //await CloseDrawer(true);
+                    OpenCloseDrawer(false);
                     return true;
                 }
             }

@@ -40,11 +40,11 @@ namespace NUIExGallery.TC
 
             openButton.Clicked += (s, e) =>
             {
-                tvNaviDrawer.OpenDrawer(true);
+                tvNaviDrawer.OpenAsync(true);
             };
             openButton2.Clicked +=  (s, e) =>
             {
-                tvNaviDrawer.OpenDrawer();
+                tvNaviDrawer.OpenAsync();
             };
 
             var behaviorButton = new Button

@@ -62,12 +62,12 @@ namespace NUIExGallery.TC
 
             openButton.Clicked += (s, e) =>
             {
-                drawerView.OpenDrawer(false);
+                drawerView.OpenAsync(false);
             };
 
             closeButton.Clicked += (s, e) =>
             {
-                drawerView.CloseDrawer(false);
+                drawerView.CloseAsync(false);
             };
 
             modeButton.Clicked += (s, e) =>

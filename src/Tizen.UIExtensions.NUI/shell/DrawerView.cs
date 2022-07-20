@@ -18,7 +18,6 @@ namespace Tizen.UIExtensions.NUI
         View? _content;
 
         DrawerBehavior _behavior;
-        bool _isOpened;
         bool _isPopover;
 
         double _drawerWidth = -1;
@@ -33,22 +32,19 @@ namespace Tizen.UIExtensions.NUI
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
+                Focusable = true,
+                FocusableInTouch = true,
             };
             _contentViewGroup = new ViewGroup()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
+                Focusable = true,
+                FocusableInTouch = true,
             };
 
             _behavior = DrawerBehavior.Drawer;
-            _isOpened = false;
             _isPopover = true;
-
-            _drawerViewGroup.Focusable = true;
-            _contentViewGroup.Focusable = true;
-
-            _drawerViewGroup.FocusableInTouch = true;
-            _contentViewGroup.FocusableInTouch = true;
 
             Children.Add(_contentViewGroup);
             Children.Add(_drawerViewGroup);
@@ -65,11 +61,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets a value that indicates if the drawer is opened.
         /// </summary>
-        public bool IsOpened
-        {
-            get => _isOpened;
-            protected set => _isOpened = value;
-        }
+        public bool IsOpened { get; protected set; } = false;
 
         /// <summary>
         /// Gets or sets a value that controls the shadow of the drawer.
@@ -188,10 +180,11 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public async virtual void OpenDrawer(bool animate = false)
+        public virtual async Task<bool> OpenAsync(bool animate = false)
         {
-            if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+            if (this.IsOpened())
+                return true;
+
 
             _contentViewGroup.FocusableChildren = false;
             _drawerViewGroup.Sensitive = false;
@@ -206,23 +199,25 @@ namespace Tizen.UIExtensions.NUI
             _drawerViewGroup.UpdateBounds(new Rect(0, 0, DrawerWidth, Size.Height));
 
             if (!_isPopover)
-                ContentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
+                _contentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
 
-            _isOpened = true;
+            IsOpened = true;
             _drawerViewGroup.Sensitive = true;
             _contentViewGroup.Sensitive = true;
 
             FocusManager.Instance.SetCurrentFocusView(_drawerViewGroup);
+
+            return true;
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public async virtual void CloseDrawer(bool animate = false)
+        public virtual async Task<bool> CloseAsync(bool animate = false)
         {
-            if (!IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+            if (!this.IsOpened())
+                return true;
 
             _contentViewGroup.FocusableChildren = true;
             _drawerViewGroup.Sensitive = false;
@@ -242,11 +237,12 @@ namespace Tizen.UIExtensions.NUI
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidthCollapsed, 0));
             }
 
-            _isOpened = false;
+            IsOpened = false;
             _drawerViewGroup.Sensitive = true;
             _contentViewGroup.Sensitive = true;
 
             FocusManager.Instance.SetCurrentFocusView(_contentViewGroup);
+            return true;
         }
 
         protected virtual void OnLayoutUpdated(object? sender, LayoutEventArgs? args)
@@ -256,19 +252,21 @@ namespace Tizen.UIExtensions.NUI
 
         protected virtual void OnDrawerFocusGained(object? sender, EventArgs args)
         {
-            DrawerViewGroup.Focusable = false;
-            ContentViewGroup.Focusable = true;
-
-            var focusable = FindFocusableChild(DrawerViewGroup) ?? DrawerViewGroup;
-            FocusManager.Instance.SetCurrentFocusView(focusable);            
+            SetCurrentFocusView(DrawerViewGroup);
         }
 
         protected virtual void OnContentFocusGained(object? sender, EventArgs args)
         {
-            DrawerViewGroup.Focusable = true;
-            ContentViewGroup.Focusable = false;
+            SetCurrentFocusView(ContentViewGroup);
+        }
 
-            var focusable = FindFocusableChild(ContentViewGroup) ?? ContentViewGroup;
+        void SetCurrentFocusView(ViewGroup viewGroup)
+        {
+            bool isDrawerView = viewGroup == DrawerViewGroup;
+            DrawerViewGroup.Focusable = !isDrawerView;
+            ContentViewGroup.Focusable = isDrawerView;
+
+            var focusable = FindFocusableChild(viewGroup) ?? viewGroup;
             FocusManager.Instance.SetCurrentFocusView(focusable);
         }
 
@@ -284,11 +282,10 @@ namespace Tizen.UIExtensions.NUI
 
         protected View? FindFocusableChild(View view)
         {
-            if (view.Focusable && !(view is ViewGroup))
-                return view;
-
             foreach (var child in view.Children)
             {
+                if (child.Focusable)
+                    return child;
                 var focusable = FindFocusableChild(child);
                 if (focusable != null)
                     return focusable;
@@ -303,18 +300,18 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (_isPopover)
                 {
-                    var positionX = _isOpened ? 0 : 0 - DrawerWidth;
+                    var positionX = IsOpened ? 0 : 0 - DrawerWidth;
                     _drawerViewGroup.UpdateBounds(new Rect(positionX, 0, DrawerWidth, Size.Height));
                     _contentViewGroup.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
 
-                    if (_isOpened)
+                    if (IsOpened)
                         _drawerViewGroup.Show();
                     else
                         _drawerViewGroup.Hide();
                 }
                 else
                 {
-                    var width = _isOpened ? DrawerWidth : DrawerWidthCollapsed;
+                    var width = IsOpened ? DrawerWidth : DrawerWidthCollapsed;
                     _drawerViewGroup.UpdateBounds(new Rect(0, 0, width, Size.Height));
                     _contentViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _drawerViewGroup.Show();
@@ -326,13 +323,13 @@ namespace Tizen.UIExtensions.NUI
                 _drawerViewGroup.UpdateBounds(new Rect(0, 0, DrawerWidth, Size.Height));
                 _contentViewGroup.UpdateBounds(new Rect(DrawerWidth, 0, Size.Width - DrawerWidth, Size.Height));
                 _drawerViewGroup.Show();
-                _isOpened = true;
+                IsOpened = true;
             }
             else
             {
                 _contentViewGroup.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
                 _drawerViewGroup.Hide();
-                _isOpened = false;
+                IsOpened = false;
             }
         }
 

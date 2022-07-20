@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
 
@@ -10,7 +11,7 @@ namespace Tizen.UIExtensions.NUI
 
         View? Content { get; set; }
 
-        View? BackDrop { get; set; }
+        View? Backdrop { get; set; }
 
         bool IsOpened { get; }
 
@@ -21,5 +22,10 @@ namespace Tizen.UIExtensions.NUI
         DrawerBehavior DrawerBehavior { get; set; }
 
         event EventHandler Toggled;
+
+        Task<bool> OpenAsync(bool animate);
+
+        Task<bool> CloseAsync(bool animate);
+
     }
 }

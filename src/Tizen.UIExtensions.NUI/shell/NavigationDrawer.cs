@@ -40,7 +40,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a view that blocks interaction when the drawer is opened.
         /// </summary>
-        public View? BackDrop
+        public View? Backdrop
         {
             get => _backdrop;
             set
@@ -78,29 +78,30 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override void OpenDrawer(bool animate = false)
+        public override async Task<bool> OpenAsync(bool animate = false)
         {
             if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+                return true;
 
-            base.OpenDrawer(animate);
+            await base.OpenAsync(animate);
 
             _backdropViewGroup.Show();
             _gestureArea?.Hide();
 
             Toggled?.Invoke(this, EventArgs.Empty);
+            return true;
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override void CloseDrawer(bool animate = false)
+        public override async Task<bool> CloseAsync(bool animate = false)
         {
             if (!IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
+                return true;
 
-            base.CloseDrawer(animate);
+            await base.CloseAsync(animate);
 
             _backdropViewGroup.Hide();
 
@@ -111,12 +112,21 @@ namespace Tizen.UIExtensions.NUI
             }
 
             Toggled?.Invoke(this, EventArgs.Empty);
+            return true;
+        }
+
+        async void OpenCloseDrawer(bool open)
+        {
+            if (open)
+                await OpenAsync(true);
+            else
+                await CloseAsync(true);
         }
 
         protected bool OnBackDropTouched(object sender, TouchEventArgs args)
         {
             if (args.Touch.GetState(0) == PointStateType.Finished)
-                CloseDrawer(true);
+                OpenCloseDrawer(false);
 
             return true;
         }
@@ -154,9 +164,9 @@ namespace Tizen.UIExtensions.NUI
 
         protected override bool OnDrawerKeyEventTriggered(object sender, KeyEventArgs args)
         {
-            if (args.Key.KeyPressedName == "XF86Back" && args.Key.State == Key.StateType.Up)
+            if (args.Key.IsDeclineKeyEvent())
             {
-                CloseDrawer(true);
+                OpenCloseDrawer(false);
                 return true;
             }
 
@@ -227,11 +237,11 @@ namespace Tizen.UIExtensions.NUI
                     if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
                     {
                         IsOpened = false;
-                        OpenDrawer(true);
+                        OpenCloseDrawer(true);
                     }
                     else
                     {
-                        CloseDrawer(true);
+                        OpenCloseDrawer(false);
                     }
                     _panGestureDetector.Value.Detach(_gestureArea);
                 }
@@ -273,7 +283,6 @@ namespace Tizen.UIExtensions.NUI
             if (_backdrop != null)
             {
                 _backdropViewGroup.Children.Add(_backdrop);
-                _backdropViewGroup.LowerBelow(DrawerViewGroup);
             }
         }
 
