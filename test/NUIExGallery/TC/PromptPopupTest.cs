@@ -26,8 +26,8 @@ namespace NUIExGallery.TC
             var btn3 = new Button
             {
                 Text = "Open Prompt popup",
-                FontSize = 10,
             };
+
             view.Add(btn3);
             btn3.Clicked += async (s, e) =>
             {
