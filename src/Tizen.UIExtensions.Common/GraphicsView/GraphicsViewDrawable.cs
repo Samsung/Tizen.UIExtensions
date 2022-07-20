@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Maui.Graphics;
 using GPoint = Microsoft.Maui.Graphics.Point;
 using TSize = Tizen.UIExtensions.Common.Size;
@@ -13,14 +14,19 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         public abstract void Draw(ICanvas canvas, RectF dirtyRect);
 
+        [ExcludeFromCodeCoverage]
         public virtual void OnTouchDown(GPoint point) { }
 
+        [ExcludeFromCodeCoverage]
         public virtual void OnTouchUp(GPoint point) { }
 
+        [ExcludeFromCodeCoverage]
         public virtual void OnTouchMove(GPoint point) { }
 
+        [ExcludeFromCodeCoverage]
         public virtual void OnFocused() { }
 
+        [ExcludeFromCodeCoverage]
         public virtual void OnUnfocused() { }
 
         protected void SendInvalidated()

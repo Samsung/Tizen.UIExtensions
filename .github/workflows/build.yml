@@ -28,3 +28,5 @@ jobs:
       run: |
         dotnet build Tizen.UIExtensions.sln
       working-directory: .
+    - name: Test
+      run: dotnet test

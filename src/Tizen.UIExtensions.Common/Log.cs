@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -954,6 +955,7 @@ namespace Tizen.UIExtensions.Common
         /// Determines if Xamarin is running in a Tizen environment.
         /// </summary>
         /// <returns><c>true</c> if application is running on Tizen; otherwise, <c>false</c>.</returns>
+        [ExcludeFromCodeCoverage]
         static bool IsTizen()
         {
             return File.Exists("/etc/tizen-release");
