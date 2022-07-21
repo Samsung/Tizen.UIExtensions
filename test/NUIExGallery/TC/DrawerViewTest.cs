@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.NUI;
@@ -15,6 +16,11 @@ namespace NUIExGallery.TC
 
         protected override void OnContentFocusGained(object? sender, EventArgs args)
         {
+        }
+
+        protected override Task RunAnimationAsync(bool isOpen)
+        {
+            return Task.CompletedTask;
         }
     }
 

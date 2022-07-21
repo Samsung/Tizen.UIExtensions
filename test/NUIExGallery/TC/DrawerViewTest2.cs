@@ -24,7 +24,7 @@ namespace NUIExGallery.TC
 
             var backdrop = new ViewGroup();
             backdrop.BackgroundColor = Tizen.NUI.Color.Blue;
-            backdrop.Opacity = 0.5f;
+            //backdrop.Opacity = 0.5f;
             _navigationDrawer.Backdrop = backdrop;
 
             var naviView = new ViewGroup

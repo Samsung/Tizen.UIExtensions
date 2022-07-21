@@ -14,10 +14,8 @@ namespace Tizen.UIExtensions.NUI
     /// </summary>
     public class NavigationDrawer : DrawerView, IAnimatable
     {
-        ViewGroup _backdropViewGroup;
-
-        View? _backdrop;
         View? _gestureArea;
+        View? _gestureAttatedView;
 
         bool _isGestureEnabled;
         double _defaultGestureAreaWidth = 50;
@@ -29,26 +27,6 @@ namespace Tizen.UIExtensions.NUI
         /// </summary>
         public NavigationDrawer() : base(true)
         {
-            _backdropViewGroup = new ViewGroup();
-            Children.Add(_backdropViewGroup);
-
-            _backdropViewGroup.TouchEvent += OnBackDropTouched;
-        }
-
-        /// <summary>
-        /// Gets or sets a view that blocks interaction when the drawer is opened.
-        /// </summary>
-        public override View? Backdrop
-        {
-            get => _backdrop;
-            set
-            {
-                if (_backdrop == value)
-                    return;
-
-                _backdrop = value;
-                UpdateBackDrop();
-            }
         }
 
         /// <summary>
@@ -78,7 +56,7 @@ namespace Tizen.UIExtensions.NUI
 
             await base.OpenAsync(animate);
 
-            _backdropViewGroup.Show();
+            BackdropViewGroup.Opacity = 1f;
 
             if (_isGestureEnabled)
                 EnableGesture();
@@ -97,20 +75,12 @@ namespace Tizen.UIExtensions.NUI
 
             await base.CloseAsync(animate);
 
-            _backdropViewGroup.Hide();
+            BackdropViewGroup.Opacity = 0f;
 
             if (_isGestureEnabled)
                 EnableGesture();
 
             SendToggled();
-        }
-
-        protected bool OnBackDropTouched(object sender, TouchEventArgs args)
-        {
-            if (args.Touch.GetState(0) == PointStateType.Finished)
-                _ = CloseAsync(true);
-
-            return true;
         }
 
         protected override void ConfigureLayout()
@@ -119,27 +89,18 @@ namespace Tizen.UIExtensions.NUI
 
             if (DrawerBehavior == DrawerBehavior.Drawer)
             {
-                _backdropViewGroup?.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
-
                 if (IsGestureEnabled)
                 {
                     _gestureArea?.UpdateBounds(new Rect(0, 0, _defaultGestureAreaWidth, Size.Height));
                     _gestureArea?.Show();
                 }
-
-                if (!IsOpened)
-                {
-                    _backdropViewGroup?.Hide();
-                }
             }
             else if (DrawerBehavior == DrawerBehavior.Locked)
             {
-                _backdropViewGroup?.Hide();
                 _gestureArea?.Hide();
             }
             else
             {
-                _backdropViewGroup?.Hide();
                 _gestureArea?.Hide();
             }
         }
@@ -171,6 +132,8 @@ namespace Tizen.UIExtensions.NUI
             {
                 var r = start + ((end - start) * v);
                 DrawerViewGroup.UpdatePosition(new Point(r, 0));
+                BackdropViewGroup.Opacity = CalcBackdropOpacityWithPosition();
+
             }, easing: Easing.Linear);
 
             animation.Commit(this, "MoveDrawer", length: 200, finished: (l, c) =>
@@ -209,7 +172,8 @@ namespace Tizen.UIExtensions.NUI
                 if (!this.IsDrawerOpened())
                 {
                     DrawerViewGroup.Show();
-                    DrawerViewGroup.UpdatePosition(new Point(0 - DrawerWidth + _defaultGestureAreaWidth / 2, 0));
+                    BackdropViewGroup.Show();
+                    DrawerViewGroup.UpdatePosition(new Point(_defaultGestureAreaWidth - DrawerWidth / 2, 0));
                     IsOpened = true;
                 }
             }
@@ -227,8 +191,9 @@ namespace Tizen.UIExtensions.NUI
             }
             else
             {
-                var x = 0 - DrawerWidth + args.PanGesture.ScreenPosition.X;
+                var x = args.PanGesture.ScreenPosition.X - DrawerWidth;
                 DrawerViewGroup.UpdatePosition(new Point(((x < 0) ? x : 0), 0));
+                BackdropViewGroup.Opacity = CalcBackdropOpacityWithPosition();
             }
         }
 
@@ -240,28 +205,24 @@ namespace Tizen.UIExtensions.NUI
                 DisableGesture();
         }
 
-        void UpdateBackDrop()
-        {
-            _backdropViewGroup.Children.Clear();
-
-            if (_backdrop != null)
-            {
-                _backdropViewGroup.Children.Add(_backdrop);
-            }
-        }
-
         void EnableGesture()
         {
             InitGesture();
 
+            _gestureAttatedView = IsOpened ? DrawerViewGroup : _gestureArea;
             _gestureArea?.Show();
-            _panGestureDetector?.Attach(IsOpened ? DrawerViewGroup : _gestureArea);
+            _panGestureDetector?.Attach(_gestureAttatedView);
         }
 
         void DisableGesture()
         {
             _gestureArea?.Hide();
-            _panGestureDetector?.Detach(IsOpened ? DrawerViewGroup : _gestureArea);
+            _panGestureDetector?.Detach(_gestureAttatedView);
+        }
+
+        float CalcBackdropOpacityWithPosition()
+        {
+            return (float)((DrawerViewGroup.Position.X < 0) ? ((DrawerViewGroup.Position.X / DrawerWidth)) + 1 : 1);
         }
 
         void IAnimatable.BatchBegin() { }

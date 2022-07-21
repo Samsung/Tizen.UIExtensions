@@ -14,8 +14,10 @@ namespace Tizen.UIExtensions.NUI
     {
         ViewGroup _drawerViewGroup;
         ViewGroup _contentViewGroup;
+        ViewGroup _backdropViewGroup;
         View? _drawer;
         View? _content;
+        View? _backdrop;
 
         DrawerBehavior _behavior;
         bool _isPopover;
@@ -26,31 +28,36 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Initializes a new instance of the <see cref="DrawerView"/> class
         /// </summary>
+        /// <param name="isPopover">A value that indicates wherher the drawer overlaps the content or not. </param>
         public DrawerView(bool isPopover)
         {
             _drawerViewGroup = new ViewGroup()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
-                Focusable = true,
             };
+
             _contentViewGroup = new ViewGroup()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
-                Focusable = true,
             };
+
+            _backdropViewGroup = new ViewGroup();
 
             _behavior = DrawerBehavior.Drawer;
             _isPopover = isPopover;
 
             Children.Add(_contentViewGroup);
+            Children.Add(_backdropViewGroup);
             Children.Add(_drawerViewGroup);
 
             LayoutUpdated += OnLayoutUpdated;
 
             _drawerViewGroup.FocusGained += OnDrawerFocusGained;
             _drawerViewGroup.KeyEvent += OnDrawerKeyEventTriggered;
+
+            _backdropViewGroup.TouchEvent += OnBackDropTouched;
 
             _contentViewGroup.FocusGained += OnContentFocusGained;
             _contentViewGroup.KeyEvent += OnContentKeyEventTriggered;
@@ -102,7 +109,21 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        public virtual View? Backdrop { get; set; }
+        /// <summary>
+        /// Gets or sets a view that blocks interaction when the drawer is opened.
+        /// </summary>
+        public virtual View? Backdrop
+        {
+            get => _backdrop;
+            set
+            {
+                if (_backdrop == value)
+                    return;
+
+                _backdrop = value;
+                ResetView(_backdropViewGroup, _backdrop);
+            }
+        }
 
         public virtual bool IsGestureEnabled { get; set; }
 
@@ -176,6 +197,8 @@ namespace Tizen.UIExtensions.NUI
 
         protected ViewGroup DrawerViewGroup => _drawerViewGroup;
 
+        protected ViewGroup BackdropViewGroup => _backdropViewGroup;
+
         protected ViewGroup ContentViewGroup => _contentViewGroup;
 
         ///// <summary>
@@ -192,12 +215,10 @@ namespace Tizen.UIExtensions.NUI
             if (this.IsDrawerOpened())
                 return;
 
-            _contentViewGroup.FocusableChildren = false;
-            _drawerViewGroup.Sensitive = false;
-            _contentViewGroup.Sensitive = false;
-
             _drawerViewGroup.Show();
             _drawerViewGroup.RaiseToTop();
+
+            _backdropViewGroup.Show();
 
             if (animate)
                 await RunAnimationAsync(true);
@@ -208,10 +229,6 @@ namespace Tizen.UIExtensions.NUI
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
 
             IsOpened = true;
-            _drawerViewGroup.Sensitive = true;
-            _contentViewGroup.Sensitive = true;
-
-            FocusManager.Instance.SetCurrentFocusView(_drawerViewGroup);
         }
 
         /// <summary>
@@ -222,10 +239,6 @@ namespace Tizen.UIExtensions.NUI
         {
             if (!this.IsDrawerOpened())
                 return;
-
-            _contentViewGroup.FocusableChildren = true;
-            _drawerViewGroup.Sensitive = false;
-            _contentViewGroup.Sensitive = false;
 
             if (animate)
                 await RunAnimationAsync(false);
@@ -241,17 +254,12 @@ namespace Tizen.UIExtensions.NUI
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidthCollapsed, 0));
             }
 
+            _backdropViewGroup.Hide();
+
             IsOpened = false;
-            _drawerViewGroup.Sensitive = true;
-            _contentViewGroup.Sensitive = true;
-
-            FocusManager.Instance.SetCurrentFocusView(_contentViewGroup);
         }
 
-        protected void SendToggled()
-        {
-            Toggled?.Invoke(this, EventArgs.Empty);
-        }
+        protected abstract Task RunAnimationAsync(bool isOpen);
 
         protected virtual void OnLayoutUpdated(object? sender, LayoutEventArgs? args)
         {
@@ -260,26 +268,20 @@ namespace Tizen.UIExtensions.NUI
 
         protected virtual void OnDrawerFocusGained(object? sender, EventArgs args)
         {
-            SetCurrentFocusView(DrawerViewGroup);
         }
 
         protected virtual void OnContentFocusGained(object? sender, EventArgs args)
         {
-            SetCurrentFocusView(ContentViewGroup);
-        }
-
-        void SetCurrentFocusView(ViewGroup viewGroup)
-        {
-            bool isDrawerView = viewGroup == DrawerViewGroup;
-            DrawerViewGroup.Focusable = !isDrawerView;
-            ContentViewGroup.Focusable = isDrawerView;
-
-            var focusable = FindFocusableChild(viewGroup) ?? viewGroup;
-            FocusManager.Instance.SetCurrentFocusView(focusable);
         }
 
         protected virtual bool OnDrawerKeyEventTriggered(object sender, KeyEventArgs args)
         {
+            if (args.Key.IsDeclineKeyEvent())
+            {
+                _ = OpenAsync(true);
+                return true;
+            }
+
             return false;
         }
 
@@ -288,19 +290,12 @@ namespace Tizen.UIExtensions.NUI
             return false;
         }
 
-        protected View? FindFocusableChild(View view)
+        protected virtual bool OnBackDropTouched(object sender, TouchEventArgs args)
         {
-            foreach (var child in view.Children)
-            {
-                if (child.Focusable)
-                    return child;
+            if (args.Touch.GetState(0) == PointStateType.Finished)
+                _ = CloseAsync(true);
 
-                var focusable = FindFocusableChild(child);
-                if (focusable != null)
-                    return focusable;
-            }
-
-            return null;
+            return true;
         }
 
         protected virtual void ConfigureLayout()
@@ -309,21 +304,31 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (_isPopover)
                 {
-                    var positionX = IsOpened ? 0 : 0 - DrawerWidth;
+                    var positionX = IsOpened ? 0 : -DrawerWidth;
                     _drawerViewGroup.UpdateBounds(new Rect(positionX, 0, DrawerWidth, Size.Height));
+                    _backdropViewGroup.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
                     _contentViewGroup.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
 
                     if (IsOpened)
+                    {
                         _drawerViewGroup.Show();
+                        _backdropViewGroup.Show();
+
+                    }
                     else
+                    {
                         _drawerViewGroup.Hide();
+                        _backdropViewGroup.Hide();
+                    }
                 }
                 else
                 {
                     var width = IsOpened ? DrawerWidth : DrawerWidthCollapsed;
                     _drawerViewGroup.UpdateBounds(new Rect(0, 0, width, Size.Height));
                     _contentViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
+                    _backdropViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _drawerViewGroup.Show();
+                    _backdropViewGroup.Show();
                 }
 
             }
@@ -332,19 +337,21 @@ namespace Tizen.UIExtensions.NUI
                 _drawerViewGroup.UpdateBounds(new Rect(0, 0, DrawerWidth, Size.Height));
                 _contentViewGroup.UpdateBounds(new Rect(DrawerWidth, 0, Size.Width - DrawerWidth, Size.Height));
                 _drawerViewGroup.Show();
+                _backdropViewGroup.Hide();
                 IsOpened = true;
             }
             else
             {
                 _contentViewGroup.UpdateBounds(new Rect(0, 0, Size.Width, Size.Height));
                 _drawerViewGroup.Hide();
+                _backdropViewGroup.Hide();
                 IsOpened = false;
             }
         }
 
-        protected virtual Task RunAnimationAsync(bool isOpen)
+        protected void SendToggled()
         {
-            return Task.CompletedTask;
+            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
         void ResetView(ViewGroup viewGroup, View? view)
