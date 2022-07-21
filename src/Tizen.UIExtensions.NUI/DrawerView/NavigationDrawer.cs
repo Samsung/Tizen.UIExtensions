@@ -12,7 +12,7 @@ namespace Tizen.UIExtensions.NUI
     /// <summary>
     /// A View that contains a drawer for navigation of an app.
     /// </summary>
-    public class NavigationDrawer : DrawerView, IAnimatable, INavigationDrawer
+    public class NavigationDrawer : DrawerView, IAnimatable
     {
         ViewGroup _backdropViewGroup;
 
@@ -22,25 +22,23 @@ namespace Tizen.UIExtensions.NUI
         bool _isGestureEnabled;
         double _defaultGestureAreaWidth = 50;
 
-        Lazy<PanGestureDetector> _panGestureDetector = new Lazy<PanGestureDetector>(()=> new PanGestureDetector());
-        Lazy<LongPressGestureDetector> _longPressGestureDetector = new Lazy<LongPressGestureDetector>(() => new LongPressGestureDetector());
+        PanGestureDetector? _panGestureDetector;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationDrawer"/> class
         /// </summary>
-        public NavigationDrawer() : base()
+        public NavigationDrawer() : base(true)
         {
             _backdropViewGroup = new ViewGroup();
-            _backdropViewGroup.TouchEvent += OnBackDropTouched;
             Children.Add(_backdropViewGroup);
 
-            IsPopover = true;
+            _backdropViewGroup.TouchEvent += OnBackDropTouched;
         }
 
         /// <summary>
         /// Gets or sets a view that blocks interaction when the drawer is opened.
         /// </summary>
-        public View? Backdrop
+        public override View? Backdrop
         {
             get => _backdrop;
             set
@@ -49,14 +47,14 @@ namespace Tizen.UIExtensions.NUI
                     return;
 
                 _backdrop = value;
-                SetBackDropView();
+                UpdateBackDrop();
             }
         }
 
         /// <summary>
         /// Gets or sets a value that indicates if gesture is enabled or not.
         /// </summary>
-        public bool IsGestureEnabled
+        public override bool IsGestureEnabled
         {
             get => _isGestureEnabled;
             set
@@ -65,68 +63,52 @@ namespace Tizen.UIExtensions.NUI
                     return;
 
                 _isGestureEnabled = value;
-                EnableGesture(value);
+                UpdateGestureEnabling(value);
             }
         }
-
-        /// <summary>
-        /// Event that is raised when the drawer is toggled.
-        /// </summary>
-        public event EventHandler? Toggled;
 
         /// <summary>
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override async Task<bool> OpenAsync(bool animate = false)
+        public override async Task OpenAsync(bool animate = false)
         {
-            if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return true;
+            if (this.IsDrawerOpened())
+                return;
 
             await base.OpenAsync(animate);
 
             _backdropViewGroup.Show();
-            _gestureArea?.Hide();
 
-            Toggled?.Invoke(this, EventArgs.Empty);
-            return true;
+            if (_isGestureEnabled)
+                EnableGesture();
+
+            SendToggled();
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override async Task<bool> CloseAsync(bool animate = false)
+        public override async Task CloseAsync(bool animate = false)
         {
-            if (!IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return true;
+            if (!this.IsDrawerOpened())
+                return;
 
             await base.CloseAsync(animate);
 
             _backdropViewGroup.Hide();
 
             if (_isGestureEnabled)
-            {
-                _gestureArea?.RaiseToTop();
-                _gestureArea?.Show();
-            }
+                EnableGesture();
 
-            Toggled?.Invoke(this, EventArgs.Empty);
-            return true;
-        }
-
-        async void OpenCloseDrawer(bool open)
-        {
-            if (open)
-                await OpenAsync(true);
-            else
-                await CloseAsync(true);
+            SendToggled();
         }
 
         protected bool OnBackDropTouched(object sender, TouchEventArgs args)
         {
             if (args.Touch.GetState(0) == PointStateType.Finished)
-                OpenCloseDrawer(false);
+                _ = CloseAsync(true);
 
             return true;
         }
@@ -166,7 +148,7 @@ namespace Tizen.UIExtensions.NUI
         {
             if (args.Key.IsDeclineKeyEvent())
             {
-                OpenCloseDrawer(false);
+                _ = CloseAsync(true);
                 return true;
             }
 
@@ -200,83 +182,65 @@ namespace Tizen.UIExtensions.NUI
             return tcs.Task;
         }
 
-        void ShowDrawer()
-        {
-            if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
-
-            DrawerViewGroup.Show();
-            DrawerViewGroup.RaiseToTop();
-            DrawerViewGroup.UpdateBounds(new Rect(0 - DrawerWidth + _defaultGestureAreaWidth / 2, 0, DrawerWidth, Size.Height));
-        }
-
-        void InitGestureArea()
-        {
-            _gestureArea = new View();
-            _gestureArea.GrabTouchAfterLeave = true;
-
-            Children.Add(_gestureArea);
-            _gestureArea.UpdateBounds(new Rect(0, 0, _defaultGestureAreaWidth, Size.Height));
-
-            _panGestureDetector.Value.Detected += (s, e) =>
-            {
-                var x = 0 - DrawerWidth + e.PanGesture.ScreenPosition.X;
-                DrawerViewGroup.UpdatePosition(new Point(((x < 0) ? x : 0), 0));
-            };
-
-            _longPressGestureDetector.Value.Detected += (s, e) =>
-            {
-                if (e.LongPressGesture.State == Gesture.StateType.Started)
-                {
-                    ShowDrawer();
-                    IsOpened = true;
-                    _panGestureDetector.Value.Attach(_gestureArea);
-                }
-                else if (e.LongPressGesture.State == Gesture.StateType.Finished || e.LongPressGesture.State == Gesture.StateType.Cancelled)
-                {
-                    if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
-                    {
-                        IsOpened = false;
-                        OpenCloseDrawer(true);
-                    }
-                    else
-                    {
-                        OpenCloseDrawer(false);
-                    }
-                    _panGestureDetector.Value.Detach(_gestureArea);
-                }
-
-            };
-
-            _longPressGestureDetector.Value.Attach(_gestureArea);
-        }
-
-        void ShowGestureArea()
+        void InitGesture()
         {
             if (_gestureArea == null)
-                InitGestureArea();
-
-            if (!IsOpened)
             {
-                _gestureArea?.Show();
-                _gestureArea?.RaiseToTop();
+                _gestureArea = new View()
+                {
+                    GrabTouchAfterLeave = true,
+                };
+
+                Children.Add(_gestureArea);
+                _gestureArea.RaiseToTop();
+            }
+
+            if (_panGestureDetector == null)
+            {
+                _panGestureDetector = new PanGestureDetector();
+                _panGestureDetector.Detected += OnGestureDetected;
             }
         }
 
-        void HideGestureArea()
+        async void OnGestureDetected(object sender, PanGestureDetector.DetectedEventArgs args)
         {
-            _gestureArea?.Hide();
-        }
-
-        void EnableGesture(bool enabled)
-        {
-            if (enabled)
-                ShowGestureArea();
+            if (args.PanGesture.State == Gesture.StateType.Started)
+            {
+                if (!this.IsDrawerOpened())
+                {
+                    DrawerViewGroup.Show();
+                    DrawerViewGroup.UpdatePosition(new Point(0 - DrawerWidth + _defaultGestureAreaWidth / 2, 0));
+                    IsOpened = true;
+                }
+            }
+            else if (args.PanGesture.State == Gesture.StateType.Finished || args.PanGesture.State == Gesture.StateType.Cancelled)
+            {
+                if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
+                {
+                    IsOpened = false;
+                    await OpenAsync(true);
+                }
+                else
+                {
+                    await CloseAsync(true);
+                }
+            }
             else
-                HideGestureArea();
+            {
+                var x = 0 - DrawerWidth + args.PanGesture.ScreenPosition.X;
+                DrawerViewGroup.UpdatePosition(new Point(((x < 0) ? x : 0), 0));
+            }
         }
 
-        void SetBackDropView()
+        void UpdateGestureEnabling(bool enabled)
+        {
+            if (enabled && DrawerBehavior == DrawerBehavior.Drawer)
+                EnableGesture();
+            else
+                DisableGesture();
+        }
+
+        void UpdateBackDrop()
         {
             _backdropViewGroup.Children.Clear();
 
@@ -284,6 +248,20 @@ namespace Tizen.UIExtensions.NUI
             {
                 _backdropViewGroup.Children.Add(_backdrop);
             }
+        }
+
+        void EnableGesture()
+        {
+            InitGesture();
+
+            _gestureArea?.Show();
+            _panGestureDetector?.Attach(IsOpened ? DrawerViewGroup : _gestureArea);
+        }
+
+        void DisableGesture()
+        {
+            _gestureArea?.Hide();
+            _panGestureDetector?.Detach(IsOpened ? DrawerViewGroup : _gestureArea);
         }
 
         void IAnimatable.BatchBegin() { }

@@ -10,7 +10,7 @@ namespace Tizen.UIExtensions.NUI
     /// <summary>
     /// A View that consists of a drawer and a content.
     /// </summary>
-    public abstract class DrawerView : ViewGroup
+    public abstract class DrawerView : ViewGroup, INavigationDrawer
     {
         ViewGroup _drawerViewGroup;
         ViewGroup _contentViewGroup;
@@ -26,25 +26,23 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Initializes a new instance of the <see cref="DrawerView"/> class
         /// </summary>
-        public DrawerView()
+        public DrawerView(bool isPopover)
         {
             _drawerViewGroup = new ViewGroup()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 Focusable = true,
-                FocusableInTouch = true,
             };
             _contentViewGroup = new ViewGroup()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 Focusable = true,
-                FocusableInTouch = true,
             };
 
             _behavior = DrawerBehavior.Drawer;
-            _isPopover = true;
+            _isPopover = isPopover;
 
             Children.Add(_contentViewGroup);
             Children.Add(_drawerViewGroup);
@@ -61,12 +59,12 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets a value that indicates if the drawer is opened.
         /// </summary>
-        public bool IsOpened { get; protected set; } = false;
+        public virtual bool IsOpened { get; protected set; } = false;
 
         /// <summary>
         /// Gets or sets a value that controls the shadow of the drawer.
         /// </summary>
-        public Shadow? DrawerShadow
+        public virtual Shadow? DrawerShadow
         {
             get => _drawerViewGroup.BoxShadow;
             set => _drawerViewGroup.BoxShadow = value;
@@ -75,7 +73,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a view for drawer.
         /// </summary>
-        public View? Drawer
+        public virtual View? Drawer
         {
             get => _drawer;
             set
@@ -91,7 +89,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a view for content.
         /// </summary>
-        public View? Content
+        public virtual View? Content
         {
             get => _content;
             set
@@ -104,10 +102,14 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
+        public virtual View? Backdrop { get; set; }
+
+        public virtual bool IsGestureEnabled { get; set; }
+
         /// <summary>
         /// Gets or sets an enumeration value that controls how the drawer appears.
         /// </summary>
-        public DrawerBehavior DrawerBehavior
+        public virtual DrawerBehavior DrawerBehavior
         {
             get => _behavior;
             set
@@ -123,7 +125,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a value that controls how the drawer appears on the content.
         /// </summary>
-        public bool IsPopover
+        public virtual bool IsPopover
         {
             get => _isPopover;
             set
@@ -139,7 +141,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a value that controls the drawer width.
         /// </summary>
-        public double DrawerWidth
+        public virtual double DrawerWidth
         {
             get => (_drawerWidth > -1) ? _drawerWidth : DefaultDrawerWidth;
             set
@@ -176,15 +178,19 @@ namespace Tizen.UIExtensions.NUI
 
         protected ViewGroup ContentViewGroup => _contentViewGroup;
 
+        ///// <summary>
+        ///// Event that is raised when the drawer is toggled.
+        ///// </summary>
+        public event EventHandler? Toggled;
+
         /// <summary>
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public virtual async Task<bool> OpenAsync(bool animate = false)
+        public virtual async Task OpenAsync(bool animate = false)
         {
-            if (this.IsOpened())
-                return true;
-
+            if (this.IsDrawerOpened())
+                return;
 
             _contentViewGroup.FocusableChildren = false;
             _drawerViewGroup.Sensitive = false;
@@ -206,18 +212,16 @@ namespace Tizen.UIExtensions.NUI
             _contentViewGroup.Sensitive = true;
 
             FocusManager.Instance.SetCurrentFocusView(_drawerViewGroup);
-
-            return true;
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public virtual async Task<bool> CloseAsync(bool animate = false)
+        public virtual async Task CloseAsync(bool animate = false)
         {
-            if (!this.IsOpened())
-                return true;
+            if (!this.IsDrawerOpened())
+                return;
 
             _contentViewGroup.FocusableChildren = true;
             _drawerViewGroup.Sensitive = false;
@@ -242,7 +246,11 @@ namespace Tizen.UIExtensions.NUI
             _contentViewGroup.Sensitive = true;
 
             FocusManager.Instance.SetCurrentFocusView(_contentViewGroup);
-            return true;
+        }
+
+        protected void SendToggled()
+        {
+            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
         protected virtual void OnLayoutUpdated(object? sender, LayoutEventArgs? args)
@@ -286,6 +294,7 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (child.Focusable)
                     return child;
+
                 var focusable = FindFocusableChild(child);
                 if (focusable != null)
                     return focusable;

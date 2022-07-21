@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.UIExtensions.Common;
 
@@ -13,6 +14,8 @@ namespace Tizen.UIExtensions.NUI
 
         View? Backdrop { get; set; }
 
+        Shadow? DrawerShadow { get; set; }
+
         bool IsOpened { get; }
 
         double DrawerWidth { get; set; }
@@ -23,9 +26,9 @@ namespace Tizen.UIExtensions.NUI
 
         event EventHandler Toggled;
 
-        Task<bool> OpenAsync(bool animate);
+        Task OpenAsync(bool animate);
 
-        Task<bool> CloseAsync(bool animate);
+        Task CloseAsync(bool animate);
 
     }
 }

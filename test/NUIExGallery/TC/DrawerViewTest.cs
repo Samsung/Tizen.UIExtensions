@@ -7,6 +7,8 @@ namespace NUIExGallery.TC
 {
     public class FocusDisabledDrawerView : DrawerView
     {
+        public FocusDisabledDrawerView() : base(true) {}
+
         protected override void OnDrawerFocusGained(object? sender, EventArgs args)
         {
         }
@@ -62,12 +64,12 @@ namespace NUIExGallery.TC
 
             openButton.Clicked += (s, e) =>
             {
-                drawerView.OpenAsync(false);
+                _ = drawerView.OpenAsync(false);
             };
 
             closeButton.Clicked += (s, e) =>
             {
-                drawerView.CloseAsync(false);
+                _ = drawerView.CloseAsync(false);
             };
 
             modeButton.Clicked += (s, e) =>
