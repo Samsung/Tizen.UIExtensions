@@ -18,7 +18,7 @@ namespace Tizen.UIExtensions.NUI
         View? _gestureAttatedView;
 
         bool _isGestureEnabled;
-        double _defaultGestureAreaWidth = 50;
+        double _defaultGestureAreaWidth = 20;
 
         PanGestureDetector? _panGestureDetector;
 
@@ -41,7 +41,7 @@ namespace Tizen.UIExtensions.NUI
                     return;
 
                 _isGestureEnabled = value;
-                UpdateGestureEnabling(value);
+                UpdateGestureEnabling();
             }
         }
 
@@ -49,38 +49,24 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override async Task OpenAsync(bool animate = false)
+        public override Task OpenAsync(bool animate = false)
         {
             if (this.IsDrawerOpened())
-                return;
+                return Task.CompletedTask;
 
-            await base.OpenAsync(animate);
-
-            BackdropViewGroup.Opacity = 1f;
-
-            if (_isGestureEnabled)
-                EnableGesture();
-
-            SendToggled();
+            return OpenDrawer(animate);
         }
 
         /// <summary>
         /// Closes the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override async Task CloseAsync(bool animate = false)
+        public override Task CloseAsync(bool animate = false)
         {
             if (!this.IsDrawerOpened())
-                return;
+                return Task.CompletedTask;
 
-            await base.CloseAsync(animate);
-
-            BackdropViewGroup.Opacity = 0f;
-
-            if (_isGestureEnabled)
-                EnableGesture();
-
-            SendToggled();
+            return CloseDrawer(animate);
         }
 
         protected override void ConfigureLayout()
@@ -91,8 +77,10 @@ namespace Tizen.UIExtensions.NUI
             {
                 if (IsGestureEnabled)
                 {
-                    _gestureArea?.UpdateBounds(new Rect(0, 0, _defaultGestureAreaWidth, Size.Height));
-                    _gestureArea?.Show();
+                    _gestureArea?.UpdateBounds(new Rect(0, 0, _defaultGestureAreaWidth.ToPixel(), Size.Height));
+
+                    if (IsOpened)
+                        _gestureArea?.Show();
                 }
             }
             else if (DrawerBehavior == DrawerBehavior.Locked)
@@ -103,17 +91,6 @@ namespace Tizen.UIExtensions.NUI
             {
                 _gestureArea?.Hide();
             }
-        }
-
-        protected override bool OnDrawerKeyEventTriggered(object sender, KeyEventArgs args)
-        {
-            if (args.Key.IsDeclineKeyEvent())
-            {
-                _ = CloseAsync(true);
-                return true;
-            }
-
-            return false;
         }
 
         protected override Task RunAnimationAsync(bool isOpen)
@@ -132,7 +109,7 @@ namespace Tizen.UIExtensions.NUI
             {
                 var r = start + ((end - start) * v);
                 DrawerViewGroup.UpdatePosition(new Point(r, 0));
-                BackdropViewGroup.Opacity = CalcBackdropOpacityWithPosition();
+                UpdateBackdropOpacityByPosition();
 
             }, easing: Easing.Linear);
 
@@ -155,7 +132,7 @@ namespace Tizen.UIExtensions.NUI
                 };
 
                 Children.Add(_gestureArea);
-                _gestureArea.RaiseToTop();
+                _gestureArea.LowerBelow(DrawerViewGroup);
             }
 
             if (_panGestureDetector == null)
@@ -173,33 +150,26 @@ namespace Tizen.UIExtensions.NUI
                 {
                     DrawerViewGroup.Show();
                     BackdropViewGroup.Show();
-                    DrawerViewGroup.UpdatePosition(new Point(_defaultGestureAreaWidth - DrawerWidth / 2, 0));
-                    IsOpened = true;
+                    DrawerViewGroup.UpdatePosition(new Point(_defaultGestureAreaWidth.ToPixel() / 2 - DrawerWidth , 0));
                 }
             }
             else if (args.PanGesture.State == Gesture.StateType.Finished || args.PanGesture.State == Gesture.StateType.Cancelled)
             {
                 if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
-                {
-                    IsOpened = false;
-                    await OpenAsync(true);
-                }
+                    await OpenDrawer(true);
                 else
-                {
-                    await CloseAsync(true);
-                }
+                    await CloseDrawer(true);
             }
             else
             {
-                var x = args.PanGesture.ScreenPosition.X - DrawerWidth;
-                DrawerViewGroup.UpdatePosition(new Point(((x < 0) ? x : 0), 0));
-                BackdropViewGroup.Opacity = CalcBackdropOpacityWithPosition();
+                UpdateDrawerPositionByGesture(args.PanGesture);
+                UpdateBackdropOpacityByPosition();
             }
         }
 
-        void UpdateGestureEnabling(bool enabled)
+        void UpdateGestureEnabling()
         {
-            if (enabled && DrawerBehavior == DrawerBehavior.Drawer)
+            if (_isGestureEnabled && DrawerBehavior == DrawerBehavior.Drawer)
                 EnableGesture();
             else
                 DisableGesture();
@@ -220,9 +190,36 @@ namespace Tizen.UIExtensions.NUI
             _panGestureDetector?.Detach(_gestureAttatedView);
         }
 
-        float CalcBackdropOpacityWithPosition()
+        void UpdateDrawerPositionByGesture(PanGesture gesture)
         {
-            return (float)((DrawerViewGroup.Position.X < 0) ? ((DrawerViewGroup.Position.X / DrawerWidth)) + 1 : 1);
+            var x = DrawerViewGroup.Position.X + gesture.Displacement.X;
+            DrawerViewGroup.UpdatePosition(new Point(((x < 0) ? x : 0), 0));
+        }
+
+        void UpdateBackdropOpacityByPosition()
+        {
+            var opacity = (DrawerViewGroup.Position.X < 0) ? 1 + (DrawerViewGroup.Position.X / DrawerWidth): 1;
+            BackdropViewGroup.Opacity = (float)opacity;
+        }
+
+        async Task OpenDrawer(bool animate)
+        {
+            await base.OpenAsync(animate);
+
+            BackdropViewGroup.Opacity = 1f;
+
+            UpdateGestureEnabling();
+            SendToggled();
+        }
+
+        async Task CloseDrawer(bool animate)
+        {
+            await base.CloseAsync(animate);
+
+            BackdropViewGroup.Opacity = 0f;
+
+            UpdateGestureEnabling();
+            SendToggled();
         }
 
         void IAnimatable.BatchBegin() { }

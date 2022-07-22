@@ -162,7 +162,7 @@ namespace Tizen.UIExtensions.NUI
         /// <summary>
         /// Gets or sets a value that controls the drawer width.
         /// </summary>
-        public virtual double DrawerWidth
+        public double DrawerWidth
         {
             get => (_drawerWidth > -1) ? _drawerWidth : DefaultDrawerWidth;
             set
@@ -212,12 +212,7 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
         public virtual async Task OpenAsync(bool animate = false)
         {
-            if (this.IsDrawerOpened())
-                return;
-
             _drawerViewGroup.Show();
-            _drawerViewGroup.RaiseToTop();
-
             _backdropViewGroup.Show();
 
             if (animate)
@@ -237,9 +232,6 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
         public virtual async Task CloseAsync(bool animate = false)
         {
-            if (!this.IsDrawerOpened())
-                return;
-
             if (animate)
                 await RunAnimationAsync(false);
 
@@ -276,12 +268,6 @@ namespace Tizen.UIExtensions.NUI
 
         protected virtual bool OnDrawerKeyEventTriggered(object sender, KeyEventArgs args)
         {
-            if (args.Key.IsDeclineKeyEvent())
-            {
-                _ = OpenAsync(true);
-                return true;
-            }
-
             return false;
         }
 
