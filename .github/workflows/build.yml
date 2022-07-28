@@ -1,14 +1,9 @@
-name: Build Projects
+name: Build and Test Projects
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  #     - dev
   pull_request_target:
     branches:
       - main
-      - dev
 
 jobs:
   build:
