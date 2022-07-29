@@ -1,1 +1,68 @@
+name: Test Projects
 
+on:
+  workflow_run:
+    workflows: ["Build Projects"]
+    types:
+      - completed
+  # pull_request_target:
+  #   branches:
+  #     - main
+
+jobs:
+  test:
+    runs-on: code-large
+    steps:
+
+    - name: Test
+      run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger "html;logfilename=testResults.html" > result.txt
+
+    - name: Set test result
+      id: set-result
+      run: echo ::set-output name=result::$(tail -1 result.txt)
+      if: always()
+
+    - name: Comment (Failed)
+      uses: CODE-Actions/github-script@v4
+      with:
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '⛔ Test failed !!! :scream:\n' + '```sh \n ${{steps.set-result.outputs.result}} \n ```'
+          })
+      if: failure()
+
+    - name: Comment (Passed)
+      uses: CODE-Actions/github-script@v5
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '✅ All tests passed !!! :tada:\n' + '```sh \n ${{steps.set-result.outputs.result}} \n ```'
+          })
+      if: success()
+
+    - name: Test Coverage
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        export PATH="$PATH:/github/home/.dotnet/tools"
+        reportgenerator -reports:test/UnitTests/TestResults/**/coverage.cobertura.xml -targetdir:"coveragereport" -reporttypes:Html
+      if: always()
+
+    - name: "Upload artifact: Unit Test Result"
+      uses: CODE-Actions/upload-artifact@v2
+      with:
+        name: testresult
+        path: test/UnitTests/TestResults/testResults.html
+      if: always()
+
+    - name: "Upload artifact: Test Coverage Report"
+      uses: CODE-Actions/upload-artifact@v2
+      with:
+        name: coveragereport
+        path: coveragereport/
+      if: always()
