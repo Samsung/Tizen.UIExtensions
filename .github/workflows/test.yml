@@ -1,18 +1,20 @@
 name: Test Projects
 
 on:
-  workflow_run:
-    workflows: ["Build Projects"]
-    types:
-      - completed
-  # pull_request_target:
-  #   branches:
-  #     - main
+  pull_request_target:
+    branches:
+      - main
+      - dev
+# workflow_run:
+#     workflows: ["Build Projects"]
+#     types:
+#       - completed
 
 jobs:
   test:
-    runs-on: code-large
+    runs-on: code-default
     steps:
+    - uses: CODE-Actions/checkout@v2
 
     - name: Test
       run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger "html;logfilename=testResults.html" > result.txt
