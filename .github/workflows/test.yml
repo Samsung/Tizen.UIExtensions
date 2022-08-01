@@ -5,6 +5,10 @@ on:
     workflows: [Build Projects]
     types:
       - completed
+    branches:
+      - main
+      - dev
+      
 #   pull_request_target:
 #     branches:
 #       - main
