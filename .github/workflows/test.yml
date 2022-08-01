@@ -1,14 +1,14 @@
 name: Test Projects
 
 on:
-  pull_request_target:
-    branches:
-      - main
-      - dev
-# workflow_run:
-#     workflows: ["Build Projects"]
-#     types:
-#       - completed
+  workflow_run:
+    workflows: ["Build Projects"]
+    types:
+      - completed
+#   pull_request_target:
+#     branches:
+#       - main
+#       - dev
 
 jobs:
   test:
