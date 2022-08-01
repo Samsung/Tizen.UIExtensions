@@ -228,7 +228,7 @@ namespace Tizen.UIExtensions.NUI
 
         bool OnKeyEvent(object source, KeyEventArgs e)
         {
-            if (IsOpen && e.Key.IsAcceptKeyEvent())
+            if (IsOpen && e.Key.IsDeclineKeyEvent())
             {
                 return OnBackButtonPressed();
             }
