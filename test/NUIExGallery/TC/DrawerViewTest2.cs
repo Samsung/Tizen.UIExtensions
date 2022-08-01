@@ -18,6 +18,10 @@ namespace NUIExGallery.TC
         {
             _navigationDrawer = new NavigationDrawer();
             _navigationDrawer.DrawerShadow = new Shadow(30.0f, Tizen.NUI.Color.Red, new Vector2(10, 0));
+            _navigationDrawer.Toggled += (s, e) =>
+            {
+                Console.WriteLine($"drawerView toggled!!!");
+            };
 
             _navigationDrawer.Content = CreateContent();
             _navigationDrawer.IsGestureEnabled = false;
@@ -153,6 +157,10 @@ namespace NUIExGallery.TC
             {
                 Text = "Open"
             };
+            var closeButton = new Button
+            {
+                Text = "Close"
+            };
             var gestureButton = new Button
             {
                 Text = $"Gesture: {_navigationDrawer.IsGestureEnabled}"
@@ -166,7 +174,10 @@ namespace NUIExGallery.TC
             {
                 _ = _navigationDrawer.OpenAsync();
             };
-
+            closeButton.Clicked += (s, e) =>
+            {
+                _ = _navigationDrawer.CloseAsync(true);
+            };
             gestureButton.Clicked += (s, e) =>
             {
                 _navigationDrawer.IsGestureEnabled = !_navigationDrawer.IsGestureEnabled;
@@ -198,6 +209,7 @@ namespace NUIExGallery.TC
 
             viewGroup.Children.Add(openButton);
             viewGroup.Children.Add(openButton2);
+            viewGroup.Children.Add(closeButton);
             viewGroup.Children.Add(gestureButton);
             viewGroup.Children.Add(behaviorButton);
 

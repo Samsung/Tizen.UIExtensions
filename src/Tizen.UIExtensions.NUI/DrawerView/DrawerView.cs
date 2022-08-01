@@ -210,7 +210,27 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public virtual async Task OpenAsync(bool animate = false)
+        public virtual Task OpenAsync(bool animate = false)
+        {
+            if (DrawerBehavior != DrawerBehavior.Drawer || IsOpened)
+                return Task.CompletedTask;
+
+            return OpenDrawer(animate);
+        }
+
+        /// <summary>
+        /// Closes the drawer.
+        /// </summary>
+        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
+        public virtual Task CloseAsync(bool animate = false)
+        {
+            if (DrawerBehavior != DrawerBehavior.Drawer || !IsOpened)
+                return Task.CompletedTask;
+
+            return CloseDrawer(animate);
+        }
+
+        protected virtual async Task OpenDrawer(bool animate = false)
         {
             _drawerViewGroup.Show();
             _backdropViewGroup.Show();
@@ -224,13 +244,14 @@ namespace Tizen.UIExtensions.NUI
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
 
             IsOpened = true;
+
+            UpdateBackdrop();
+            UpdateGestureEnabling();
+
+            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
-        /// <summary>
-        /// Closes the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public virtual async Task CloseAsync(bool animate = false)
+        protected virtual async Task CloseDrawer(bool animate = false)
         {
             if (animate)
                 await RunAnimationAsync(false);
@@ -249,6 +270,11 @@ namespace Tizen.UIExtensions.NUI
             _backdropViewGroup.Hide();
 
             IsOpened = false;
+
+            UpdateBackdrop();
+            UpdateGestureEnabling();
+
+            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
         protected abstract Task RunAnimationAsync(bool isOpen);
@@ -284,6 +310,14 @@ namespace Tizen.UIExtensions.NUI
             return true;
         }
 
+        protected virtual void UpdateGestureEnabling()
+        {
+        }
+
+        protected virtual void UpdateBackdrop()
+        {
+        }
+
         protected virtual void ConfigureLayout()
         {
             if (DrawerBehavior == DrawerBehavior.Drawer)
@@ -314,7 +348,7 @@ namespace Tizen.UIExtensions.NUI
                     _contentViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _backdropViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _drawerViewGroup.Show();
-                    _backdropViewGroup.Show();
+                    _backdropViewGroup.Hide();
                 }
 
             }
@@ -333,11 +367,6 @@ namespace Tizen.UIExtensions.NUI
                 _backdropViewGroup.Hide();
                 IsOpened = false;
             }
-        }
-
-        protected void SendToggled()
-        {
-            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
         void ResetView(ViewGroup viewGroup, View? view)

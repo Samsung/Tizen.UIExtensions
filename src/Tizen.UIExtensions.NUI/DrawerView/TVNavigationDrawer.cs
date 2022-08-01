@@ -13,6 +13,8 @@ namespace Tizen.UIExtensions.NUI
     /// </summary>
     public class TVNavigationDrawer : DrawerView, IAnimatable
     {
+        bool _disposed;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationDrawer"/> class
         /// </summary>
@@ -21,32 +23,19 @@ namespace Tizen.UIExtensions.NUI
             FocusManager.Instance.FocusChanged += OnFocusChanged;
         }
 
-        /// <summary>
-        /// Opens the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override async Task OpenAsync(bool animate = false)
+        protected override void Dispose(bool disposing)
         {
-            if (IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
+            if (_disposed)
                 return;
 
-            await base.OpenAsync(animate);
+            _disposed = true;
+            if (disposing)
+            {
+                // Remove event handler
+                FocusManager.Instance.FocusChanged -= OnFocusChanged;
+            }
 
-            SendToggled();
-        }
-
-        /// <summary>
-        /// Closes the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override async Task CloseAsync(bool animate = false)
-        {
-            if (!IsOpened || (DrawerBehavior != DrawerBehavior.Drawer))
-                return;
-
-            await base.CloseAsync(animate);
-
-            SendToggled();
+            base.Dispose(disposing);
         }
 
         protected override Task RunAnimationAsync(bool isOpen)
@@ -79,9 +68,10 @@ namespace Tizen.UIExtensions.NUI
             return tcs.Task;
         }
 
+
         async void OnFocusChanged(object? sender, FocusManager.FocusChangedEventArgs e)
         {
-            if (DrawerViewGroup.Contains(e.Current))
+            if (e.Current != null && DrawerViewGroup.FindDescendantByID(e.Current.ID) != null)
                 await OpenAsync(true);
             else
                 await CloseAsync(true);

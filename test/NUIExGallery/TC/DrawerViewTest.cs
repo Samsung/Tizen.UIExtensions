@@ -34,6 +34,10 @@ namespace NUIExGallery.TC
         {
             var drawerView = new FocusDisabledDrawerView();
             drawerView.DrawerShadow = new Shadow(30.0f, Tizen.NUI.Color.Red, new Vector2(10, 0));
+            drawerView.Toggled += (s, e) =>
+            {
+                Console.WriteLine($"drawerView toggled!!!");
+            };
 
             var viewGroup = new ViewGroup();
             viewGroup.BackgroundColor = Tizen.NUI.Color.Yellow;
@@ -81,7 +85,7 @@ namespace NUIExGallery.TC
             modeButton.Clicked += (s, e) =>
             {
                 drawerView.IsPopover = !drawerView.IsPopover;
-                modeButton.Text = $"IsPopover={drawerView.IsPopover}";
+                modeButton.Text = $"IsPopover={drawerView.IsPopover} \n IsOpened={drawerView.IsOpened}";
             };
 
             behaviorButton.Clicked += (s, e) =>
