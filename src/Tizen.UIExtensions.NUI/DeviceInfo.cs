@@ -16,6 +16,10 @@ namespace Tizen.UIExtensions.Common
 
         static Lazy<int> s_dpi = new Lazy<int>(() =>
         {
+            if (IsTV || IsIoT)
+            {
+                return 213;
+            }
             Debug.Assert(Window.Instance != null);
             return (int)Window.Instance.Dpi.Y;
         });
@@ -34,6 +38,11 @@ namespace Tizen.UIExtensions.Common
         {
             TSystemInfo.TryGetValue("http://tizen.org/system/device_type", out string deviceType);
             return deviceType.ToDeviceType();
+        });
+
+        internal static Lazy<float> FontScale = new Lazy<float>(() =>
+        {
+            return (float)(ScalingFactor * 160 / Window.Instance.Dpi.Y);
         });
     }
 }
