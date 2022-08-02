@@ -348,7 +348,11 @@ namespace Tizen.UIExtensions.NUI
                     _contentViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _backdropViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _drawerViewGroup.Show();
-                    _backdropViewGroup.Hide();
+
+                    if (IsOpened)
+                        _backdropViewGroup.Show();
+                    else
+                        _backdropViewGroup.Hide();
                 }
 
             }

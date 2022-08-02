@@ -107,6 +107,11 @@ namespace Tizen.UIExtensions.NUI
                     GrabTouchAfterLeave = true,
                 };
 
+                _gestureArea.TouchEvent += (s, e) =>
+                {
+                    return true;
+                };
+
                 Children.Add(_gestureArea);
                 _gestureArea.LowerBelow(DrawerViewGroup);
             }
