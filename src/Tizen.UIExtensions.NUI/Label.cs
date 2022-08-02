@@ -104,11 +104,11 @@ namespace Tizen.UIExtensions.NUI
         { 
             get
             {
-                return PointSize;
+                return PointSize / DeviceInfo.FontScale.Value;
             }
             set
             {
-                PointSize = value == -1 ? _defaultFontSize : (float)value;
+                PointSize = value == -1 ? _defaultFontSize : (float)value * DeviceInfo.FontScale.Value;
             }
         }
 
