@@ -45,30 +45,6 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        /// <summary>
-        /// Opens the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public override Task OpenAsync(bool animate = false)
-        {
-            if (this.IsDrawerOpened())
-                return Task.CompletedTask;
-
-            return OpenDrawer(animate);
-        }
-
-        /// <summary>
-        /// Closes the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public override Task CloseAsync(bool animate = false)
-        {
-            if (!this.IsDrawerOpened())
-                return Task.CompletedTask;
-
-            return CloseDrawer(animate);
-        }
-
         protected override void ConfigureLayout()
         {
             base.ConfigureLayout();
@@ -131,6 +107,11 @@ namespace Tizen.UIExtensions.NUI
                     GrabTouchAfterLeave = true,
                 };
 
+                _gestureArea.TouchEvent += (s, e) =>
+                {
+                    return true;
+                };
+
                 Children.Add(_gestureArea);
                 _gestureArea.LowerBelow(DrawerViewGroup);
             }
@@ -144,9 +125,12 @@ namespace Tizen.UIExtensions.NUI
 
         async void OnGestureDetected(object sender, PanGestureDetector.DetectedEventArgs args)
         {
+            if (DrawerBehavior != DrawerBehavior.Drawer)
+                return;
+
             if (args.PanGesture.State == Gesture.StateType.Started)
             {
-                if (!this.IsDrawerOpened())
+                if (!IsOpened)
                 {
                     DrawerViewGroup.Show();
                     BackdropViewGroup.Show();
@@ -156,9 +140,9 @@ namespace Tizen.UIExtensions.NUI
             else if (args.PanGesture.State == Gesture.StateType.Finished || args.PanGesture.State == Gesture.StateType.Cancelled)
             {
                 if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
-                    await OpenDrawer(true);
+                    await OpenAsync(true);
                 else
-                    await CloseDrawer(true);
+                    await CloseAsync(true);
             }
             else
             {
@@ -167,12 +151,20 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        void UpdateGestureEnabling()
+        protected override void UpdateGestureEnabling(bool isOpen = false)
         {
             if (_isGestureEnabled && DrawerBehavior == DrawerBehavior.Drawer)
                 EnableGesture();
             else
                 DisableGesture();
+        }
+
+        protected override void UpdateBackdrop(bool isOpen)
+        {
+            if (isOpen)
+                BackdropViewGroup.Opacity = 1f;
+            else
+                BackdropViewGroup.Opacity = 0f;
         }
 
         void EnableGesture()
@@ -200,26 +192,6 @@ namespace Tizen.UIExtensions.NUI
         {
             var opacity = (DrawerViewGroup.Position.X < 0) ? 1 + (DrawerViewGroup.Position.X / DrawerWidth): 1;
             BackdropViewGroup.Opacity = (float)opacity;
-        }
-
-        async Task OpenDrawer(bool animate)
-        {
-            await base.OpenAsync(animate);
-
-            BackdropViewGroup.Opacity = 1f;
-
-            UpdateGestureEnabling();
-            SendToggled();
-        }
-
-        async Task CloseDrawer(bool animate)
-        {
-            await base.CloseAsync(animate);
-
-            BackdropViewGroup.Opacity = 0f;
-
-            UpdateGestureEnabling();
-            SendToggled();
         }
 
         void IAnimatable.BatchBegin() { }

@@ -6,17 +6,17 @@ using Tizen.UIExtensions.NUI;
 
 namespace NUIExGallery.TC
 {
-    public class NavigationDrawerTest : TestCaseBase
+    public class TVNavigationDrawerTest : TestCaseBase
     {
-        public override string TestName => "DrawerView(NavigationDrawer) Test";
+        public override string TestName => "DrawerView(TVNavigationDrawer) Test";
 
-        public override string TestDescription => "DrawerView(NavigationDrawer) Test";
+        public override string TestDescription => "DrawerView(TVNavigationDrawer) Test";
 
-        NavigationDrawer _navigationDrawer;
+        TVNavigationDrawer _navigationDrawer;
 
         public override View Run()
         {
-            _navigationDrawer = new NavigationDrawer();
+            _navigationDrawer = new TVNavigationDrawer();
             _navigationDrawer.DrawerShadow = new Shadow(30.0f, Tizen.NUI.Color.Red, new Vector2(10, 0));
             _navigationDrawer.Toggled += (s, e) =>
             {
@@ -25,11 +25,6 @@ namespace NUIExGallery.TC
 
             _navigationDrawer.Content = CreateContent();
             _navigationDrawer.IsGestureEnabled = false;
-
-            var backdrop = new ViewGroup();
-            backdrop.BackgroundColor = Tizen.NUI.Color.Blue;
-            //backdrop.Opacity = 0.5f;
-            _navigationDrawer.Backdrop = backdrop;
 
             var naviView = new ViewGroup
             {
@@ -174,10 +169,12 @@ namespace NUIExGallery.TC
             {
                 _ = _navigationDrawer.OpenAsync();
             };
+
             closeButton.Clicked += (s, e) =>
             {
-                _ = _navigationDrawer.CloseAsync(true);
+                _ = _navigationDrawer.CloseAsync(false);
             };
+
             gestureButton.Clicked += (s, e) =>
             {
                 _navigationDrawer.IsGestureEnabled = !_navigationDrawer.IsGestureEnabled;

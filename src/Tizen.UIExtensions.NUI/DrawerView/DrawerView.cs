@@ -212,6 +212,9 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
         public virtual async Task OpenAsync(bool animate = false)
         {
+            if (DrawerBehavior != DrawerBehavior.Drawer)
+                return;
+
             _drawerViewGroup.Show();
             _backdropViewGroup.Show();
 
@@ -223,7 +226,9 @@ namespace Tizen.UIExtensions.NUI
             if (!_isPopover)
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
 
-            IsOpened = true;
+            UpdateBackdrop(true);
+            UpdateGestureEnabling(true);
+            ToggleDrawerState(true);
         }
 
         /// <summary>
@@ -232,6 +237,9 @@ namespace Tizen.UIExtensions.NUI
         /// <param name="animate">Whether or not the drawer is closed with animation.</param>
         public virtual async Task CloseAsync(bool animate = false)
         {
+            if (DrawerBehavior != DrawerBehavior.Drawer)
+                return;
+
             if (animate)
                 await RunAnimationAsync(false);
 
@@ -248,7 +256,9 @@ namespace Tizen.UIExtensions.NUI
 
             _backdropViewGroup.Hide();
 
-            IsOpened = false;
+            UpdateBackdrop(false);
+            UpdateGestureEnabling(false);
+            ToggleDrawerState(false);
         }
 
         protected abstract Task RunAnimationAsync(bool isOpen);
@@ -284,6 +294,14 @@ namespace Tizen.UIExtensions.NUI
             return true;
         }
 
+        protected virtual void UpdateGestureEnabling(bool isOpen)
+        {
+        }
+
+        protected virtual void UpdateBackdrop(bool isOpen)
+        {
+        }
+
         protected virtual void ConfigureLayout()
         {
             if (DrawerBehavior == DrawerBehavior.Drawer)
@@ -314,7 +332,11 @@ namespace Tizen.UIExtensions.NUI
                     _contentViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _backdropViewGroup.UpdateBounds(new Rect(width, 0, Size.Width, Size.Height));
                     _drawerViewGroup.Show();
-                    _backdropViewGroup.Show();
+
+                    if (IsOpened)
+                        _backdropViewGroup.Show();
+                    else
+                        _backdropViewGroup.Hide();
                 }
 
             }
@@ -335,8 +357,12 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        protected void SendToggled()
+        void ToggleDrawerState(bool isOpen)
         {
+            if (IsOpened == isOpen)
+                return;
+
+            IsOpened = isOpen;
             Toggled?.Invoke(this, EventArgs.Empty);
         }
 
