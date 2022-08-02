@@ -140,9 +140,9 @@ namespace Tizen.UIExtensions.NUI
             else if (args.PanGesture.State == Gesture.StateType.Finished || args.PanGesture.State == Gesture.StateType.Cancelled)
             {
                 if (DrawerViewGroup.Position.X > (DrawerWidth / 2) * -1)
-                    await OpenDrawer(true);
+                    await OpenAsync(true);
                 else
-                    await CloseDrawer(true);
+                    await CloseAsync(true);
             }
             else
             {
@@ -151,7 +151,7 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
-        protected override void UpdateGestureEnabling()
+        protected override void UpdateGestureEnabling(bool isOpen = false)
         {
             if (_isGestureEnabled && DrawerBehavior == DrawerBehavior.Drawer)
                 EnableGesture();
@@ -159,9 +159,9 @@ namespace Tizen.UIExtensions.NUI
                 DisableGesture();
         }
 
-        protected override void UpdateBackdrop()
+        protected override void UpdateBackdrop(bool isOpen)
         {
-            if (IsOpened)
+            if (isOpen)
                 BackdropViewGroup.Opacity = 1f;
             else
                 BackdropViewGroup.Opacity = 0f;

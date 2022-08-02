@@ -40,10 +40,10 @@ namespace Tizen.UIExtensions.NUI
 
         protected override Task RunAnimationAsync(bool isOpen)
         {
-            if (isOpen)
-                return ResizeDrawerAsync(DrawerWidthCollapsed, DrawerWidth);
-            else
-                return ResizeDrawerAsync(DrawerWidth, DrawerWidthCollapsed);
+            var start = DrawerViewGroup.Size.Width;
+            var end = (isOpen) ? DrawerWidth : DrawerWidthCollapsed;
+
+            return ResizeDrawerAsync(start, end);
         }
 
         Task ResizeDrawerAsync(double start, double end)
@@ -68,12 +68,14 @@ namespace Tizen.UIExtensions.NUI
             return tcs.Task;
         }
 
-
         async void OnFocusChanged(object? sender, FocusManager.FocusChangedEventArgs e)
         {
-            if (e.Current != null && DrawerViewGroup.FindDescendantByID(e.Current.ID) != null)
+            if (e.Current == null)
+                return;
+
+            if (DrawerViewGroup.FindDescendantByID(e.Current.ID) != null)
                 await OpenAsync(true);
-            else
+            else if (ContentViewGroup.FindDescendantByID(e.Current.ID) != null)
                 await CloseAsync(true);
         }
 

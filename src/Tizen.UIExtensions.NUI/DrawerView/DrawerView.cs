@@ -210,28 +210,11 @@ namespace Tizen.UIExtensions.NUI
         /// Opens the drawer.
         /// </summary>
         /// <param name="animate">Whether or not the drawer is opened with animation.</param>
-        public virtual Task OpenAsync(bool animate = false)
+        public virtual async Task OpenAsync(bool animate = false)
         {
-            if (DrawerBehavior != DrawerBehavior.Drawer || IsOpened)
-                return Task.CompletedTask;
+            if (DrawerBehavior != DrawerBehavior.Drawer)
+                return;
 
-            return OpenDrawer(animate);
-        }
-
-        /// <summary>
-        /// Closes the drawer.
-        /// </summary>
-        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
-        public virtual Task CloseAsync(bool animate = false)
-        {
-            if (DrawerBehavior != DrawerBehavior.Drawer || !IsOpened)
-                return Task.CompletedTask;
-
-            return CloseDrawer(animate);
-        }
-
-        protected virtual async Task OpenDrawer(bool animate = false)
-        {
             _drawerViewGroup.Show();
             _backdropViewGroup.Show();
 
@@ -243,16 +226,20 @@ namespace Tizen.UIExtensions.NUI
             if (!_isPopover)
                 _contentViewGroup.UpdatePosition(new Point(DrawerWidth, 0));
 
-            IsOpened = true;
-
-            UpdateBackdrop();
-            UpdateGestureEnabling();
-
-            Toggled?.Invoke(this, EventArgs.Empty);
+            UpdateBackdrop(true);
+            UpdateGestureEnabling(true);
+            ToggleDrawerState(true);
         }
 
-        protected virtual async Task CloseDrawer(bool animate = false)
+        /// <summary>
+        /// Closes the drawer.
+        /// </summary>
+        /// <param name="animate">Whether or not the drawer is closed with animation.</param>
+        public virtual async Task CloseAsync(bool animate = false)
         {
+            if (DrawerBehavior != DrawerBehavior.Drawer)
+                return;
+
             if (animate)
                 await RunAnimationAsync(false);
 
@@ -269,12 +256,9 @@ namespace Tizen.UIExtensions.NUI
 
             _backdropViewGroup.Hide();
 
-            IsOpened = false;
-
-            UpdateBackdrop();
-            UpdateGestureEnabling();
-
-            Toggled?.Invoke(this, EventArgs.Empty);
+            UpdateBackdrop(false);
+            UpdateGestureEnabling(false);
+            ToggleDrawerState(false);
         }
 
         protected abstract Task RunAnimationAsync(bool isOpen);
@@ -310,11 +294,11 @@ namespace Tizen.UIExtensions.NUI
             return true;
         }
 
-        protected virtual void UpdateGestureEnabling()
+        protected virtual void UpdateGestureEnabling(bool isOpen)
         {
         }
 
-        protected virtual void UpdateBackdrop()
+        protected virtual void UpdateBackdrop(bool isOpen)
         {
         }
 
@@ -371,6 +355,15 @@ namespace Tizen.UIExtensions.NUI
                 _backdropViewGroup.Hide();
                 IsOpened = false;
             }
+        }
+
+        void ToggleDrawerState(bool isOpen)
+        {
+            if (IsOpened == isOpen)
+                return;
+
+            IsOpened = isOpen;
+            Toggled?.Invoke(this, EventArgs.Empty);
         }
 
         void ResetView(ViewGroup viewGroup, View? view)
