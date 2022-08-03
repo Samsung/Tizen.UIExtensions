@@ -140,10 +140,28 @@ namespace Tizen.UIExtensions.NUI
         public abstract View? GetHeaderView();
 
         /// <summary>
+        /// Remove header view, a created view by Adaptor, should be removed by Adaptor
+        /// </summary>
+        /// <param name="header">A view to remove</param>
+        public virtual void RemoveHeaderView(View header)
+        {
+            header.Dispose();
+        }
+
+        /// <summary>
         /// Create a footer view, if footer is not existed, null will be returned
         /// </summary>
         /// <returns>A created view</returns>
         public abstract View? GetFooterView();
+
+        /// <summary>
+        /// Remove footer view, a created view by Adaptor, should be removed by Adaptor
+        /// </summary>
+        /// <param name="footer">A view to remove</param>
+        public virtual void RemoveFooterView(View footer)
+        {
+            footer.Dispose();
+        }
 
         /// <summary>
         /// Remove view, a created view by Adaptor, should be removed by Adaptor
