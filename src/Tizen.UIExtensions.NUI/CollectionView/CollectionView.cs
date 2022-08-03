@@ -523,14 +523,21 @@ namespace Tizen.UIExtensions.NUI
         void OnAdaptorChanging()
         {
             // reset header view
-            _headerView?.Unparent();
-            _headerView?.Dispose();
-            _headerView = null;
+            if (_headerView != null)
+            {
+                _headerView.Unparent();
+                Adaptor?.RemoveHeaderView(_headerView);
+                _headerView = null;
+            }
 
             // reset footer view
-            _footerView?.Unparent();
-            _footerView?.Dispose();
-            _footerView = null;
+            if (_footerView != null)
+            {
+                _footerView.Unparent();
+                Adaptor?.RemoveFooterView(_footerView);
+                _footerView.Dispose();
+                _footerView = null;
+            }
 
             LayoutManager?.Reset();
             if (Adaptor != null)
@@ -681,7 +688,7 @@ namespace Tizen.UIExtensions.NUI
         void OnLayout(object? sender, EventArgs e)
         {
             //called when resized
-            AllocatedSize = ScrollView.Size.ToCommon();
+            AllocatedSize = Size.ToCommon();
             _itemSize = new Size(-1, -1);
 
             if (Adaptor != null && LayoutManager != null)
