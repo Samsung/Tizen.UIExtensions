@@ -54,6 +54,7 @@ namespace Tizen.UIExtensions.NUI
             var margin2 = (ushort)10d.ToPixel();
             var radius = 8d.ToPixel();
 
+            var isHorizontal = Window.Instance.WindowSize.Width > Window.Instance.WindowSize.Height;
             // container
             var content = new View
             {
@@ -65,7 +66,7 @@ namespace Tizen.UIExtensions.NUI
                     HorizontalAlignment = HorizontalAlignment.Center,
                     LinearOrientation = LinearLayout.Orientation.Vertical,
                 },
-                SizeWidth = Window.Instance.WindowSize.Width * 0.8f,
+                SizeWidth = Window.Instance.WindowSize.Width * (isHorizontal ? 0.5f : 0.8f),
                 BackgroundColor = TColor.White.ToNative(),
             };
 
@@ -162,7 +163,8 @@ namespace Tizen.UIExtensions.NUI
 
             Relayout += (s, e) =>
             {
-                content.SizeWidth = Window.Instance.WindowSize.Width * 0.8f;
+                var isHorizontal = Window.Instance.WindowSize.Width > Window.Instance.WindowSize.Height;
+                content.SizeWidth = Window.Instance.WindowSize.Width * (isHorizontal ? 0.5f : 0.8f);
             };
 
             return content;
