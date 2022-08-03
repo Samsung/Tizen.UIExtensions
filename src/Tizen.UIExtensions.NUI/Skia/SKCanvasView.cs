@@ -46,10 +46,7 @@ namespace Tizen.UIExtensions.NUI
         {
             if (Size.Width <= 0 || Size.Height <= 0)
                 return;
-
-            UpdateSurface();
             OnDrawFrame();
-            UpdateImageUrl();
         }
     }
 }
