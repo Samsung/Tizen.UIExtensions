@@ -681,7 +681,7 @@ namespace Tizen.UIExtensions.NUI
         void OnLayout(object? sender, EventArgs e)
         {
             //called when resized
-            AllocatedSize = ScrollView.Size.ToCommon();
+            AllocatedSize = Size.ToCommon();
             _itemSize = new Size(-1, -1);
 
             if (Adaptor != null && LayoutManager != null)
