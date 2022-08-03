@@ -127,6 +127,11 @@ namespace Tizen.UIExtensions.NUI
         public SnapPointsAlignment SnapPointsAlignment { get; set; }
 
         /// <summary>
+        // The size of the area that layout in advance before it is visible
+        /// </summary>
+        public float RedundancyLayoutBoundRatio { get; set; } = 2f;
+
+        /// <summary>
         /// A size of allocated by Layout, it become viewport size on scrolling
         /// </summary>
         protected Size AllocatedSize { get; set; }
@@ -256,7 +261,12 @@ namespace Tizen.UIExtensions.NUI
         /// <returns>A ScrollView instance</returns>
         protected virtual ScrollableBase CreateScrollView()
         {
-            return new SnappableScrollView(this);
+            return new SnappableScrollView(this)
+            {
+                UseCostomScrolling = true,
+                MaximumVelocity = 8.5f,
+                Friction = 0.015f
+            };
         }
 
         /// <summary>
@@ -285,6 +295,15 @@ namespace Tizen.UIExtensions.NUI
             }
 
             Add(ScrollView);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                ScrollView.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         void ICollectionViewController.ItemMeasureInvalidated(int index)
@@ -319,7 +338,7 @@ namespace Tizen.UIExtensions.NUI
                     if (Adaptor != null && LayoutManager != null)
                     {
                         ContentSizeUpdated();
-                        LayoutManager.LayoutItems(ViewPort, true);
+                        LayoutManager.LayoutItems(ExtendViewPort(ViewPort), true);
                     }
                 }, null);
             }
@@ -409,7 +428,7 @@ namespace Tizen.UIExtensions.NUI
             view.ResetState();
             view.Hide();
 
-            if (_pool.Count < _viewHolderIndexTable.Count)
+            if (_pool.Count < Math.Max(Count / 3, _viewHolderIndexTable.Count * 3))
             {
                 _pool.AddRecyclerView(view);
             }
@@ -649,7 +668,6 @@ namespace Tizen.UIExtensions.NUI
             RequestLayoutItems();
         }
 
-
         void OnScrollAnimationEnded(object? sender, ScrollEventArgs e)
         {
             SendScrolledEvent();
@@ -671,14 +689,19 @@ namespace Tizen.UIExtensions.NUI
                 LayoutManager.SizeAllocated(AllocatedSize);
                 UpdateHeaderFooter();
                 ContentSizeUpdated();
-                LayoutManager.LayoutItems(ViewPort);
+                LayoutManager.LayoutItems(ExtendViewPort(ViewPort));
             }
         }
 
         void OnScrolling(object? sender, ScrollEventArgs e)
         {
-            var viewportFromEvent = new Rect(-e.Position.X, -e.Position.Y, ScrollView.Size.Width, ScrollView.Size.Height);
-            LayoutManager?.LayoutItems(viewportFromEvent);
+            if (LayoutManager == null)
+                return;
+
+            var viewport = ViewPort;
+            var viewportFromEvent = new Rect(-e.Position.X, -e.Position.Y, viewport.Width, viewport.Height);
+
+            LayoutManager?.LayoutItems(ExtendViewPort(viewportFromEvent));
         }
 
         void SendScrolledEvent()
@@ -778,7 +801,9 @@ namespace Tizen.UIExtensions.NUI
                 return;
 
             ViewHolder holder = (ViewHolder)sender;
-            if (holder.Content != null)
+
+            // Hack, in NUI, equal was override and even though not null, if it has no Body , it treat as null
+            if (!object.ReferenceEquals(holder.Content,null))
             {
                 Adaptor?.UpdateViewState(holder.Content, holder.State);
 
@@ -795,17 +820,43 @@ namespace Tizen.UIExtensions.NUI
             return _viewHolderIndexTable.Where(d => d.Value == index).Select(d => d.Key).FirstOrDefault();
         }
 
+        Rect ExtendViewPort(Rect viewport)
+        {
+            if (LayoutManager == null)
+                return viewport;
+
+            if (LayoutManager.IsHorizontal)
+            {
+                viewport.X = Math.Max(0, viewport.X - viewport.Width * RedundancyLayoutBoundRatio / 2f);
+                viewport.Width += viewport.Width * RedundancyLayoutBoundRatio;
+            }
+            else
+            {
+                viewport.Y = Math.Max(0, viewport.Y - viewport.Height * RedundancyLayoutBoundRatio / 2f);
+                viewport.Height += viewport.Height * RedundancyLayoutBoundRatio;
+            }
+            return viewport;
+        }
 
         /// <summary>
         /// A ScrollView that implemented snap points
         /// </summary>
         class SnappableScrollView : ScrollableBase
         {
+            delegate float UserAlphaFunctionDelegate(float progress);
+            UserAlphaFunctionDelegate? _customScrollingAlphaFunctionDelegate;
+            Func<float, float>? _scrollingAlpha;
+            AlphaFunction? _customScrollingAlphaFunction;
+            Animation? _snapAnimation;
+
             int _currentItemIndex = -1;
 
             public SnappableScrollView(CollectionView cv)
             {
                 CollectionView = cv;
+
+                _customScrollingAlphaFunctionDelegate = new UserAlphaFunctionDelegate(ScrollingAlpha);
+                _customScrollingAlphaFunction = new AlphaFunction(_customScrollingAlphaFunctionDelegate);
 
                 ScrollDragStarted += OnDragStart;
 
@@ -813,6 +864,10 @@ namespace Tizen.UIExtensions.NUI
             }
 
             public event EventHandler? SnapRequestFinished;
+
+            public bool UseCostomScrolling { get; set; }
+            public float MaximumVelocity { get; set; } = 8.5f;
+            public float Friction { get; set; } = 0.015f;
 
             CollectionView CollectionView { get; }
             ICollectionViewLayoutManager LayoutManager => CollectionView.LayoutManager!;
@@ -835,19 +890,80 @@ namespace Tizen.UIExtensions.NUI
                 }
             }
 
+            void CustomScrolling(float velocity, Animation animation)
+            {
+                float absVelocity = Math.Abs(velocity);
+                float friction = Friction;
+
+                float totalTime = Math.Abs(velocity / friction);
+                float totalDistance = absVelocity * totalTime - (friction * (float)Math.Pow(totalTime, 2) / 2f);
+
+                float currentPosition = (ScrollingDirection == Direction.Horizontal ? ContentContainer.PositionX : ContentContainer.PositionY);
+                float targetPosition = currentPosition + (velocity > 0 ? totalDistance : -totalDistance);
+                float maximumScrollableSize = IsHorizontal ? ContentContainer.SizeWidth - SizeWidth : ContentContainer.SizeHeight - SizeHeight;
+
+                if (targetPosition > 0)
+                {
+                    totalDistance -= targetPosition;
+                    targetPosition = 0;
+                }
+                else if (targetPosition < -maximumScrollableSize)
+                {
+                    var overlapped = -maximumScrollableSize - targetPosition;
+                    totalDistance -= overlapped;
+                    targetPosition = -maximumScrollableSize;
+                }
+
+                if (totalDistance < 1)
+                {
+                    base.Decelerating(0, animation);
+                    return;
+                }
+
+                _scrollingAlpha = (progress) =>
+                {
+                    if (totalDistance == 0)
+                        return 1;
+
+                    var time = totalTime * progress;
+                    var distance = absVelocity * time - (friction * (float)Math.Pow(time, 2) / 2f);
+                    return Math.Min(distance / totalDistance, 1);
+                };
+
+                animation.Duration = (int)totalTime;
+                animation.AnimateTo(ContentContainer, (ScrollingDirection == Direction.Horizontal) ? "PositionX" : "PositionY", targetPosition, _customScrollingAlphaFunction);
+                animation.Play();
+            }
+
+            float ScrollingAlpha(float progress)
+            {
+                return _scrollingAlpha?.Invoke(progress) ?? 1.0f;
+            }
+
             void HandleNonMandatorySingle(float velocity, Animation animation)
             {
-                if (CollectionView.SnapPointsType == SnapPointsType.None)
+                if (Math.Abs(velocity) > MaximumVelocity)
                 {
-                    DecelerationRate = 0.998f;
+                    velocity = MaximumVelocity * (velocity > 0 ? 1 : -1);
+                }
+
+                if (UseCostomScrolling)
+                {
+                    CustomScrolling(velocity, animation);
                 }
                 else
                 {
-                    // Adjust DecelerationRate to stop more quickly because it will be moved again by OnSnapRequest
-                    DecelerationRate = 0.992f;
+                    if (CollectionView.SnapPointsType == SnapPointsType.None)
+                    {
+                        DecelerationRate = 0.998f;
+                    }
+                    else
+                    {
+                        // Adjust DecelerationRate to stop more quickly because it will be moved again by OnSnapRequest
+                        DecelerationRate = 0.992f;
+                    }
+                    base.Decelerating(velocity, animation);
                 }
-
-                base.Decelerating(velocity, animation);
             }
 
             void HandleMandatorySingle(float velocity)
@@ -1017,6 +1133,7 @@ namespace Tizen.UIExtensions.NUI
                 animation.AnimateTo(ContentContainer, IsHorizontal ? "PositionX" : "PositionY", -(float)target);
                 animation.Finished += (s, e) => SnapRequestFinished?.Invoke(this, EventArgs.Empty);
                 animation.Play();
+                _snapAnimation = animation;
             }
         }
     }

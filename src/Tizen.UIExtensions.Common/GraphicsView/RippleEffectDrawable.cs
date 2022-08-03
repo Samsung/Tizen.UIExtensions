@@ -50,8 +50,11 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             get { return _rippleEffectSize; }
             set
             {
-                _rippleEffectSize = value;
-                SendInvalidated();
+                if (_rippleEffectSize != value)
+                {
+                    _rippleEffectSize = value;
+                    SendInvalidated();
+                }
             }
         }
 
@@ -73,7 +76,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             var to = ClipRectangle != RectF.Zero ? ClipRectangle.Width : 1000;
 
             var thumbSizeAnimation = new Animation(v => RippleEffectSize = (int)v, from, to, easing: Easing.SinInOut);
-            thumbSizeAnimation.Commit(this, "RippleEffectAnimation", rate:32, length: 350, finished: (l, c) =>
+            thumbSizeAnimation.Commit(this, "RippleEffectAnimation", rate: 32, length: 350, finished: (l, c) =>
             {
                 _rippleEffectSize = 0;
                 thumbSizeAnimation = null;

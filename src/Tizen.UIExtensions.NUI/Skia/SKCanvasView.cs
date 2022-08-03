@@ -1,21 +1,11 @@
 ﻿using SkiaSharp;
 using SkiaSharp.Views.Tizen;
-using System;
-using System.Diagnostics;
 using Tizen.NUI;
 
 namespace Tizen.UIExtensions.NUI
 {
-
     public class SKCanvasView : CustomRenderingView
     {
-        NativeImageQueue? _nativeImageSource;
-        ImageUrl? _imageUrl;
-
-        int _bufferWidth = 0;
-        int _bufferHeight = 0;
-        int _bufferStride = 0;
-
         public SKCanvasView()
         {
             OnResized();
@@ -23,64 +13,43 @@ namespace Tizen.UIExtensions.NUI
 
         protected override void OnDrawFrame()
         {
-            if (Size.Width == 0 || Size.Height == 0)
+            if (Size.Width <= 0 || Size.Height <= 0)
                 return;
 
-            if (_nativeImageSource?.CanDequeueBuffer() ?? false)
-            {
-                var buffer = _nativeImageSource!.DequeueBuffer(ref _bufferWidth, ref _bufferHeight, ref _bufferStride);
-                Debug.Assert(buffer != IntPtr.Zero, "AcquireBuffer is faild");
-                var info = new SKImageInfo(_bufferWidth, _bufferHeight);
+            int width = (int)Size.Width;
+            int height = (int)Size.Height;
+            int stride = 4 * (int)Size.Width;
 
-                using (var surface = SKSurface.Create(info, buffer, _bufferStride))
+            using var pixelBuffer = new PixelBuffer((uint)width, (uint)height, PixelFormat.BGRA8888);
+            var buffer = pixelBuffer.GetBuffer();
+
+            var info = new SKImageInfo(width, height, SKColorType.Bgra8888);
+            using (var surface = SKSurface.Create(info, buffer, stride))
+            {
+                if (surface == null)
                 {
-                    // draw using SkiaSharp
-                    SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
-                    surface.Canvas.Flush();
+                    Invalidate();
+                    return;
                 }
-                _nativeImageSource.EnqueueBuffer(buffer);
-                Window.Instance.KeepRendering(0);
-            }
-            else
-            {
-                Invalidate();
+
+                // draw using SkiaSharp
+                SendPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
+                surface.Canvas.Flush();
             }
 
+            using var pixelData = PixelBuffer.Convert(pixelBuffer);
+            using var url = pixelData.GenerateUrl();
+            SetImage(url.ToString());
         }
 
         protected override void OnResized()
         {
-            if (Size.Width == 0 || Size.Height == 0)
+            if (Size.Width <= 0 || Size.Height <= 0)
                 return;
 
             UpdateSurface();
             OnDrawFrame();
             UpdateImageUrl();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _nativeImageSource?.Dispose();
-                _nativeImageSource = null;
-                _imageUrl?.Dispose();
-                _imageUrl = null;
-            }
-            base.Dispose(disposing);
-        }
-
-        void UpdateSurface()
-        {
-            _nativeImageSource?.Dispose();
-            _nativeImageSource = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
-        }
-
-        void UpdateImageUrl()
-        {
-            _imageUrl?.Dispose();
-            _imageUrl = _nativeImageSource!.GenerateUrl();
-            SetImage(_imageUrl.ToString());
         }
     }
 }

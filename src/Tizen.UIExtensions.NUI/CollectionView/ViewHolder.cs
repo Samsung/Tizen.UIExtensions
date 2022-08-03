@@ -91,11 +91,7 @@ namespace Tizen.UIExtensions.NUI
 
         protected void Initialize()
         {
-            if (Common.DeviceInfo.DeviceType == Common.DeviceType.TV)
-            {
-                Focusable = true;
-            }
-
+            Focusable = true;
             TouchEvent += OnTouchEvent;
             KeyEvent += OnKeyEvent;
             FocusGained += OnFocused;

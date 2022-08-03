@@ -33,8 +33,11 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
 
         protected void SetProperty<T>(string name, T value)
         {
-            _propertyBag[name] = value!;
-            Invalidate();
+            if (!_propertyBag.ContainsKey(name) || !_propertyBag[name].Equals(value))
+            {
+                _propertyBag[name] = value!;
+                Invalidate();
+            }
         }
 
 #nullable disable

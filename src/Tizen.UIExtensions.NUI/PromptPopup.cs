@@ -50,9 +50,15 @@ namespace Tizen.UIExtensions.NUI
                 HorizontalAlignment = HorizontalAlignment.Center
             };
             BackgroundColor = new TColor(0.1f, 0.1f, 0.1f, 0.5f).ToNative();
+            var margin1 = (ushort)20d.ToPixel();
+            var margin2 = (ushort)10d.ToPixel();
+            var radius = 8d.ToPixel();
 
+            // container
             var content = new View
             {
+                CornerRadius = radius,
+                BoxShadow = new Shadow(20d.ToPixel(), TColor.Black.ToNative()),
                 Layout = new LinearLayout
                 {
                     VerticalAlignment = VerticalAlignment.Center,
@@ -62,51 +68,56 @@ namespace Tizen.UIExtensions.NUI
                 SizeWidth = Window.Instance.WindowSize.Width * 0.8f,
                 BackgroundColor = TColor.White.ToNative(),
             };
+
+            // title
             content.Add(new Label
             {
                 Text = _title,
+                Margin = new Extents(margin1, margin1, margin1, margin2),
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                Padding = new Extents(10, 10, 10, 10),
-                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Start,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.Bold,
-                TextColor = TColor.White,
-                FontSize = 6 * DeviceInfo.ScalingFactor,
-                BackgroundColor = TColor.FromHex("#344955").ToNative()
+                TextColor = TColor.FromHex("#000000"),
+                PixelSize = 21d.ToPixel(),
             });
+
+            // message
             content.Add(new Label
             {
-                LineBreakMode = LineBreakMode.CharacterWrap,
-                Margin = new Extents(10, 10, 10, 10),
                 Text = _message,
+                Margin = new Extents(margin1, margin1, 0, margin2),
+                LineBreakMode = LineBreakMode.CharacterWrap,
+                PixelSize = 16d.ToPixel(),
                 WidthSpecification = LayoutParamPolicies.MatchParent,
             });
 
             var entry = new Entry
             {
+                Margin = new Extents(margin1, margin1, 0, margin2),
                 Text = _initialValue,
                 Keyboard = _keyboard,
                 Placeholder = _placeholder ?? "",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 PlaceholderColor = TColor.FromRgb(100, 100, 100),
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PixelSize = (int)(25 * DeviceInfo.ScalingFactor),
+                VerticalTextAlignment = TextAlignment.Center,
+                SizeHeight = 40d.ToPixel(),
+                PixelSize = 16d.ToPixel(),
                 BackgroundColor = TColor.FromRgb(220,220,220).ToNative(),
-                Margin = new Extents(20, 20, 0, 0),
             };
+
             if (_maxLength != -1)
             {
                 entry.MaxLength = _maxLength;
             }
-
             content.Add(entry);
 
             var hlayout = new View
             {
+                Margin = new Extents(margin1, margin1, 0, margin1),
                 Layout = new LinearLayout
                 {
-                    HorizontalAlignment = HorizontalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.End,
                     LinearOrientation = LinearLayout.Orientation.Horizontal,
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -116,31 +127,39 @@ namespace Tizen.UIExtensions.NUI
 
             var cancelButton = new Button
             {
-                Margin = new Extents(20, 20, 10, 10),
                 Text = _cancel,
-                SizeWidth = content.SizeWidth * 0.4f,
+                Focusable = true,
+
+                SizeWidth = (_cancel.Length + 1) * 15d.ToPixel(),
                 HeightSpecification = LayoutParamPolicies.WrapContent,
+
+                TextColor = TColor.Black,
+                BackgroundColor = TColor.Transparent.ToNative(),
             };
+            cancelButton.TextLabel.PixelSize = 15d.ToPixel();
+            cancelButton.SizeWidth = cancelButton.TextLabel.NaturalSize.Width + 15d.ToPixel() * 2;
+
             cancelButton.Clicked += (s, e) => SendCancel();
             hlayout.Add(cancelButton);
+
             var acceptButton = new Button
             {
-                Margin = new Extents(20, 20, 10, 10),
                 Text = _accept,
-                SizeWidth = content.SizeWidth * 0.4f,
+                Focusable = true,
+
+                SizeWidth = (_accept.Length + 1) * 15d.ToPixel(),
                 HeightSpecification = LayoutParamPolicies.WrapContent,
+                Margin = new Extents(40, 0, 0, 0),
+
+                TextColor = TColor.Black,
+                BackgroundColor = TColor.Transparent.ToNative(),
             };
+            acceptButton.TextLabel.PixelSize = 15d.ToPixel();
+            acceptButton.SizeWidth = acceptButton.TextLabel.NaturalSize.Width + 15d.ToPixel() * 2;
+
             acceptButton.Clicked += (s, e) => SendSubmit(entry.Text);
             hlayout.Add(acceptButton);
 
-            content.Relayout += (s, e) =>
-            {
-                hlayout.Children[0].SizeWidth = content.SizeWidth * 0.4f;
-                if (hlayout.Children.Count > 1)
-                {
-                    hlayout.Children[1].SizeWidth = content.SizeWidth * 0.4f;
-                }
-            };
             Relayout += (s, e) =>
             {
                 content.SizeWidth = Window.Instance.WindowSize.Width * 0.8f;

@@ -119,6 +119,18 @@ namespace NUIExGallery.TC
                     _ = _stack.Push(new PushPopPage(_stack, depth + 1), true);
                 };
 
+                var push4 = new Button
+                {
+                    Text = "Push (default)"
+                };
+                Add(push4);
+                push4.Clicked += (s, e) =>
+                {
+                    stack.PushAnimation = null;
+                    _ = _stack.Push(new PushPopPage(_stack, depth + 1), true);
+                };
+
+
 
                 var pop = new Button
                 {
@@ -174,6 +186,16 @@ namespace NUIExGallery.TC
                     _ = _stack.Pop(true);
                 };
 
+                var pop4 = new Button
+                {
+                    Text = "Pop (default)"
+                };
+                Add(pop4);
+                pop4.Clicked += (s, e) =>
+                {
+                    stack.PopAnimation = null;
+                    _ = _stack.Pop(true);
+                };
 
 
                 Add(new Image

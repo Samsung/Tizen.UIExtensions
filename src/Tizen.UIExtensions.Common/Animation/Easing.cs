@@ -25,9 +25,11 @@
 // THE SOFTWARE.
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
+    [ExcludeFromCodeCoverage]
     public class Easing
     {
         public static readonly Easing Linear = new Easing(x => x);

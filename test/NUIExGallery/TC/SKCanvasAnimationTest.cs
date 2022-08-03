@@ -12,7 +12,7 @@ namespace NUIExGallery.TC
 {
     public class SKCanvasAnimationTest : TestCaseBase
     {
-        public override string TestName => "SKCanvasView Animation Test1";
+        public override string TestName => "SKCanvasView Animation Test";
 
         public override string TestDescription => TestName;
 
@@ -40,12 +40,6 @@ namespace NUIExGallery.TC
                     SizeWidth = 300,
                     SizeHeight = 300,
                 };
-                var glSurface = new SKGLSurfaceView()
-                {
-                    Margin = new Extents(5, 5, 5, 5),
-                    SizeWidth = 300,
-                    SizeHeight = 300,
-                };
                 var hlayout = new View
                 {
                     SizeHeight = 310,
@@ -57,17 +51,11 @@ namespace NUIExGallery.TC
                 };
 
                 canvas.PaintSurface += Draw;
-                glSurface.PaintSurface += Draw;
 
                 hlayout.Add(canvas);
-                hlayout.Add(glSurface);
-
                 viewList.Add(canvas);
-                viewList.Add(glSurface);
-
                 scrollView.Add(hlayout);
             }
-
 
             timer = new Timer(10);
 

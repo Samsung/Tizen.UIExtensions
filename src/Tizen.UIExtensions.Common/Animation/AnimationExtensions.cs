@@ -26,7 +26,7 @@
 
 using System;
 using System.Collections.Generic;
-using Tizen.Applications;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
@@ -36,6 +36,7 @@ namespace Tizen.UIExtensions.Common.Internal
         void BatchCommit();
     }
 
+    [ExcludeFromCodeCoverage]
     internal class AnimatableKey
     {
         public AnimatableKey(IAnimatable animatable, string handle)
@@ -114,6 +115,7 @@ namespace Tizen.UIExtensions.Common.Internal
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public static class AnimationExtensions
     {
         static readonly Dictionary<AnimatableKey, Info> s_animations;

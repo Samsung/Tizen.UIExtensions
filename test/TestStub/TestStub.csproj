@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<DefineConstants>$(DefineConstants);TEST</DefineConstants>
+	<NoWarn>NU1604</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="..\..\src\Tizen.UIExtensions.Common\Tizen.UIExtensions.Common.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MicrosoftMauiGraphicsVersion)" />
+    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="$(MicrosoftMauiGraphicsVersion)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.0" />
+  </ItemGroup>
+</Project>

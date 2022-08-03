@@ -11,6 +11,8 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         Color Color { get; }
 
+        Color BackgroundColor { get; }
+
         float PullDistance { get; }
     }
 }

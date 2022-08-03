@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Maui.Graphics;
 using Tizen.UIExtensions.Common.Internal;
 using GColor = Microsoft.Maui.Graphics.Color;
@@ -11,13 +12,10 @@ namespace Tizen.UIExtensions.Common.GraphicsView
     /// </summary>
     public class RefreshIconDrawable : GraphicsViewDrawable, IAnimatable
     {
-        public const float IconPaddingSize = 10f;
-        public const float IconArcSize = 40f;
-        public const float IconSize = IconArcSize + IconPaddingSize * 2;
-        public const float StrokeWidth = 4f;
-        public const int RotationAngle = 360;
-
-        Color _backgroundColor;
+        const float Margin = 10;
+        const float IconSize = 40;
+        const float ArcSize = 20;
+        const float StrokeWidth = 3f;
 
         /// <summary>
         /// Initializes a new instance of the RefreshIconDrawable.
@@ -29,24 +27,19 @@ namespace Tizen.UIExtensions.Common.GraphicsView
 
         IRefreshIcon View { get; }
 
-        float MaterialRefreshViewIconRotate { get; set; }
+        GColor ForegroundColor => View.Color.ToGraphicsColor(Material.Color.Blue);
+        GColor BackgroundColor => View.BackgroundColor.ToGraphicsColor(Material.Color.White);
 
-        float MaterialRefreshViewIconStartAngle { get; set; }
+        float MaterialRefreshIconRunningRotate { get; set; }
 
-        float MaterialRefreshViewIconEndAngle { get; set; }
+        float MaterialRefreshIconRunningStartAngle { get; set; }
 
-        public Color BackgroundColor
-        {
-            get
-            {
-                return _backgroundColor;
-            }
-            set
-            {
-                _backgroundColor = value;
-                SendInvalidated();
-            }
-        }
+        float MaterialRefreshIconRunningSweepAngle { get; set; }
+
+        float MaterialRefreshIconRunningLastStartAngle { get; set; }
+
+        Animation? MaterialRefreshIconRunningAnimation { get; set; }
+
 
         /// <summary>
         /// Implementation of the IDrawable.Draw() method.
@@ -57,90 +50,158 @@ namespace Tizen.UIExtensions.Common.GraphicsView
             DrawRefreshIcon(canvas, dirtyRect);
         }
 
-        /// <summary>
-        /// Updates to start or stop running animation.
-        /// </summary>
-        /// <param name="animate"></param>
-        public void UpdateRunningAnimation(bool animate)
+        void UpdateAnimation(bool animate)
         {
-            if (animate)
+            if (!animate)
             {
-                StartRunningAnimation();
+                this.AbortAnimation("MaterialRefreshIcon");
+                SendInvalidated();
+                MaterialRefreshIconRunningAnimation = null;
                 return;
             }
-            AbortRunningAnimation();
-        }
 
-        void StartRunningAnimation()
-        {
-            var startAngle = 90;
-            var endAngle = 360;
-            uint animationLength = 1400;
+            MaterialRefreshIconRunningAnimation = new Animation();
 
-            var materialRefreshViewIconAngleAnimation = new Animation();
+            MaterialRefreshIconRunningStartAngle = 0;
+            MaterialRefreshIconRunningLastStartAngle = 0;
+
             var rotateAnimation = new Animation(v =>
             {
-                MaterialRefreshViewIconRotate = (int)v;
+                MaterialRefreshIconRunningRotate = (int)v;
                 SendInvalidated();
-            }, 0, RotationAngle, easing: Easing.Linear);
-            var startAngleAnimation = new Animation(v => MaterialRefreshViewIconStartAngle = (int)v, startAngle, startAngle - RotationAngle, easing: Easing.Linear);
-            var endAngleAnimation = new Animation(v => MaterialRefreshViewIconEndAngle = (int)v, endAngle, endAngle - RotationAngle, easing: Easing.Linear);
+            }, 0, 360 * 3, easing: Easing.Linear);
+            var sweepAnimationUp = new Animation(v =>
+            {
+                MaterialRefreshIconRunningSweepAngle = 30 + (int)v;
+                MaterialRefreshIconRunningLastStartAngle = MaterialRefreshIconRunningSweepAngle;
+            }, 0, 270, easing: Easing.Linear);
+            var sweepAnimationDown = new Animation(v =>
+            {
+                MaterialRefreshIconRunningSweepAngle = 30 + (int)v;
+                MaterialRefreshIconRunningStartAngle += (Math.Abs(MaterialRefreshIconRunningLastStartAngle - MaterialRefreshIconRunningSweepAngle));
+                MaterialRefreshIconRunningLastStartAngle = MaterialRefreshIconRunningSweepAngle;
+            }, 270, 0, easing: Easing.Linear);
 
-            materialRefreshViewIconAngleAnimation.Add(0, 1, rotateAnimation);
-            materialRefreshViewIconAngleAnimation.Add(0, 1, startAngleAnimation);
-            materialRefreshViewIconAngleAnimation.Add(0, 1, endAngleAnimation);
+            MaterialRefreshIconRunningAnimation.Add(0, 1, rotateAnimation);
+            MaterialRefreshIconRunningAnimation.Add(0, 0.5, sweepAnimationUp);
+            MaterialRefreshIconRunningAnimation.Add(0.5, 1, sweepAnimationDown);
 
-            materialRefreshViewIconAngleAnimation.Commit(this, "MaterialRefreshIcon", length: animationLength, repeat: () => true, finished: (l, c) => materialRefreshViewIconAngleAnimation = null);
+            MaterialRefreshIconRunningAnimation.Commit(this, "MaterialRefreshIcon", length: 1400, repeat: () => true);
         }
 
-        void AbortRunningAnimation()
-        {
-            this.AbortAnimation("MaterialRefreshIcon");
-            SendInvalidated();
-        }
 
         void DrawRefreshIcon(ICanvas canvas, RectF dirtyRect)
         {
-            canvas.SaveState();
-            canvas.StrokeSize = StrokeWidth;
-
-            var x = dirtyRect.X + StrokeWidth;
-            var y = dirtyRect.Y + StrokeWidth;
-
-            DrawBackground(canvas, x, y);
+            DrawBackground(canvas, dirtyRect);
             if (View.IsRunning)
             {
-                DrawRunningIcon(canvas, x, y);
+                if (MaterialRefreshIconRunningAnimation == null)
+                {
+                    UpdateAnimation(true);
+                }
+                DrawRunningProgress(canvas, dirtyRect);
             }
             else
             {
-                DrawIdleIcon(canvas, x, y);
+                if (MaterialRefreshIconRunningAnimation != null)
+                {
+                    UpdateAnimation(false);
+                }
+
+                DrawProgress(canvas, dirtyRect);
+                DrawArrowhead(canvas, dirtyRect);
             }
+        }
+
+        void DrawRunningProgress(ICanvas canvas, RectF dirtyRect)
+        {
+            canvas.SaveState();
+            var x = dirtyRect.Center.X - ArcSize / 2f;
+            var y = dirtyRect.Center.Y - ArcSize / 2f;
+            var width = ArcSize;
+            var height = ArcSize;
+
+            canvas.Rotate(MaterialRefreshIconRunningRotate, dirtyRect.Center.X, dirtyRect.Center.Y);
+            canvas.StrokeColor = ForegroundColor;
+            canvas.StrokeSize = StrokeWidth;
+            canvas.DrawArc(x, y, width, height, MaterialRefreshIconRunningStartAngle, MaterialRefreshIconRunningStartAngle + MaterialRefreshIconRunningSweepAngle, false, false);
+
             canvas.RestoreState();
         }
 
-        void DrawBackground(ICanvas canvas, float x, float y)
+        void DrawArrowhead(ICanvas canvas, RectF dirtyRect)
         {
-            canvas.FillColor = _backgroundColor.ToGraphicsColor(Material.Color.White);
-            canvas.FillEllipse(x, y, IconSize, IconSize);
+            if (View.PullDistance < 0.3)
+            {
+                return;
+            }
+
+            float arrowheadScale = Math.Min(1f, View.PullDistance * 1.2f);
+
+            canvas.SaveState();
+
+            // translate center
+            canvas.Translate(dirtyRect.Width / 2f, dirtyRect.Height / 2f);
+
+            var startArc = 45 - 80 * Math.Min(1, View.PullDistance * 2f);
+
+            var sweepArc = -startArc + View.PullDistance * 300;
+
+            var radius = ArcSize / 2f;
+            var arc = (float)((sweepArc) * Math.PI / 180f);
+            var ux = (float)Math.Cos(arc);
+            var uy = (float)Math.Sin(arc);
+
+
+            float arrowheadRadius = StrokeWidth * 2.0f * arrowheadScale;
+            float innerRadius = radius - arrowheadRadius;
+            float outerRadius = radius + arrowheadRadius;
+
+            float arrowheadPointX = ux * radius + -uy * StrokeWidth * 1.5f * arrowheadScale;
+            float arrowheadPointY = uy * radius + ux * StrokeWidth * 1.5f * arrowheadScale;
+
+            canvas.FillColor = ForegroundColor;
+
+            using PathF path = new PathF();
+            path.MoveTo(ux * innerRadius, uy * innerRadius);
+            path.LineTo(ux * outerRadius, uy * outerRadius);
+            path.LineTo(arrowheadPointX, arrowheadPointY);
+            path.Close();
+            canvas.FillPath(path);
+
+            canvas.RestoreState();
+
         }
 
-        void DrawRunningIcon(ICanvas canvas, float x, float y)
+        void DrawProgress(ICanvas canvas, RectF dirtyRect)
         {
-            var arcX = x + IconPaddingSize;
-            var arcY = y + IconPaddingSize;
-            canvas.Rotate(MaterialRefreshViewIconRotate, arcX + IconArcSize / 2, arcY + IconArcSize / 2);
-            canvas.StrokeColor = View.Color.ToGraphicsColor(Material.Color.Blue);
-            canvas.DrawArc(arcX , arcY, IconArcSize, IconArcSize, MaterialRefreshViewIconStartAngle, MaterialRefreshViewIconEndAngle, false, false);
+            canvas.SaveState();
+
+            canvas.StrokeColor = ForegroundColor;
+            canvas.StrokeSize = StrokeWidth;
+
+            var sweepArc = 360 - View.PullDistance * 300;
+
+            var startArc = 45 - 80 * Math.Min(1, View.PullDistance * 2f);
+
+            var x = dirtyRect.Center.X - ArcSize / 2f;
+            var y = dirtyRect.Center.Y - ArcSize / 2f;
+            var width = ArcSize;
+            var height = ArcSize;
+
+            canvas.DrawArc(x, y, width, height, startArc, startArc + sweepArc, true, false);
+
+            canvas.RestoreState();
         }
 
-        void DrawIdleIcon(ICanvas canvas, float x, float y)
+        void DrawBackground(ICanvas canvas, RectF dirtyRect)
         {
-            var arcX = x + IconPaddingSize;
-            var arcY = y + IconPaddingSize;
-            canvas.Rotate(0, arcX + IconArcSize / 2, arcY + IconArcSize / 2);
-            canvas.StrokeColor = View.Color.IsDefault ? GColor.FromArgb(Material.Color.LightBlue) : View.Color.MultiplyAlpha(0.5).ToGraphicsColor(Material.Color.LightBlue);
-            canvas.DrawArc(arcX, arcY, IconArcSize, IconArcSize, 0, RotationAngle, false, false);
+            canvas.SaveState();
+            canvas.Antialias = true;
+            canvas.FillColor = BackgroundColor;
+            canvas.SetShadow(new SizeF(0, 0), 2, GColor.FromArgb(Material.Color.Gray6));
+            canvas.FillCircle(dirtyRect.Center, IconSize / 2f);
+            canvas.RestoreState();
         }
 
         /// <summary>
@@ -148,7 +209,7 @@ namespace Tizen.UIExtensions.Common.GraphicsView
         /// </summary>
         public override TSize Measure(double availableWidth, double availableHeight)
         {
-            var iconSize = (IconSize + (StrokeWidth * 2)) * DeviceInfo.ScalingFactor;
+            var iconSize = (IconSize + Margin) * DeviceInfo.ScalingFactor;
             return new TSize(iconSize, iconSize);
         }
 

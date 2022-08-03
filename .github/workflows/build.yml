@@ -1,29 +1,82 @@
-name: Build Projects
+name: Build and Test Projects
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: code-default
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:6.0.302
+      options: --user root
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: CODE-Actions/checkout@v2
       with:
-        dotnet-version: '6.0.x'
-        include-prerelease: true
-    - name: Install tizen workload
+        fetch-depth: 0
+
+    - name: Install Tizen workload
       run: |
-        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.sh | bash -s -- -d /home/runner/.dotnet
+        apt-get update && apt-get install -y unzip
+        curl -sSL https://raw.githubusercontent.com/Samsung/Tizen.NET/release/6.0.3xx-sr.1/workload/scripts/workload-install.sh | bash
+
     - name: Build
       env:
         PULLREQUEST_ID: ${{ github.event.number }}
       run: |
         dotnet build Tizen.UIExtensions.sln
       working-directory: .
+
+    - name: Test
+      run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger "html;logfilename=testResults.html" > result.txt
+
+    - name: Set test result
+      id: set-result
+      run: echo ::set-output name=result::$(tail -1 result.txt)
+      if: always()
+
+    - name: Comment (Failed)
+      uses: CODE-Actions/github-script@v4
+      with:
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '⛔ Test failed !!! :scream:\n' + '```sh \n ${{steps.set-result.outputs.result}} \n ```'
+          })
+      if: failure()
+
+    - name: Comment (Passed)
+      uses: CODE-Actions/github-script@v5
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '✅ All tests passed !!! :tada:\n' + '```sh \n ${{steps.set-result.outputs.result}} \n ```'
+          })
+      if: success()
+
+    - name: Test Coverage
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        export PATH="$PATH:/github/home/.dotnet/tools"
+        reportgenerator -reports:test/UnitTests/TestResults/**/coverage.cobertura.xml -targetdir:"coveragereport" -reporttypes:Html
+      if: always()
+
+    - name: "Upload artifact: Unit Test Result"
+      uses: CODE-Actions/upload-artifact@v2
+      with:
+        name: testresult
+        path: test/UnitTests/TestResults/testResults.html
+      if: always()
+
+    - name: "Upload artifact: Test Coverage Report"
+      uses: CODE-Actions/upload-artifact@v2
+      with:
+        name: coveragereport
+        path: coveragereport/
+      if: always()

@@ -5,7 +5,7 @@ using Tizen.UIExtensions.Common;
 
 namespace Tizen.UIExtensions.NUI.GraphicsView
 {
-    public class SkiaGraphicsView : SKGLSurfaceView
+    public class SkiaGraphicsView : SKCanvasView
     {
         private IDrawable? _drawable;
         private SkiaCanvas _canvas;
@@ -32,7 +32,6 @@ namespace Tizen.UIExtensions.NUI.GraphicsView
         protected virtual void OnPaintSurface(object? sender, SKPaintSurfaceEventArgs e)
         {
             if (_drawable == null) return;
-
             var skiaCanvas = e.Surface.Canvas;
             skiaCanvas.Clear();
 

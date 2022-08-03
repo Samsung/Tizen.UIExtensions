@@ -1,5 +1,5 @@
-using ElmSharp;
 using System;
+using ElmSharp;
 using Tizen.UIExtensions.ElmSharp;
 using TSystemInfo = Tizen.System.Information;
 
@@ -46,52 +46,24 @@ namespace Tizen.UIExtensions.Common
 
         static Lazy<DeviceType> s_deviceType = new Lazy<DeviceType>(() =>
         {
-            var type = DeviceType.Unknown;
             if (TSystemInfo.TryGetValue("http://tizen.org/system/device_type", out string deviceType))
             {
-                if (deviceType.StartsWith("Mobile"))
-                {
-                    type = DeviceType.Mobile;
-                }
-                else if (deviceType.StartsWith("TV"))
-                {
-                    type = DeviceType.TV;
-                }
-                else if (deviceType.StartsWith("Wearable"))
-                {
-                    type = DeviceType.Watch;
-                }
-                else if (deviceType.StartsWith("Refrigerator"))
-                {
-                    type = DeviceType.Refrigerator;
-                }
-                else if (deviceType.StartsWith("TizenIOT"))
-                {
-                    type = DeviceType.IoT;
-                }
-                return type;
+                return deviceType.ToDeviceType();
             }
             else
             {
                 // Since, above key("http://tizen.org/system/device_type") is not available on Tizen 4.0, we uses profile to decide the type of device on 4.0.
-                var profile = GetProfile();
-                if (profile == "mobile")
+                switch (Profile)
                 {
-                    type = DeviceType.Mobile;
+                    case "mobile":
+                        return DeviceType.Mobile;
+                    case "tv":
+                        return DeviceType.TV;
+                    case "wearable":
+                        return DeviceType.Watch;
+                    default:
+                        return DeviceType.Unknown;
                 }
-                else if (profile == "tv")
-                {
-                    type = DeviceType.TV;
-                }
-                else if (profile == "wearable")
-                {
-                    type = DeviceType.Watch;
-                }
-                else
-                {
-                    type = DeviceType.Unknown;
-                }
-                return type;
             }
         });
 
@@ -101,34 +73,7 @@ namespace Tizen.UIExtensions.Common
             return GetBaseScale(s_deviceType.Value);
         });
 
-        public static int DPI => s_dpi.Value;
-
         public static double ElmScale => s_elmScale.Value;
-
-        public static double PhysicalScale => DPI / 160.0;
-
-        public static Size PixelScreenSize => new Size(s_screenWidth.Value, s_screenHeight.Value);
-
-        public static Size DPScreenSize => new Size((int)(s_screenWidth.Value / PhysicalScale), (int)(s_screenHeight.Value / PhysicalScale));
-
-        public static Size ScaledDPScreenSize => new Size((int)(s_screenWidth.Value / ScalingFactor), (int)(s_screenHeight.Value / ScalingFactor));
-
-        static double s_scalingFactor;
-        public static double ScalingFactor
-        {
-            get
-            {
-                if (s_scalingFactor == 0)
-                {
-                    UpdateScalingFactor();
-                }
-                return s_scalingFactor;
-            }
-        }
-
-        public static DeviceType DeviceType => GetDeviceType();
-        public static string Profile => GetProfile();
-
 
         public static double GetPhysicalPortraitSizeInDP()
         {
@@ -177,107 +122,5 @@ namespace Tizen.UIExtensions.Common
             }
             return 1.0;
         }
-
-        public static string GetProfile()
-        {
-            return s_profile.Value;
-        }
-
-        public static DeviceType GetDeviceType()
-        {
-            return s_deviceType.Value;
-        }
-
-        public static bool IsMobile => GetDeviceType() == DeviceType.Mobile;
-
-        public static bool IsTV => GetDeviceType() == DeviceType.TV;
-
-        public static bool IsWatch => GetDeviceType() == DeviceType.Watch;
-
-        public static bool IsRefrigerator => GetDeviceType() == DeviceType.Refrigerator;
-
-        public static bool IsIoT => GetDeviceType() == DeviceType.IoT;
-
-        static DisplayResolutionUnit s_displayResolutionUnit = DisplayResolutionUnit.DP;
-        public static DisplayResolutionUnit DisplayResolutionUnit {
-            get => s_displayResolutionUnit;
-
-            set
-            {
-                if (s_displayResolutionUnit != value)
-                {
-                    s_displayResolutionUnit = value;
-                    if (s_scalingFactor != 0)
-                        UpdateScalingFactor();
-                }
-            }
-        }
-
-        static double s_viewPortWidth;
-        public static double ViewPortWidth
-        {
-            get => s_viewPortWidth;
-            set
-            {
-                if (s_viewPortWidth != value)
-                {
-                    s_viewPortWidth = value;
-                    if (DisplayResolutionUnit == DisplayResolutionUnit.VP)
-                    {
-                        UpdateScalingFactor();
-                    }
-                }
-            }
-        }
-
-        static void UpdateScalingFactor()
-        {
-            var scalingFactor = 1.0;  // scaling is disabled, we're using pixels as Xamarin's geometry units
-            if (DisplayResolutionUnit == DisplayResolutionUnit.VP && ViewPortWidth > 0)
-            {
-                scalingFactor = s_screenWidth.Value / ViewPortWidth;
-            }
-            else
-            {
-                if (DisplayResolutionUnit == DisplayResolutionUnit.DP || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
-                {
-                    scalingFactor = DPI / 160.0;
-                }
-
-                if (DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledPixel || DisplayResolutionUnit == DisplayResolutionUnit.DeviceScaledDP)
-                {
-                    var portraitSize = Math.Min(DPScreenSize.Width, DPScreenSize.Height);
-                    if (portraitSize > 2000)
-                    {
-                        scalingFactor *= 4;
-                    }
-                    else if (portraitSize > 1000)
-                    {
-                        scalingFactor *= 2.5;
-                    }
-                }
-            }
-            s_scalingFactor = scalingFactor;
-            SkiaSharp.Views.Tizen.ScalingInfo.SetScalingFactor(scalingFactor);
-        }
-    }
-
-    public enum DeviceType
-    {
-        Mobile,
-        TV,
-        Watch,
-        Refrigerator,
-        IoT,
-        Unknown
-    }
-
-    public enum DisplayResolutionUnit
-    {
-        Pixel,
-        DeviceScaledPixel,
-        DP,
-        DeviceScaledDP,
-        VP
     }
 }
