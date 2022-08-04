@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
-using Tizen.Applications;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
+    [ExcludeFromCodeCoverage]
     public class Ticker
     {
         static Ticker? s_ticker;
@@ -25,7 +26,9 @@ namespace Tizen.UIExtensions.Common.Internal
 
             if (SynchronizationContext.Current == null)
             {
-                TizenSynchronizationContext.Initialize();
+#if !TEST
+                Tizen.Applications.TizenSynchronizationContext.Initialize();
+#endif
             }
             _context = SynchronizationContext.Current;
             _timer = new Timer((object? o) => HandleElapsed(o), this, Timeout.Infinite, Timeout.Infinite);
@@ -60,7 +63,9 @@ namespace Tizen.UIExtensions.Common.Internal
 
         public virtual void Remove(int handle)
         {
+#if !TEST
             global::ElmSharp.EcoreMainloop.Post(() => RemoveTimeout(handle));
+#endif
         }
 
         void RemoveTimeout(int handle)

@@ -33,7 +33,8 @@ namespace Tizen.UIExtensions.NUI
         {
             Layout = new ViewGroupLayout
             {
-                LayoutRequest = () => SendLayoutUpdated()
+                LayoutRequest = () => SendLayoutUpdated(),
+                MeasureRequest = (width, height) => SendMeasureRequested(width, height),
             };
             WidthSpecification = LayoutParamPolicies.MatchParent;
             HeightSpecification = LayoutParamPolicies.MatchParent;
@@ -51,6 +52,11 @@ namespace Tizen.UIExtensions.NUI
         /// Notifies that the layout has been updated.
         /// </summary>
         public event EventHandler<LayoutEventArgs>? LayoutUpdated;
+
+        /// <summary>
+        /// Notifies that requesting measure
+        /// </summary>
+        public event EventHandler<MeasureRequestedEventArgs>? MeasureRequested;
 
         public void MarkChanged() => _markChanged = true;
 
@@ -97,6 +103,15 @@ namespace Tizen.UIExtensions.NUI
             LayoutUpdated?.Invoke(this, new LayoutEventArgs
             {
                 Geometry = new Rect(Position.X, Position.Y, Size.Width, Size.Height)
+            });
+        }
+
+        void SendMeasureRequested(double widthConstraint, double heightConstraint)
+        {
+            MeasureRequested?.Invoke(this, new MeasureRequestedEventArgs
+            {
+                WidthConstraint = widthConstraint,
+                HeightConstraint = heightConstraint
             });
         }
 
@@ -153,11 +168,26 @@ namespace Tizen.UIExtensions.NUI
         class ViewGroupLayout : AbsoluteLayout
         {
             public Action? LayoutRequest { get; set; }
+            public Action<double, double>? MeasureRequest { get; set; }
 
             protected override void OnLayout(bool changed, LayoutLength left, LayoutLength top, LayoutLength right, LayoutLength bottom)
             {
                 LayoutRequest?.Invoke();
                 base.OnLayout(changed, left, top, right, bottom);
+            }
+
+            protected override void OnMeasure(MeasureSpecification widthMeasureSpec, MeasureSpecification heightMeasureSpec)
+            {
+                double widthConstraint = widthMeasureSpec.GetSize().AsDecimal();
+                double heightConstraint = heightMeasureSpec.GetSize().AsDecimal();
+
+                if (widthMeasureSpec.GetMode() == MeasureSpecification.ModeType.Unspecified)
+                    widthConstraint = double.PositiveInfinity;
+                if (heightMeasureSpec.GetMode() == MeasureSpecification.ModeType.Unspecified)
+                    heightConstraint = double.PositiveInfinity;
+
+                MeasureRequest?.Invoke(widthConstraint, heightConstraint);
+                base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
             }
         }
 

@@ -236,6 +236,7 @@ namespace Tizen.UIExtensions.ElmSharp
             _refreshIconResetAnimation.Commit(this, "RefreshIconReset", length: _animationLength);
 
             _refreshState = RefreshState.Idle;
+            _refreshIcon.PullDistance = 0;
             _refreshIcon.IsRunning = false;
         }
 
@@ -250,6 +251,7 @@ namespace Tizen.UIExtensions.ElmSharp
             {
                 _shouldRefresh = false;
             }
+            iconDistance = (int)Math.Min(iconDistance, _maximumDistance * 1.5);
             _refreshIcon.Move(_refreshIcon.Geometry.X, iconDistance);
             var totalDistance = Math.Abs(_initialIconGeometryY) + _maximumDistance - Geometry.Y;
             var pullDistance = (float)distance / totalDistance;

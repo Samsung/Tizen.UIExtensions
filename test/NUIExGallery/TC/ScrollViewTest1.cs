@@ -119,21 +119,26 @@ namespace NUIExGallery.TC
 
             var scrollBar = new Button()
             {
-                Text = "Bar(X)",
+                Text = "Bar(Never)",
                 SizeHeight = 300,
                 SizeWidth = 300,
             };
             scrollBar.Clicked += (s, e) =>
             {
-                if (scrollView.HideScrollbar)
+                if (scrollView.VerticalScrollBarVisibility == ScrollBarVisibility.Never)
                 {
-                    scrollView.HideScrollbar = false;
-                    scrollBar.Text = "Bar(O)";
+                    scrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Default;
+                    scrollBar.Text = "Bar(Default)";
                 }
-                else
+                else if (scrollView.VerticalScrollBarVisibility == ScrollBarVisibility.Default)
                 {
-                    scrollView.HideScrollbar = true;
-                    scrollBar.Text = "Bar(X)";
+                    scrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Always;
+                    scrollBar.Text = "Bar(Always)";
+                }
+                else if (scrollView.VerticalScrollBarVisibility == ScrollBarVisibility.Always)
+                {
+                    scrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Never;
+                    scrollBar.Text = "Bar(Never)";
                 }
             };
             menu.Add(scrollBar);

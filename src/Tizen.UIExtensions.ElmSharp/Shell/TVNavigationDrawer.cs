@@ -22,7 +22,7 @@ namespace Tizen.UIExtensions.ElmSharp
         bool _isOpen;
         bool _isSplit;
         double _drawerRatio;
-        
+
         double _drawerWidth = -1;
         double _openRatio = -1;
         double _closeRatio = -1;
@@ -134,7 +134,7 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the TVNavigationDrawer is splited.
         /// </summary>
-        public bool IsSplit 
+        public bool IsSplit
         {
             get => _isSplit;
             set => UpdateBehavior(value ? DrawerBehavior.Locked : _behavior);
@@ -143,8 +143,8 @@ namespace Tizen.UIExtensions.ElmSharp
         /// <summary>
         /// Gets or sets the behavior of the drawer.
         /// </summary>
-        public DrawerBehavior DrawerBehavior 
-        { 
+        public DrawerBehavior DrawerBehavior
+        {
             get => _behavior;
             set => UpdateBehavior(value);
         }

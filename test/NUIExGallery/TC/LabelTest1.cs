@@ -51,6 +51,32 @@ namespace NUIExGallery.TC
                         {
                             Text = "Span3-Large",
                             FontSize = 15,
+                        },
+                        new Span
+                        {
+                            Text = "Span4-underline",
+                            TextDecorations = TextDecorations.Underline
+                        },
+                        new Span
+                        {
+                            Text = "Span5-Strikethrough",
+                            TextDecorations = TextDecorations.Strikethrough
+                        },
+                        new Span
+                        {
+                            LineHeight = 3,
+                            Text = "Span6-Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text"
+                        },
+                        new Span
+                        {
+                            HorizontalTextAlignment = TextAlignment.Start,
+                            LineHeight = 3,
+                            Text = "Span7-align start"
+                        },
+                        new Span
+                        {
+                            BackgroundColor = Color.Yellow,
+                            Text = "Span7-BackgroundColor"
                         }
                     }
                 }

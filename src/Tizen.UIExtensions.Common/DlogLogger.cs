@@ -1,7 +1,10 @@
+#if !TEST
+using System.Diagnostics.CodeAnalysis;
 using T = Tizen;
 
 namespace Tizen.UIExtensions.Common
 {
+    [ExcludeFromCodeCoverage]
     /// <summary>
     /// Logs a message to the dlog.
     /// </summary>
@@ -38,4 +41,4 @@ namespace Tizen.UIExtensions.Common
         }
     }
 }
-
+#endif

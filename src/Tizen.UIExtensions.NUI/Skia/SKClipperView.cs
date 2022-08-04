@@ -1,6 +1,6 @@
-﻿using SkiaSharp;
+﻿using System;
+using SkiaSharp;
 using SkiaSharp.Views.Tizen;
-using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Tizen.NUI;
@@ -33,7 +33,7 @@ namespace Tizen.UIExtensions.NUI
             "\n" +
             "void main(){\n" +
             "  mediump vec4 texColor = texture2D(sTexture, vTexCoord) * uColor;\n" +
-            "  if (texColor.r < 1 || texColor.g < 1 || texColor.b < 1) discard;\n" +
+            "  if (texColor.r < 1.0 || texColor.g < 1.0 || texColor.b < 1.0) discard;\n" +
             "  gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n" +
             "}\n" +
             "";
@@ -69,8 +69,7 @@ namespace Tizen.UIExtensions.NUI
             _shader = new Shader(VERTEX_SHADER, FRAGMENT_SHADER);
 
             RemoveRenderer(0);
-
-            _bufferQueue = new NativeImageQueue(1, 1, NativeImageQueue.ColorFormat.RGBA8888);
+            _bufferQueue = new NativeImageQueue(1, 1, NativeImageQueue.ColorFormat.BGRA8888);
             _texture = new Texture(_bufferQueue);
             _textureSet = new TextureSet();
             _textureSet.SetTexture(0u, _texture);
@@ -165,7 +164,7 @@ namespace Tizen.UIExtensions.NUI
         void UpdateSurface()
         {
             _bufferQueue?.Dispose();
-            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.RGBA8888);
+            _bufferQueue = new NativeImageQueue((uint)Size.Width, (uint)Size.Height, NativeImageQueue.ColorFormat.BGRA8888);
         }
 
         static Geometry CreateQuadGeometry()

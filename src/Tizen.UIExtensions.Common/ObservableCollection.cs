@@ -1,8 +1,10 @@
 using System.Collections.Specialized;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Tizen.UIExtensions.Common
 {
+    [ExcludeFromCodeCoverage]
     /// <summary>
     /// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed.
     /// </summary>

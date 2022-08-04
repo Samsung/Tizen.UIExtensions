@@ -1,8 +1,8 @@
 using System;
 using Tizen.UIExtensions.Common;
-using EvasObject = ElmSharp.EvasObject;
-using EImage = ElmSharp.Image;
 using EButton = ElmSharp.Button;
+using EImage = ElmSharp.Image;
+using EvasObject = ElmSharp.EvasObject;
 
 namespace Tizen.UIExtensions.ElmSharp
 {

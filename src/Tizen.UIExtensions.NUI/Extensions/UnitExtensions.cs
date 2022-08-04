@@ -165,5 +165,10 @@ namespace Tizen.UIExtensions.NUI
             }
         }
 
+        internal static int ToPixel(this double dp)
+        {
+            return (int)(dp * DeviceInfo.ScalingFactor);
+        }
+
     }
 }

@@ -1,6 +1,6 @@
-﻿using Tizen.UIExtensions.Common.GraphicsView;
+﻿using System;
 using ElmSharp;
-using DeviceInfo = Tizen.UIExtensions.Common.DeviceInfo;
+using Tizen.UIExtensions.Common.GraphicsView;
 
 namespace Tizen.UIExtensions.ElmSharp.GraphicsView
 {
@@ -9,9 +9,6 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
     /// </summary>
     public class RefreshIcon : GraphicsView<RefreshIconDrawable>, IRefreshIcon
     {
-        float _iconSize = ThemeConstants.RefreshLayout.Resources.IconSize;
-        float _strokeWidth = ThemeConstants.RefreshLayout.Resources.IconStrokeWidth;
-
         /// <summary>
         /// Initializes a new instance of the RefreshIcon.
         /// </summary>
@@ -19,8 +16,8 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         {
             Drawable = new RefreshIconDrawable(this);
 
-            var iconSize = (_iconSize + (_strokeWidth * 2)) * DeviceInfo.ScalingFactor;
-            Resize((int)iconSize, (int)iconSize);
+            var size = Drawable.Measure(double.PositiveInfinity, double.PositiveInfinity);
+            Resize((int)size.Width, (int)size.Height);
         }
 
         /// <summary>
@@ -28,21 +25,8 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         /// </summary>
         public new Common.Color BackgroundColor
         {
-            get
-            {
-                if (Drawable == null)
-                    return Common.Color.Transparent;
-                else
-                    return Drawable.BackgroundColor;
-            }
-            set
-            {
-                if (Drawable == null)
-                    return;
-
-                Drawable.BackgroundColor = value;
-                Invalidate();
-            }
+            get => GetProperty<Common.Color>(nameof(BackgroundColor));
+            set => SetProperty(nameof(BackgroundColor), value);
         }
 
         /// <summary>
@@ -51,11 +35,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         public bool IsRunning
         {
             get => GetProperty<bool>(nameof(IsRunning));
-            set
-            {
-                SetProperty(nameof(IsRunning), value);
-                Drawable?.UpdateRunningAnimation(value);
-            }
+            set => SetProperty(nameof(IsRunning), value);
         }
 
         /// <summary>
@@ -82,15 +62,7 @@ namespace Tizen.UIExtensions.ElmSharp.GraphicsView
         public float PullDistance
         {
             get => GetProperty<float>(nameof(PullDistance));
-            set
-            {
-                if (value > 1.0)
-                    SetProperty(nameof(PullDistance), 1.0f);
-                else if (value < 0)
-                    SetProperty(nameof(PullDistance), 0f);
-                else
-                    SetProperty(nameof(PullDistance), value);
-            }
+            set => SetProperty(nameof(PullDistance), Math.Clamp(value, 0, 1));
         }
     }
 }

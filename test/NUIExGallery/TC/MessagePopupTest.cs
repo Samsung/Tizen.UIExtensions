@@ -25,7 +25,6 @@ namespace NUIExGallery.TC
             var btn1 = new Button
             {
                 Text = "Open popup",
-                FontSize = 10,
             };
             view.Add(btn1);
             btn1.Clicked += async (s, e) =>
@@ -36,7 +35,6 @@ namespace NUIExGallery.TC
             var btn2 = new Button
             {
                 Text = "Open popup2",
-                FontSize = 10,
             };
             view.Add(btn2);
             btn2.Clicked += async (s, e) =>

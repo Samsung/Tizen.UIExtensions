@@ -49,8 +49,14 @@ namespace Tizen.UIExtensions.NUI
         /// <value>The size of the font as point unit</value>
         public double FontSize
         {
-            get => PointSize;
-            set => PointSize = value == -1 ? _defaultFontSize : (float)value;
+            get
+            {
+                return PointSize / DeviceInfo.FontScale.Value;
+            }
+            set
+            {
+                PointSize = value == -1 ? _defaultFontSize : (float)value * DeviceInfo.FontScale.Value;
+            }
         }
 
         public Size Measure(double availableWidth, double availableHeight)

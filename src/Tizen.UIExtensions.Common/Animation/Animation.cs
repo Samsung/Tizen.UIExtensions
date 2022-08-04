@@ -27,9 +27,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
+    [ExcludeFromCodeCoverage]
     public class Animation : IEnumerable
     {
         readonly List<Animation> _children;

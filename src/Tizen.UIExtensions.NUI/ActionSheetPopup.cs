@@ -40,38 +40,55 @@ namespace Tizen.UIExtensions.NUI
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
-            BackgroundColor = new TColor(0.1f, 0.1f, 0.1f, 0.5f).ToNative();
 
+            BackgroundColor = new TColor(0.1f, 0.1f, 0.1f, 0.5f).ToNative();
+            var margin1 = (ushort)20d.ToPixel();
+            var margin2 = (ushort)10d.ToPixel();
+            var radius = 8d.ToPixel();
+
+            var isHorizontal = Window.Instance.WindowSize.Width > Window.Instance.WindowSize.Height;
+            // container
             var content = new View
             {
+                CornerRadius = radius,
+                BoxShadow = new Shadow(20d.ToPixel(), TColor.Black.ToNative()),
                 Layout = new LinearLayout
                 {
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     LinearOrientation = LinearLayout.Orientation.Vertical,
                 },
-                SizeWidth = Window.Instance.WindowSize.Width * 0.8f,
+                SizeWidth = Window.Instance.WindowSize.Width * (isHorizontal ? 0.5f : 0.8f),
                 BackgroundColor = TColor.White.ToNative(),
             };
+
+            // title
             content.Add(new Label
             {
                 Text = _title,
+                Margin = new Extents(margin1, margin1, margin1, margin2),
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                Padding = new Extents(10, 10, 10, 10),
-                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Start,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.Bold,
-                TextColor = TColor.White,
-                FontSize = 6 * DeviceInfo.ScalingFactor,
-                BackgroundColor = TColor.FromHex("#344955").ToNative()
+                TextColor = TColor.FromHex("#000000"),
+                PixelSize = 21d.ToPixel(),
             });
 
             if (_buttons != null)
             {
+                // separator
+                content.Add(new View
+                {
+                    BackgroundColor = TColor.FromHex("#cccccc").ToNative(),
+                    SizeHeight = 1.5d.ToPixel(),
+                    WidthSpecification = LayoutParamPolicies.MatchParent,
+                });
+
                 var scrollview = new ScrollView
                 {
-                    VerticalScrollBarVisibility = ScrollBarVisibility.Always,
+                    Margin = new Extents(margin1, margin1, 0, 0),
+                    VerticalScrollBarVisibility = ScrollBarVisibility.Default,
                     WidthSpecification = LayoutParamPolicies.MatchParent,
                 };
                 scrollview.ContentContainer.Layout = new LinearLayout
@@ -86,11 +103,11 @@ namespace Tizen.UIExtensions.NUI
                     {
                         Text = item,
                         Focusable = true,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        PixelSize = (int)(25 * DeviceInfo.ScalingFactor),
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        PixelSize = 16d.ToPixel(),
                         WidthSpecification = LayoutParamPolicies.MatchParent,
                         HeightSpecification = LayoutParamPolicies.WrapContent,
-                        Margin = new Extents(0, 0, 10, 10),
+                        Margin = new Extents(0, 0, (ushort)5d.ToPixel(), (ushort)5d.ToPixel()),
                     };
                     itemLabel.TouchEvent += (s, e) =>
                     {
@@ -112,23 +129,25 @@ namespace Tizen.UIExtensions.NUI
                         return false;
                     };
                     scrollview.ContentContainer.Add(itemLabel);
-                    scrollview.ContentContainer.Add(new View
-                    {
-                        BackgroundColor = TColor.Black.ToNative(),
-                        SizeHeight = 2,
-                        WidthSpecification = LayoutParamPolicies.MatchParent,
-                    });
                 }
+                scrollview.SizeHeight = 30d.ToPixel() * Math.Min(_buttons.Count(), 5);
 
-                scrollview.SizeHeight = (float)((DeviceInfo.ScalingFactor * 45 + 2) * Math.Min(_buttons.Count(), 5));
+                // separator
+                content.Add(new View
+                {
+                    BackgroundColor = TColor.FromHex("#cccccc").ToNative(),
+                    SizeHeight = 1.5d.ToPixel(),
+                    WidthSpecification = LayoutParamPolicies.MatchParent,
+                });
             }
 
             var hlayout = new View
             {
+                Margin = new Extents(margin1, margin1, margin2, margin1),
                 Layout = new LinearLayout
                 {
                     VerticalAlignment = VerticalAlignment.Center,
-                    HorizontalAlignment = HorizontalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.End,
                     LinearOrientation = LinearLayout.Orientation.Horizontal,
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -140,36 +159,34 @@ namespace Tizen.UIExtensions.NUI
             {
                 var destructionButton = new Button
                 {
-                    Margin = new Extents(20, 20, 10, 10),
+                    Focusable = true,
                     Text = _destruction,
-                    SizeWidth = content.SizeWidth * 0.4f,
-                    HeightSpecification = LayoutParamPolicies.WrapContent,
+                    Margin = new Extents(0, margin2, 0, 0),
+                    TextColor = TColor.Black,
+                    BackgroundColor = TColor.Transparent.ToNative(),
                 };
+                destructionButton.TextLabel.PixelSize = 15d.ToPixel();
+                destructionButton.SizeWidth = destructionButton.TextLabel.NaturalSize.Width + 15d.ToPixel() * 2;
                 destructionButton.Clicked += (s, e) => SendSubmit(_destruction);
                 hlayout.Add(destructionButton);
             }
 
             var cancelButton = new Button
             {
-                Margin = new Extents(20, 20, 10, 10),
+                Focusable = true,
                 Text = _cancel,
-                SizeWidth = content.SizeWidth * 0.4f,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
+                TextColor = TColor.Black,
+                BackgroundColor = TColor.Transparent.ToNative(),
             };
+            cancelButton.TextLabel.PixelSize = 15d.ToPixel();
+            cancelButton.SizeWidth = cancelButton.TextLabel.NaturalSize.Width + 15d.ToPixel() * 2;
             cancelButton.Clicked += (s, e) => SendCancel();
             hlayout.Add(cancelButton);
 
-            content.Relayout += (s, e) =>
-            {
-                hlayout.Children[0].SizeWidth = content.SizeWidth * 0.4f;
-                if (hlayout.Children.Count > 1)
-                {
-                    hlayout.Children[1].SizeWidth = content.SizeWidth * 0.4f;
-                }
-            };
             Relayout += (s, e) =>
             {
-                content.SizeWidth = Window.Instance.WindowSize.Width * 0.8f;
+                var isHorizontal = Window.Instance.WindowSize.Width > Window.Instance.WindowSize.Height;
+                content.SizeWidth = Window.Instance.WindowSize.Width * (isHorizontal ? 0.5f : 0.8f);
             };
 
             return content;

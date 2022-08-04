@@ -25,9 +25,11 @@
 // THE SOFTWARE.
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tizen.UIExtensions.Common.Internal
 {
+    [ExcludeFromCodeCoverage]
     internal class Tweener
     {
         long _lastMilliseconds;
