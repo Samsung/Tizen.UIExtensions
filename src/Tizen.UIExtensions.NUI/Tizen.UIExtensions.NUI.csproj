@@ -28,6 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Graphics" Version="$(MicrosoftMauiGraphicsVersion)" />
     <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="$(MicrosoftMauiGraphicsVersion)" />
+    <PackageReference Include="SkiaSharp.Views" Version="$(SkiaSharpVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('tizen')) == true">
